@@ -23,9 +23,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan(basePackages = { "kr.co.hanok", "util" })
+@ComponentScan(basePackages = { "kr.co.hanokproject", "util" })
 @EnableWebMvc
-@MapperScan(basePackages = { "kr.co.hanok" }, annotationClass = Mapper.class) // 인터페이스 스캔
+@MapperScan(basePackages = { "kr.co.hanokproject" }, annotationClass = Mapper.class) // 인터페이스 스캔
 @EnableTransactionManagement
 public class MvcConfig implements WebMvcConfigurer {
 	// ViewResolver 설정(JSP 경로)
