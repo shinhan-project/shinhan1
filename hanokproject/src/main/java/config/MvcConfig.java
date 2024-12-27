@@ -1,5 +1,4 @@
 package config;
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -7,9 +6,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,11 +22,10 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.zaxxer.hikari.HikariDataSource;
-
 @Configuration
-@ComponentScan(basePackages = { "kr.co.hanok", "util" })
+@ComponentScan(basePackages = { "kr.co.hanokproject", "util" })
 @EnableWebMvc
-@MapperScan(basePackages = { "kr.co.hanok" }, annotationClass = Mapper.class) // 인터페이스 스캔
+@MapperScan(basePackages = { "kr.co.hanokproject" }, annotationClass = Mapper.class) // 인터페이스 스캔
 @EnableTransactionManagement
 public class MvcConfig implements WebMvcConfigurer {
 	// ViewResolver 설정(JSP 경로)
@@ -33,13 +33,11 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
-
 	// 정적페이지 처리(컨트롤러가 아니라 톰캣에서 처리하기 위해)
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-
 	// db.properties에 있는 속성
 	@Value("${db.driver}")
 	private String driver;
@@ -49,7 +47,6 @@ public class MvcConfig implements WebMvcConfigurer {
 	private String username;
 	@Value("${db.password}")
 	private String password;
-
 	// HikariCP
 	@Bean
 	public DataSource dataSource() {
@@ -61,17 +58,15 @@ public class MvcConfig implements WebMvcConfigurer {
 		dataSource.setUsername(username);
 		dataSource.setPassword(password);
 		return dataSource;
-
 	}
-
 	// MyBatis
 	@Bean
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
 		ssf.setDataSource(dataSource()); // 의존성 주입
 		// mapper파일의 위치
-//			PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//			ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml"));
+		//PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		//ssf.setMapperLocations(resolver.getResources("classpath:/kr/co/hanokproject/**/*.xml"));
 		return ssf.getObject();
 	}
 	// DAO에서 주입받을 객체
@@ -80,14 +75,12 @@ public class MvcConfig implements WebMvcConfigurer {
 //		public SqlSessionTemplate sst() throws Exception {
 //			return new SqlSessionTemplate(sqlSessionFactory());
 //		}
-
 	// 트랜잭션매니저 빈 등록
 	@Bean
 	public TransactionManager tm() {
 		DataSourceTransactionManager dtm = new DataSourceTransactionManager(dataSource());
 		return dtm;
 	}
-
 //		// 인터셉터 빈 등록
 //		@Bean
 //		public LoginInterceptor interception() {
@@ -104,7 +97,6 @@ public class MvcConfig implements WebMvcConfigurer {
 ////				.addPathPatterns("/admin/**")
 ////				.excludePathPatterns("/admin/login.do")
 //		}
-
 	// 파일업로드관련 빈 등록
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
@@ -113,10 +105,21 @@ public class MvcConfig implements WebMvcConfigurer {
 		resolver.setMaxUploadSize(1024 * 1024 * 5);
 		return resolver;
 	}
-
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-
+	
+	@Bean
+	public static PropertyPlaceholderConfigurer propreties() {
+		PropertyPlaceholderConfigurer config = new PropertyPlaceholderConfigurer();
+		config.setLocations(new ClassPathResource("db.properties"));
+		return config;
+	}
 }
+
+
+
+
+
+
