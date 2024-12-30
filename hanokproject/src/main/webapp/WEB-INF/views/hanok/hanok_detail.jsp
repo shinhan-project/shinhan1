@@ -56,7 +56,10 @@
     </style>
 </head>
 <body>
-	<!-- 헤더 -->
+	<!--헤더-->
+    <div id="sep">
+        <%@ include file="/WEB-INF/views/include/header.jsp" %>
+    </div>
 	
     <!--검색-->
     <div id="sep">
