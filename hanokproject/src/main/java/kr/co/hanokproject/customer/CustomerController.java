@@ -1,6 +1,7 @@
 package kr.co.hanokproject.customer;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import kr.co.hanokproject.customer.CustomerService;
-import kr.co.hanokproject.customer.CustomerVO;
 
 @Controller
 public class CustomerController {
@@ -27,6 +25,8 @@ public class CustomerController {
 	public void login() {
 		 return;
 	}
+	
+	
 	@PostMapping("/customer/login.do")
 	public String loginProcess(@RequestParam Map map, Model model, HttpSession sess) {
 		CustomerVO vo = service.login(map);
@@ -40,6 +40,33 @@ public class CustomerController {
 		}
 		
 	}
+	
+	
+	@GetMapping("/index.do")
+	public String index() {
+		return "index";
+
+	}
+	
+	@GetMapping("/customer/regist.do")
+	   public void regist() {
+	      return;
+	   }
+	   
+	   @PostMapping("/customer/insert.do")
+	   public String insert(CustomerVO vo, Model model) {
+	      if (service.regist(vo)) {
+	         
+	         model.addAttribute("msg", "정상적으로 가입되었습니다.");
+	         model.addAttribute("url", "/home.do");
+	      } else {
+	         model.addAttribute("msg", "가입 오류");
+	         model.addAttribute("url", "/regist.do");
+	      }
+	      return "common/alert";
+	   }
+	
+	
 	
 	@GetMapping("/hanok_list.do")
 	public String hanokList(@RequestParam(value = "page", defaultValue = "1") int page,

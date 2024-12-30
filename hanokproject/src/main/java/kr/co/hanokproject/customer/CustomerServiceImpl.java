@@ -1,14 +1,11 @@
 package kr.co.hanokproject.customer;
 
-import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import kr.co.hanokproject.customer.CustomerMapper;
-import kr.co.hanokproject.customer.CustomerVO;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -16,12 +13,20 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerMapper mapper;
 	
 
-	
+	//로그인
 	
 	@Override
 	public CustomerVO login(Map map) {
 		return mapper.login(map);
 	}
+	
+	//회원 가입 
+	@Override
+	   public boolean regist(CustomerVO vo) {
+	      
+	      return mapper.regist(vo) == 0 ? false : true;
+	   }
+	
 
 	@Override
 	public Map<String, Object> list(CustomerVO vo) {
