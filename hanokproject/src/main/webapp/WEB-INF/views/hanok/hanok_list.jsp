@@ -71,7 +71,7 @@
 <body>
 <!--헤더-->
     <div id="sep">
-        <header></header>
+        <%@ include file="/WEB-INF/views/include/header.jsp" %>
     </div>
 
     <!--검색-->
