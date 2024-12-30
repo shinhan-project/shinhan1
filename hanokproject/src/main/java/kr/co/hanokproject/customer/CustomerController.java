@@ -41,5 +41,45 @@ public class CustomerController {
 		
 	}
 	
-	
+	@GetMapping("/hanok_list.do")
+	public String hanokList(@RequestParam(value = "page", defaultValue = "1") int page,
+	                        @RequestParam(value = "location", required = false) String location,
+	                        @RequestParam(value = "checkInDate", required = false) String checkInDate,
+	                        @RequestParam(value = "checkOutDate", required = false) String checkOutDate,
+	                        @RequestParam(value = "capacity", required = false) String capacity,
+	                        Model model) {
+	    CustomerVO customerVO = new CustomerVO();
+	    customerVO.setPage(page);
+	    customerVO.setLocation(location);
+	    customerVO.setCheckInDate(checkInDate);
+	    customerVO.setCheckOutDate(checkOutDate);
+	    customerVO.setCapacity(capacity);
+
+	    Map<String, Object> hanokData = service.searchHanok(customerVO);
+
+	    model.addAttribute("map", hanokData);
+	    return "hanok_list";
+	}
+    
+    @GetMapping("/hanok_detail.do")
+    public String hanokDetail(
+            @RequestParam("hanokId") int hanokId,
+            Model model) {
+
+        // 한옥 정보 가져오기
+        CustomerVO hanokDetail = service.getHanokDetail(hanokId);
+
+        // 방 리스트 가져오기
+        List<CustomerVO> roomList = service.getRoomList(hanokId);
+
+        // 리뷰 리스트 가져오기
+        List<CustomerVO> reviewList = service.getReviews(hanokId);
+
+        // 모델에 데이터 저장
+        model.addAttribute("hanokDetail", hanokDetail);
+        model.addAttribute("roomList", roomList);
+        model.addAttribute("reviewList", reviewList);
+
+        return "hanok_detail";
+    }
 }
