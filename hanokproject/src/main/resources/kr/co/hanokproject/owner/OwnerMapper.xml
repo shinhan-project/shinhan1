@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.hanokproject.owner.OwnerMapper">
+<!-- 회원가입 -->
+<insert id="regist" parameterType="kr.co.hanokproject.owner.OwnerVO">
+		INSERT INTO USERS_OWNER (owner_id, owner_pwd,owner_name, owner_address, owner_email, owner_tel, businessNum, owner_created) 
+		VALUES (#{owner_id}, MD5(#{owner_pwd}), #{owner_name}, #{owner_address}, #{owner_email},#{owner_tel}, #{businessNum}, NOW())
+</insert>
 
+<!-- 로그인 -->
 <select id="ownerlogin" parameterType="map"
 		resultType="kr.co.hanokproject.owner.OwnerVO">
 		SELECT * FROM USERS_OWNER WHERE
