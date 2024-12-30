@@ -64,4 +64,23 @@ public class CustomerVO {
 	private Timestamp pay_created_at;
 	private Timestamp pay_modified_at;
 	
+	//한옥 페이지
+	// 사용자로부터 전송되어지는 값(검색, 페이징, 필터링(조건))
+	private String location;
+	private String checkInDate;
+	private String checkOutDate;
+	private String capacity;
+	private int page; // 사용자가 요청한 페이지 번호
+	private int startIdx; // limit 앞에 들어갈 시작인덱스값
+	
+    private String roomImage;
+    private String hanokName;
+    private int roomPrice;	
+	
+	public CustomerVO() {
+		this.page = 1;
+	}
+	public int getStartIdx() {
+		return (page-1) * 6;
+	}
 }
