@@ -1,111 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.hanok.customer.CustomerMapper">
+<mapper namespace="kr.co.hanokproject.customer.CustomerMapper">
 
 	<select id="login" parameterType="map" resultType="kr.co.hanokproject.customer.CustomerVO"> 
 	SELECT * FROM USERS_CUSTOMER WHERE customer_id=#{customer_id} AND customer_pwd = MD5(#{customer_pwd}) 
 	</select>
 	
-<!--  -->
-	<sql id="searchSql">
-	    <where>
-	        <trim prefixOverrides="AND">
-	            <if test="location != null and location != ''">
-	                h.hanok_name LIKE CONCAT('%', #{location}, '%')
-	            </if>
-	            <if test="checkInDate != null and checkOutDate != null">
-	                NOT EXISTS (
-	                    SELECT 1
-	                    FROM reservations res
-	                    WHERE res.room_id = r.room_id
-	                    AND (
-	                        res.checkin BETWEEN #{checkInDate} AND #{checkOutDate}
-	                        OR res.checkout BETWEEN #{checkInDate} AND #{checkOutDate}
-	                    )
-	                )
-	            </if>
-	            <if test="capacity != null and capacity != ''">
-	                r.max_capacity >= #{capacity}
-	            </if>
-	        </trim>
-	    </where>
-	</sql>
+	<!-- 회원가입 -->
+	<insert id="regist" parameterType="kr.co.hanokproject.customer.CustomerVO">
+      INSERT INTO USERS_CUSTOMER (customer_id, customer_pwd,customer_name, customer_address, customer_email, customer_tel, customer_created) 
+      VALUES (#{customer_id}, MD5(#{customer_pwd}), #{customer_name}, #{customer_address}, #{customer_email},#{customer_tel}, NOW())
+	</insert>
 
-	<!-- 한옥 검색 -->
-	<select id="searchHanok" parameterType="kr.co.hanok.customer.CustomerVO" resultType="kr.co.hanok.customer.CustomerVO">
-        SELECT
-        	ri.image_url AS roomImage,
-		    h.hanok_name AS hanokName,
-		    MIN(r.room_price) AS roomPrice 
-        FROM 
-		    hanoks h
-		JOIN 
-		    rooms r ON h.hanok_id = r.hanok_id
-		JOIN 
-		    room_images ri ON r.room_id = ri.room_id
-		LEFT JOIN 
-		    reservations res ON r.room_id = res.room_id
-		    	AND (
-	                res.checkin >= #{checkOutDate} 
-	                OR res.checkout <= #{checkInDate}
-            	)
-		<include refid="searchSql"/>
-		GROUP BY 
-		    r.room_id, ri.image_url, h.hanok_name
-	    ORDER BY 
-        	MIN(r.room_price) ASC
-		LIMIT 6 OFFSET #{startIdx}
-    </select>
-    
-   	<!-- 한옥 검색 카운트 -->
-	<select id="count" parameterType="kr.co.hanok.customer.CustomerVO" resultType="int">
-		SELECT COUNT(DISTINCT r.room_id)
-        FROM 
-		    hanoks h
-		JOIN 
-		    rooms r ON h.hanok_id = r.hanok_id
-		JOIN 
-		    room_images ri ON r.room_id = ri.room_id
-		LEFT JOIN 
-		    reservations res ON r.room_id = res.room_id
-		    	AND (
-	                res.checkin >= #{checkOutDate} 
-	                OR res.checkout <= #{checkInDate}
-            	)	
-		<include refid="searchSql"/>
-	</select>
-	
-	<select id="getHanokDetail" parameterType="int" resultType="kr.co.hanok.customer.CustomerVO">
-	    SELECT 
-	        hanok_name AS hanokName,
-	        hanok_description AS hanokDescription
-	    FROM hanoks
-	    WHERE hanok_id = #{hanokId}
-	</select>
-	
-	<select id="getRoomList" parameterType="int" resultType="kr.co.hanok.customer.CustomerVO">
-	    SELECT 
-	        room_name AS roomName,
-	        room_price AS roomPrice,
-	        room_size AS roomSize,
-	        max_capacity AS maxCapacity,
-	        room_imgName AS roomImage
-	    FROM rooms
-	    WHERE hanok_id = #{hanokId}
-	</select>
-	
-	<select id="getReviews" parameterType="map" resultType="kr.co.hanok.customer.CustomerVO">
-	    SELECT 
-	        review_title AS reviewTitle,
-	        review_content AS reviewContent,
-	        review_date AS reviewDate,
-	        rating
-	    FROM reviews
-	    WHERE hanok_id = #{hanokId}
-	    ORDER BY review_date DESC
-	    LIMIT #{limit}
-	</select>
-	
-	
 	
 </mapper>

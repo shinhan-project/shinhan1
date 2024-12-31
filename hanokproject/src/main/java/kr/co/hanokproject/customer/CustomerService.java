@@ -9,9 +9,10 @@ import kr.co.hanokproject.customer.CustomerVO;
 public interface CustomerService {
 	
 	Map<String, Object> list(CustomerVO vo);
-
+	//로그인
 	CustomerVO login(Map map);
-
+	//회원가입
+	boolean regist(CustomerVO vo);
 	// 한옥 검색 리스트
 	Map<String, Object> searchHanok(CustomerVO customerVO);
 	

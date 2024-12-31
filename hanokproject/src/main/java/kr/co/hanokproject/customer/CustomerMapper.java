@@ -1,12 +1,10 @@
 package kr.co.hanokproject.customer;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-
-import kr.co.hanokproject.customer.CustomerVO;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface CustomerMapper {
@@ -29,6 +27,8 @@ public interface CustomerMapper {
 	
     // 리뷰 리스트 조회 (최대 n개)
     List<CustomerVO> getReviews(@Param("hanokId") int hanokId, @Param("limit") int limit);
-	
+	//회원 가입
+	int regist(CustomerVO vo);
+    
 
 }
