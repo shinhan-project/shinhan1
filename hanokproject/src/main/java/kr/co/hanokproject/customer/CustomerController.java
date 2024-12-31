@@ -80,7 +80,7 @@ public class CustomerController {
 	   //회원정보 수정
 	   @GetMapping("/customer/profile.do")
 		public String edit(HttpSession sess, Model model) {
-			CustomerVO uv = (CustomerVO)sess.getAttribute("login");
+			CustomerVO uv = (CustomerVO)sess.getAttribute("loginInfo");
 			model.addAttribute("vo", service.detail(uv));
 			return "customer/profile";
 		}
@@ -89,7 +89,7 @@ public class CustomerController {
 		public String update(CustomerVO vo, Model model) {
 			int r = service.update(vo);
 			String msg = "";
-			String url = "customer.do";
+			String url = "profile.do";
 			if (r > 0) {
 				msg = "정상적으로 수정되었습니다.";
 			} else {

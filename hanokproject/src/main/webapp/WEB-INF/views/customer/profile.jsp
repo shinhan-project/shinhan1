@@ -10,79 +10,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     	var dupCheck = false;
     	function goSave() {
-    		
-    		if ($("#customer_tel").val() == '') {
-    			alert('전화번호를 입력하세요');
-    			$("#customer_tel").focus();
-    			return;
-    		}
-    		// 전송
     		$("#frm").submit();
     	}
     </script>
 	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
- 
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
 
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-
-		setTheme(getPreferredTheme())
-
-		window.addEventListener('DOMContentLoaded', () => {
-		    var el = document.querySelector('.theme-icon-active');
-			if(el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-				const activeThemeIcon = document.querySelector('.theme-icon-active use')
-				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-					element.classList.remove('active')
-				})
-
-				btnToActive.classList.add('active')
-				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-			}
-
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (storedTheme !== 'light' || storedTheme !== 'dark') {
-					setTheme(getPreferredTheme())
-				}
-			})
-
-			showActiveTheme(getPreferredTheme())
-
-			document.querySelectorAll('[data-bs-theme-value]')
-				.forEach(toggle => {
-					toggle.addEventListener('click', () => {
-						const theme = toggle.getAttribute('data-bs-theme-value')
-						localStorage.setItem('theme', theme)
-						setTheme(theme)
-						showActiveTheme(theme)
-					})
-				})
-
-			}
-		})
-		
-	</script>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
@@ -133,7 +69,7 @@ Content START -->
 
 							<!-- Edit profile button -->
 							<div class="position-absolute top-0 end-0 p-3">
-								<a href="#" class="text-primary-hover" data-bs-toggle="tooltip" data-bs-title="Edit profile">
+								<a href="profile.do" class="text-primary-hover" data-bs-toggle="tooltip" data-bs-title="Edit profile">
 									<i class="bi bi-pencil-square"></i>
 								</a>
 							</div>
@@ -154,14 +90,14 @@ Content START -->
 								<!-- Sidebar menu item START -->
 								<ul class="nav nav-pills-primary-soft flex-column">
 									<li class="nav-item">
-										<a class="nav-link active" href="account-profile.html"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
+										<a class="nav-link active" href="profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="account-bookings.html"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 				
 									<li class="nav-item">
-										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
+										<a class="nav-link text-danger bg-danger-soft-hover" href="/customer/logout.do"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</li>
 								</ul>
 								<!-- Sidebar menu item END -->
@@ -197,6 +133,7 @@ Content START -->
 						<div class="card-body">
 							<!-- Form START -->
 							<form class="row g-3" name="frm" id="frm" action ="update.do" method="post">
+							
 								<!-- Profile photo -->
 								<div class="col-12">
 									<label class="form-label">Upload your profile photo<span class="text-danger">*</span></label>
@@ -214,32 +151,35 @@ Content START -->
 								</div>
 
 								<!-- Name -->
-								<div class="col-md-6">
+								<div class="col-m<d-6">
+								
 									<label class="form-label">Full Name<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="${vo.customer_name}" disabled>
-								</div>
-
+									<input type="hidden" class="form-control" name="customer_id" value="${vo.customer_id}" placeholder="Enter your mobile number">
+									<input type="text" class="form-control" name="customer_name" value="${vo.customer_name}" readonly> 
+								</div> 
 								<!-- Email -->
 								<div class="col-md-6">
 									<label class="form-label">Email address<span class="text-danger">*</span></label>
-									<input type="email" class="form-control" value="${vo.customer_email}" disabled>
+									<input type="email"  name="customer_email" class="form-control" value="${vo.customer_email}" readonly>
 								</div>
 
 								<!-- Mobile -->
 								<div class="col-md-6">
 									<label class="form-label">Mobile number<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="${vo.customer_tel}" placeholder="Enter your mobile number">
+									<input type="text" class="form-control" name="customer_tel" value="${vo.customer_tel}" placeholder="Enter your mobile number">
 								</div>
 
 								<!-- Address -->
 								<div class="col-12">
 									<label class="form-label">Address</label>
-									<input type="text" class="form-control" value="${vo.customer_address}" placeholder="Enter your address">
+									<input type="text" class="form-control" name="customer_address" value="${vo.customer_address}" placeholder="Enter your address">
 								</div>
 
 								<!-- Button -->
 								<div class="col-12 text-end">
+				
 									<a href="javascript:;"  onclick="goSave();" class="btn btn-primary mb-0">Save Changes</a>
+									
 								</div>
 							</form>
 							<!-- Form END -->
@@ -279,6 +219,7 @@ Content END -->
 
 <!-- ThemeFunctions -->
 <script src="/js/functions.js"></script>
+
 
 </body>
 </html>
