@@ -27,6 +27,15 @@ public class CustomerServiceImpl implements CustomerService {
 	      return mapper.regist(vo) == 0 ? false : true;
 	   }
 	
+	@Override
+	   public CustomerVO detail(CustomerVO vo) {
+	      return mapper.detail(vo);
+	   }
+
+	   @Override
+	   public int update(CustomerVO vo) {
+	      return mapper.update(vo);
+	   }
 
 	@Override
 	public Map<String, Object> list(CustomerVO vo) {

@@ -8,9 +8,20 @@
 	
 	<!-- 회원가입 -->
 	<insert id="regist" parameterType="kr.co.hanokproject.customer.CustomerVO">
-      INSERT INTO USERS_CUSTOMER (customer_id, customer_pwd,customer_name, customer_address, customer_email, customer_tel, customer_created) 
-      VALUES (#{customer_id}, MD5(#{customer_pwd}), #{customer_name}, #{customer_address}, #{customer_email},#{customer_tel}, NOW())
+      INSERT INTO USERS_CUSTOMER (customer_id, customer_pwd,customer_name,customer_address,customer_email,customer_tel,customer_created) VALUES (#{customer_id}, MD5(#{customer_pwd}), #{customer_name}, #{customer_address}, #{customer_email},#{customer_tel}, NOW())
 	</insert>
+	
+	<!-- 수정 -->
 
+	<select id="detail" resultType="kr.co.hanokproject.customer.CustomerVO" parameterType="int">
+		SELECT * FROM USERS_CUSTOMER WHERE customer_id=#{customer_id}
+	</select>
+	
+	<update id="update" parameterType="kr.co.hanokproject.customer.CustomerVO">
+		UPDATE USERS_CUSTOMER SET
+			customer_tel = #{customer_tel},
+			customer_address = #{customer_address}	
+		WHERE customer_id = #{customer_id}
+	</update>
 	
 </mapper>

@@ -36,7 +36,7 @@ public class CustomerController {
 			return "common/alert";	
 		}else {
 			sess.setAttribute("loginInfo", vo);
-			return "redirect:index.do";
+			return "redirect:/index.do";
 		}
 		
 	}
@@ -45,12 +45,6 @@ public class CustomerController {
 	@GetMapping("/index.do")
 	public String index() {
 		return "index";
-
-	}
-	
-	@GetMapping("/customer/profile.do")
-	public String profile() {
-		return "/customer/profile";
 
 	}
 	
@@ -64,7 +58,8 @@ public class CustomerController {
 	      if (service.regist(vo)) {
 	         
 	         model.addAttribute("msg", "정상적으로 가입되었습니다.");
-	         model.addAttribute("url", "/home.do");
+	         model.addAttribute("url", "/index.do");
+	         
 	      } else {
 	         model.addAttribute("msg", "가입 오류");
 	         model.addAttribute("url", "/regist.do");
@@ -72,6 +67,38 @@ public class CustomerController {
 	      return "common/alert";
 	   }
 	
+	   
+	   //로그아웃
+	   @GetMapping("/customer/logout.do")
+		public String logout(HttpSession sess, Model model) {
+			sess.invalidate();
+			model.addAttribute("msg", "로그아웃되었습니다.");
+			model.addAttribute("url", "/index.do");
+			return "common/alert";
+		}
+	   
+	   //회원정보 수정
+	   @GetMapping("/customer/profile.do")
+		public String edit(HttpSession sess, Model model) {
+			CustomerVO uv = (CustomerVO)sess.getAttribute("login");
+			model.addAttribute("vo", service.detail(uv));
+			return "customer/profile";
+		}
+		
+		@PostMapping("/customer/update.do")
+		public String update(CustomerVO vo, Model model) {
+			int r = service.update(vo);
+			String msg = "";
+			String url = "customer.do";
+			if (r > 0) {
+				msg = "정상적으로 수정되었습니다.";
+			} else {
+				msg = "수정 오류";
+			}
+			model.addAttribute("msg",msg);
+			model.addAttribute("url",url);
+			return "common/alert";
+		}
 	
 	
 	@GetMapping("/hanok_list.do")
@@ -115,4 +142,7 @@ public class CustomerController {
 
         return "hanok_detail";
     }
+    
+    
+    
 }

@@ -71,6 +71,20 @@
 		})
 		
 	</script>
+	<script>
+    function loginCheck() {
+    	if ($("#customer_id").val() == '') {
+    		alert("이메일을 입력해 주세요");
+    		$("#customer_id").focus();
+    		return false;
+    	}
+    	if ($("#custoemr_pwd").val() == '') {
+    		alert("비밀번호를 입력해 주세요");
+    		$("#customer_pwd").focus();
+    		return false;
+    	}
+    }
+    </script>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/images/favicon.ico">
@@ -132,7 +146,8 @@ Main Content START -->
 										</p>
 
 										<!-- Form START -->
-										<form class="mt-4 text-start" action="login.do" method="post">
+										<form class="mt-4 text-start" action="login.do" method="post" id="board1"  name="board1"  onsubmit="return loginCheck()";>
+										 
 											<!-- ID -->
 											<div class="mb-3">
 												<label class="form-label">Enter id</label> <input
@@ -160,7 +175,7 @@ Main Content START -->
 											</div>
 											<!-- Button -->
 											<div>
-												<button type="submit" value="로그인"
+												<button type="submit" value="로그인" 
 													class="btn btn-primary w-100 mb-0">Login</button>
 											</div>
 
