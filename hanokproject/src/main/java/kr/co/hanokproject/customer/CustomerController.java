@@ -48,6 +48,12 @@ public class CustomerController {
 
 	}
 	
+	@GetMapping("/customer/profile.do")
+	public String profile() {
+		return "/customer/profile";
+
+	}
+	
 	@GetMapping("/customer/regist.do")
 	   public void regist() {
 	      return;
