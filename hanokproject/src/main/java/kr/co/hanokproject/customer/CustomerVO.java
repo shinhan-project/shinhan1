@@ -10,7 +10,8 @@ public class CustomerVO {
 	private int customer_id;
 	private String customer_name;
 	private String customer_pwd;
-	private String cutomer_address;
+	private String customer_address;
+	private String customer_email;
 	private String customer_tel;
 	private Timestamp customer_created;
 	
