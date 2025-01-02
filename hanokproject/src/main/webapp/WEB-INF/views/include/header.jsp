@@ -46,7 +46,7 @@
 						<ul class="dropdown-menu" aria-labelledby="listingMenu">
 
 
-							<li><a class="dropdown-item" href="compare-listing.html">
+							<li><a class="dropdown-item" href="/hanok/hanok_list.jsp">
 									Hotel List</a></li>
 							
 						</ul></li>

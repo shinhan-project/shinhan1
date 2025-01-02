@@ -11,9 +11,11 @@ public interface OwnerService {
 	
 
 	// 회원가입
+	
 	boolean regist(OwnerVO vo);
 
 	OwnerVO detail(OwnerVO vo);
+
 
 
 }
