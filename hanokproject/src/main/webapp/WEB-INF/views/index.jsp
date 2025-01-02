@@ -50,7 +50,7 @@ Main Banner START -->
 				<div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
 					<div class="tiny-slider-inner" data-gutter="0" data-arrow="true" data-dots="false" data-items="1">
 						<!-- Card item START -->
-						<div class="card overflow-hidden h-400px h-sm-600px rounded-0" style="background-image:url(/images/category/hotel/06.jpg); background-position: center left; background-size: cover;">
+						<div class="card overflow-hidden h-400px h-sm-600px rounded-0" style="background-image:url(/images/category/hotel/06_1.jpg); background-position: center left; background-size: cover;">
 							<!-- Background dark overlay -->
 							<div class="bg-overlay bg-dark opacity-3"></div>
 							<!-- Card image overlay -->
@@ -60,7 +60,7 @@ Main Banner START -->
 										<div class="col-11 col-lg-7">
 											<h6 class="text-white fw-normal mb-0">💖 Fall in love with the City</h6>
 											<!-- Title -->
-											<h1 class="text-white display-6">Modern Luxury In Manhattan</h1>
+											<h1 class="text-white display-6">Journey on an Exclusive Hanok Experience</h1>
 											<a href="#" class="btn btn-primary mb-0">Reserve Today</a>
 										</div>
 									</div>
@@ -70,7 +70,7 @@ Main Banner START -->
 						<!-- Card item END -->
 
 						<!-- Card item START -->
-						<div class="card overflow-hidden h-400px h-sm-600px bg-parallax text-center rounded-0"  data-jarallax-video="https://www.youtube.com/watch?v=j56YlCXuPFU">
+						<div class="card overflow-hidden h-400px h-sm-600px bg-parallax text-center rounded-0"  data-jarallax-video="https://youtu.be/OO4g3UG4mtQ?si=T7jlNvjCHQHj2Ox5">
 							<!-- Background dark overlay -->
 							<div class="bg-overlay bg-dark opacity-3"></div>
 							<!-- Card image overlay -->
@@ -312,7 +312,7 @@ Gallery START -->
 		<!-- Title -->
 		<div class="row mb-md-4">
 			<div class="col-12 mx-auto text-center mb-4">
-				<h2 class="mb-0">Our Hotel Precious Moments</h2>
+				<h2 class="mb-0">Our Hanok Precious Moments</h2>
 			</div>
 		</div>
 
@@ -321,10 +321,10 @@ Gallery START -->
 				<div class="tiny-slider-inner d-flex align-items-end" data-autoplay="true" data-edge="2" data-arrow="true" data-dots="false" data-items="6" data-items-lg="4" data-items-sm="2">
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/01.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/01_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/01.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/01_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -335,10 +335,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/02.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/02_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/02.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/02_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -349,10 +349,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/03.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/03_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/03.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/03_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -363,10 +363,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/05.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/05_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/05.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/05_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -377,10 +377,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/08.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/08_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/08.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/08_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -391,10 +391,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="https://www.youtube.com/embed/tXHviS-4ygo">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/04_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/04.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/04_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<span class="btn text-danger btn-round btn-white position-absolute top-50 start-50 translate-middle mb-0">
@@ -407,10 +407,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/06.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/06_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/06.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/06_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -421,10 +421,10 @@ Gallery START -->
 
 					<!-- Slider item -->
 					<div>
-						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/07.jpg">
+						<a data-glightbox="" data-gallery="gallery" href="/images/category/hotel/gallery/07_1.jpg">
 							<div class="card card-element-hover card-overlay-hover overflow-hidden">
 								<!-- Image -->
-								<img src="/images/category/hotel/gallery/07.jpg" class="rounded-3" alt="">
+								<img src="/images/category/hotel/gallery/07_1.jpg" class="rounded-3" alt="">
 								<!-- Full screen button -->
 								<div class="hover-element w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -480,6 +480,8 @@ Gallery END -->
 
 <!-- ThemeFunctions -->
 <script src="/js/functions.js"></script>
+
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>
 </html>
