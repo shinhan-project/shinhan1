@@ -1,6 +1,6 @@
 package config;
 import javax.sql.DataSource;
-
+  
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import util.LoginInterceptor;
 @Configuration
 @ComponentScan(basePackages = { "kr.co.hanokproject", "util" })
 @EnableWebMvc
@@ -84,10 +83,10 @@ public class MvcConfig implements WebMvcConfigurer {
 		return dtm;
 	}
 		// 인터셉터 빈 등록
-		@Bean
-		public LoginInterceptor interception() {
-			return new LoginInterceptor();
-		}
+//		@Bean
+//		public LoginInterceptor interception() {
+//			return new LoginInterceptor();
+//		}
 
 //		// 설정
 //		@Override
