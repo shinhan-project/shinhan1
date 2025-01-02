@@ -221,6 +221,6 @@ Content END -->
 <script src="/js/functions.js"></script>
 <!--footer-->
     
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
