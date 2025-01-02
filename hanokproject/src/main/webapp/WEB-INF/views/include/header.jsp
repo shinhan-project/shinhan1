@@ -46,10 +46,9 @@
 						<ul class="dropdown-menu" aria-labelledby="listingMenu">
 
 
-							<li><a class="dropdown-item" href="compare-listing.html">Compare
-									Listing</a></li>
-							<li><a class="dropdown-item" href="offer-detail.html">Offer
-									Detail</a></li>
+							<li><a class="dropdown-item" href="compare-listing.html">
+									Hotel List</a></li>
+							
 						</ul></li>
 
 					<!-- Nav item Pages -->
@@ -59,8 +58,8 @@
 						aria-expanded="false">Contact Us</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li><a class="dropdown-item" href="about.html">About</a></li>
-							<li><a class="dropdown-item" href="contact.html">Contact</a></li>
+							<li><a class="dropdown-item" href="#">FAQs</a></li>
+							<li><a class="dropdown-item" href="#">Notice</a></li>
 
 						</ul></li>
 
@@ -71,8 +70,8 @@
 						aria-expanded="false">About</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend"><a href="#">User
-									Profile</a></li>
+							<li class="dropdown-submenu dropend"><a href="/about.do">AboutUs
+									</a></li>
 						</ul></li>
 
 					<!-- link-->
