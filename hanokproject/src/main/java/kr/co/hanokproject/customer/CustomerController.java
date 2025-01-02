@@ -4,6 +4,7 @@ package kr.co.hanokproject.customer;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -66,47 +68,51 @@ public class CustomerController {
 	      return "common/alert";
 	   }
 	
-	
-	
-	@GetMapping("/hanok_list.do")
-	public String hanokList(@RequestParam(value = "page", defaultValue = "1") int page,
-	                        @RequestParam(value = "location", required = false) String location,
-	                        @RequestParam(value = "checkInDate", required = false) String checkInDate,
-	                        @RequestParam(value = "checkOutDate", required = false) String checkOutDate,
-	                        @RequestParam(value = "capacity", required = false) String capacity,
-	                        Model model) {
-	    CustomerVO customerVO = new CustomerVO();
-	    customerVO.setPage(page);
-	    customerVO.setLocation(location);
-	    customerVO.setCheckInDate(checkInDate);
-	    customerVO.setCheckOutDate(checkOutDate);
-	    customerVO.setCapacity(capacity);
+	// 한옥 검색 (민규)
+	@RequestMapping("/hanok/hanok_list.do")
+    public String hanok_search(HttpServletRequest request, Model model) {
+		try {
+			int page = 1;
+			String location = request.getParameter("location");
+			String checkInDate = request.getParameter("checkInDate");
+			String checkOutDate = request.getParameter("checkOutDate");
+			String capacity = request.getParameter("capacity");
+			
+			CustomerVO customerVO = new CustomerVO();
+			customerVO.setPage(page);
+			customerVO.setLocation(location);
+			customerVO.setCheckInDate(checkInDate);
+			customerVO.setCheckOutDate(checkOutDate);
+			customerVO.setCapacity(capacity);
+				
+			Map<String, Object> hanokData = service.searchHanok(customerVO);
+			
+			model.addAttribute("map", hanokData);
+			
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 
-	    Map<String, Object> hanokData = service.searchHanok(customerVO);
-
-	    model.addAttribute("map", hanokData);
-	    return "hanok_list";
-	}
+    		return "/hanok/hanok_list";
+    }
     
-    @GetMapping("/hanok_detail.do")
-    public String hanokDetail(
-            @RequestParam("hanokId") int hanokId,
-            Model model) {
+    @GetMapping("/hanok/hanok_detail.do")
+    public String hanokDetail() {
 
-        // 한옥 정보 가져오기
-        CustomerVO hanokDetail = service.getHanokDetail(hanokId);
+//        // 한옥 정보 가져오기
+//        CustomerVO hanokDetail = service.getHanokDetail(hanokId);
+//
+//        // 방 리스트 가져오기
+//        List<CustomerVO> roomList = service.getRoomList(hanokId);
+//
+//        // 리뷰 리스트 가져오기
+//        List<CustomerVO> reviewList = service.getReviews(hanokId);
+//
+//        // 모델에 데이터 저장
+//        model.addAttribute("hanokDetail", hanokDetail);
+//        model.addAttribute("roomList", roomList);
+//        model.addAttribute("reviewList", reviewList);
 
-        // 방 리스트 가져오기
-        List<CustomerVO> roomList = service.getRoomList(hanokId);
-
-        // 리뷰 리스트 가져오기
-        List<CustomerVO> reviewList = service.getReviews(hanokId);
-
-        // 모델에 데이터 저장
-        model.addAttribute("hanokDetail", hanokDetail);
-        model.addAttribute("roomList", roomList);
-        model.addAttribute("reviewList", reviewList);
-
-        return "hanok_detail";
+        return "/hanok/hanok_detail";
     }
 }

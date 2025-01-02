@@ -12,7 +12,7 @@
       VALUES (#{customer_id}, MD5(#{customer_pwd}), #{customer_name}, #{customer_address}, #{customer_email},#{customer_tel}, NOW())
 	</insert>
 	
-		<sql id="searchSql">
+	<sql id="searchSql">
 	    <where>
 	        <trim prefixOverrides="AND">
 	            <if test="location != null and location != ''">
@@ -43,13 +43,13 @@
 		    h.hanok_name AS hanokName,
 		    MIN(r.room_price) AS roomPrice 
         FROM 
-		    hanoks h
+		    HANOKS h
 		JOIN 
-		    rooms r ON h.hanok_id = r.hanok_id
+		    ROOMS r ON h.hanok_id = r.hanok_id
 		JOIN 
-		    room_images ri ON r.room_id = ri.room_id
+		    ROOM_IMAGES ri ON r.room_id = ri.room_id
 		LEFT JOIN 
-		    reservations res ON r.room_id = res.room_id
+		    RESERVATIONS res ON r.room_id = res.room_id
 		    	AND (
 	                res.checkin &gt;= #{checkOutDate} 
 	                OR res.checkout &lt;= #{checkInDate}
@@ -66,13 +66,13 @@
 	<select id="count" parameterType="kr.co.hanokproject.customer.CustomerVO" resultType="int">
 		SELECT COUNT(DISTINCT r.room_id)
         FROM 
-		    hanoks h
+		    HANOKS h
 		JOIN 
-		    rooms r ON h.hanok_id = r.hanok_id
+		    ROOMS r ON h.hanok_id = r.hanok_id
 		JOIN 
-		    room_images ri ON r.room_id = ri.room_id
+		    ROOM_IMAGES ri ON r.room_id = ri.room_id
 		LEFT JOIN 
-		    reservations res ON r.room_id = res.room_id
+		    RESERVATIONS res ON r.room_id = res.room_id
 		    	AND (
 	                res.checkin &gt;= #{checkOutDate} 
 	                OR res.checkout &lt;= #{checkInDate}
@@ -84,7 +84,7 @@
 	    SELECT 
 	        hanok_name AS hanokName,
 	        hanok_description AS hanokDescription
-	    FROM hanoks
+	    FROM HANOKS
 	    WHERE hanok_id = #{hanokId}
 	</select>
 	
@@ -95,7 +95,7 @@
 	        room_size AS roomSize,
 	        max_capacity AS maxCapacity,
 	        room_imgName AS roomImage
-	    FROM rooms
+	    FROM ROOMS
 	    WHERE hanok_id = #{hanokId}
 	</select>
 	
@@ -105,7 +105,7 @@
 	        review_content AS reviewContent,
 	        review_date AS reviewDate,
 	        rating
-	    FROM reviews
+	    FROM REVIEWS
 	    WHERE hanok_id = #{hanokId}
 	    ORDER BY review_date DESC
 	    LIMIT #{limit}

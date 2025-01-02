@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>hanok_list</title>
+<title>한옥 검색 페이지</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +15,14 @@
 
 <!-- Plugins CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/font-awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/flatpickr/css/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/choices/css/choices.min.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/nouislider/nouislider.css">
+<link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="/vendor/flatpickr/css/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/choices/css/choices.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/nouislider/nouislider.css">
 
 <!-- Theme CSS -->
-<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 	<style>
 	    #sep {
@@ -69,14 +69,14 @@
 	</script>
 </head>
 <body>
-<!--헤더-->
+	<!--헤더-->
     <div id="sep">
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
     </div>
 
     <!--검색-->
     <div id="sep">
-    	<%@ include file="/WEB-INF/views/include/hanok_search.jsp" %>
+        <%@ include file="/WEB-INF/views/include/hanok_search.jsp" %>
     </div>
 
     <!--한옥-->
@@ -84,7 +84,6 @@
         <section class="pt-0">
             <div class="container">
                 <div class="row g-4">
-                
                     <c:forEach var="customerVO" items="${map.list}">
 					    <div class="col-md-6 col-xl-4">
 					        <div class="card card-hover-shadow pb-0 h-100">
@@ -104,7 +103,7 @@
 					            <div class="card-footer pt-0">
 					                <div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
 					                    <div class="hstack gap-2">
-					                        <h5 class="fw-normal text-success mb-0">$${customerVO.roomPrice}</h5>
+					                        <h5 class="fw-normal text-success mb-0">${customerVO.roomPrice}</h5>
 					                        <small>/per night</small>
 					                    </div>
 					                    <div class="mt-2 mt-sm-0">
