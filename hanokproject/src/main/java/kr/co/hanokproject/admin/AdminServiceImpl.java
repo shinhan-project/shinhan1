@@ -18,6 +18,7 @@ public class AdminServiceImpl implements AdminService {
 	public AdminVO login(Map map) {
 		return mapper.login(map);
 	}
+	
 
 	@Override
 	public Map<String, Object> list(AdminVO vo) {

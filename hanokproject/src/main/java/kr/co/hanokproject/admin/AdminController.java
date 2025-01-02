@@ -33,7 +33,7 @@ public class AdminController {
 			model.addAttribute("url" , "admin_login.do");
 			return "common/alert";	
 		}else {
-			sess.setAttribute("loginInfo", vo);
+			sess.setAttribute("adminloginInfo", vo);
 			return "redirect:index.do";
 		}
 		

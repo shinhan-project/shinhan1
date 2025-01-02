@@ -26,7 +26,7 @@ public class CustomerController {
 		 return;
 	}
 	
-	
+	//로그인 과정
 	@PostMapping("/customer/login.do")
 	public String loginProcess(@RequestParam Map map, Model model, HttpSession sess) {
 		CustomerVO vo = service.login(map);
@@ -51,6 +51,12 @@ public class CustomerController {
 	@GetMapping("/about.do")
 	public String about() {
 		return "about";
+
+	}
+	
+	@GetMapping("/customer/mybookings.do")
+	public String mybookings() {
+		return "/customer/mybookings";
 
 	}
 	

@@ -3,7 +3,7 @@
 <mapper namespace="kr.co.hanokproject.admin.AdminMapper">
 
 
-<select id="adminlogin" parameterType="map"
+<select id="login" parameterType="map"
 		resultType="kr.co.hanokproject.admin.AdminVO">
 		SELECT * FROM USERS_ADMIN WHERE
 		owner_id=#{admin_id} AND admin_pwd = MD5(#{admin_pwd})
