@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html >
 <head>
-	<title>Booking - Multipurpose Online Booking Theme</title>
+	<title>Gojeuneok Customer Mypage</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -219,7 +219,8 @@ Content END -->
 
 <!-- ThemeFunctions -->
 <script src="/js/functions.js"></script>
-
+<!--footer-->
+    
 
 </body>
 </html>

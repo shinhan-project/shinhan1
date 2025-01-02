@@ -5,6 +5,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.hanokproject.owner.OwnerVO;
+
 @Service
 public class OwnerServiceImpl implements OwnerService {
 	@Autowired
@@ -21,5 +23,18 @@ public class OwnerServiceImpl implements OwnerService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	//회원 가입 
+		@Override
+		   public boolean regist(OwnerVO vo) {
+		      
+		      return mapper.regist(vo) == 0 ? false : true;
+		   }
+		
+		@Override
+		   public OwnerVO detail(OwnerVO vo) {
+		      return mapper.detail(vo);
+		   }
+
 
 }

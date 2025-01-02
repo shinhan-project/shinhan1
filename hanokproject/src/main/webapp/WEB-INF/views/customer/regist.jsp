@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Booking - Multipurpose Online Booking Theme</title>
+	<title>Gojeuneok Customer Regist</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">

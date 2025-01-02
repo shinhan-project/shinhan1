@@ -34,7 +34,7 @@ public class OwnerController {
 				model.addAttribute("url" , "owner_login.do");
 				return "common/alert";	
 			}else {
-				sess.setAttribute("loginInfo", vo);
+				sess.setAttribute("ownerloginInfo", vo);
 				return "redirect:index.do";
 			}
 			
