@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import util.LoginInterceptor;
 @Configuration
 @ComponentScan(basePackages = { "kr.co.hanokproject", "util" })
 @EnableWebMvc
@@ -83,11 +82,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		DataSourceTransactionManager dtm = new DataSourceTransactionManager(dataSource());
 		return dtm;
 	}
-		// 인터셉터 빈 등록
-		@Bean
-		public LoginInterceptor interception() {
-			return new LoginInterceptor();
-		}
+	
 
 //		// 설정
 //		@Override
