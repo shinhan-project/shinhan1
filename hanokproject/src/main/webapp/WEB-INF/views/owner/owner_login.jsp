@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<title>Booking - Multipurpose Online Booking Theme</title>
+<title>Gojeuneok Owner Login</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -88,6 +88,7 @@
 </head>
 
 <body>
+
 
 
 <!-- **************** MAIN CONTENT START **************** -->
