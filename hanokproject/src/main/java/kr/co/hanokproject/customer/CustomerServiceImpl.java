@@ -32,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 	      return mapper.detail(vo);
 	   }
 
+	
 	   @Override
 	   public int update(CustomerVO vo) {
 	      return mapper.update(vo);

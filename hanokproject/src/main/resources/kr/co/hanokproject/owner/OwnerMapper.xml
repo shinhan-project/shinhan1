@@ -8,11 +8,9 @@
 		owner_id=#{owner_id} AND owner_pwd = MD5(#{owner_pwd})
 	</select>
 	
-
-	
 	<!-- 회원가입 -->
-	<insert id="owerregist" parameterType="kr.co.hanokproject.owner.OwnerVO">
-      INSERT INTO USERS_OWNER (owner_id, owner_pwd,owner_name,owner_address,owner_email,owner_tel,owner_created,businessNum) VALUES (#{owner_id}, MD5(#{owner_pwd}), #{owner_name}, #{owner_address}, #{owner_email},#{owner_tel}, NOW(),#{businessNum})
+	<insert id="regist" parameterType="kr.co.hanokproject.owner.OwnerVO">
+      INSERT INTO USERS_OWNER (owner_id, owner_pwd,owner_name,owner_address,owner_email,owner_tel,owner_created) VALUES (#{owner_id}, MD5(#{owner_pwd}), #{owner_name}, #{owner_address}, #{owner_email},#{owner_tel}, NOW())
 	</insert>
 	
 

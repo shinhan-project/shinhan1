@@ -54,6 +54,12 @@ public class CustomerController {
 
 	}
 	
+	@GetMapping("/hanok/hanok_list.do")
+	public String hanok_list() {
+		return "/hanok/hanok_list";
+
+	}
+	
 	@GetMapping("/customer/regist.do")
 	   public void regist() {
 	      return;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.hanokproject.customer.CustomerVO;
 import kr.co.hanokproject.owner.OwnerService;
 import kr.co.hanokproject.owner.OwnerVO;
 
@@ -39,5 +40,28 @@ public class OwnerController {
 			}
 			
 		}
+		
+		
+		//owner 회원가입
+		
+		@GetMapping("/owner/owner_regist.do")
+		   public void regist() {
+		      return;
+		   }
+		   
+		   @PostMapping("/owner/insert.do")
+		   public String insert(OwnerVO vo, Model model) {
+		      if (service.regist(vo)) {
+		         
+		         model.addAttribute("msg", "정상적으로 가입되었습니다.");
+		         //사장님 회원가입 완료 되면 이동할 위치 수정하기!
+		         model.addAttribute("url", "/index.do");
+		         
+		      } else {
+		         model.addAttribute("msg", "가입 오류");
+		         model.addAttribute("url", "/owner/owner_regist.do");
+		      }
+		      return "common/alert";
+		   }
 	
 }
