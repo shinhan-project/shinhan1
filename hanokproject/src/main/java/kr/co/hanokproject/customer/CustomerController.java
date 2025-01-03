@@ -68,7 +68,7 @@ public class CustomerController {
 	      return "common/alert";
 	   }
 	
-	// 한옥 검색 (민규)
+	// 한옥 검색 - 미완 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
     public String hanok_search(HttpServletRequest request, Model model) {
 		try {
@@ -96,6 +96,7 @@ public class CustomerController {
     		return "/hanok/hanok_list";
     }
     
+	// 한옥 상세(예약)페이지 - 미완 (민규)
     @GetMapping("/hanok/hanok_detail.do")
     public String hanokDetail() {
 
@@ -114,5 +115,17 @@ public class CustomerController {
 //        model.addAttribute("reviewList", reviewList);
 
         return "/hanok/hanok_detail";
+    }
+    
+    // 임시(민규)
+    @GetMapping("/hanok/hanok_booking_confirm.do")
+    public String hanokBookingConfirm() {
+        return "/hanok/hanok_booking_confirm";
+    }
+    
+    // 임시(민규)
+    @GetMapping("/hanok/hanok_booking.do")
+    public String hanokBooking() {
+        return "/hanok/hanok_booking";
     }
 }

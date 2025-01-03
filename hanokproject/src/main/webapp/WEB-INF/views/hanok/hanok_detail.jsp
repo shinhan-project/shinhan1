@@ -1,10 +1,13 @@
-v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- hotel-detail.html 참고 (민규) -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Booking - ${hanokDetail.hanokName}</title>
+    <title>상세페이지 - ${hanokDetail.hanokName}</title>
     <!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,12 +24,15 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
     <style>
+    	    #sep {
+	        margin: 20px;
+	    }
         body {
 	        font-family: 'Arial', sans-serif;
 	        line-height: 1.6;
 	        background-color: #f9f9f9;
 	    }
-	
+		
 	    .container.hanok-info {
 	        display: flex;
 	        max-width: 1200px;
@@ -72,7 +78,6 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
 	    }
 	
 	    .container {
-	        display: flex;
 	        flex-wrap: wrap;
 	        max-width: 1200px;
 	        margin: 0 auto;
@@ -274,58 +279,83 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
             }
         })
 	</script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2e33104a3d3806db0c046e27726eebf8"></script>
-	<script>
-	window.addEventListener('DOMContentLoaded', () => {
-		const container = document.getElementById('map');
-		const options = {
-	        center: new kakao.maps.LatLng(33.450701, 126.570667),
-	        level: 3
-	    };
-	
-	    // 지도를 생성합니다    
-	    const map = new kakao.maps.Map(mapContainer, mapOption); 
-	
-	    // 주소-좌표 변환 객체를 생성합니다
-	    const geocoder = new kakao.maps.services.Geocoder();
-	
-	    // 주소로 좌표를 검색합니다
-	    geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
-	
-	        // 정상적으로 검색이 완료됐으면 
-	        if (status === kakao.maps.services.Status.OK) {
-	
-	        	const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	
-	            // 결과값으로 받은 위치를 마커로 표시합니다
-	            const marker = new kakao.maps.Marker({
-	                map: map,
-	                position: coords
-	            });
-	
-	            // 인포윈도우로 장소에 대한 설명을 표시합니다
-	            const infowindow = new kakao.maps.InfoWindow({
-	                content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-	            });
-	            infowindow.open(map, marker);
-	
-	            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	            map.setCenter(coords);
-	        } 
-	    });  
-	}
-	</script>
 </head>
 <body>
 	<!--헤더-->
     <div id="sep">
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
     </div>
+	
+	
+	
+	<!-- 검색창 -->
+    <!-- =======================
+	Search START -->
+	<section class="py-3 py-sm-0">
+		<div class="container">
+			<!-- Offcanvas button for search -->
+			<button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch"><i class="bi bi-pencil-square me-2"></i>Edit Search</button>
+	
+			<!-- Search with offcanvas START -->
+			<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body p-2">
+					<div class="bg-light p-4 rounded w-100">
+						<form class="row g-4">
+							<!-- Location -->
+							<div class="col-md-6 col-lg-4">
+								<div class="form-size-lg form-fs-md">
+									<!-- input -->
+									<label class="form-label">Location</label>
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오.">
+								</div>
+							</div>
+	
+							<!-- Check in -->
+							<div class="col-md-6 col-lg-3">
+								<!-- Date input -->
+								<div class="form-fs-md">
+									<label class="form-label">Check in</label>
+									<input type="date" class="form-control form-control-lg flatpickr" data-mode="range">
+									<label class="form-label">Check out</label>
+									<input type="date" class="form-control form-control-lg flatpickr" data-mode="range">
+								</div>
+								
+							</div>
+	
+							<!-- Guest -->
+							<div class="col-md-6 col-lg-3">
+								<div class="form-fs-md">
+									<!-- Dropdown input -->
+									<div class="w-100">
+										<label class="form-label">Guests</label>
+										<div class="dropdown guest-selector me-2">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+										</div>
+									</div>
+								</div>
+							</div>
+	
+							<!-- Button -->
+							<div class="col-md-6 col-lg-2 mt-md-auto">
+								<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i>Search</a>
+							</div>
+	
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- Search with offcanvas END -->
+		</div>
+	</section>
+	<!-- =======================
+	Search END -->
 
-    <!--검색-->
-    <div id="sep">
-        <%@ include file="/WEB-INF/views/include/hanok_search.jsp" %>
-    </div>
+
+
     <!-- 한옥 상세 정보 -->
     <div class="container hanok-info">
         <div class="image-section">
@@ -333,64 +363,69 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
         </div>
         <div class="text-section">
             <div class="title-section">
-                <h1>담소정</h1>
+            	<a href="https://dahmsojung.modoo.at/">
+                <h1>담소정</h1></a>  
+                <p class="fw-bold mb-0">
+					<i class="bi bi-geo-alt me-2"></i>
+					<a href="https://map.naver.com/p/search/서울 종로구 북촌로9길 16-2">서울 종로구 북촌로9길 16-2</a><br>
+					<i class="bi bi-geo-alt me-2"></i>
+					<a href="https://dahmsojung.modoo.at/">홈페이지 이동</a>
+				</p>
             </div>
             <div class="description-section">
                 <p>담소정은 조상의 숨결이 살아있는 북촌한옥마을에 위치해 있다. 도시 안에 편안하고 멋진 풍경이 어우러진 한옥에서 가족과 연인, 친구와 함께 좋은 시간을 보낼 수 있는 한옥이다. 3호선 안국역 주변에 위치하여 교통이 편리하다. 드라마 '별에서 온 그대'의 400년 전 도민준 생가로 유명한 곳이다. 한옥의 대청마루에서는 고즈넉한 100년 한옥의 정취를 느끼며 사계절을 느낄 수 있다.</p>
             </div>
-            <div class="description-section">
-                <p>
-                    <div id="map" style="width:500px;height:400px;"></div>
-                </p>
-            </div>
         </div>
     </div>
 
+
+
     <!-- Amenities START -->
-<div class="card bg-transparent">
-    <div class="card-header border-bottom bg-transparent px-0 pt-0">
-        <h3 class="card-title mb-0">Amenities</h3>
-    </div>
-    <div class="card-body pt-4 p-0">
-        <div class="amenities-container">
-            <!-- Payment Method -->
-            <div class="amenities-item">
-                <h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
-                <ul>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>카카오 페이, 네이버 페이</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>신용/체크카드</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무통장 입금</li>
-                </ul>
-            </div>
-            <!-- Services -->
-            <div class="amenities-item">
-                <h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
-                <ul>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>OTT</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무료 인터넷</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>반려 동물 동반</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>취사 가능</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무료 주차</li>
-                </ul>
-            </div>
-            <!-- Safety & Security -->
-            <div class="amenities-item">
-                <h6><i class="bi bi-shield-fill-check me-2"></i>Safety & Security</h6>
-                <ul>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Doctor on Call</li>
-                </ul>
-            </div>
-            <div class="amenities-item">
-                <h6><i class="fa-solid fa-volume-up me-2"></i>Staff Language</h6>
-                <ul>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>English</li>
-                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Korean</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Amenities END -->
+	<div class="card bg-transparent">
+	    <div class="card-header border-bottom bg-transparent px-0 pt-0">
+	        <h3 class="card-title mb-0">Amenities</h3>
+	    </div>
+	    <div class="card-body pt-4 p-0">
+	        <div class="amenities-container">
+	            <!-- Payment Method -->
+	            <div class="amenities-item">
+	                <h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
+	                <ul>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>카카오 페이, 네이버 페이</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>신용/체크카드</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무통장 입금</li>
+	                </ul>
+	            </div>
+	            <!-- Services -->
+	            <div class="amenities-item">
+	                <h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
+	                <ul>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>OTT</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무료 인터넷</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>반려 동물 동반</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>취사 가능</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무료 주차</li>
+	                </ul>
+	            </div>
+	            <!-- Safety & Security -->
+	            <div class="amenities-item">
+	                <h6><i class="bi bi-shield-fill-check me-2"></i>Safety & Security</h6>
+	                <ul>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Doctor on Call</li>
+	                </ul>
+	            </div>
+	            <div class="amenities-item">
+	                <h6><i class="fa-solid fa-volume-up me-2"></i>Staff Language</h6>
+	                <ul>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>English</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Korean</li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- Amenities END -->
+
 
 
     <!-- Room START -->
@@ -521,6 +556,8 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
     </div>
     <!-- Room END -->
 
+
+
     <!-- 리뷰 리스트 -->
         <div class="container review">
         <h2>Reviews</h2>
@@ -531,7 +568,7 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
                         <h5>Dam(담)</h5>
                         <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
                         <p>
-                            <img src="/images/detail_rating.png" alt="Rating" style="width: 20px; height:20px;"> 4.0
+                            ⭐ 4.0
                         </p>
                         <p>Date: 24.04.22</p>
                     </div>
@@ -542,7 +579,7 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
                         <h5>Dam(담)</h5>
                         <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
                         <p>
-                            <img src="/images/detail_rating.png" alt="Rating" style="width: 20px; height:20px;"> 4.0
+                            ⭐ 4.0
                         </p>
                         <p>Date: 24.04.22</p>
                     </div>
@@ -553,18 +590,23 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
                         <h5>Dam(담)</h5>
                         <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
                         <p>
-                            <img src="/images/detail_rating.png" alt="Rating" style="width: 20px; height:20px;"> 4.0
+                            ⭐ 4.0
                         </p>
                         <p>Date: 24.04.22</p>
                     </div>
                 </div>
             </div>
-        </div>
+			<a href="#" class="btn btn-sm btn-primary mb-0" style="margin-top: 20px;">Load more</a>    
+        </div>				
+
+
 
     <!--footer-->
     <div id="sep">
 		<%@ include file="/WEB-INF/views/include/footer.jsp" %>
     </div>
+
+
 
     <!-- Back to top -->
     <div class="back-top"></div>
@@ -574,7 +616,6 @@ v<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
 
     <!-- Vendors -->
     <script src="/vendor/glightbox/js/glightbox.js"></script>
-    <script src="/vendor/flatpickr/js/flatpickr.min.js"></script>
     <script src="/vendor/choices/js/choices.min.js"></script>
     <script src="/vendor/tiny-slider/tiny-slider.js"></script>
     <script src="/vendor/sticky-js/sticky.min.js"></script>
