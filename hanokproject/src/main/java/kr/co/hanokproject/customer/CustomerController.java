@@ -154,6 +154,12 @@ public class CustomerController {
 
         return "hanok_detail";
     }
+    @GetMapping("/customer/mybookings.do")
+    public String mybooking(HttpSession sess, Model model) {
+		CustomerVO uv = (CustomerVO)sess.getAttribute("loginInfo");
+		model.addAttribute("vo", service.detail(uv));
+		return "customer/mybookings";
+	}
     
     
     

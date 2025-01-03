@@ -93,7 +93,7 @@ Content START -->
 										<a class="nav-link active" href="profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="account-bookings.html"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
+										<a class="nav-link" href="mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 				
 									<li class="nav-item">
