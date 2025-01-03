@@ -1,6 +1,7 @@
 package kr.co.hanokproject.owner;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -10,16 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import kr.co.hanokproject.customer.CustomerVO;
-import kr.co.hanokproject.owner.OwnerService;
-import kr.co.hanokproject.owner.OwnerVO;
 
 @Controller
 public class OwnerController {
 	@Autowired
-	private OwnerService service;	
+	private OwnerService service;
+	
 	
 	//ownerlogin
 
@@ -36,7 +35,7 @@ public class OwnerController {
 				return "common/alert";	
 			}else {
 				sess.setAttribute("ownerloginInfo", vo);
-				return "redirect:/owner/owner_regist.do";
+				return "redirect:/owner/owner_dash.do";
 			}
 			
 		}
@@ -72,6 +71,13 @@ public class OwnerController {
 				model.addAttribute("url", "/index.do");
 				return "common/alert";
 			}
+//		   //사장님 대쉬보드 페이지
+//		   @GetMapping("/owner/owner_dash.do")
+//		   public void dash() {
+//		      return;
+//		   }
 		   
-	
+		   
+		   
+		   
 }
