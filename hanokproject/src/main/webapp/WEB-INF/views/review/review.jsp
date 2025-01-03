@@ -168,8 +168,11 @@ Main content START -->
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 mx-auto">
-				<form class="vstack gap-4">
-
+				<form class="vstack gap-4" id="reviewForm" action="/review/add" method="POST">
+					<input type="hidden" name="reservations_id" value="${reservation_id}">
+					<input type="hidden" name="customer_id" value="${customer_id}">
+					<input type="hidden" name="hanok_id" value="${hanok_id}">
+					<input type="hidden" name="room_id" value="${room_id}">
 					<!-- Owner Detail START -->
 					<div class="card shadow">
 						<!-- Card header -->
@@ -184,7 +187,7 @@ Main content START -->
 								
 								<div class="col-12">
 									<label class="form-label">Info</label>
-									<textarea class="form-control" rows="2" placeholder="Enter keywords"></textarea>
+									<textarea class="form-control" name="review_content" rows="2" placeholder="Enter review details"></textarea>
 								</div>
 
 							
@@ -208,26 +211,26 @@ Main content START -->
     <div class="rating">
         
         <label class="rating__label rating__label--full" for="star1">
-            <input type="radio" id="star1" class="rating__input" name="rating" value="">
+            <input type="radio" id="star1" class="rating__input" name="rating" value="1">
             <span class="star-icon"></span>
         </label>
        
         <label class="rating__label rating__label--full" for="star2">
-            <input type="radio" id="star2" class="rating__input" name="rating" value="">
+            <input type="radio" id="star2" class="rating__input" name="rating" value="2">
             <span class="star-icon"></span>
         </label>
         <label class="rating__label rating__label--full" for="star3">
-            <input type="radio" id="star3" class="rating__input" name="rating" value="">
+            <input type="radio" id="star3" class="rating__input" name="rating" value="3">
             <span class="star-icon"></span>
         </label>
        
         <label class="rating__label rating__label--full" for="star4">
-            <input type="radio" id="star4" class="rating__input" name="rating" value="">
+            <input type="radio" id="star4" class="rating__input" name="rating" value="4">
             <span class="star-icon"></span>
         </label>
        
         <label class="rating__label rating__label--full" for="star5">
-            <input type="radio" id="star5" class="rating__input" name="rating" value="">
+            <input type="radio" id="star5" class="rating__input" name="rating" value="5">
             <span class="star-icon"></span>
         </label>
     </div>
@@ -245,7 +248,7 @@ Main content START -->
 
 					<!-- Button -->
 					<div class="text-end">
-						<a href="listing-added.html" class="btn btn-primary mb-0">Add listing</a>
+						<button type="submit" class="btn btn-primary mb-0">Add Review</button>
 					</div>
 				</form>
 			</div>
