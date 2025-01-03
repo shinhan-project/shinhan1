@@ -36,7 +36,7 @@ public class OwnerController {
 				return "common/alert";	
 			}else {
 				sess.setAttribute("ownerloginInfo", vo);
-				return "redirect:index.do";
+				return "redirect:/owner/owner_regist.do";
 			}
 			
 		}
@@ -63,5 +63,15 @@ public class OwnerController {
 		      }
 		      return "common/alert";
 		   }
+		   
+		   //로그아웃
+		   @GetMapping("/owner/logout.do")
+			public String logout(HttpSession sess, Model model) {
+				sess.invalidate();
+				model.addAttribute("msg", "로그아웃되었습니다.");
+				model.addAttribute("url", "/index.do");
+				return "common/alert";
+			}
+		   
 	
 }

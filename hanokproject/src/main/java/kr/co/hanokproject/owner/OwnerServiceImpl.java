@@ -21,7 +21,7 @@ public class OwnerServiceImpl implements OwnerService {
 	@Override
 	public OwnerVO login(Map map) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.login(map);
 	}
 	
 	//회원 가입 

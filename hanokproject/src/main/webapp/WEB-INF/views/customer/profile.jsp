@@ -154,7 +154,7 @@ Content START -->
 								<div class="col-m<d-6">
 								
 									<label class="form-label">Full Name<span class="text-danger">*</span></label>
-									<input type="hidden" class="form-control" name="customer_id" value="${vo.customer_id}" placeholder="Enter your mobile number">
+									<input type="hidden" class="form-control" name="customer_id" value="${vo.customer_id}">
 									<input type="text" class="form-control" name="customer_name" value="${vo.customer_name}" readonly> 
 								</div> 
 								<!-- Email -->

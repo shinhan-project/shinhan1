@@ -5,11 +5,21 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+<<<<<<< HEAD
+=======
+import kr.co.hanokproject.admin.AdminVO;
+
+
+
 @Mapper
 public interface AdminMapper {
 
-	List<AdminVO> list(AdminVO vo);
+
+	List<AdminVO> list(AdminVO adminvo);
 	
-	AdminVO login(Map map);
+	AdminVO adminlogin(Map map);
+	
+	
+
 	
 }

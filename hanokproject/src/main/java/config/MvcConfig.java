@@ -29,6 +29,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @MapperScan(basePackages = { "kr.co.hanokproject" }, annotationClass = Mapper.class) // 인터페이스 스캔
 @EnableTransactionManagement
 public class MvcConfig implements WebMvcConfigurer {
+
    // ViewResolver 설정(JSP 경로)
    @Override
    public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -83,6 +84,7 @@ public class MvcConfig implements WebMvcConfigurer {
       return dtm;
    }
    
+
 
 //      // 설정
 //      @Override

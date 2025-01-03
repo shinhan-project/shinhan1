@@ -11,13 +11,13 @@
 
 // Document
 //
-// Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+// Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.(민규변경)
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
 
 
 // Root
