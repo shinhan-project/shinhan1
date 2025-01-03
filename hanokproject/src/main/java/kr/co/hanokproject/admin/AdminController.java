@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-<<<<<<< HEAD
-=======
-import kr.co.hanokproject.admin.AdminService;
-import kr.co.hanokproject.admin.AdminVO;
-
 @Controller
 public class AdminController {
 	

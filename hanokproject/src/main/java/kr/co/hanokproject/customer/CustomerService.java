@@ -1,10 +1,7 @@
 package kr.co.hanokproject.customer;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
-import kr.co.hanokproject.customer.CustomerVO;
 
 public interface CustomerService {
 
@@ -15,7 +12,7 @@ public interface CustomerService {
 
 	// 회원가입
 	boolean regist(CustomerVO vo);
-
+	
 	CustomerVO detail(CustomerVO vo);
 
 	// 회원정보 수정

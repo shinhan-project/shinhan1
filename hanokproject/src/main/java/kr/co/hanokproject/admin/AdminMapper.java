@@ -5,10 +5,6 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-<<<<<<< HEAD
-=======
-import kr.co.hanokproject.admin.AdminVO;
-
 
 
 @Mapper

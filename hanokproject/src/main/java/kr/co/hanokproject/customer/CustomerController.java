@@ -119,7 +119,13 @@ public class CustomerController {
 			model.addAttribute("url",url);
 			return "common/alert";
 		}
-	
+		
+		//내예약 정보 확인
+		@GetMapping("/customer/reservationinfo.do")
+		public String reservationinfo() {
+			return "/customer/reservationinfo";
+
+		}
 	
 	// 한옥 검색 - 미완 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
@@ -148,12 +154,7 @@ public class CustomerController {
 
     		return "/hanok/hanok_list";
     }
-    @GetMapping("/customer/mybookings.do")
-    public String mybooking(HttpSession sess, Model model) {
-		CustomerVO uv = (CustomerVO)sess.getAttribute("loginInfo");
-		model.addAttribute("vo", service.detail(uv));
-		return "customer/mybookings";
-	}
+  
     
 	// 한옥 상세(예약)페이지 - 미완 (민규)
     @GetMapping("/hanok/hanok_detail.do")
