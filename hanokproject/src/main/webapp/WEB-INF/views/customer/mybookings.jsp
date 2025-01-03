@@ -179,14 +179,8 @@ Content START -->
 							<li class="nav-item"> 
 								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Upcoming Booking</a> 
 							</li>
-							<li class="nav-item">
-								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-2"><i class="bi bi-x-octagon fa-fw me-1"></i>Canceled Booking</a> 
-								</li>
-							<li class="nav-item"> 
-								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-3"><i class="bi bi-patch-check fa-fw me-1"></i>Completed Booking</a> 
-							</li>
 						</ul>
-
+		
 						<!-- Tabs content START -->
 						<div class="tab-content p-2 p-sm-4" id="nav-tabContent">
 
@@ -194,176 +188,85 @@ Content START -->
 							<div class="tab-pane fade show active" id="tab-1">
 								<h6>Completed booking (2)</h6>
                 <!-- Card item START -->
-								<div class="card border mb-4">
-									<!-- Card header -->
-									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-										<!-- Icon and Title -->
-										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-plane"></i></div>	
-											<!-- Title -->
-											<div class="ms-2">
-												<h6 class="card-title mb-0">France to New York</h6>
-												<ul class="nav nav-divider small">
-													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-													<li class="nav-item">Business class</li>
-												</ul>
-											</div>
-										</div>
-	
-										<!-- Button -->
-										<div class="mt-2 mt-md-0">
-											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-										</div>
-									</div>
-	
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row g-3">
-											<div class="col-sm-6 col-md-4">
-												<span>Departure time</span>
-												<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
-											</div>
-	
-											<div class="col-sm-6 col-md-4">
-												<span>Arrival time</span>
-												<h6 class="mb-0">Tue 06 Aug 4:00 PM</h6>
-											</div>
-	
-											<div class="col-md-4">
-												<span>Booked by</span>
-												<h6 class="mb-0">Frances Guerrero</h6>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Card item END -->
-
-								<!-- Card item START -->
-								<div class="card border">
-									<!-- Card header -->
-									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-										<!-- Icon and Title -->
-										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>	
-											<!-- Title -->
-											<div class="ms-2">
-												<h6 class="card-title mb-0">Chicago to San Antonio</h6>
-												<ul class="nav nav-divider small">
-													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-													<li class="nav-item">Camry, Accord</li>
-												</ul>
-											</div>
-										</div>
-	
-										<!-- Button -->
-										<div class="mt-2 mt-md-0">
-											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-										</div>
-									</div>
-	
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row g-3">
-											<div class="col-sm-6 col-md-4">
-												<span>Pickup address</span>
-												<h6 class="mb-0">40764 Winchester Rd</h6>
-											</div>
-	
-											<div class="col-sm-6 col-md-4">
-												<span>Drop address</span>
-												<h6 class="mb-0">11185 Mary Ball Rd</h6>
-											</div>
-	
-											<div class="col-md-4">
-												<span>Booked by</span>
-												<h6 class="mb-0">Frances Guerrero</h6>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Card item END -->
+					<div class="card shadow p-2">
+						<div class="row g-0">
+							<!-- Card img -->
+							<div class="col-md-5">
+								<img src="/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
 							</div>
-							<!-- Tabs content item END -->
 
-							<!-- Tab content item START -->
-							<div class="tab-pane fade" id="tab-2">
-								<h6>Cancelled booking (1)</h6>
-	
-								<!-- Card item START -->
-								<div class="card border">
-									<!-- Card header -->
-									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-										<!-- Icon and Title -->
-										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
-												<!-- Title -->
-											<div class="ms-2">
-												<h6 class="card-title mb-0">Courtyard by Marriott New York</h6>
-												<ul class="nav nav-divider small">
-													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-													<li class="nav-item">AC</li>
+							<!-- Card body -->
+							<div class="col-md-7">
+								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
+
+									<!-- Rating and buttons -->
+									<div class="d-flex justify-content-between align-items-center">
+										<ul class="list-inline mb-0">
+											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+										</ul>
+
+										<ul class="list-inline mb-0 z-index-2">
+											<!-- Heart icon -->
+											<li class="list-inline-item">
+												<a href="#" class="btn btn-sm btn-round btn-light"><i class="fa-solid fa-fw fa-heart"></i></a>
+											</li>
+											<!-- Share icon -->
+											<li class="list-inline-item dropdown">
+												<!-- Share button -->
+												<a href="#" class="btn btn-sm btn-round btn-light" role="button" id="dropdownShare3" data-bs-toggle="dropdown" aria-expanded="false">
+													<i class="fa-solid fa-fw fa-share-alt"></i>
+												</a>
+												<!-- dropdown button -->
+												<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare3">
+													<li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
+													<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
+													<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
+													<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
 												</ul>
-											</div>
-										</div>
-	
-										<!-- Button -->
-										<div class="mt-2 mt-md-0">
-											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-											<p class="text-danger text-md-end mb-0">Booking cancelled</p>
-										</div>
+											</li>
+										</ul>
 									</div>
-	
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row g-3">
-											<div class="col-sm-6 col-md-4">
-												<span>Check in time</span>
-												<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
-											</div>
-	
-											<div class="col-sm-6 col-md-4">
-												<span>Check out time</span>
-												<h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-											</div>
-	
-											<div class="col-md-4">
-												<span>Booked by</span>
-												<h6 class="mb-0">Frances Guerrero</h6>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Card item END -->
-							</div>
-							<!-- Tabs content item END -->
-	
-							<!-- Tab content item START -->
-							<div class="tab-pane fade" id="tab-3">
-                <div class="bg-mode shadow p-4 rounded overflow-hidden">
-									<div class="row g-4 align-items-center">
-										<!-- Content -->
+
+									<!-- Title -->
+									<h5 class="card-title mb-1"><a href="hotel-detail.html">Royal Beach Resort</a></h5>
+									<small><i class="bi bi-geo-alt me-2"></i>Manhattan street, London - 24578</small>
+									<!-- Amenities -->
+									<ul class="nav nav-divider mt-3">
+										<li class="nav-item">Air Conditioning</li>
+										<li class="nav-item">Wifi</li>
+										<li class="nav-item">Kitchen</li>
+										<li class="nav-item">Pool</li>
+										<li class="nav-item"><a href="#" class="mb-0 text-primary">More+</a></li>
+									</ul>
+
+									<!-- List -->
+									<ul class="list-group list-group-borderless small mb-0 mt-2">
 										
-										<!-- if문 넣기! -->
-										<div class="col-md-9">
-											<h6>Looks like you have never booked with BOOKING</h6>
-											<h4 class="mb-2">When you book your trip will be shown here.</h4>
-											<a href="hotel-list.html" class="btn btn-primary-soft mb-0">Start booking now</a>
+									</ul>
+									
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
+										<!-- Button -->
+										<div class="d-flex align-items-center">
 										</div>
-										<!-- Image -->
-										<div class="col-md-3 text-end">
-											<img src="/images/element/17.svg" class="mb-n5" alt="">
-										</div>
+										<!-- Price -->
+										<div class="mt-3 mt-sm-0 d-flex">
+											<a href="reservationinfo.do" class="btn btn-sm btn-dark mb-0 w-auto me-2">Reservation Info</a>    
+											<a href="/review/review.do" class="btn btn-sm btn-dark mb-0 w-auto">Create Review </a>    
+										</div>                  
 									</div>
 								</div>
-								
 							</div>
-							<!-- Tabs content item END -->
 						</div>
-
 					</div>
-					<!-- Card body END -->
-				</div>
-
+									</div>
+									<!-- Card body -->
+								</div>
+								<!-- Card item END -->
 			</div>
 			<!-- Main content END -->
 		</div>
