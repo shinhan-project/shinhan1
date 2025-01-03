@@ -8,5 +8,5 @@ public interface AdminService {
 
 	Map<String, Object> list(AdminVO vo);
 
-	AdminVO login(Map map);
+	AdminVO adminlogin(Map map);
 }

@@ -57,50 +57,31 @@ Main Content START -->
 						<div class="col-lg-6 order-1">
 							<div class="p-4 p-sm-7">
 								<!-- Logo -->
-								<a href="index.html">
-									<img class="h-50px mb-4" src="/images//images/gojeuneoklogo.png" alt="logo">
+								<a href="index.do">
+									<img class="h-50px mb-4" src="/images/gojeuneoklogo.png" alt="logo">
 								</a>
 								<!-- Title -->
-								<h1 class="mb-2 h3">Welcome owner!</h1>
-								<p class="mb-0">New here?<a href="sign-up.html"> Create an account</a></p>
+								<h1 class="mb-2 h3">Welcome admin!</h1>
+								
 		
 								<!-- Form START -->
 								<form class="mt-4 text-start" action="admin_login.do" method="post">
 									<!-- Email -->
 									<div class="mb-3">
 										<label class="form-label">Enter your id</label>
-										<input type="text" name="admin_id" class="form-control">
+										<input type="text" name="admin_id" id="admin_id"class="form-control">
 									</div>
 									<!-- Password -->
 									<div class="mb-3 position-relative">
 										<label class="form-label">Enter password</label>
-										<input class="form-control fakepassword" type="password" name="admin_pwd">
+										<input class="form-control fakepassword" type="password" name="admin_pwd" id="admin_pwd">
 										<span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
 									</div>
-									<!-- Remember me -->
-									<div class="mb-3 d-sm-flex justify-content-between">
-										<div>
-											<input type="checkbox" class="form-check-input" id="rememberCheck">
-											<label class="form-check-label" for="rememberCheck">Remember me?</label>
-										</div>
-										<a href="forgot-password.html">Forgot password?</a>
-									</div>
+									
 									<!-- Button -->
 									<div><button type="submit" value="로그인" class="btn btn-primary w-100 mb-0">Login</button></div>
-		
-									<!-- Divider -->
-									<div class="position-relative my-4">
-										<hr>
-										<p class="small bg-mode position-absolute top-50 start-50 translate-middle px-2">Or sign in with</p>
-									</div>
-		
-									<!-- Google and facebook button -->
-									<div class="vstack gap-3">
-										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-google text-google-icon me-2"></i>Sign in with Google</a>
-										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-facebook-f text-facebook me-2"></i>Sign in with Facebook</a>
-									</div>
 		
 									<!-- Copyright -->
 									<div class="text-primary-hover text-body mt-3 text-center"> Copyrights ©2024 Booking. Build by <a href="https://www.webestica.com/" class="text-body">Webestica</a>. </div>
