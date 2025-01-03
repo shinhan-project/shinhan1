@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<title> Gojeuneok Admin Login Page</title>
+<head>
+	<title>Booking - Multipurpose Online Booking Theme</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -33,6 +34,7 @@
 
 
 
+
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 	
@@ -45,7 +47,7 @@ Main Content START -->
 				<div class="bg-mode shadow rounded-3 overflow-hidden">
 					<div class="row g-0">
 						<!-- Vector Image -->
-						<div class="col-lg-6 d-flex align-items-center order-2 order-lg-1">
+						<div class="col-lg-6 d-md-flex align-items-center order-2 order-lg-1">
 							<div class="p-3 p-lg-5">
 								<img src="/images/loginlogo.png" alt="">
 							</div>
@@ -55,33 +57,82 @@ Main Content START -->
 		
 						<!-- Information -->
 						<div class="col-lg-6 order-1">
-							<div class="p-4 p-sm-7">
+							<div class="p-4 p-sm-6">
 								<!-- Logo -->
-								<a href="index.do">
+								<a href="index.html">
 									<img class="h-50px mb-4" src="/images/gojeuneoklogo.png" alt="logo">
 								</a>
 								<!-- Title -->
-								<h1 class="mb-2 h3">Welcome admin!</h1>
-								
+								<h1 class="mb-2 h3">Create new account</h1>
+								<p class="mb-0">Already a member?<a href="owner_login.do"> Log in</a></p>
 		
 								<!-- Form START -->
-								<form class="mt-4 text-start" action="admin_login.do" method="post">
+								<form class="mt-4 text-start" action="insert.do" method="post">
 									<!-- Email -->
 									<div class="mb-3">
-										<label class="form-label">Enter your id</label>
-										<input type="text" name="admin_id" id="admin_id"class="form-control">
+										<label class="form-label">Enter id</label>
+										<input type="text" class="form-control" name="owner_id">
 									</div>
+									
 									<!-- Password -->
 									<div class="mb-3 position-relative">
 										<label class="form-label">Enter password</label>
-										<input class="form-control fakepassword" type="password" name="admin_pwd" id="admin_pwd">
+										<input class="form-control fakepassword" type="password" name="owner_pwd">
 										<span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
 									</div>
+									<!-- Confirm Password -->
+									<div class="mb-3">
+										<label class="form-label">Confirm Password</label>
+										<input type="password" class="form-control">
+									</div>
 									
+									<!-- name -->
+									<div class="mb-3 position-relative">
+										<label class="form-label">Enter Name</label>
+										<input class="form-control" type="text" name="owner_name">
+									</div>
+									
+									<!-- address -->
+									<div class="mb-3 position-relative">
+										<label class="form-label">Enter address</label>
+										<input class="form-control" type="text" name="owner_address">
+									</div>
+									
+									<!-- Email -->
+									<div class="mb-3">
+										<label class="form-label">Enter Email</label>
+										<input type="text" class="form-control" name="owner_email">
+									</div>
+									
+									<!-- tel -->
+									<div class="mb-3 position-relative">
+										<label class="form-label">Enter Phone Number</label>
+										<input class="form-control" type="text" name="owner_tel">
+										
+									</div>
+									
+								
+									<!-- Remember me -->
+									<div class="mb-3">
+										<input type="checkbox" class="form-check-input" id="rememberCheck">
+										<label class="form-check-label" for="rememberCheck">Keep me signed in</label>
+									</div>
 									<!-- Button -->
-									<div><button type="submit" value="로그인" class="btn btn-primary w-100 mb-0">Login</button></div>
+									<div><button type="submit" class="btn btn-primary w-100 mb-0">Sign up</button></div>
+		
+									<!-- Divider -->
+									<div class="position-relative my-4">
+										<hr>
+										<p class="small position-absolute top-50 start-50 translate-middle bg-mode px-1 px-sm-2">Or sign in with</p>
+									</div>
+		
+									<!-- Google and facebook button -->
+									<div class="vstack gap-3">
+										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-google text-google-icon me-2"></i>Sign in with Google</a>
+										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-facebook-f text-facebook me-2"></i>Sign in with Facebook</a>
+									</div>
 		
 									<!-- Copyright -->
 									<div class="text-primary-hover text-body mt-3 text-center"> Copyrights ©2024 Booking. Build by <a href="https://www.webestica.com/" class="text-body">Webestica</a>. </div>
