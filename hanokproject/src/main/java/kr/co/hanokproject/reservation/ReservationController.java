@@ -21,7 +21,16 @@ public class ReservationController {
 	    public String viewReservations(@SessionAttribute("ownerloginInfo") OwnerVO vo, Model model) {
 	    	System.out.println("owner_id:"+vo.getOwner_id());
 	        List<ReservationVO> reservations = service.getOwnerReservations(vo.getOwner_id());
+	    
+	        int reservationsCount = service.getReservationCount(vo.getOwner_id());
+	        int reservationsEarning = service.getReservationEarning(vo.getOwner_id());
+	        int reservationsReviewCount = service.getReservationReviewCount(vo.getOwner_id());
+	        
 	        model.addAttribute("reservations", reservations);
+	 
+	        model.addAttribute("reservationsCount", reservationsCount);
+	        model.addAttribute("reservationsEarning", reservationsEarning);
+	        model.addAttribute("reservationsReviewCount", reservationsReviewCount);
 	        return "/owner/owner_dash";  // 해당하는 JSP 파일을 반환
 	    }
 
