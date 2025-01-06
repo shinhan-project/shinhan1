@@ -139,7 +139,7 @@ Content START -->
 										<a class="nav-link" href="profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" href="account-bookings.html"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
+										<a class="nav-link active" href="customerreservations.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
@@ -188,83 +188,23 @@ Content START -->
 							<div class="tab-pane fade show active" id="tab-1">
 								<h6>Completed booking (2)</h6>
                 <!-- Card item START -->
+               
 					<div class="card shadow p-2">
 						<div class="row g-0">
 							<!-- Card img -->
 							<div class="col-md-5">
 								<img src="/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
 							</div>
-
-							<!-- Card body -->
-							<div class="col-md-7">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
-
-									<!-- Rating and buttons -->
-									<div class="d-flex justify-content-between align-items-center">
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-
-										<ul class="list-inline mb-0 z-index-2">
-											<!-- Heart icon -->
-											<li class="list-inline-item">
-												<a href="#" class="btn btn-sm btn-round btn-light"><i class="fa-solid fa-fw fa-heart"></i></a>
-											</li>
-											<!-- Share icon -->
-											<li class="list-inline-item dropdown">
-												<!-- Share button -->
-												<a href="#" class="btn btn-sm btn-round btn-light" role="button" id="dropdownShare3" data-bs-toggle="dropdown" aria-expanded="false">
-													<i class="fa-solid fa-fw fa-share-alt"></i>
-												</a>
-												<!-- dropdown button -->
-												<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare3">
-													<li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
-													<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
-													<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
-													<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
-												</ul>
-											</li>
-										</ul>
-									</div>
-
-									<!-- Title -->
-									<h5 class="card-title mb-1">${reservations. }</h5>
-									<small><i class="bi bi-geo-alt me-2"></i>Manhattan street, London - 24578</small>
-									<!-- Amenities -->
-									<ul class="nav nav-divider mt-3">
-										<li class="nav-item">Air Conditioning</li>
-										<li class="nav-item">Wifi</li>
-										<li class="nav-item">Kitchen</li>
-										<li class="nav-item">Pool</li>
-										<li class="nav-item"><a href="#" class="mb-0 text-primary">More+</a></li>
-									</ul>
-
-									<!-- List -->
-									<ul class="list-group list-group-borderless small mb-0 mt-2">
-										
-									</ul>
-									
-									<!-- Price and Button -->
-									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Button -->
-										<div class="d-flex align-items-center">
-										</div>
-										<!-- Price -->
-										<div class="mt-3 mt-sm-0 d-flex">
-											<a href="reservationinfo.do" class="btn btn-sm btn-dark mb-0 w-auto me-2">Reservation Info</a>    
-											<a href="/review/review.do" class="btn btn-sm btn-dark mb-0 w-auto">Create Review </a>    
-										</div>                  
-									</div>
-								</div>
+							<div>
+							<c:forEach items="${reservations}" var="reservation">
+							<h5 class="mb-1">${reservation.reservations_id}</h5>
+							<h5 class="mb-1">${reservation.hanok_name}</h5>
+							<h5 class="mb-1">${reservation.room_name}</h5>
+							<h5 class="mb-1">${reservation.checkin}</h5>
+							<h5 class="mb-1">${reservation.checkout}</h5>
+							</c:forEach>
 							</div>
-						</div>
-					</div>
-									</div>
-									<!-- Card body -->
+							
 								</div>
 								<!-- Card item END -->
 			</div>

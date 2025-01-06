@@ -33,5 +33,9 @@
 		SELECT COUNT(*) FROM REVIEWS;
 		
 	</select>
+	
+	
+
+	
 
 </mapper>
