@@ -24,6 +24,6 @@ public interface ReviewMapper {
     // 리뷰 개수 조회
     int count();  // 파라미터 없이 호출
     
-    ReservationVO getReservationById(int reservation_id);
+//    ReservationVO getReservationById(int reservation_id);
 
 }

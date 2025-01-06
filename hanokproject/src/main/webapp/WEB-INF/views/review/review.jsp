@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -185,11 +186,46 @@ Main content START -->
 							<div class="row g-3">
 								
 								
-								<div class="col-12">
-									<label class="form-label">Info</label>
-									<textarea class="form-control" name="review_content" rows="2" placeholder="Enter review details"></textarea>
+								<!-- Card body START -->
+					<div class="card-body p-0">
+						
+		
+						<!-- Tabs content START -->
+						<div class="tab-content p-2 p-sm-4" id="nav-tabContent">
+							<!-- Tab content item START -->
+							<div class="tab-pane fade show active" id="tab-1">
+								
+                <!-- Card item START -->
+					<div class="card shadow p-2">
+						<div class="row g-0">
+							<!-- Card img -->
+							<div class="col-md-5">
+								<img src="/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
+							</div>
+							<!-- Card body -->
+							<div class="col-md-7">
+								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
+									
+									<p><strong>Hanok Name:</strong> ${hanok_name}</p>
+							<p><strong>Room Name:</strong> ${room_name}</p>
+							<p><strong>Check-in:</strong> 
+								<fmt:formatDate value="${checkin}" pattern="yyyy-MM-dd HH:mm"/>
+							</p>
+							<p><strong>Check-out:</strong> 
+							    <fmt:formatDate value="${checkout}" pattern="yyyy-MM-dd HH:mm"/>
+							</p>
+							<p><strong>Reservation ID:</strong> ${reservation_id}</p>
+									
+									
 								</div>
-
+							</div>
+						</div>
+					</div>
+									</div>
+									<!-- Card body -->
+								</div>
+								<!-- Card item END -->
+                             </div>
 							
 							</div>
 						</div>
@@ -235,8 +271,9 @@ Main content START -->
         </label>
     </div>
 </div>
+								
 								<div class="col-12">
-									<textarea class="form-control" rows="10" placeholder="Please write your review"></textarea>
+									<textarea class="form-control" name="review_content" rows="10" placeholder="Please write your review"></textarea>
 								</div>
 								
 												

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.hanokproject.reservation.ReservationMapper;
 import kr.co.hanokproject.reservation.ReservationVO;
 
 @Service
@@ -12,10 +13,13 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private ReviewMapper reviewMapper;
     
+    @Autowired
+    private ReservationMapper reservationMapper;
+    
     @Override
     public void addReview(ReviewVO review) {
         // 예약 정보를 조회
-        ReservationVO reservationInfo = reviewMapper.getReservationById(review.getReservations_id());
+        ReservationVO reservationInfo = reservationMapper.getReservationById(review.getReservations_id());
         
         // 예약 정보에서 필요한 데이터 설정
         review.setCustomer_id(reservationInfo.getCustomer_id());
@@ -37,10 +41,10 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.getReviewsByCustomer(customer_id);
     }
     
-    @Override
-    public ReservationVO getReservationById(int reservation_id) {
-        return reviewMapper.getReservationById(reservation_id);
-    }
+//    @Override
+//    public ReservationVO getReservationById(int reservation_id) {
+//        return reviewMapper.getReservationById(reservation_id);
+//    }
     
     
 }

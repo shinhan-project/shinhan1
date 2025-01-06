@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.hanokproject.reservation.ReservationService;
 import kr.co.hanokproject.reservation.ReservationVO;
 
 
@@ -26,16 +27,27 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
     
+    @Autowired
+    private ReservationService reservationService;
+    
     @GetMapping("/review.do")
     public String review(@RequestParam("reservation_id") int reservation_id, Model model) {
         // 예약 정보를 조회
-        ReservationVO reservation = reviewService.getReservationById(reservation_id);
+        ReservationVO reservation = reservationService.getReservationById(reservation_id);
         
         // 모델에 추가
         model.addAttribute("reservation_id", reservation_id);
         model.addAttribute("customer_id", reservation.getCustomer_id());
         model.addAttribute("hanok_id", reservation.getHanok_id());
         model.addAttribute("room_id", reservation.getRoom_id());
+        model.addAttribute("hanok_name", reservation.getHanok_name());
+        model.addAttribute("room_name", reservation.getRoom_name());
+        model.addAttribute("checkin", reservation.getCheckin());
+        model.addAttribute("checkout", reservation.getCheckout());
+        
+        System.out.println("Check-in: " + reservation.getCheckin());
+        System.out.println("Check-out: " + reservation.getCheckout());
+
         
         return "review/review";
     }
