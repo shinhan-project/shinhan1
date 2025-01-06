@@ -26,13 +26,13 @@ public class CustomerServiceImpl implements CustomerService {
 	      
 	      return mapper.regist(vo) == 0 ? false : true;
 	   }
-	
+	//정보 조회
 	@Override
 	   public CustomerVO detail(CustomerVO vo) {
 	      return mapper.detail(vo);
 	   }
 
-	
+	//정보 수정
 	   @Override
 	   public int update(CustomerVO vo) {
 	      return mapper.update(vo);

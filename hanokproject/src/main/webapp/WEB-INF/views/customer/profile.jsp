@@ -17,7 +17,7 @@
     		$("#frm").submit();
     	}
     </script>
-	<!-- Dark mode -->
+
 
 
 	<!-- Favicon -->
