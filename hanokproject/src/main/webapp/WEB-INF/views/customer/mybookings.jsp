@@ -195,6 +195,7 @@ Content START -->
 							<div class="col-md-5">
 								<img src="/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
 							</div>
+							
 							<div>
 							<c:forEach items="${reservations}" var="reservation">
 							<h5 class="mb-1">${reservation.reservations_id}</h5>
