@@ -1,8 +1,10 @@
 package kr.co.hanokproject.owner;
 
+import java.util.List;
 import java.util.Map;
 
 import kr.co.hanokproject.owner.OwnerVO;
+import kr.co.hanokproject.reservation.ReservationVO;
 import kr.co.hanokproject.customer.CustomerVO;
 
 public interface OwnerService {
