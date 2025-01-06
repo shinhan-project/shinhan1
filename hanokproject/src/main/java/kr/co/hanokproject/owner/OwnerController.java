@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import kr.co.hanokproject.reservation.ReservationVO;
 
 @Controller
 public class OwnerController {
@@ -71,12 +74,12 @@ public class OwnerController {
 				model.addAttribute("url", "/index.do");
 				return "common/alert";
 			}
-//		   //사장님 대쉬보드 페이지
-//		   @GetMapping("/owner/owner_dash.do")
-//		   public void dash() {
-//		      return;
-//		   }
 		   
+		   
+		
+		   
+		   
+
 		   
 		   
 		   
