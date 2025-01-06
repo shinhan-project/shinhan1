@@ -21,5 +21,7 @@ public class ReservationVO {
     private int room_id;
     
     private String hanok_name;
+    private String room_name;
+
     
 }

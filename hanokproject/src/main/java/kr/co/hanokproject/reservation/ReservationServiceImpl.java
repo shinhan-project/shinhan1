@@ -16,7 +16,14 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<ReservationVO> getOwnerReservations(int owner_id) {
 		return mapper.getReservationsByOwnerId(owner_id);
+		
+		
 	}
+	
+	@Override
+    public ReservationVO getReservationById(int reservation_id) {
+        return mapper.getReservationById(reservation_id);
+    }
 
 	
 	

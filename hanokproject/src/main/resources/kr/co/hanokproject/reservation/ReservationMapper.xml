@@ -62,6 +62,17 @@
 		REVIEWS rv ON r.room_id = rv.room_id
 		WHERE h.owner_id = #{owner_id}
 	</select>
+	
+	<select id="getReservationById" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">
+	    SELECT r.reservations_id, r.customer_id, r.room_id,
+	           r.checkin, r.checkout,
+	           h.hanok_id, h.hanok_name, rm.room_name
+	    FROM RESERVATIONS r
+	    JOIN ROOMS rm ON r.room_id = rm.room_id
+	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id
+	    WHERE r.reservations_id = #{reservation_id}
+</select>
+	
 
 
 </mapper>

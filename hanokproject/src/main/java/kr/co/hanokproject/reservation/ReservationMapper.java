@@ -15,5 +15,7 @@ public interface ReservationMapper {
     int getReservationCount(int owner_id);
     int getReservationEarning(int owner_id);
     int getReservationReviewCount(int owner_id);
+    
+    ReservationVO getReservationById(int reservation_id);
 }
 

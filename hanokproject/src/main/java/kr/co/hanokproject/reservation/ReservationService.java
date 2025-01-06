@@ -15,4 +15,7 @@ public interface ReservationService {
     
     //특정 사업장의 리뷰수
     int getReservationReviewCount(int owner_id);
+    
+    // 예약 정보 조회
+    ReservationVO getReservationById(int reservation_id);
 }
