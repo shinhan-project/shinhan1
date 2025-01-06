@@ -117,11 +117,14 @@ public class CustomerController {
 		}
 	
 	
-	// 한옥 검색 - 미완 (민규)
+	// 한옥 검색 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
     public String hanok_search(HttpServletRequest request, Model model) {
 		try {
 			int page = 1;
+	        if (request.getParameter("page") != null) {
+	            page = Integer.parseInt(request.getParameter("page"));
+	        }
 			String location = request.getParameter("location");
 			String checkInDate = request.getParameter("checkInDate");
 			String checkOutDate = request.getParameter("checkOutDate");
@@ -137,6 +140,7 @@ public class CustomerController {
 			Map<String, Object> hanokData = service.searchHanok(customerVO);
 			
 			model.addAttribute("map", hanokData);
+			model.addAttribute("currentPage", page); // 현재 페이지 설정
 			
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
