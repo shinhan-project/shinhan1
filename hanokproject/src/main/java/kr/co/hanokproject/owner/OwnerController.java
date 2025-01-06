@@ -76,9 +76,36 @@ public class OwnerController {
 			}
 		   
 		   
-		
+//			@GetMapping("/owner/owner_profile.do")
+//			public void owner_profile() {
+//				 return;
+//			}
 		   
 		   
+		   
+		 //사장 정보 수정
+		   @GetMapping("/owner/owner_profile.do")
+		    public String edit(HttpSession sess, Model model) {
+		        OwnerVO uv = (OwnerVO)sess.getAttribute("ownerloginInfo");
+		        model.addAttribute("vo", service.detail(uv));
+		        return "owner/owner_profile";
+		    }
+		    
+		    @PostMapping("/owner/update.do")
+		    public String update(OwnerVO vo, Model model) {
+		        int r = service.update(vo);
+		        String msg = "";
+		        String url = "owner_profile.do";
+		        if (r > 0) {
+		            msg = "사장님 정상적으로 수정되었습니다.";
+		        } else {
+		            msg = "수정 오류";
+		            System.out.println("업데이트 실패: " + vo);
+		        }
+		        model.addAttribute("msg",msg);
+		        model.addAttribute("url",url);
+		        return "common/alert";
+		    }
 
 		   
 		   

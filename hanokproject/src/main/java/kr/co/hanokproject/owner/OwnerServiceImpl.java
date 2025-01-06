@@ -36,6 +36,12 @@ public class OwnerServiceImpl implements OwnerService {
 		   public OwnerVO detail(OwnerVO vo) {
 		      return mapper.detail(vo);
 		   }
+
+		@Override
+		public int update(OwnerVO vo) {
+			// TODO Auto-generated method stub
+			return mapper.update(vo);
+		}
 	
 
 
