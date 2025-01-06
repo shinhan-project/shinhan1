@@ -72,10 +72,11 @@ public class CustomerVO {
 	private String checkOutDate;
 	private String capacity;
 	private int page; // 사용자가 요청한 페이지 번호
-	private int startIdx; // limit 앞에 들어갈 시작인덱스값
+	private int startIdx;  // limit 앞에 들어갈 시작인덱스값
 	
     private String roomImage;
     private String hanokName;
+    private String roomName;
     private int roomPrice;	
 	
 	public CustomerVO() {

@@ -1,13 +1,13 @@
 package kr.co.hanokproject.customer;
 
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@PropertySource("classpath:db.properties")
 public class CustomerController {
 	
 	@Autowired
@@ -62,11 +63,6 @@ public class CustomerController {
 
 	}
 	
-	@GetMapping("/hanok/hanok_list.do")
-	public String hanok_list() {
-		return "/hanok/hanok_list";
-
-	}
 	
 	@GetMapping("/customer/regist.do")
 	   public void regist() {
@@ -145,7 +141,6 @@ public class CustomerController {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-
     		return "/hanok/hanok_list";
     }
     
@@ -170,15 +165,16 @@ public class CustomerController {
         return "/hanok/hanok_detail";
     }
     
-    // 임시(민규)
+    // 한옥 예약 확인 - 미완(민규)
     @GetMapping("/hanok/hanok_booking_confirm.do")
     public String hanokBookingConfirm() {
         return "/hanok/hanok_booking_confirm";
     }
     
-    // 임시(민규)
+    // 한옥 예약 확정 - 미완(민규)
     @GetMapping("/hanok/hanok_booking.do")
     public String hanokBooking() {
         return "/hanok/hanok_booking";
     }
+    
 }
