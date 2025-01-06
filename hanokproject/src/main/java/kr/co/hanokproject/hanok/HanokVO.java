@@ -1,8 +1,12 @@
 package kr.co.hanokproject.hanok;
 
+import lombok.Data;
+
+@Data
 public class HanokVO {
 	
 	//한옥
+	
 		private int hanok_id;
 		private int owner_id;
 		private String hanok_name;

@@ -13,5 +13,5 @@
         JOIN HANOKS h ON ro.hanok_id = h.hanok_id
         WHERE h.owner_id = #{owner_id}
     </select>
-
+    
 </mapper>

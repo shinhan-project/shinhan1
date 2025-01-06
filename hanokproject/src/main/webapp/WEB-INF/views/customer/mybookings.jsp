@@ -232,7 +232,7 @@ Content START -->
 									</div>
 
 									<!-- Title -->
-									<h5 class="card-title mb-1"><a href="hotel-detail.html">Royal Beach Resort</a></h5>
+									<h5 class="card-title mb-1">${reservations. }</h5>
 									<small><i class="bi bi-geo-alt me-2"></i>Manhattan street, London - 24578</small>
 									<!-- Amenities -->
 									<ul class="nav nav-divider mt-3">

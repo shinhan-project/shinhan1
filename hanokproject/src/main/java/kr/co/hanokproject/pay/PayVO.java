@@ -2,6 +2,9 @@ package kr.co.hanokproject.pay;
 
 import java.sql.Timestamp;
 
+import lombok.Data;
+
+@Data
 public class PayVO {
 
 	
