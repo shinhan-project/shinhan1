@@ -33,5 +33,14 @@
 		SELECT COUNT(*) FROM REVIEWS;
 		
 	</select>
+	
+	<select id="getReservationById" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">
+	    SELECT reservations_id, customer_id, room_id,
+	    (SELECT hanok_id FROM ROOMS WHERE room_id=RESERVATIONS.room_id) hanok_id,
+	    (SELECT hanok_name FROM HANOKS WHERE hanok_id=(SELECT hanok_id FROM ROOMS WHERE room_id=RESERVATIONS.room_id)) hanok_name
+	    FROM RESERVATIONS
+	    WHERE reservations_id = #{reservation_id}
+</select>
+	
 
 </mapper>

@@ -1,3 +1,4 @@
+
 package kr.co.hanokproject.reservation;
 
 import java.util.List;
@@ -15,3 +16,4 @@ public interface ReservationMapper {
     int getReservationEarning(int owner_id);
     int getReservationReviewCount(int owner_id);
 }
+
