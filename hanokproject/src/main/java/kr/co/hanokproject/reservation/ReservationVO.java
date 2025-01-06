@@ -15,4 +15,7 @@ public class ReservationVO {
 		private String status;
 		private int reservation_price;
 		private String reservation_name;
+		
+		private String hanok_name;
+		private String room_name;
 }

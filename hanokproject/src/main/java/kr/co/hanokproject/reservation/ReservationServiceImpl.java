@@ -19,8 +19,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public List<ReservationVO> getCustomerReservations(int customer_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.getCustomerReservations(customer_id);
 	}
 
 }

@@ -11,5 +11,5 @@ public interface ReservationMapper {
     List<ReservationVO> getReservationsByOwnerId(int owner_id);
     
     // 고객 예약 목록 조회
-	List<ReservationVO> getReservationsAndRooms(int customer_id);
+	List<ReservationVO> getCustomerReservations(int customer_id);
 }
