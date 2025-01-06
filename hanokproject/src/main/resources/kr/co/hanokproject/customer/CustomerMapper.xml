@@ -24,4 +24,103 @@
 		WHERE customer_id = #{customer_id}
 	</update>
 	
+	<!-- 한옥 검색 조건절 -->
+	<sql id="searchSql">
+	    <where>
+	        <trim prefixOverrides="AND">
+	            <if test="location != null and location != ''">
+	                h.hanok_name LIKE CONCAT('%', #{location}, '%')
+	            </if>
+	            <if test="checkInDate != null and checkOutDate != null">
+	                NOT EXISTS (
+	                    SELECT 1
+	                    FROM reservations res
+	                    WHERE res.room_id = r.room_id
+	                    AND (
+	                        res.checkin BETWEEN #{checkInDate} AND #{checkOutDate}
+	                        OR res.checkout BETWEEN #{checkInDate} AND #{checkOutDate}
+	                    )
+	                )
+	            </if>
+	            <if test="capacity != null and capacity != ''">
+	                r.max_capacity &gt;= #{capacity}
+	            </if>
+	        </trim>
+	    </where>
+	</sql>
+
+	<!-- 한옥 검색 -->
+	<select id="searchHanok" parameterType="kr.co.hanokproject.customer.CustomerVO" resultType="kr.co.hanokproject.customer.CustomerVO">
+        SELECT
+        	ri.image_url AS roomImage,
+		    h.hanok_name AS hanokName,
+		    MIN(r.room_price) AS roomPrice 
+        FROM 
+		    HANOKS h
+		JOIN 
+		    ROOMS r ON h.hanok_id = r.hanok_id
+		JOIN 
+		    ROOM_IMAGES ri ON r.room_id = ri.room_id
+		LEFT JOIN 
+		    RESERVATIONS res ON r.room_id = res.room_id
+		    	AND (
+	                res.checkin &gt;= #{checkOutDate} 
+	                OR res.checkout &lt;= #{checkInDate}
+            	)
+		<include refid="searchSql"/>
+		GROUP BY 
+		    r.room_id, ri.image_url, h.hanok_name
+	    ORDER BY 
+        	MIN(r.room_price) ASC
+		LIMIT 6 OFFSET #{startIdx}
+    </select>
+    
+   	<!-- 한옥 검색 카운트 -->
+	<select id="count" parameterType="kr.co.hanokproject.customer.CustomerVO" resultType="int">
+		SELECT COUNT(DISTINCT r.room_id)
+        FROM 
+		    HANOKS h
+		JOIN 
+		    ROOMS r ON h.hanok_id = r.hanok_id
+		JOIN 
+		    ROOM_IMAGES ri ON r.room_id = ri.room_id
+		LEFT JOIN 
+		    RESERVATIONS res ON r.room_id = res.room_id
+		    	AND (
+	                res.checkin &gt;= #{checkOutDate} 
+	                OR res.checkout &lt;= #{checkInDate}
+            	)	
+		<include refid="searchSql"/>
+	</select>
+	
+	<select id="getHanokDetail" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+	    SELECT 
+	        hanok_name AS hanokName,
+	        hanok_description AS hanokDescription
+	    FROM HANOKS
+	    WHERE hanok_id = #{hanokId}
+	</select>
+	
+	<select id="getRoomList" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+	    SELECT 
+	        room_name AS roomName,
+	        room_price AS roomPrice,
+	        room_size AS roomSize,
+	        max_capacity AS maxCapacity,
+	        room_imgName AS roomImage
+	    FROM ROOMS
+	    WHERE hanok_id = #{hanokId}
+	</select>
+	
+	<select id="getReviews" parameterType="map" resultType="kr.co.hanokproject.customer.CustomerVO">
+	    SELECT 
+	        review_title AS reviewTitle,
+	        review_content AS reviewContent,
+	        review_date AS reviewDate,
+	        rating
+	    FROM REVIEWS
+	    WHERE hanok_id = #{hanokId}
+	    ORDER BY review_date DESC
+	    LIMIT #{limit}
+	</select>
 </mapper>
