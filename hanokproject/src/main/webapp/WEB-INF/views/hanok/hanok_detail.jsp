@@ -24,8 +24,8 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
     <style>
-    	    #sep {
-	        margin: 20px;
+   	    #sep {
+        	margin: 20px;
 	    }
         body {
 	        font-family: 'Arial', sans-serif;
@@ -222,7 +222,9 @@
 	        font-size: 0.95em;
 	        color: #555;
 	    }
+	    
     </style>
+
     <script>
 		const storedTheme = localStorage.getItem('theme')
  
@@ -243,6 +245,17 @@
 
 
         window.addEventListener('DOMContentLoaded', () => {
+    	    // 현재 날짜를 "YYYY-MM-DD" 형식으로 가져오는 함수
+    	    const today = new Date().toISOString().split("T")[0];
+    	
+    	    // 입력 필드 요소 가져오기
+    	    const checkInInput = document.getElementById("checkIn");
+    	    const checkOutInput = document.getElementById("checkOut");
+    	
+    	    checkInInput.setAttribute("min", today);
+    	    checkOutInput.setAttribute("min", today);
+    	
+        	
             var el = document.querySelector('.theme-icon-active');
             if(el != 'undefined' && el != null) {
                 const showActiveTheme = theme => {
@@ -319,9 +332,9 @@
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" class="form-control form-control-lg flatpickr" data-mode="range">
+									<input type="date" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range">
 									<label class="form-label">Check out</label>
-									<input type="date" class="form-control form-control-lg flatpickr" data-mode="range">
+									<input type="date" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range">
 								</div>
 								
 							</div>
