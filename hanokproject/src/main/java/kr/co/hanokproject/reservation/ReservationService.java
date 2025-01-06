@@ -6,4 +6,6 @@ public interface ReservationService {
 
 	List<ReservationVO> getOwnerReservations(int owner_id);
 	
+	List<ReservationVO> getCustomerReservations(int customer_id);
+    
 }
