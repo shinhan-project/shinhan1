@@ -41,6 +41,11 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.getReviewsByCustomer(customer_id);
     }
     
+    @Override
+    public List<ReviewVO> getOwnerReviews(int owner_id) {
+        return reviewMapper.getReviewsByOwner(owner_id);
+    }
+    
 //    @Override
 //    public ReservationVO getReservationById(int reservation_id) {
 //        return reviewMapper.getReservationById(reservation_id);

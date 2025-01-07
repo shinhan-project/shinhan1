@@ -66,4 +66,12 @@ public class ReviewController {
         model.addAttribute("reviews", reviews);
         return "review/reviews"; 
     }
+    
+ // 특정 고객 리뷰 조회
+    @GetMapping("/owner/{owner_id}")
+    public String getOwnerReviews(@PathVariable int owner_id, Model model) {
+        List<ReviewVO> reviews = reviewService.getOwnerReviews(owner_id);
+        model.addAttribute("reviews", reviews);
+        return "review/owner_review"; 
+    }
 }

@@ -40,7 +40,7 @@
 	<!-- total earning 수입 -->
 	<select id="getReservationEarning" resultType="int"
 		parameterType="int">
-		SELECT SUM(r.reservation_price)
+		SELECT IFNULL(SUM(r.reservation_price),0)
 		FROM RESERVATIONS r
 		JOIN
 		ROOMS ro ON r.room_id = ro.room_id

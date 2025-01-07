@@ -245,7 +245,7 @@ Content START -->
 								 <c:if test="${!status.last}">
 								 <div style="display: flex; gap: 10px; justify-content: flex-end;">
  					<a href="/${reservation.reservations_id}/bookingdetail.do" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">View Details</a>
-					<a href="" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
+					<a href="/review/review.do?reservation_id=${reservation.reservations_id}" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
 
 </div>
 	               					 <hr style="margin-top: 20px; margin-bottom: 20px;">
