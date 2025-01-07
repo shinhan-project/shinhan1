@@ -1,5 +1,6 @@
 package kr.co.hanokproject.owner;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,13 @@ public class OwnerServiceImpl implements OwnerService {
 		   public OwnerVO detail(OwnerVO vo) {
 		      return mapper.detail(vo);
 		   }
+
+		@Override
+		public int update(OwnerVO vo) {
+			// TODO Auto-generated method stub
+			return mapper.update(vo);
+		}
+	
 
 
 }

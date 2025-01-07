@@ -26,13 +26,13 @@ public class CustomerServiceImpl implements CustomerService {
 	      
 	      return mapper.regist(vo) == 0 ? false : true;
 	   }
-	
+	//정보 조회
 	@Override
 	   public CustomerVO detail(CustomerVO vo) {
 	      return mapper.detail(vo);
 	   }
 
-	
+	//정보 수정
 	   @Override
 	   public int update(CustomerVO vo) {
 	      return mapper.update(vo);
@@ -47,11 +47,11 @@ public class CustomerServiceImpl implements CustomerService {
 	// 한옥 검색
 	@Override
 	public Map<String, Object> searchHanok(CustomerVO customerVO) {
-		System.out.println("log : getHanokWithPagenation");
+		System.out.println("log : searchHanok");
 		int count = mapper.count(customerVO); // 총개수
         // 총페이지수
-		int totalPage = (int) Math.ceil(count / 6.0);
-		customerVO.setStartIdx((customerVO.getPage() - 1) * 6);
+		int totalPage = count / 6;
+        if (count % 6 > 0) totalPage++;
         
 		List<CustomerVO> list = mapper.searchHanok(customerVO);
 			
@@ -59,6 +59,18 @@ public class CustomerServiceImpl implements CustomerService {
 	    map.put("count", count);
 	    map.put("totalPage", totalPage);
 	    map.put("list", list);
+	    
+	    int endPage = (int)(Math.ceil(customerVO.getPage()/6.0)*6);
+        int startPage = endPage - 5;
+        if (endPage > totalPage) endPage = totalPage;
+        boolean isPrev = startPage > 1;
+        boolean isNext = endPage < totalPage;
+        map.put("endPage", endPage);
+        map.put("startPage", startPage);
+        map.put("isPrev", isPrev);
+		map.put("isNext", isNext);
+		map.put("currentPage", customerVO.getPage());
+//		map.put("startIdx", customerVO.getStartIdx());
 
 	    return map;
 	}

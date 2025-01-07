@@ -18,7 +18,7 @@
 		ro.room_id
 		JOIN HANOKS h ON ro.hanok_id = h.hanok_id
 		WHERE h.owner_id =
-		#{owner_id}
+		#{owner_id} AND r.checkout >= NOW()
 	</select>
 	
 	
@@ -35,6 +35,7 @@
 		h.hanok_id
 		WHERE h.owner_id = #{owner_id}
 	</select>
+
 
 	<!-- total earning 수입 -->
 	<select id="getReservationEarning" resultType="int"

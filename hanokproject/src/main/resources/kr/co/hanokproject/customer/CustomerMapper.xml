@@ -26,35 +26,33 @@
 	
 	<!-- 한옥 검색 조건절 -->
 	<sql id="searchSql">
-	    <where>
-	        <trim prefixOverrides="AND">
-	            <if test="location != null and location != ''">
-	                h.hanok_name LIKE CONCAT('%', #{location}, '%')
-	            </if>
-	            <if test="checkInDate != null and checkOutDate != null">
-	                NOT EXISTS (
-	                    SELECT 1
-	                    FROM reservations res
-	                    WHERE res.room_id = r.room_id
-	                    AND (
-	                        res.checkin BETWEEN #{checkInDate} AND #{checkOutDate}
-	                        OR res.checkout BETWEEN #{checkInDate} AND #{checkOutDate}
-	                    )
-	                )
-	            </if>
-	            <if test="capacity != null and capacity != ''">
-	                r.max_capacity &gt;= #{capacity}
-	            </if>
-	        </trim>
-	    </where>
+	    where 1=1
+        	<if test="capacity != null and capacity != ''">
+                AND r.max_capacity &gt;= CONVERT(#{capacity}, UNSIGNED)
+            </if>
+            <if test="location != null and location != ''">
+                AND h.hanok_address LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="checkInDate != null and checkOutDate != null">
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM reservations res
+                    WHERE res.room_id = r.room_id
+                    AND (
+                        res.checkin BETWEEN STR_TO_DATE(#{checkInDate}, '%Y-%m-%d') AND STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d')
+                        OR res.checkout BETWEEN STR_TO_DATE(#{checkInDate}, '%Y-%m-%d') AND STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d')
+                    )
+                )
+            </if>
 	</sql>
 
 	<!-- 한옥 검색 -->
 	<select id="searchHanok" parameterType="kr.co.hanokproject.customer.CustomerVO" resultType="kr.co.hanokproject.customer.CustomerVO">
         SELECT
-        	ri.image_url AS roomImage,
+        	MIN(ri.room_imgName) AS roomImage,
 		    h.hanok_name AS hanokName,
-		    MIN(r.room_price) AS roomPrice 
+		    r.room_name AS roomName,
+		    r.room_price AS roomPrice 
         FROM 
 		    HANOKS h
 		JOIN 
@@ -64,14 +62,14 @@
 		LEFT JOIN 
 		    RESERVATIONS res ON r.room_id = res.room_id
 		    	AND (
-	                res.checkin &gt;= #{checkOutDate} 
-	                OR res.checkout &lt;= #{checkInDate}
+	                res.checkin &gt;= STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d') 
+	                OR res.checkout &lt;= STR_TO_DATE(#{checkInDate}, '%Y-%m-%d')
             	)
 		<include refid="searchSql"/>
 		GROUP BY 
-		    r.room_id, ri.image_url, h.hanok_name
+		    h.hanok_name, r.room_name, r.room_price
 	    ORDER BY 
-        	MIN(r.room_price) ASC
+        	r.room_price ASC
 		LIMIT 6 OFFSET #{startIdx}
     </select>
     
@@ -87,8 +85,8 @@
 		LEFT JOIN 
 		    RESERVATIONS res ON r.room_id = res.room_id
 		    	AND (
-	                res.checkin &gt;= #{checkOutDate} 
-	                OR res.checkout &lt;= #{checkInDate}
+	                res.checkin &gt;= STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d') 
+	                OR res.checkout &lt;= STR_TO_DATE(#{checkInDate}, '%Y-%m-%d')
             	)	
 		<include refid="searchSql"/>
 	</select>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Owner DashBoard Page</title>
+<title>My Hanoks Listings</title>
 
 <!-- Meta Tags -->
 <meta charset="utf-8">
@@ -40,6 +40,15 @@
 </head>
 
 <body>
+
+	<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+		<!-- =======================
+Menu item START -->
+
+
+
 	
 	<!-- 사장님헤더 -->
 	<c:if test="${!empty ownerloginInfo}">
@@ -141,7 +150,8 @@
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
 
-		<!-- ======================= Menu item START -->
+		<!-- =======================
+Menu item START -->
 		<section class="pt-4">
 			<div class="container">
 				<div class="card rounded-3 border p-3 pb-2">
@@ -190,7 +200,7 @@
 										href="agent-reviews.html"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
-									<li><a class="nav-link" href="/owner/owner_profile.do"><i
+									<li><a class="nav-link" href="#"><i
 											class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
 								</ul>
@@ -200,9 +210,8 @@
 					<!-- Nav links END -->
 				</div>
 			</div>
-			
+			</c:if>
 		</section>
-		</c:if>
 		<!-- =======================
 Menu item END -->
 
@@ -214,194 +223,101 @@ Content START -->
 				<div class="row">
 					<div class="col-12">
 						<h1 class="fs-4 mb-0">
-							<i class="bi bi-house-door fa-fw me-1"></i>Dashboard
+							<i class="bi bi-journals fa-fw me-1"></i>Listings
 						</h1>
 					</div>
 				</div>
 				<!-- Title END -->
 
-				<!-- Counter START -->
-				<div class="row g-4">
-					<!-- Counter item -->
-					<div class="col-sm-6 col-xl-3">
-						<div class="card card-body border">
-							<div class="d-flex align-items-center">
-								<!-- Icon -->
-								<div class="icon-xl bg-success rounded-3 text-white">
-									<i class="bi bi-journals"></i>
-								</div>
-								<!-- Content -->
-								<div class="ms-3">
 
-									<!-- 여기에 count(사장님이 가지고 있는 방의 예약 수) -->
-									<h4>${reservationsCount}</h4>
-
-									<span>Total reservations</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Counter item -->
-					<div class="col-sm-6 col-xl-3">
-						<div class="card card-body border">
-							<div class="d-flex align-items-center">
-								<!-- Icon -->
-								<div class="icon-xl bg-info rounded-3 text-white">
-									<i class="bi bi-graph-up-arrow"></i>
-								</div>
-								<!-- Content -->
-								<div class="ms-3">
-									<!-- 사장님 수입 -->
-									<h4>₩ ${reservationsEarning}</h4>
-									<span>Earning</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-					<!-- Counter item -->
-					<div class="col-sm-6 col-xl-3">
-						<div class="card card-body border">
-							<div class="d-flex align-items-center">
-								<!-- Icon -->
-								<div class="icon-xl bg-primary rounded-3 text-white">
-									<i class="bi bi-star"></i>
-								</div>
-								<!-- Content -->
-								<div class="ms-3">
-									<h4>${reservationsReviewCount}</h4>
-									<!-- 리뷰 갯수 -->
-									<span>Total Reviews</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Counter END -->
-
-
-				<!-- Booking table START -->
+				<!-- Listing table START -->
 				<div class="row">
 					<div class="col-12">
-						<div class="card border rounded-3">
-							<!-- Card header START -->
+
+						<div class="card border">
+							<!-- Card header -->
 							<div class="card-header border-bottom">
-								<div
-									class="d-sm-flex justify-content-between align-items-center">
-									<h5 class="mb-2 mb-sm-0">Upcoming Bookings</h5>
-									<a href="#" class="btn btn-sm btn-primary mb-0">View All</a>
-								</div>
+								<h5 class="card-header-title">
+									My Listings
+								</h5>
 							</div>
-							<!-- Card header END -->
+<!-- 여기부터 나의 한옥 리스트 보이게 하는거! 여기부터 반복문이 되어야 함! -->
 
+	<c:forEach var="listings" items="${listings}">
 							<!-- Card body START -->
-							<div class="card-body">
+							<div class="card-body vstack gap-3">
+								<!-- Listing item START -->
+								<div class="card border p-2">
+									<div class="row g-4">
+										<!-- Card img -->
+										<div class="col-md-3 col-lg-2">
+											<img src="/images/category/hotel/4by3/10.jpg"
+												class="card-img rounded-2" alt="Card image">
+										</div>
 
-								<!-- Search and select END -->
+										<!-- Card body -->
+										<div class="col-md-9 col-lg-10">
+											<div
+												class="card-body position-relative d-flex flex-column p-0 h-100">
 
-								<!-- Hotel room list START -->
-								<div class="table-responsive border-0">
-									<table
-										class="table align-middle p-4 mb-0 table-hover table-shrink">
-										<!-- Table head -->
-										<thead class="table-light">
+												<!-- Buttons -->
+												<div
+													class="list-inline-item dropdown position-absolute top-0 end-0">
+													<!-- Share button -->
+													<a href="#" class="btn btn-sm btn-round btn-light"
+														role="button" id="dropdownAction2"
+														data-bs-toggle="dropdown" aria-expanded="false"> <i
+														class="bi bi-three-dots-vertical"></i>
+													</a>
+													<!-- dropdown button -->
+													<ul
+														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded"
+														aria-labelledby="dropdownAction2">
+														<!-- 방 정보 사이트로 이동 버튼 만들기-->
+														<li><a class="dropdown-item" href="#"><i
+																class="bi bi-info-circle me-1"></i>room info</a></li>
+														
+													</ul>
+												</div>
 
-											<tr>
-												<th scope="col" class="border-0 rounded-start">#</th>
-												<th scope="col" class="border-0">reservation_id</th>
-												<th scope="col" class="border-0">reservation_name</th>
-												<th scope="col" class="border-0">check in-out</th>
-												<th scope="col" class="border-0">status</th>
-												<th scope="col" class="border-0">price</th>
-												<th scope="col" class="border-0">view</th>
-											</tr>
-										</thead>
+												<!-- Title -->
+												<h5 class="card-title mb-0 me-5">
+													<a href="hotel-detail.html">${listings.hanok_name}</a>
+												</h5>
+												<small><i class="bi bi-geo-alt me-2"></i>${listings.hanok_address}</small>
 
-
-
-
-										<!-- Table body START -->
-										<tbody class="border-top-0">
-											<!-- Table item -->
-											<c:forEach var="reservation" items="${reservations}">
-												<tr>
-													<td>
-														<h6 class="mb-0"></h6>
-													</td>
-													<td>
-														<h6 class="mb-0">
-															<a href="#">${reservation.reservations_id}</a>
-														</h6>
-													</td>
-													<td>${reservation.reservation_name}</td>
-													<td>${reservation.checkin}-${reservation.checkout}</td>
-													<td>
-														<div class="badge text-bg-success">${reservation.status}</div>
-													</td>
-													<td>
-														<div class="badge text-bg-success">${reservation.reservation_price}
-															won</div>
-													</td>
-													<!-- 아래에 View링크는 숙소 소개 페이지 -->
-													<td><a href="#" class="btn btn-sm btn-light mb-0">View</a>
-													</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-
-										<!-- Table body END -->
-									</table>
+												<!-- 가능 서비스 -->
+												<div
+													class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
+													<!-- Button -->
+													<div class="d-flex align-items-center">
+														
+														<span class="mb-0 me-2">${listings.hanok_serviceETC}</span>
+													</div>
+													
+													
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<!-- Hotel room list END -->
+								<!-- Listing item END -->
+
 							</div>
+							</c:forEach>
 							<!-- Card body END -->
-
-							<!-- Card footer START -->
-							<div class="card-footer pt-0">
-								<!-- Pagination and content -->
-								<div
-									class="d-sm-flex justify-content-sm-between align-items-sm-center">
-									<!-- Content -->
-									<p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8
-										of 20 entries</p>
-									<!-- Pagination -->
-									<nav class="mb-sm-0 d-flex justify-content-center"
-										aria-label="navigation">
-										<ul
-											class="pagination pagination-sm pagination-primary-soft mb-0">
-											<li class="page-item disabled"><a class="page-link"
-												href="#" tabindex="-1">Prev</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item active"><a class="page-link"
-												href="#">2</a></li>
-											<li class="page-item disabled"><a class="page-link"
-												href="#">..</a></li>
-											<li class="page-item"><a class="page-link" href="#">15</a></li>
-											<li class="page-item"><a class="page-link" href="#">Next</a>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-							<!-- Card footer END -->
 						</div>
 					</div>
 				</div>
-				<!-- Booking table END -->
-
-
+				<!-- Listing table END -->
 			</div>
-			<!-- Card body END -->
-
 		</section>
 		<!-- =======================
 Content END -->
 
-	</main>
+</main>
 	<!-- **************** MAIN CONTENT END **************** -->
+
 
 
 	<!-- Back to top -->

@@ -1,9 +1,9 @@
 package kr.co.hanokproject.owner;
 
+import java.util.List;
 import java.util.Map;
 
-import kr.co.hanokproject.owner.OwnerVO;
-import kr.co.hanokproject.customer.CustomerVO;
+
 
 public interface OwnerService {
 	Map<String, Object> list(OwnerVO vo);
@@ -15,6 +15,9 @@ public interface OwnerService {
 	boolean regist(OwnerVO vo);
 
 	OwnerVO detail(OwnerVO vo);
+	
+	// 회원정보 수정
+	int update(OwnerVO vo);
 
 
 

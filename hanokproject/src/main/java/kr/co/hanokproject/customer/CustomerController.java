@@ -1,13 +1,13 @@
 package kr.co.hanokproject.customer;
 
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@PropertySource("classpath:db.properties")
 public class CustomerController {
 	
 	@Autowired
@@ -56,11 +57,12 @@ public class CustomerController {
 
 	}
 	
-	@GetMapping("/hanok/hanok_list.do")
-	public String hanok_list() {
-		return "/hanok/hanok_list";
+	@GetMapping("/customer/mybookings.do")
+	public String mybookings() {
+		return "/customer/mybookings";
 
 	}
+	
 	
 	@GetMapping("/customer/regist.do")
 	   public void regist() {
@@ -113,19 +115,16 @@ public class CustomerController {
 			model.addAttribute("url",url);
 			return "common/alert";
 		}
-		
-		//내예약 정보 확인
-		@GetMapping("/customer/reservationinfo.do")
-		public String reservationinfo() {
-			return "/customer/reservationinfo";
-
-		}
 	
-	// 한옥 검색 - 미완 (민규)
+	
+	// 한옥 검색 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
     public String hanok_search(HttpServletRequest request, Model model) {
 		try {
 			int page = 1;
+	        if (request.getParameter("page") != null) {
+	            page = Integer.parseInt(request.getParameter("page"));
+	        }
 			String location = request.getParameter("location");
 			String checkInDate = request.getParameter("checkInDate");
 			String checkOutDate = request.getParameter("checkOutDate");
@@ -141,14 +140,13 @@ public class CustomerController {
 			Map<String, Object> hanokData = service.searchHanok(customerVO);
 			
 			model.addAttribute("map", hanokData);
+			model.addAttribute("currentPage", page); // 현재 페이지 설정
 			
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-
     		return "/hanok/hanok_list";
-    }
-  
+    }  
     
 	// 한옥 상세(예약)페이지 - 미완 (민규)
     @GetMapping("/hanok/hanok_detail.do")
@@ -171,15 +169,16 @@ public class CustomerController {
         return "/hanok/hanok_detail";
     }
     
-    // 임시(민규)
+    // 한옥 예약 확인 - 미완(민규)
     @GetMapping("/hanok/hanok_booking_confirm.do")
     public String hanokBookingConfirm() {
         return "/hanok/hanok_booking_confirm";
     }
     
-    // 임시(민규)
+    // 한옥 예약 확정 - 미완(민규)
     @GetMapping("/hanok/hanok_booking.do")
     public String hanokBooking() {
         return "/hanok/hanok_booking";
     }
+    
 }
