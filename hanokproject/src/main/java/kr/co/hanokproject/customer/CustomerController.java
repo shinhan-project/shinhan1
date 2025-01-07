@@ -57,11 +57,7 @@ public class CustomerController {
 
 	}
 	
-	@GetMapping("/customer/mybookings.do")
-	public String mybookings() {
-		return "/customer/mybookings";
-
-	}
+	
 	
 	
 	@GetMapping("/customer/regist.do")
