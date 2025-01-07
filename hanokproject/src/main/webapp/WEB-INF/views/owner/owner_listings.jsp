@@ -260,29 +260,11 @@ Content START -->
 											<div
 												class="card-body position-relative d-flex flex-column p-0 h-100">
 
-												<!-- Buttons -->
-												<div
-													class="list-inline-item dropdown position-absolute top-0 end-0">
-													<!-- Share button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction2"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown button -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded"
-														aria-labelledby="dropdownAction2">
-														<!-- 방 정보 사이트로 이동 버튼 만들기-->
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-1"></i>room info</a></li>
-														
-													</ul>
-												</div>
+												
 
 												<!-- Title -->
 												<h5 class="card-title mb-0 me-5">
-													<a href="hotel-detail.html">${listings.hanok_name}</a>
+													<a href="/owner/owner_rooms.do?hanok_id=${listings.hanok_id}">${listings.hanok_name}</a>
 												</h5>
 												<small><i class="bi bi-geo-alt me-2"></i>${listings.hanok_address}</small>
 

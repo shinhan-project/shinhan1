@@ -2,6 +2,9 @@ package kr.co.hanokproject.reservation;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface ReservationService {
 
 	List<ReservationVO> getOwnerReservations(int owner_id);

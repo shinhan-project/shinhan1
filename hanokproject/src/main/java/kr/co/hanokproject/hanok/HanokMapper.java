@@ -12,4 +12,8 @@ public interface HanokMapper {
 	// 특정 사업장의 예약 목록을 조회
     List<HanokVO> getHanokListings(int owner_id);
 
+	HanokVO getHanokById(int hanok_id);
+
+	
+
 }
