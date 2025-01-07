@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,18 +164,10 @@ Page content START -->
 									<div class="col-sm-6 col-md-9">
 										<div class="card-body pt-3 pt-sm-0 p-0">
 											<!-- Title -->
-											<h5 class="card-title"><a href="#">${reservations.hanok_name}</a></h5>
-											<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i>5855 W Century Blvd, Los Angeles - 90045</p>
+											<h5 class="card-title"><a href="#">${reservations.room_name}</a></h5>
+											<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i>${reservations.hanok_name}</p>
 
-											<!-- Rating star -->
-											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-												<li class="list-inline-item ms-2 h6 small fw-bold mb-0">4.5/5.0</li>
-											</ul>
+											
 										</div>
 									</div>
 
@@ -188,8 +181,13 @@ Page content START -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">Check-in</h6>
-										<h5 class="mb-1">4 March 2022</h5>
-										<small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+										
+										<h5>
+								<fmt:formatDate value="${reservations.checkin}" pattern="yyyy-MM-dd"/>
+							</h5>
+							<fmt:setLocale value="en"/>
+										<small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservations.checkin}" pattern="hh:mm a"/>
+										</small>
 									</div>
 								</div>
 
@@ -197,18 +195,20 @@ Page content START -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">Check out</h6>
-										<h5 class="mb-1">8 March 2022</h5>
-										<small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+										
+										<h5 class="mb-1">
+											<fmt:formatDate value="${reservations.checkin}" pattern="yyyy-MM-dd"/>
+										</h5>
+										<fmt:setLocale value="en"/>
+										<small><i class="bi bi-alarm me-1"></i>
+										<fmt:formatDate value="${reservations.checkin}" pattern="hh:mm a"/>
+										</small>
 									</div>
 								</div>
 
 								<!-- Item -->
 								<div class="col-lg-4">
-									<div class="bg-light py-3 px-4 rounded-3">
-										<h6 class="fw-light small mb-1">Rooms & Guests</h6>
-										<h5 class="mb-1">2 G - 1 R</h5>
-										<small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small>
-									</div>
+									
 								</div>
 							</div>
 							<!-- Information END -->
@@ -243,7 +243,7 @@ Page content START -->
 					<div class="card shadow">
 						<!-- Card header -->
 						<div class="card-header border-bottom p-4">
-							<h4 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>Guest Details</h4>
+							<h4 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>Customer Details</h4>
 						</div>
 							
 						<!-- Card body START -->
@@ -253,7 +253,7 @@ Page content START -->
 								<!-- Title -->
 								<div class="col-12">
 									<div class="bg-light rounded-2 px-4 py-3">
-										<h6 class="mb-0">${customer_name }</h6>
+										<h6 class="mb-0">${reservations.customer_name }</h6>
 									</div>
 								</div>
 								
@@ -428,15 +428,9 @@ Page content START -->
 												<div class="col-md-6">
 													<label class="form-label"><span class="h6 fw-normal">Expiration date *</span></label>
 													<div class="input-group">
-														<input type="text" class="form-control" maxlength="2" placeholder="Month">
-														<input type="text" class="form-control" maxlength="4" placeholder="Year">
 													</div>
 												</div>	
-												<!--Cvv code  -->
-												<div class="col-md-6">
-													<label class="form-label"><span class="h6 fw-normal">CVV / CVC *</span></label>
-													<input type="text" class="form-control" maxlength="3" placeholder="xxx">
-												</div>
+												
 												<!-- Card name -->
 												<div class="col-12">
 													<label class="form-label"><span class="h6 fw-normal">Name on Card *</span></label>
@@ -599,8 +593,8 @@ Page content START -->
 							<div class="card-body">
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="h6 fw-light mb-0">Room Charges</span>
-										<span class="fs-5">$28,660</span>
+										<span class="h6 fw-light mb-0">You already Payed</span>
+										<span class="fs-5">${reservations.reservation_price }won</span>
 									</li>
 									
 								</ul>
@@ -609,8 +603,8 @@ Page content START -->
 							<!-- Card footer -->
 							<div class="card-footer border-top">
 								<div class="d-flex justify-content-between align-items-center">
-									<span class="h5 mb-0">Payable Now</span>
-									<span class="h5 mb-0">$22,500</span>
+									<span class="h5 mb-0"></span>
+									
 								</div>
 							</div>
 						</div>

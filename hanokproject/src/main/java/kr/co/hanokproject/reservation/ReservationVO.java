@@ -25,7 +25,7 @@ public class ReservationVO {
     private String room_name;
     private String hanok_imgName;
     
-
+    private String customer_name;
     
 }
 
