@@ -183,7 +183,7 @@ Search END -->
 					            </div>
 					            <div class="card-body px-3">
 					                <h5 class="card-title mb-0">
-					                    <a href="/hanok_detail.do?hanokId=${customerVO.hanok_id}" class="stretched-link">
+					                    <a href="/hanok/hanok_detail.do?hanok_id=${customerVO.hanok_id}&location=${param.location}&checkInDate=${param.checkIn}&checkOutDate=${param.checkOut}&capacity=${param.capacity}" class="stretched-link">
 					                        ${customerVO.hanokName}
 					                    </a>
 					                </h5>
@@ -198,7 +198,7 @@ Search END -->
 					                        <small>/per night</small>
 					                    </div>
 					                    <div class="mt-2 mt-sm-0">
-					                        <a href="/hanok_detail.do?hanokId=${customerVO.hanok_id}" class="btn btn-sm btn-primary mb-0">View Details</a>
+					                        <a href="/hanok/hanok_detail.do?hanok_id=${customerVO.hanok_id}&location=${param.location}&checkInDate=${param.checkIn}&checkOutDate=${param.checkOut}&capacity=${param.capacity}" class="btn btn-sm btn-primary mb-0">View Details</a>
 					                    </div>
 					                </div>
 					            </div>

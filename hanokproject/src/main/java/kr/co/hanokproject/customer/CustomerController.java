@@ -1,6 +1,7 @@
 package kr.co.hanokproject.customer;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -148,24 +149,28 @@ public class CustomerController {
     		return "/hanok/hanok_list";
     }
     
-	// 한옥 상세(예약)페이지 - 미완 (민규)
+	// 한옥 상세(예약)페이지 (민규)
     @GetMapping("/hanok/hanok_detail.do")
-    public String hanokDetail() {
-
-//        // 한옥 정보 가져오기
-//        CustomerVO hanokDetail = service.getHanokDetail(hanokId);
-//
-//        // 방 리스트 가져오기
-//        List<CustomerVO> roomList = service.getRoomList(hanokId);
-//
-//        // 리뷰 리스트 가져오기
-//        List<CustomerVO> reviewList = service.getReviews(hanokId);
-//
-//        // 모델에 데이터 저장
-//        model.addAttribute("hanokDetail", hanokDetail);
-//        model.addAttribute("roomList", roomList);
-//        model.addAttribute("reviewList", reviewList);
-
+    public String hanokDetail(@RequestParam("hanok_id") int hanok_id, @RequestParam(value = "location", required = false) String location, @RequestParam(value = "checkInDate", required = false) String checkInDate, @RequestParam(value = "checkOutDate", required = false) String checkOutDate, @RequestParam(value = "capacity", required = false) String capacity, Model model) {
+    	// 한옥 정보 및 객실 정보 가져오기
+        Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
+        String hanok_imgName = service.getHanokImg(hanok_id);
+        
+        // 디버깅 로그
+        System.out.println("hanok_id: " + hanok_id);
+        System.out.println("location: " + location);
+        System.out.println("checkInDate: " + checkInDate);
+        System.out.println("checkOutDate: " + checkOutDate);
+        System.out.println("capacity: " + capacity);
+        
+        // 모델에 데이터 추가
+        model.addAttribute("map", hanokDetailMap);
+        model.addAttribute("hanok_imgName", hanok_imgName);
+        model.addAttribute("location", location);
+        model.addAttribute("checkInDate", checkInDate);
+        model.addAttribute("checkOutDate", checkOutDate);
+        model.addAttribute("capacity", capacity);
+        
         return "/hanok/hanok_detail";
     }
     

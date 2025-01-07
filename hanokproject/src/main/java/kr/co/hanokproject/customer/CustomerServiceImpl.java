@@ -76,20 +76,49 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	@Override
-    public CustomerVO getHanokDetail(int hanokId) {
-        // 한옥 상세 정보를 Mapper에서 가져옴
-        return mapper.getHanokDetail(hanokId);
+    public Map<String, Object> getHanokDetail(int hanok_id) {
+        // 한옥 상세 정보
+		CustomerVO hanokVO = mapper.getHanokInfo(hanok_id);
+		
+		// 한옥 이미지 정보
+		String hanokImg = mapper.getHanokImg(hanok_id);
+		
+        // 객실 목록
+        List<CustomerVO> roomList = mapper.getRoomList(hanok_id);
+
+        // 객실 이미지
+        Map<Integer, List<CustomerVO>> roomImgMap = new HashMap<>();
+        for (CustomerVO room : roomList) {
+            List<CustomerVO> roomImgList = mapper.getRoomImages(room.getRoom_id());
+            roomImgMap.put(room.getRoom_id(), roomImgList);
+        }
+
+        // 결과 맵 구성
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("hanokInfo", hanokVO);
+        resultMap.put("hanokImg", hanokImg);
+        resultMap.put("roomList", roomList);
+        resultMap.put("roomImgMap", roomImgMap);
+
+        return resultMap;
     }
 
     @Override
-    public List<CustomerVO> getRoomList(int hanokId) {
-        // 한옥의 방 리스트를 Mapper에서 가져옴
-        return mapper.getRoomList(hanokId);
-    }
-
-    @Override
-    public List<CustomerVO> getReviews(int hanokId) {
+    public List<CustomerVO> getReviews(int hanok_id) {
         // 한옥의 리뷰 리스트를 Mapper에서 가져옴
-        return mapper.getReviews(hanokId, 3); // 최대 3개의 리뷰만 가져옴
+        return mapper.getReviews(hanok_id, 3); // 최대 3개의 리뷰만 가져옴
     }
+
+	@Override
+	public String getHanokImg(int hanok_id) {
+		// 한옥 아이디로 한옥 이미지 한 장 가져옴
+		return mapper.getHanokImg(hanok_id);
+	}
+
+	@Override
+	public List<CustomerVO> getRoomList(int hanok_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
