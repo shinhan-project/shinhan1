@@ -56,4 +56,10 @@ public class ReservationServiceImpl implements ReservationService {
 		return mapper.getCustomerReservations(customer_id);
 	}
 
+	@Override
+	public ReservationVO getReservationById(ReservationVO reservations) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

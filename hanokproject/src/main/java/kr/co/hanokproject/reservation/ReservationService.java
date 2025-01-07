@@ -21,4 +21,7 @@ public interface ReservationService {
     // 예약 정보 조회
     ReservationVO getReservationById(int reservation_id);
 
+	ReservationVO getReservationById(ReservationVO reservations);
+
+    
 }

@@ -85,7 +85,23 @@
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+<style>
+.fixed-image {
+    width: 400px;  /* 너비 고정 */
+    height: 200px; /* 높이 고정 */
+    object-fit: cover; /* 비율 유지하면서 크기 맞춤 */
+}
 
+.adjust-right {
+    position: relative;
+    left: 10px; /* 원하는 만큼 조정 */
+}
+
+.move-left {
+    position: relative;
+    left: -70px; /* 원하는 거리 */
+}
+</style>
 </head>
 
 <body class="dashboard">
@@ -139,7 +155,7 @@ Content START -->
 										<a class="nav-link" href="profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" href="customerreservations.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
+										<a class="nav-link active" href="mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
@@ -186,25 +202,57 @@ Content START -->
 
 							<!-- Tab content item START -->
 							<div class="tab-pane fade show active" id="tab-1">
-								<h6>Completed booking (2)</h6>
+								<c:forEach items="${reservations}" var="reservation">
+								<h6 class="fs-7" style="margin-left: 10px;">Reservation No. ${reservation.reservations_id}</h6>
                 <!-- Card item START -->
                
 					<div class="card shadow p-2">
 						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5">
-								<img src="/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
+						
+						<div class="d-flex align-items-center">
+						<div class="col-md-7 adjust-right">
+								<img src="/images/hanoks/${reservation.hanok_imgName}" class="card-img rounded-2 fixed-image" alt="Card image" style="width: 70%;">
+									
 							</div>
-							
 							<div>
-							<c:forEach items="${reservations}" var="reservation">
-							<h5 class="mb-1">${reservation.reservations_id}</h5>
-							<h5 class="mb-1">${reservation.hanok_name}</h5>
-							<h5 class="mb-1">${reservation.room_name}</h5>
-							<h5 class="mb-1">${reservation.checkin}</h5>
-							<h5 class="mb-1">${reservation.checkout}</h5>
-							</c:forEach>
+						<h5 class="card-title mb-1 move-left" style="margin-left: 10px; margin-right: 10px; width: fit-content;"><a href="#">${reservation.hanok_name}</a></h5>
+						<p class="small mb-1 text-end fs-6 move-left" style="margin-left: 10px; margin-right: 10px; width: fit-content;"><i class="bi bi-house-door me-2"></i>${reservation.room_name}</p>
+							</div></div><!-- Information START -->
+							<div class="row g-3">
+							    <!-- Item: Check-in -->
+							    <div class="col-lg-6">
+							        <div class="bg-light py-3 px-4 rounded-3 text-center">
+							            <h6 class="fw-light small mb-2">Check-in</h6>
+							            <h5 class="mb-2">${reservation.checkin}</h5>
+							            <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+							        </div>
+							    </div>
+
+								<!-- Item -->
+								 <div class="col-lg-6">
+							       	 <div class="bg-light py-3 px-4 rounded-3 text-center">
+							            <h6 class="fw-light small mb-2">Check-out</h6>
+							            <h5 class="mb-2">${reservation.checkout}</h5>
+							            <small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+							        </div>
+							    </div>
+
+								<!-- Item -->
+								<div class="col-lg-4">
+									
+								</div>
 							</div>
+								 <c:if test="${!status.last}">
+								 <div style="display: flex; gap: 10px; justify-content: flex-end;">
+ 					<a href="/${reservation.reservations_id}/bookingdetail.do" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">View Details</a>
+					<a href="" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
+
+</div>
+	               					 <hr style="margin-top: 20px; margin-bottom: 20px;">
+	           					 </c:if>
+							<!-- Information END -->
+							</c:forEach>
+							
 							
 								</div>
 								<!-- Card item END -->

@@ -56,12 +56,6 @@ public class CustomerController {
 
 	}
 	
-	@GetMapping("/customer/mybookings.do")
-	public String mybookings() {
-		return "/customer/mybookings";
-
-	}
-	
 	@GetMapping("/hanok/hanok_list.do")
 	public String hanok_list() {
 		return "/hanok/hanok_list";
