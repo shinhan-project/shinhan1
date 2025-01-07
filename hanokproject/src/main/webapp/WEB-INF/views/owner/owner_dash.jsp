@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Owner DashBoard Page</title>
 
@@ -40,101 +40,7 @@
 </head>
 
 <body>
-	<!-- 사장님헤더 -->
-	<c:if test="${empty ownerloginInfo}">
-
-		<!-- Header START -->
-		<header class="navbar-light header-sticky">
-			<!-- Logo Nav START -->
-			<nav class="navbar navbar-expand-xl">
-				<div class="container">
-					<!-- Logo START -->
-					<a class="navbar-brand" href="index.do"> <img
-						class="light-mode-item navbar-brand-item"
-						src="/images/gojeuneoklogo.png" alt="logo">
-
-					</a>
-					<!-- Logo END -->
-
-					<!-- Responsive navbar toggler -->
-					<button class="navbar-toggler ms-auto mx-3 me-md-0 p-0 p-sm-2"
-						type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-animation"> <span></span> <span></span>
-							<span></span>
-						</span>
-					</button>
-					<!-- Main navbar START -->
-					<div class="navbar-collapse collapse" id="navbarCollapse">
-						<ul class="navbar-nav navbar-nav-scroll">
-
-							<!-- Nav item Contact -->
-							<li class="nav-item"><a class="nav-link"
-								href="/owner/owner_dash.do">Myhanoks</a></li>
-						</ul>
-					</div>
-					<!-- Main navbar END -->
-
-					<!-- Profile and Notification START -->
-					<ul
-						class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-
-
-
-						<!-- Profile dropdown START -->
-						<li class="nav-item ms-3 dropdown">
-							<!-- Avatar --> <a class="avatar avatar-xs p-0" href="#"
-							id="profileDropdown" role="button" data-bs-auto-close="outside"
-							data-bs-display="static" data-bs-toggle="dropdown"
-							aria-expanded="false"> <img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="avatar">
-						</a> <!-- Profile dropdown START -->
-							<ul
-								class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-								aria-labelledby="profileDropdown">
-								<!-- Profile info -->
-								<li class="px-3 mb-3">
-									<div class="d-flex align-items-center">
-										<!-- Avatar -->
-										<div class="avatar me-3">
-											<img class="avatar-img rounded-circle shadow"
-												src="/images/avatar/01.jpg" alt="avatar">
-										</div>
-										<div>
-											<a class="h6 mt-2 mt-sm-0" href="#">visitor</a>
-											<p class="small m-0">example@gmail.com</p>
-										</div>
-									</div>
-								</li>
-
-								<!-- Links -->
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-
-								<li><a class="dropdown-item bg-danger-soft-hover"
-									href="/owner/owner_login.do"><i
-										class="bi bi-power fa-fw me-2"></i>Sign in</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-
-							</ul> <!-- Profile dropdown END -->
-						</li>
-						<!-- Profile dropdown END -->
-
-
-					</ul>
-					<!-- Profile and Notification START -->
-
-				</div>
-			</nav>
-			<!-- Logo Nav END -->
-		</header>
-		<!-- Header END -->
-	</c:if>
-
+	
 	<!-- 사장님헤더 -->
 	<c:if test="${!empty ownerloginInfo}">
 		<!-- Header START -->
@@ -143,7 +49,7 @@
 			<nav class="navbar navbar-expand-xl">
 				<div class="container">
 					<!-- Logo START -->
-					<a class="navbar-brand" href="index.do"> <img
+					<a class="navbar-brand" href="/index.do"> <img
 						class="light-mode-item navbar-brand-item"
 						src="/images/gojeuneoklogo.png" alt="logo">
 
@@ -230,13 +136,12 @@
 			<!-- Logo Nav END -->
 		</header>
 		<!-- Header END -->
-	</c:if>
+	
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
 
-		<!-- =======================
-Menu item START -->
+		<!-- ======================= Menu item START -->
 		<section class="pt-4">
 			<div class="container">
 				<div class="card rounded-3 border p-3 pb-2">
@@ -284,8 +189,9 @@ Menu item START -->
 									<li class="nav-item"><a class="nav-link"
 										href="agent-reviews.html"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
-									<li><a class="nav-link" href="#"><i
-											class="bi bi-gear fa-fw me-1"></i>Settings</a></li>
+									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+									<li><a class="nav-link" href="/owner/owner_profile.do"><i
+											class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
 								</ul>
 							</div>
@@ -294,7 +200,9 @@ Menu item START -->
 					<!-- Nav links END -->
 				</div>
 			</div>
+			
 		</section>
+		</c:if>
 		<!-- =======================
 Menu item END -->
 
@@ -383,7 +291,7 @@ Content START -->
 							<div class="card-header border-bottom">
 								<div
 									class="d-sm-flex justify-content-between align-items-center">
-									<h5 class="mb-2 mb-sm-0">Total Bookings</h5>
+									<h5 class="mb-2 mb-sm-0">Upcoming Bookings</h5>
 									<a href="#" class="btn btn-sm btn-primary mb-0">View All</a>
 								</div>
 							</div>
@@ -429,7 +337,7 @@ Content START -->
 														</h6>
 													</td>
 													<td>${reservation.reservation_name}</td>
-													<td>${reservation.checkin}- ${reservation.checkout}</td>
+													<td>${reservation.checkin}-${reservation.checkout}</td>
 													<td>
 														<div class="badge text-bg-success">${reservation.status}</div>
 													</td>
@@ -484,7 +392,7 @@ Content START -->
 				</div>
 				<!-- Booking table END -->
 
-				
+
 			</div>
 			<!-- Card body END -->
 

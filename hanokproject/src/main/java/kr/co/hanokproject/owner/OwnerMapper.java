@@ -5,8 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import kr.co.hanokproject.customer.CustomerVO;
-import kr.co.hanokproject.owner.OwnerVO;
+
 
 @Mapper
 public interface OwnerMapper {
@@ -18,5 +17,9 @@ public interface OwnerMapper {
 	// 회원 가입
 	int regist(OwnerVO vo);
 
+	// 사장정보 조회
 	OwnerVO detail(OwnerVO vo);
+
+	// 사장장정보 수정
+	int update(OwnerVO vo);
 }

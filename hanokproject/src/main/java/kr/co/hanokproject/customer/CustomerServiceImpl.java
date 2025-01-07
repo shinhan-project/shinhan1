@@ -26,13 +26,13 @@ public class CustomerServiceImpl implements CustomerService {
 	      
 	      return mapper.regist(vo) == 0 ? false : true;
 	   }
-	
+	//정보 조회
 	@Override
 	   public CustomerVO detail(CustomerVO vo) {
 	      return mapper.detail(vo);
 	   }
 
-	
+	//정보 수정
 	   @Override
 	   public int update(CustomerVO vo) {
 	      return mapper.update(vo);
@@ -47,11 +47,11 @@ public class CustomerServiceImpl implements CustomerService {
 	// 한옥 검색
 	@Override
 	public Map<String, Object> searchHanok(CustomerVO customerVO) {
-		System.out.println("log : getHanokWithPagenation");
+		System.out.println("log : searchHanok");
 		int count = mapper.count(customerVO); // 총개수
         // 총페이지수
-		int totalPage = (int) Math.ceil(count / 6.0);
-		customerVO.setStartIdx((customerVO.getPage() - 1) * 6);
+		int totalPage = count / 6;
+        if (count % 6 > 0) totalPage++;
         
 		List<CustomerVO> list = mapper.searchHanok(customerVO);
 			
@@ -59,25 +59,66 @@ public class CustomerServiceImpl implements CustomerService {
 	    map.put("count", count);
 	    map.put("totalPage", totalPage);
 	    map.put("list", list);
+	    
+	    int endPage = (int)(Math.ceil(customerVO.getPage()/6.0)*6);
+        int startPage = endPage - 5;
+        if (endPage > totalPage) endPage = totalPage;
+        boolean isPrev = startPage > 1;
+        boolean isNext = endPage < totalPage;
+        map.put("endPage", endPage);
+        map.put("startPage", startPage);
+        map.put("isPrev", isPrev);
+		map.put("isNext", isNext);
+		map.put("currentPage", customerVO.getPage());
+//		map.put("startIdx", customerVO.getStartIdx());
 
 	    return map;
 	}
 	
 	@Override
-    public CustomerVO getHanokDetail(int hanokId) {
-        // 한옥 상세 정보를 Mapper에서 가져옴
-        return mapper.getHanokDetail(hanokId);
+    public Map<String, Object> getHanokDetail(int hanok_id) {
+        // 한옥 상세 정보
+		CustomerVO hanokVO = mapper.getHanokInfo(hanok_id);
+		
+		// 한옥 이미지 정보
+		String hanokImg = mapper.getHanokImg(hanok_id);
+		
+        // 객실 목록
+        List<CustomerVO> roomList = mapper.getRoomList(hanok_id);
+
+        // 객실 이미지
+        Map<Integer, List<CustomerVO>> roomImgMap = new HashMap<>();
+        for (CustomerVO room : roomList) {
+            List<CustomerVO> roomImgList = mapper.getRoomImages(room.getRoom_id());
+            roomImgMap.put(room.getRoom_id(), roomImgList);
+        }
+
+        // 결과 맵 구성
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("hanokInfo", hanokVO);
+        resultMap.put("hanokImg", hanokImg);
+        resultMap.put("roomList", roomList);
+        resultMap.put("roomImgMap", roomImgMap);
+
+        return resultMap;
     }
 
     @Override
-    public List<CustomerVO> getRoomList(int hanokId) {
-        // 한옥의 방 리스트를 Mapper에서 가져옴
-        return mapper.getRoomList(hanokId);
-    }
-
-    @Override
-    public List<CustomerVO> getReviews(int hanokId) {
+    public List<CustomerVO> getReviews(int hanok_id) {
         // 한옥의 리뷰 리스트를 Mapper에서 가져옴
-        return mapper.getReviews(hanokId, 3); // 최대 3개의 리뷰만 가져옴
+        return mapper.getReviews(hanok_id, 3); // 최대 3개의 리뷰만 가져옴
     }
+
+	@Override
+	public String getHanokImg(int hanok_id) {
+		// 한옥 아이디로 한옥 이미지 한 장 가져옴
+		return mapper.getHanokImg(hanok_id);
+	}
+
+	@Override
+	public List<CustomerVO> getRoomList(int hanok_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

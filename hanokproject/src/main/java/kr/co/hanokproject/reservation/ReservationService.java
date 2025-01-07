@@ -6,6 +6,8 @@ public interface ReservationService {
 
 	List<ReservationVO> getOwnerReservations(int owner_id);
 	
+	List<ReservationVO> getCustomerReservations(int customer_id);
+
 	
 	// 특정 사업장의 예약 개수 조회
     int getReservationCount(int owner_id);
@@ -18,4 +20,8 @@ public interface ReservationService {
     
     // 예약 정보 조회
     ReservationVO getReservationById(int reservation_id);
+
+	ReservationVO getReservationById(ReservationVO reservations);
+
+    
 }

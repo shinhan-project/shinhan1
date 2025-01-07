@@ -1,5 +1,8 @@
 package kr.co.hanokproject.room;
 
+import lombok.Data;
+
+@Data
 public class RoomVO {
 
 	//객실

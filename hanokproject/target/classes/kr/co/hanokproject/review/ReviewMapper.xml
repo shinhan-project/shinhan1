@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.hanokproject.review.ReviewMapper">
+    
+    <!-- 리뷰 등록 -->
+    <insert id="insertReview" parameterType="kr.co.hanokproject.review.ReviewVO">
+        INSERT INTO REVIEWS 
+        (reservations_id, customer_id, hanok_id, room_id, review_title, review_content, rating, review_date)
+        VALUES 
+        (#{reservations_id}, #{customer_id}, #{hanok_id}, #{room_id}, #{review_title}, #{review_content}, #{rating}, NOW());
+    </insert>
+    
+    <!-- 특정 객실 리뷰 조회 -->
+    <select id="getReviewsByRoom" parameterType="int" resultType="kr.co.hanokproject.review.ReviewVO">
+        SELECT * FROM REVIEWS WHERE room_id = #{room_id} ORDER BY review_date DESC;
+    </select>
+    
+    <!-- 특정 고객 리뷰 조회 -->
+    <select id="getReviewsByCustomer" parameterType="int" resultType="kr.co.hanokproject.review.ReviewVO">
+        
+        SELECT r.*, h.hanok_name 
+        FROM REVIEWS r
+        JOIN HANOKS h ON r.hanok_id = h.hanok_id
+        WHERE r.customer_id = #{customer_id}
+        ORDER BY r.review_date DESC;
+        
+    </select>
+    
+    <select id="count" parameterType="kr.co.hanokproject.review.ReviewVO" resultType="int">
+		SELECT COUNT(*) FROM REVIEWS;
+		
+	</select>
+	
+	
+
+	
+
+</mapper>

@@ -26,35 +26,35 @@
 	
 	<!-- 한옥 검색 조건절 -->
 	<sql id="searchSql">
-	    <where>
-	        <trim prefixOverrides="AND">
-	            <if test="location != null and location != ''">
-	                h.hanok_name LIKE CONCAT('%', #{location}, '%')
-	            </if>
-	            <if test="checkInDate != null and checkOutDate != null">
-	                NOT EXISTS (
-	                    SELECT 1
-	                    FROM reservations res
-	                    WHERE res.room_id = r.room_id
-	                    AND (
-	                        res.checkin BETWEEN #{checkInDate} AND #{checkOutDate}
-	                        OR res.checkout BETWEEN #{checkInDate} AND #{checkOutDate}
-	                    )
-	                )
-	            </if>
-	            <if test="capacity != null and capacity != ''">
-	                r.max_capacity &gt;= #{capacity}
-	            </if>
-	        </trim>
-	    </where>
+	    where 1=1
+        	<if test="capacity != null and capacity != ''">
+                AND r.max_capacity &gt;= CONVERT(#{capacity}, UNSIGNED)
+            </if>
+            <if test="location != null and location != ''">
+                AND h.hanok_address LIKE CONCAT('%', #{location}, '%')
+            </if>
+            <if test="checkInDate != null and checkOutDate != null">
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM reservations res
+                    WHERE res.room_id = r.room_id
+                    AND (
+                        res.checkin BETWEEN STR_TO_DATE(#{checkInDate}, '%Y-%m-%d') AND STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d')
+                        OR res.checkout BETWEEN STR_TO_DATE(#{checkInDate}, '%Y-%m-%d') AND STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d')
+                    )
+                )
+            </if>
+            AND h.hanok_status = 2
 	</sql>
 
 	<!-- 한옥 검색 -->
 	<select id="searchHanok" parameterType="kr.co.hanokproject.customer.CustomerVO" resultType="kr.co.hanokproject.customer.CustomerVO">
         SELECT
-        	ri.image_url AS roomImage,
+        	MIN(ri.room_imgName) AS roomImage,
 		    h.hanok_name AS hanokName,
-		    MIN(r.room_price) AS roomPrice 
+		    r.room_name AS roomName,
+		    r.room_price AS roomPrice,
+		    h.hanok_id AS hanok_id 
         FROM 
 		    HANOKS h
 		JOIN 
@@ -64,14 +64,14 @@
 		LEFT JOIN 
 		    RESERVATIONS res ON r.room_id = res.room_id
 		    	AND (
-	                res.checkin &gt;= #{checkOutDate} 
-	                OR res.checkout &lt;= #{checkInDate}
+	                res.checkin &gt;= STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d') 
+	                OR res.checkout &lt;= STR_TO_DATE(#{checkInDate}, '%Y-%m-%d')
             	)
 		<include refid="searchSql"/>
 		GROUP BY 
-		    r.room_id, ri.image_url, h.hanok_name
+		    h.hanok_name, r.room_name, r.room_price, h.hanok_id
 	    ORDER BY 
-        	MIN(r.room_price) ASC
+        	r.room_price ASC
 		LIMIT 6 OFFSET #{startIdx}
     </select>
     
@@ -87,40 +87,65 @@
 		LEFT JOIN 
 		    RESERVATIONS res ON r.room_id = res.room_id
 		    	AND (
-	                res.checkin &gt;= #{checkOutDate} 
-	                OR res.checkout &lt;= #{checkInDate}
+	                res.checkin &gt;= STR_TO_DATE(#{checkOutDate}, '%Y-%m-%d') 
+	                OR res.checkout &lt;= STR_TO_DATE(#{checkInDate}, '%Y-%m-%d')
             	)	
 		<include refid="searchSql"/>
 	</select>
 	
 	<select id="getHanokDetail" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
 	    SELECT 
-	        hanok_name AS hanokName,
-	        hanok_description AS hanokDescription
+	    	hanok_id,
+	    	owner_id,
+	    	hanok_name,
+	    	hanok_tel,
+	    	hanok_address,
+	    	hanok_url,
+	    	hanok_description,
+	    	hanok_serviceETC,
+	        hanok_name,
+	        hanok_description,
+	        hanok_score
 	    FROM HANOKS
-	    WHERE hanok_id = #{hanokId}
+	    WHERE hanok_id = #{hanok_id}
 	</select>
 	
-	<select id="getRoomList" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+	<select id="getReviews" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
 	    SELECT 
-	        room_name AS roomName,
-	        room_price AS roomPrice,
-	        room_size AS roomSize,
-	        max_capacity AS maxCapacity,
-	        room_imgName AS roomImage
-	    FROM ROOMS
-	    WHERE hanok_id = #{hanokId}
-	</select>
-	
-	<select id="getReviews" parameterType="map" resultType="kr.co.hanokproject.customer.CustomerVO">
-	    SELECT 
-	        review_title AS reviewTitle,
-	        review_content AS reviewContent,
-	        review_date AS reviewDate,
+	    	review_id,
+	        review_title,
+	        review_content,
+	        review_date,
 	        rating
 	    FROM REVIEWS
-	    WHERE hanok_id = #{hanokId}
+	    WHERE hanok_id = #{hanok_id}
 	    ORDER BY review_date DESC
 	    LIMIT #{limit}
 	</select>
+	
+	<select id="getHanokImg" parameterType="int" resultType="String">
+		SELECT MIN(hanok_imgName) FROM HANOK_IMAGES WHERE hanok_id = #{hanok_id}
+	</select>
+
+	<select id="getRoomImg" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+		SELECT
+			hi.hanok_imgName AS hanok_imgName
+		FROM HANOKS h JOIN HANOK_IMAGES hi ON h.hanok_id = hi.hanok_id
+		LIMIT 1
+	</select>
+	
+	<!-- 한옥 상세 정보 -->
+    <select id="getHanokInfo" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+        SELECT * FROM HANOKS WHERE hanok_id = #{hanok_id}
+    </select>
+
+    <!-- 객실 목록 -->
+    <select id="getRoomList" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+        SELECT * FROM ROOMS WHERE hanok_id = #{hanok_id}
+    </select>
+
+    <!-- 객실 이미지 -->
+    <select id="getRoomImages" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+        SELECT * FROM ROOM_IMAGES WHERE room_id = #{room_id}
+    </select>
 </mapper>

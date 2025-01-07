@@ -1,10 +1,7 @@
 package kr.co.hanokproject.customer;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
-import kr.co.hanokproject.customer.CustomerVO;
 
 public interface CustomerService {
 
@@ -15,7 +12,7 @@ public interface CustomerService {
 
 	// 회원가입
 	boolean regist(CustomerVO vo);
-
+	
 	CustomerVO detail(CustomerVO vo);
 
 	// 회원정보 수정
@@ -25,12 +22,16 @@ public interface CustomerService {
 	Map<String, Object> searchHanok(CustomerVO customerVO);
 
 	// 한옥 상세 정보 조회
-	CustomerVO getHanokDetail(int hanokId);
-
+	Map<String, Object> getHanokDetail(int hanok_id);
+	
+	// 한옥 사진 조회
+	String getHanokImg(int hanok_id);
+	
 	// 한옥에 연결된 방 리스트 조회
-	List<CustomerVO> getRoomList(int hanokId);
+	List<CustomerVO> getRoomList(int hanok_id);
 
 	// 한옥에 연결된 리뷰 리스트 조회
 	List<CustomerVO> getReviews(int hanokId);
+
 
 }

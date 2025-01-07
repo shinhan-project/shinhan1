@@ -17,5 +17,6 @@ public interface ReservationMapper {
     int getReservationReviewCount(int owner_id);
     
     ReservationVO getReservationById(int reservation_id);
+    
+    List<ReservationVO> getCustomerReservations(int customer_id);
 }
-

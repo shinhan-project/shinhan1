@@ -23,7 +23,7 @@ public class CustomerVO {
 	private String hanok_address;
 	private String hanok_url;
 	private String hanok_description;
-	private boolean[] hanok_service;
+	private boolean[] hanok_service = new boolean[8];
 	private String hanok_serviceETC;
 	private int status;
 	private double hanok_score;
@@ -72,10 +72,11 @@ public class CustomerVO {
 	private String checkOutDate;
 	private String capacity;
 	private int page; // 사용자가 요청한 페이지 번호
-	private int startIdx; // limit 앞에 들어갈 시작인덱스값
+	private int startIdx;  // limit 앞에 들어갈 시작인덱스값
 	
     private String roomImage;
     private String hanokName;
+    private String roomName;
     private int roomPrice;	
 	
 	public CustomerVO() {

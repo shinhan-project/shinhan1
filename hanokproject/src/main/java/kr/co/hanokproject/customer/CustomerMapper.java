@@ -22,9 +22,6 @@ public interface CustomerMapper {
 	// 한옥 상세 정보 조회
 	CustomerVO getHanokDetail(int hanokId);
 
-	// 방 리스트 조회
-	List<CustomerVO> getRoomList(int hanokId);
-
 	// 리뷰 리스트 조회 (최대 n개)
 	List<CustomerVO> getReviews(@Param("hanokId") int hanokId, @Param("limit") int limit);
 
@@ -36,5 +33,19 @@ public interface CustomerMapper {
 
 	// 회원정보 수정
 	int update(CustomerVO vo);
+
+	// 한옥 이미지 조회
+	String getHanokImg(int hanok_id);
+	
+	List<CustomerVO> getRoomImg(int hanok_id);
+	
+    // 한옥 상세 정보 가져오기
+	CustomerVO getHanokInfo(@Param("hanok_id") int hanok_id);
+
+    // 객실 목록 가져오기
+    List<CustomerVO> getRoomList(@Param("hanok_id") int hanok_id);
+
+    // 객실 이미지 가져오기
+    List<CustomerVO> getRoomImages(@Param("room_id") int roomId);
 
 }

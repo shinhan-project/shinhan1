@@ -1,3 +1,5 @@
+<!-- tour-grid.html 참고 (민규) -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -30,42 +32,71 @@
 	    }
 	</style>
 	<script>
-	window.addEventListener('DOMContentLoaded', () => {
-	    var el = document.querySelector('.theme-icon-active');
-		if(el != 'undefined' && el != null) {
-			const showActiveTheme = theme => {
-			const activeThemeIcon = document.querySelector('.theme-icon-active use')
-			const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-			const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+		const storedTheme = localStorage.getItem('theme')
+ 
+        const getPreferredTheme = () => {
+            if (storedTheme) {
+                return storedTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
 
-			document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-				element.classList.remove('active')
-			})
+        const setTheme = function (theme) {
+            if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-bs-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', theme)
+            }
+        }
 
-			btnToActive.classList.add('active')
-			activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-		}
 
-		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-			if (storedTheme !== 'light' || storedTheme !== 'dark') {
-				setTheme(getPreferredTheme())
-			}
-		})
+        window.addEventListener('DOMContentLoaded', () => {
+    	    // 현재 날짜를 "YYYY-MM-DD" 형식으로 가져오는 함수
+    	    const today = new Date().toISOString().split("T")[0];
+    	
+    	    // 입력 필드 요소 가져오기
+    	    const checkInInput = document.getElementById("checkIn");
+    	    const checkOutInput = document.getElementById("checkOut");
+    	
+    	    checkInInput.setAttribute("min", today);
+    	    checkOutInput.setAttribute("min", today);
+    	
+        	
+            var el = document.querySelector('.theme-icon-active');
+            if(el != 'undefined' && el != null) {
+                const showActiveTheme = theme => {
+                const activeThemeIcon = document.querySelector('.theme-icon-active use')
+                const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+                const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
 
-		showActiveTheme(getPreferredTheme())
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active')
+                })
 
-		document.querySelectorAll('[data-bs-theme-value]')
-			.forEach(toggle => {
-				toggle.addEventListener('click', () => {
-					const theme = toggle.getAttribute('data-bs-theme-value')
-					localStorage.setItem('theme', theme)
-					setTheme(theme)
-					showActiveTheme(theme)
-				})
-			})
+                btnToActive.classList.add('active')
+                activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+            }
 
-		}
-	})
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                if (storedTheme !== 'light' || storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme())
+                }
+            })
+
+            showActiveTheme(getPreferredTheme())
+
+            document.querySelectorAll('[data-bs-theme-value]')
+                .forEach(toggle => {
+                    toggle.addEventListener('click', () => {
+                        const theme = toggle.getAttribute('data-bs-theme-value')
+                        localStorage.setItem('theme', theme)
+                        setTheme(theme)
+                        showActiveTheme(theme)
+                    })
+                })
+
+            }
+        })
 	</script>
 </head>
 <body>
@@ -89,45 +120,46 @@ Search START -->
 			</div>
 			<div class="offcanvas-body p-2">
 				<div class="bg-light p-4 rounded w-100">
-					<form class="row g-4">
-						<!-- Location -->
-						<div class="col-md-6 col-lg-4">
-							<div class="form-size-lg form-fs-md">
-								<!-- input -->
-								<label class="form-label">Location</label>
-								<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오.">
+					<form action="/hanok/hanok_list.do" method="GET">
+						<div class="row g-4">
+							<!-- Location -->
+							<div class="col-md-6 col-lg-4">
+								<div class="form-size-lg form-fs-md">
+									<!-- input -->
+									<label class="form-label">Location</label>
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${param.location}">
+								</div>
 							</div>
-						</div>
-
-						<!-- Check in -->
-						<div class="col-md-6 col-lg-3">
-							<!-- Date input -->
-							<div class="form-fs-md">
-								<label class="form-label">Check in</label>
-								<input type="date" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오.">
-								<label class="form-label">Check out</label>
-								<input type="date" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오.">
+	
+							<!-- Check in -->
+							<div class="col-md-6 col-lg-3">
+								<!-- Date input -->
+								<div class="form-fs-md">
+									<label class="form-label">Check in</label>
+									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}">
+									<label class="form-label">Check out</label>
+									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}">
+								</div>
 							</div>
-						</div>
-
-						<!-- Guest -->
-						<div class="col-md-6 col-lg-3">
-							<div class="form-fs-md">
-								<!-- Dropdown input -->
-								<div class="w-100">
-									<label class="form-label">Guests</label>
-									<div class="dropdown guest-selector me-2">
-										<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+	
+							<!-- Guest -->
+							<div class="col-md-6 col-lg-3">
+								<div class="form-fs-md">
+									<!-- Dropdown input -->
+									<div class="w-100">
+										<label class="form-label">Guests</label>
+										<div class="dropdown guest-selector me-2">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}">
+										</div>
 									</div>
 								</div>
 							</div>
+	
+							<!-- Button -->
+							<div class="col-md-6 col-lg-2 mt-md-auto">
+								<button class="btn btn-lg btn-primary w-100 mb-0" type="submit"><i class="bi bi-search fa-fw"></i>Search</a>
+							</div>
 						</div>
-
-						<!-- Button -->
-						<div class="col-md-6 col-lg-2 mt-md-auto">
-							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i>Search</a>
-						</div>
-
 					</form>
 				</div>
 			</div>
@@ -147,16 +179,16 @@ Search END -->
 					    <div class="col-md-6 col-xl-4">
 					        <div class="card card-hover-shadow pb-0 h-100">
 					            <div class="position-relative">
-					                <img src="/assets/images/hanok/${customerVO.roomImage}" class="card-img-top" alt="Card image">
+					                <img src="/images/rooms/${customerVO.roomImage}" class="card-img-top" alt="Card image">
 					            </div>
 					            <div class="card-body px-3">
 					                <h5 class="card-title mb-0">
-					                    <a href="/hanok_detail.do?hanokId=${customerVO.hanok_id}" class="stretched-link">
+					                    <a href="/hanok/hanok_detail.do?hanok_id=${customerVO.hanok_id}&location=${param.location}&checkInDate=${param.checkIn}&checkOutDate=${param.checkOut}&capacity=${param.capacity}" class="stretched-link">
 					                        ${customerVO.hanokName}
 					                    </a>
 					                </h5>
 					                <span class="small">
-					                    <i class="far fa-calendar-alt me-2"></i>${customerVO.checkInDate} ~ ${customerVO.checkOutDate}
+					                    ${customerVO.roomName}
 					                </span>
 					            </div>
 					            <div class="card-footer pt-0">
@@ -166,7 +198,7 @@ Search END -->
 					                        <small>/per night</small>
 					                    </div>
 					                    <div class="mt-2 mt-sm-0">
-					                        <a href="/hanok_detail.do?hanokId=${customerVO.hanok_id}" class="btn btn-sm btn-primary mb-0">View Details</a>
+					                        <a href="/hanok/hanok_detail.do?hanok_id=${customerVO.hanok_id}&location=${param.location}&checkInDate=${param.checkIn}&checkOutDate=${param.checkOut}&capacity=${param.capacity}" class="btn btn-sm btn-primary mb-0">View Details</a>
 					                    </div>
 					                </div>
 					            </div>
@@ -180,7 +212,7 @@ Search END -->
                     <div class="col-12">
                         <nav class="mt-4 d-flex justify-content-center" aria-label="Page navigation">
 						    <ul class="pagination">
-						        <c:if test="${map.startPage > 1}">
+						        <c:if test="${map.isPrev}">
 						            <li class="page-item"><a class="page-link" href="?page=${map.startPage - 1}">Previous</a></li>
 						        </c:if>
 						        <c:forEach begin="${map.startPage}" end="${map.endPage}" var="i">
@@ -204,20 +236,19 @@ Search END -->
 		<%@ include file="/WEB-INF/views/include/footer.jsp" %>
     </div>
     
-<!-- Back to top -->
-<div class="back-top"></div>
+    <!-- Back to top -->
+    <div class="back-top"></div>
 
-<!-- Bootstrap JS -->
-<script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- ThemeFunctions -->
-<script src="/js/functions.js"></script>
+    <!-- Vendors -->
+    <script src="/vendor/glightbox/js/glightbox.js"></script>
+    <script src="/vendor/choices/js/choices.min.js"></script>
+    <script src="/vendor/tiny-slider/tiny-slider.js"></script>
+    <script src="/vendor/sticky-js/sticky.min.js"></script>
 
-<!-- Vendors -->
-<script src="/vendor/glightbox/js/glightbox.js"></script>
-
-<script src="/vendor/choices/js/choices.min.js"></script>
-<script src="/vendor/tiny-slider/tiny-slider.js"></script>
-<script src="/vendor/sticky-js/sticky.min.js"></script>
+    <!-- ThemeFunctions -->
+    <script src="/js/functions.js"></script>
 </body>
 </html>
