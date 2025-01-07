@@ -301,29 +301,29 @@
 	
 	
 	
-	<!-- 검색창 -->
-    <!-- =======================
-	Search START -->
-	<section class="py-3 py-sm-0">
-		<div class="container">
-			<!-- Offcanvas button for search -->
-			<button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch"><i class="bi bi-pencil-square me-2"></i>Edit Search</button>
-	
-			<!-- Search with offcanvas START -->
-			<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body p-2">
-					<div class="bg-light p-4 rounded w-100">
-						<form class="row g-4">
+<!-- =======================
+Search START -->
+<section class="py-3 py-sm-0">
+	<div class="container">
+		<!-- Offcanvas button for search -->
+		<button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch"><i class="bi bi-pencil-square me-2"></i>Edit Search</button>
+
+		<!-- Search with offcanvas START -->
+		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body p-2">
+				<div class="bg-light p-4 rounded w-100">
+					<form action="/hanok/hanok_list.do" method="GET">
+						<div class="row g-4">
 							<!-- Location -->
 							<div class="col-md-6 col-lg-4">
 								<div class="form-size-lg form-fs-md">
 									<!-- input -->
 									<label class="form-label">Location</label>
-									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오.">
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${location}">
 								</div>
 							</div>
 	
@@ -332,11 +332,10 @@
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range">
+									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkInDate}">
 									<label class="form-label">Check out</label>
-									<input type="date" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range">
+									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkOutDate}">
 								</div>
-								
 							</div>
 	
 							<!-- Guest -->
@@ -346,7 +345,7 @@
 									<div class="w-100">
 										<label class="form-label">Guests</label>
 										<div class="dropdown guest-selector me-2">
-											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${capacity}">
 										</div>
 									</div>
 								</div>
@@ -354,39 +353,40 @@
 	
 							<!-- Button -->
 							<div class="col-md-6 col-lg-2 mt-md-auto">
-								<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i>Search</a>
+								<button class="btn btn-lg btn-primary w-100 mb-0" type="submit"><i class="bi bi-search fa-fw"></i>Search</a>
 							</div>
-	
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			<!-- Search with offcanvas END -->
 		</div>
-	</section>
-	<!-- =======================
-	Search END -->
+		<!-- Search with offcanvas END -->
+	</div>
+</section>
+<!-- =======================
+Search END -->
 
 
 
     <!-- 한옥 상세 정보 -->
     <div class="container hanok-info">
         <div class="image-section">
-            <img src="/images/담소정.png" alt="담소정 사진">
+            <img src="/images/hanoks/${map.hanokImg}" alt="${map.hanokInfo.hanok_name} 사진">
         </div>
         <div class="text-section">
             <div class="title-section">
-            	<a href="https://dahmsojung.modoo.at/">
-                <h1>담소정</h1></a>  
+            	<a href="${map.hanokInfo.hanok_url}">
+                <h1>${map.hanokInfo.hanok_name}</h1></a>  
                 <p class="fw-bold mb-0">
 					<i class="bi bi-geo-alt me-2"></i>
-					<a href="https://map.naver.com/p/search/서울 종로구 북촌로9길 16-2">서울 종로구 북촌로9길 16-2</a><br>
+					<a href="https://map.naver.com/p/search/${map.hanokInfo.hanok_address}">${map.hanokInfo.hanok_address}</a><br>
 					<i class="bi bi-geo-alt me-2"></i>
-					<a href="https://dahmsojung.modoo.at/">홈페이지 이동</a>
+					<a href="${map.hanokInfo.hanok_url}">홈페이지 이동</a>
+					<div>연락처 : ${map.hanokInfo.hanok_tel}
 				</p>
             </div>
             <div class="description-section">
-                <p>담소정은 조상의 숨결이 살아있는 북촌한옥마을에 위치해 있다. 도시 안에 편안하고 멋진 풍경이 어우러진 한옥에서 가족과 연인, 친구와 함께 좋은 시간을 보낼 수 있는 한옥이다. 3호선 안국역 주변에 위치하여 교통이 편리하다. 드라마 '별에서 온 그대'의 400년 전 도민준 생가로 유명한 곳이다. 한옥의 대청마루에서는 고즈넉한 100년 한옥의 정취를 느끼며 사계절을 느낄 수 있다.</p>
+                <p>${map.hanokInfo.hanok_description}</p>
             </div>
         </div>
     </div>
@@ -406,7 +406,7 @@
 	                <ul>
 	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>카카오 페이, 네이버 페이</li>
 	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>신용/체크카드</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무통장 입금</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>휴대폰 결제</li>
 	                </ul>
 	            </div>
 	            <!-- Services -->
@@ -453,116 +453,55 @@
         <!-- Card body START -->
         <div class="card-body pt-4 p-0">
             <div class="vstack gap-4">
-                <!-- Room item START -->
-                <div class="card shadow p-3">
-                    <div class="row g-4">
-                        <!-- Card img -->
-                        <div class="col-md-5 position-relative">
-                            <!-- Slider START -->
-                            <div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-                                <div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/04.jpg" alt="Card image"></div>
+	            <c:forEach var="roomVO" items="${map.roomList}">
+	                <!-- Room item START -->
+	                <div class="card shadow p-3">
+	                    <div class="row g-4">
+	                        <!-- Card img -->
+	                        <div class="col-md-5 position-relative">
+	                            <!-- Slider START -->
+	                            <div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
+	                                <div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
+	                                	<c:forEach var="roomImgVO" items="${map.roomImgMap[roomVO.room_id]}">
+		                                    <!-- Image item -->
+		                                    <div><img src="/images/rooms/${roomImgVO.room_imgName}" alt="Card image"></div>
+										</c:forEach>
+	                                </div>
+	                            </div>
+	                            <!-- Slider END -->
+	                        </div>
 
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/01.jpg" alt="Card image"></div>
-                                </div>
-                            </div>
-                            <!-- Slider END -->
-                        </div>
-
-                        <!-- Card body -->
-                        <div class="col-md-7">
-                            <div class="card-body d-flex flex-column h-100 p-0">
-    
-                                <!-- Title -->
-                                <h5 class="card-title"><a href="#">Luxury Room with Balcony</a></h5>
-
-                                <!-- 세부사항항 -->
-                                <ul class="nav nav-divider mb-2">
-                                    <li class="nav-item">13평</li>
-                                    <li class="nav-item">2명 수용 가능</li>
-                                </ul>                                
-                                <!-- Price and Button -->
-                                <div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-                                    <!-- Button -->
-                                    <div class="d-flex align-items-center">
-                                        <h5 class="fw-bold mb-0 me-1">25000원</h5>
-                                        <span class="mb-0 me-2">/day</span>
-                                    </div>
-                                    <!-- Price -->
-                                    <div class="mt-3 mt-sm-0">
-                                        <a href="#" class="btn btn-sm btn-primary mb-0">예약하기</a>    
-                                    </div>                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Room item END -->
-
-                <!-- Room item START -->
-                <div class="card shadow p-3">
-                    <div class="row g-4">
-                        <!-- Card img -->
-                        <div class="col-md-5 position-relative">
-
-                            <!-- Slider START -->
-                            <div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-                                <div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/04.jpg" alt="Card image"></div>
-
-                                    <!-- Image item -->
-                                    <div><img src="/images/category/hotel/4by3/01.jpg" alt="Card image"></div>
-                                </div>
-                            </div>
-                            <!-- Slider END -->
-
-                        </div>
-
-                        <!-- Card body -->
-                        <div class="col-md-7">
-                            <div class="card-body d-flex flex-column p-0 h-100">
-    
-                                <!-- Title -->
-                                <h5 class="card-title"><a href="#">Deluxe Pool View with Breakfast</a></h5>
-
-                                <!-- Amenities -->
-                                <ul class="nav nav-divider mb-2">
-                                    <li class="nav-item">18평</li>
-                                    <li class="nav-item">3명 수용 가능</li>
-                                </ul>
-    
-                                <!-- Price and Button -->
-                                <div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-                                    <!-- Button -->
-                                    <div class="d-flex align-items-center">
-                                        <h5 class="fw-bold mb-0 me-1">30000원</h5>
-                                        <span class="mb-0 me-2">/day</span>
-                                    </div>
-                                    <!-- Price -->
-                                    <div class="mt-3 mt-sm-0">
-                                        <a href="#" class="btn btn-sm btn-primary mb-0">예약하기</a>    
-                                    </div>                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Room item END -->
+	                        <!-- Card body -->
+	                        <div class="col-md-7">
+	                            <div class="card-body d-flex flex-column h-100 p-0">
+	    
+	                                <!-- Title -->
+	                                <h5 class="card-title"><a href="#">${roomVO.room_name}</a></h5>
+	
+	                                <!-- 세부사항항 -->
+	                                <ul class="nav nav-divider mb-2">
+	                                    <li class="nav-item">${roomVO.room_size}평</li>
+	                                    <li class="nav-item">${roomVO.max_capacity}명 수용 가능</li>
+	                                    <li class="nav-item">${roomVO.room_service}</li>
+	                                </ul>                                
+	                                <!-- Price and Button -->
+	                                <div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
+	                                    <!-- Button -->
+	                                    <div class="d-flex align-items-center">
+	                                        <h5 class="fw-bold mb-0 me-1">${roomVO.room_price}</h5>
+	                                        <span class="mb-0 me-2">/day</span>
+	                                    </div>
+	                                    <!-- Price -->
+	                                    <div class="mt-3 mt-sm-0">
+	                                        <a href="#" class="btn btn-sm btn-primary mb-0">예약하기</a>    
+	                                    </div>                  
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- Room item END -->
+				</c:forEach>
             </div>
         </div>
         <!-- Card body END -->
@@ -572,7 +511,7 @@
 
 
     <!-- 리뷰 리스트 -->
-        <div class="container review">
+    <div class="container review">
         <h2>Reviews</h2>
             <div class="review-list">
                 <div class="review-item">
@@ -610,7 +549,7 @@
                 </div>
             </div>
 			<a href="#" class="btn btn-sm btn-primary mb-0" style="margin-top: 20px;">Load more</a>    
-        </div>				
+    </div>				
 
 
 

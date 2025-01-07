@@ -23,7 +23,7 @@ public class CustomerVO {
 	private String hanok_address;
 	private String hanok_url;
 	private String hanok_description;
-	private boolean[] hanok_service;
+	private boolean[] hanok_service = new boolean[8];
 	private String hanok_serviceETC;
 	private int status;
 	private double hanok_score;
