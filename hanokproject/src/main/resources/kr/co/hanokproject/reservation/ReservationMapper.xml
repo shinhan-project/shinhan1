@@ -71,8 +71,11 @@
 	    JOIN ROOMS rm ON r.room_id = rm.room_id
 	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id
 	    JOIN HANOK_IMAGES g ON g.hanok_id = h.hanok_id
+<<<<<<< HEAD
 	    JOIN USERS_CUSTOMER c ON c.customer_id = r.customer_id
 	    
+=======
+>>>>>>> refs/heads/main
 	    WHERE r.reservations_id = #{reservation_id}
 </select>
 

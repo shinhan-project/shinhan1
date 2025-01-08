@@ -89,7 +89,11 @@
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-
+	<style>
+	.adjust-right{
+	postion: relative;
+	left: 10px;}
+	</style>
 </head>
 
 <body>
@@ -127,8 +131,9 @@
 						<!-- Avatar and info -->
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
-							<div class="avatar avatar-xl me-2 flex-shrink-0">
-								<img class="avatar-img rounded-circle" src="/images/avatar/02.jpg" alt="avatar">
+							<div class=" me-2 flex-shrink-0 adjust-right">
+							    <img src="/images/hanoks/${review.hanok_imgName}" class="card-img img-fluid rounded-2 fixed-image" style="width: 150px; " alt="Card image">
+
 							</div>
 							<!-- Info -->
 							<div class="ms-2">
