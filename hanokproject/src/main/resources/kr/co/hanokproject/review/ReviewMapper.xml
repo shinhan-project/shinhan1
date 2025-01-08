@@ -30,6 +30,19 @@
         
     </select>
     
+    <!-- 특정 사장 리뷰 조회 -->
+    <select id="getReviewsByOwner" parameterType="int" resultType="kr.co.hanokproject.review.ReviewVO">
+        
+        SELECT r.*, h.hanok_name , g.hanok_imgName
+        FROM REVIEWS r
+        JOIN HANOKS h ON r.hanok_id = h.hanok_id
+        JOIN HANOK_IMAGES g ON g.hanok_id = h.hanok_id
+        WHERE h.owner_id = #{owner_id}
+        ORDER BY r.review_date DESC;
+        
+    </select>
+    
+    
     <select id="count" parameterType="kr.co.hanokproject.review.ReviewVO" resultType="int">
 		SELECT COUNT(*) FROM REVIEWS;
 		

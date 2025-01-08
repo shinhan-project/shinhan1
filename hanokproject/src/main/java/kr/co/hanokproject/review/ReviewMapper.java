@@ -21,6 +21,9 @@ public interface ReviewMapper {
     // 고객이 작성한 리뷰 조회
     List<ReviewVO> getReviewsByCustomer(int customer_id);
     
+ 
+    List<ReviewVO> getReviewsByOwner(int owner_id);
+    
     // 리뷰 개수 조회
     int count();  // 파라미터 없이 호출
     
