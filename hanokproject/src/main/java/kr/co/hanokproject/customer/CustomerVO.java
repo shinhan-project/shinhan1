@@ -16,19 +16,19 @@ public class CustomerVO {
 	private Timestamp customer_created;
 	
 	//한옥
-//	private int hanok_id;
-//	private int owner_id;
-//	private String hanok_name;
-//	private String hanok_tel;
-//	private String hanok_address;
-//	private String hanok_url;
-//	private String hanok_description;
-//	private boolean[] hanok_service;
-//	private String hanok_serviceETC;
-//	private int status;
-//	private double hanok_score;
-//	
-//	private String hanok_imgName;
+	private int hanok_id;
+	private int owner_id;
+	private String hanok_name;
+	private String hanok_tel;
+	private String hanok_address;
+	private String hanok_url;
+	private String hanok_description;
+	private boolean[] hanok_service = new boolean[8];
+	private String hanok_serviceETC;
+	private int status;
+	private double hanok_score;
+	
+	private String hanok_imgName;
 	
 	//객실
 	private int room_id;
@@ -72,10 +72,11 @@ public class CustomerVO {
 	private String checkOutDate;
 	private String capacity;
 	private int page; // 사용자가 요청한 페이지 번호
-	private int startIdx; // limit 앞에 들어갈 시작인덱스값
+	private int startIdx;  // limit 앞에 들어갈 시작인덱스값
 	
     private String roomImage;
     private String hanokName;
+    private String roomName;
     private int roomPrice;	
 	
 	public CustomerVO() {

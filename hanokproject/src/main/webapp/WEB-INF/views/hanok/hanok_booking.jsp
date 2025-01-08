@@ -82,12 +82,82 @@
 	    	});
 	    });
 	</script>
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
-<script>
-
-</script>
+<%--아임포트 라이브러리--%>
+	<script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		var IMP = window.IMP; 
+		IMP.init("imp02723803");
+		var name = $("#name").val();
+	    var phone = $("#phone").val();
+	    var email = $("#email").val();
+	    var address = $("#address").text();
+	    var price = $("#total-price").val();
+	    let pg = "";
+	    let payMethod = "";
+	
+	    $(document).on('click', '#cartPay', function(){
+	        pg = "html5_inicis";
+	        payMethod = "card"
+	    });
+	 
+	    $(document).on('click', '#phonePay', function(){
+	        pg = "danal";
+	        payMethod = "MOBILE";
+	    });
+	 
+	    $(document).on('click', '#kakaoPay', function(){
+	        pg = "kakaopay";
+	        payMethod = "card"
+	    });
+	    
+	    $(document).on('click', '#naverPay', function(){
+	        pg = "naverpay";
+	        payMethod = "card"
+	    });   
+			
+		    
+	    $(document).on('click', '#money-btn', function(){
+	    	console.log("결제 버튼 클릭됨");
+	        console.log("PG: ", pg, "Pay Method: ", payMethod);
+	        
+			IMP.request_pay({
+				pg: 'html5_inicis',
+		        pay_method: 'card',
+		        merchant_uid: 'merchant_' + new Date().getTime(),   // 주문번호
+		        name: "",
+		        amount: price,   // 숫자 타입
+		        buyer_email: email,
+		        buyer_name: name,
+		        buyer_tel: phone,
+		        buyer_addr: "",
+		        buyer_postcode: ""
+		    }, function (res) { // callback
+		    	console.log(res);
+		    	if (res.success) {
+		    		var msg = '결제가 완료되었습니다.';
+		    		console.log("결제성공 ");
+		    		$.ajax({
+						type: "GET",
+						url: '/hanok/hanok_booking_confirm',
+						data: {
+							amount: price,
+							imp_uid: res.imp_uid,
+							merchant_uid: res.merchant_uid
+						}
+					});
+	            	// 응답 데이터의 정보들
+	                console.log("Payment success!");
+	                console.log("Payment ID : " + res.imp_uid);
+	                console.log("Order ID : " + res.merchant_uid);
+	                console.log("Payment Amount : " + res.paid_amount);
+	            } else {
+	            	var msg = '결제에 실패하였습니다.';
+	            }
+		    	alert(msg);
+		    });
+		});
+	</script>
 </head>
 <body>
 	<!--헤더-->
@@ -130,7 +200,7 @@
 											<div class="card-body pt-3 pt-sm-0 p-0">
 												<!-- Title -->
 												<h5 class="card-title"><a href="#">담소정</a></h5>
-												<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i>서울 종로구 북촌로9길 16-2</p>
+												<p class="small mb-2" id="address"><i class="bi bi-geo-alt me-2"></i>서울 종로구 북촌로9길 16-2</p>
 	
 												<!-- Rating star -->
 												<ul class="list-inline mb-0">
@@ -244,20 +314,20 @@
 									<!-- Input -->
 									<div class="col-md-5">
 										<label class="form-label">이름</label>
-										<input type="text" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
+										<input type="text" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">이메일</label>
-										<input type="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요." required>
+										<input type="email" id="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요." required>
 										<div id="emailHelp" class="form-text">(Booking voucher will be sent to this email ID)</div>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">휴대폰 번호</label>
-										<input type="text" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
+										<input type="text" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
 									</div>
 								</form>
 								<!-- Form END -->
@@ -353,19 +423,19 @@
 	
 	
 													<!-- Alert box START -->
-													<div class="col-12">
+													<div class="col-12" style="margin-bottom:25px">
 														<div class="payment-options">
-															<div class="payment-option" data-payment="kakao">
-																카카오페이
+															<div class="payment-option" id="cardPay">
+																신용카드
 															</div>
-															<div class="payment-option" data-payment="naver">
+															<div class="payment-option" id="naverPay">
 																네이버페이
 															</div>
-															<div class="payment-option" data-payment="credit">
-																신용/체크 카드
+															<div class="payment-option" id="kakaoPay">
+																카카오페이
 															</div>
-															<div class="payment-option" data-payment="bank">
-																무통장 입금
+															<div class="payment-option" id="phonePay">
+																휴대폰 결제
 															</div>
 														</div>
 														
@@ -376,7 +446,7 @@
 													<div class="col-12">
 														<div class="d-sm-flex justify-content-sm-between align-items-center">
 															<h4>30000원 <span class="small fs-6">Due now</span></h4>
-															<button class="btn btn-primary mb-0">결제하기</button>
+															<button id="money-btn" class="btn btn-primary mb-0">결제하기</button>
 														</div>
 													</div>
 	
@@ -440,7 +510,7 @@
 								<div class="card-footer border-top">
 									<div class="d-flex justify-content-between align-items-center">
 										<span class="h5 mb-0">Payable Now</span>
-										<span class="h5 mb-0">30000원</span>
+										<span class="h5 mb-0" id="total-price">30000<span id="won">원</span></span>
 									</div>
 								</div>
 							</div>

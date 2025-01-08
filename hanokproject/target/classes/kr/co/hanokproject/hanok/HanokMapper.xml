@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.hanokproject.hanok.HanokMapper">
+
+
+	<select id="getHanokListings"
+		resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="int">
+		SELECT h.*
+		FROM HANOKS h
+		JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
+		WHERE
+		uo.owner_id = #{uo.owner_id};
+	</select>
+
+	<select id="getHanokById"
+		resultType="kr.co.hanokproject.hanok.HanokVO">
+		SELECT *
+		FROM HANOKS
+		WHERE hanok_id = #{hanok_id}
+	</select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

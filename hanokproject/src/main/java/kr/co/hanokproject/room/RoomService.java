@@ -9,3 +9,4 @@ public interface RoomService {
 
 	List<RoomVO> getRoomList(int hanok_id);
 }
+	
