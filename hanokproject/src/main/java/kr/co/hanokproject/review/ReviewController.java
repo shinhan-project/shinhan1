@@ -52,7 +52,7 @@ public class ReviewController {
     public String addReview(@ModelAttribute ReviewVO review, RedirectAttributes redirectAttributes) {
         reviewService.addReview(review);
         redirectAttributes.addFlashAttribute("message", "리뷰가 등록되었습니다.");
-        return "redirect:/review/" + review.getCustomer_id() + "/reviews";
+        return "redirect:/review/reviews";
     }
     
     // 특정 객실 리뷰 조회

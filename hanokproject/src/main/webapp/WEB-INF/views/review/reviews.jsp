@@ -13,65 +13,7 @@
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
 
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
- 
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
 
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-
-		setTheme(getPreferredTheme())
-
-		window.addEventListener('DOMContentLoaded', () => {
-		    var el = document.querySelector('.theme-icon-active');
-			if(el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-				const activeThemeIcon = document.querySelector('.theme-icon-active use')
-				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-					element.classList.remove('active')
-				})
-
-				btnToActive.classList.add('active')
-				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-			}
-
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (storedTheme !== 'light' || storedTheme !== 'dark') {
-					setTheme(getPreferredTheme())
-				}
-			})
-
-			showActiveTheme(getPreferredTheme())
-
-			document.querySelectorAll('[data-bs-theme-value]')
-				.forEach(toggle => {
-					toggle.addEventListener('click', () => {
-						const theme = toggle.getAttribute('data-bs-theme-value')
-						localStorage.setItem('theme', theme)
-						setTheme(theme)
-						showActiveTheme(theme)
-					})
-				})
-
-			}
-		})
-		
-	</script>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
@@ -140,13 +82,13 @@
 								<!-- Sidebar menu item START -->
 								<ul class="nav nav-pills-primary-soft flex-column">
 									<li class="nav-item">
-										<a class="nav-link active" href="profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
+										<a class="nav-link" href="/customer/profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
+										<a class="nav-link" href="/customer/mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/review/reviews"><i class="bi bi-pencil fa-fw me-2"></i>My Reviews</a>
+										<a class="nav-link active" href="/review/reviews"><i class="bi bi-pencil fa-fw me-2"></i>My Reviews</a>
 									</li>
 									
 									<li class="nav-item">
@@ -265,6 +207,8 @@
 	</main>
 	
 <!-- **************** MAIN CONTENT END **************** -->
+<!-- Back to top -->
+<div class="back-top"></div>
 
 <!-- Bootstrap JS -->
 <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
