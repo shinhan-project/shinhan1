@@ -203,11 +203,4 @@ public class CustomerController {
     	return "/hanok/hanok_booking";
     }
     
-    // 한옥 예약 확인 - 미완(민규)
-    @GetMapping("/hanok/hanok_booking_confirm.do")
-    public String hanokBookingConfirm() {
-        
-    	return "/hanok/hanok_booking_confirm";
-    }
-    
 }

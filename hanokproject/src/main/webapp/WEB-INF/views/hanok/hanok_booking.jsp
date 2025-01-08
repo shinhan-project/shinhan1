@@ -89,13 +89,13 @@
 	window.addEventListener('DOMContentLoaded', () => {
 		var IMP = window.IMP; 
 		IMP.init("imp02723803");
-		var name = $("#name").val();
-	    var phone = $("#phone").val();
-	    var email = $("#email").val();
+		var name = $("#name").text();
+	    var phone = $("#phone").text();
+	    var email = $("#email").text();
 	    var address = $("#address").text();
-	    var price = $("#total-price").val();
-	    let pg = "";
-	    let payMethod = "";
+	    var price = $("#total-price").text();
+	    var pg = "";
+	    var payMethod = "";
 	
 	    $(document).on('click', '#cardPay', function(){
 	        pg = "html5_inicis";
@@ -103,18 +103,18 @@
 	    });
 	 
 	    $(document).on('click', '#phonePay', function(){
-	        pg = "danal";
+	        pg = "danal_tpay";
 	        payMethod = "MOBILE";
 	    });
 	 
 	    $(document).on('click', '#kakaoPay', function(){
 	        pg = "kakaopay";
-	        payMethod = "card"
+	        payMethod = "kakaopay"
 	    });
 	    
 	    $(document).on('click', '#naverPay', function(){
-	        pg = "naverpay";
-	        payMethod = "card"
+	        pg = "html5_inicis";
+	        payMethod = "naverpay"
 	    });   
 			
 		    
@@ -140,13 +140,20 @@
 		    		console.log("결제성공 ");
 		    		$.ajax({
 						type: "POST",
-						url: '/hanok/hanok_booking_confirm',
-						dataType : "JSON",
-						data: {
-							amount: ${roomMap.roomInfo.room_price},
-							imp_uid: res.imp_uid,
-							merchant_uid: res.merchant_uid
-						}
+						url: "/verify/"+res.imp_uid,
+						success: function (response) {
+				            if (response.success) {
+				                alert(response.message);
+				                // 검증 성공 후 페이지 이동
+				                window.location.href = "/hanok/hanok_booking_confirm.do";
+				            } else {
+				                alert(response.message);
+				            }
+				        },
+				        error: function (err) {
+				            console.error("검증 요청 실패:", err);
+				            alert("결제 검증 중 오류가 발생했습니다.");
+				        }
 					});
 	            	// 응답 데이터의 정보들
 	                console.log("Payment success!");
@@ -313,7 +320,6 @@
 											<h6 class="mb-0">Main Guest</h6>
 										</div>
 									</div>
-	
 									<!-- Input -->
 									<div class="col-md-5">
 										<label class="form-label">이름</label>
@@ -452,8 +458,6 @@
 															<button id="money-btn" class="btn btn-primary mb-0">결제하기</button>
 														</div>
 													</div>
-	
-												</form>
 												<!-- Form END -->
 											</div>
 										</div>
