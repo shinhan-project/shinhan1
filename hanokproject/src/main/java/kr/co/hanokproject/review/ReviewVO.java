@@ -17,4 +17,6 @@ public class ReviewVO {
     private int rating;
     private Timestamp review_date;
     private String hanok_name;
+    
+    private String hanok_imgName;
 }

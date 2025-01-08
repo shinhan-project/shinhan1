@@ -36,14 +36,7 @@ public class ReviewController {
         ReservationVO reservation = reservationService.getReservationById(reservation_id);
         
         // 모델에 추가
-        model.addAttribute("reservation_id", reservation_id);
-        model.addAttribute("customer_id", reservation.getCustomer_id());
-        model.addAttribute("hanok_id", reservation.getHanok_id());
-        model.addAttribute("room_id", reservation.getRoom_id());
-        model.addAttribute("hanok_name", reservation.getHanok_name());
-        model.addAttribute("room_name", reservation.getRoom_name());
-        model.addAttribute("checkin", reservation.getCheckin());
-        model.addAttribute("checkout", reservation.getCheckout());
+        model.addAttribute("reservation", reservation);
         
         System.out.println("Check-in: " + reservation.getCheckin());
         System.out.println("Check-out: " + reservation.getCheckout());
