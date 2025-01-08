@@ -79,6 +79,10 @@ public class CustomerVO {
     private String roomName;
     private int roomPrice;	
 	
+    // 예약자 성함
+    private String name;
+    private String phone;
+    
 	public CustomerVO() {
 		this.page = 1;
 	}

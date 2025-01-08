@@ -148,4 +148,9 @@
     <select id="getRoomImages" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
         SELECT * FROM ROOM_IMAGES WHERE room_id = #{room_id}
     </select>
+    
+    <!-- 객실 정보 -->
+    <select id="getRoomInfo" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+    	SELECT * FROM ROOMS WHERE room_id = #{room_id}
+    </select>
 </mapper>
