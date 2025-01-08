@@ -251,7 +251,7 @@ Content START -->
 									<div class="row g-4">
 										<!-- Card img -->
 										<div class="col-md-3 col-lg-2">
-											<img src="/images/category/hotel/4by3/10.jpg"
+											<img src="/images/hanoks/${listings.hanok_imgName }"
 												class="card-img rounded-2" alt="Card image">
 										</div>
 

@@ -24,11 +24,13 @@ public class HanokController {
     public String viewListings(@SessionAttribute("ownerloginInfo") OwnerVO vo, Model model) {
     	
         List<HanokVO> listings= service.getHanokListings(vo.getOwner_id());
+        
     
         model.addAttribute("listings", listings);
  
         return "/owner/owner_listings"; 
     }
+	
 	
 	
 

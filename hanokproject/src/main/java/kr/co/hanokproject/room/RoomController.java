@@ -25,11 +25,11 @@ public class RoomController {
     public String getRoomList(@RequestParam("hanok_id") int hanok_id, Model model) {
         
         List<RoomVO> roomList =service.getRoomList(hanok_id);
+        model.addAttribute("roomList", roomList);
+        
+        
         HanokVO vo =hanokservice.getHanokById(hanok_id);
         model.addAttribute("vo", vo);
-        
-        
-        model.addAttribute("roomList", roomList);
 
         // 방 리스트를 보여줄 JSP 페이지로 포워딩
         return "owner/owner_rooms";

@@ -253,11 +253,11 @@
 			<div class="container">
 				<div class="row g-2">
 					<!-- Image -->
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<a data-glightbox data-gallery="gallery"
 							href="/images/gallery/14.jpg">
 							<div class="card card-grid-lg card-element-hover card-overlay-hover overflow-hidden"
-								style="background-image: url(/images/gallery/14.jpg); background-position: center left; background-size: cover;">
+								style="background-image: url(/images/hanoks/${vo.hanok_imgName}); background-position: center left; background-size: cover;">
 								<!-- Card hover element -->
 								<div class="hover-element position-absolute w-100 h-100">
 									<i
@@ -267,69 +267,7 @@
 						</a>
 					</div>
 
-					<div class="col-md-6">
-						<!-- Card item START -->
-						<div class="row g-2">
-						
-							<!-- Image -->
-							<div class="col-12">
-								<a data-glightbox data-gallery="gallery"
-									href="/images/gallery/13.jpg">
-									<div
-										class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden"
-										style="background-image: url(/images/hanoks/nabi1.jpg); background-position: center left; background-size: cover;">
-										<!-- Card hover element -->
-										<div class="hover-element position-absolute w-100 h-100">
-											<i
-												class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-										</div>
-									</div>
-								</a>
-							</div>
-							
-
-							<!-- Image -->
-							<div class="col-md-6">
-								<a data-glightbox data-gallery="gallery"
-									href="/images/gallery/12.jpg">
-									<div
-										class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden"
-										style="background-image: url(/images/gallery/12.jpg); background-position: center left; background-size: cover;">
-										<!-- Card hover element -->
-										<div class="hover-element position-absolute w-100 h-100">
-											<i
-												class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-										</div>
-									</div>
-								</a>
-							</div>
-
-							<!-- Images -->
-							<div class="col-md-6">
-								<div class="card card-grid-sm overflow-hidden"
-									style="background-image: url(/images/gallery/11.jpg); background-position: center left; background-size: cover;">
-									<!-- Background overlay -->
-									<div class="bg-overlay bg-dark opacity-7"></div>
-
-									<!-- Popup Images -->
-									<a data-glightbox="" data-gallery="gallery"
-										href="/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
-									<a data-glightbox="" data-gallery="gallery"
-										href="/images/gallery/15.jpg"></a> <a data-glightbox=""
-										data-gallery="gallery" href="/images/gallery/16.jpg"></a>
-
-									<!-- Overlay text -->
-									<div class="card-img-overlay d-flex h-100 w-100">
-										<h6
-											class="card-title m-auto fw-light text-decoration-underline">
-											<a href="#" class="text-white">View all</a>
-										</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Card item END -->
-					</div>
+		
 				</div>
 			</div>
 		</section>
@@ -492,41 +430,6 @@
 											<div class="card shadow p-3">
 												<div class="row g-4">
 
-													<!-- Card img -->
-													<div class="col-md-5 position-relative">
-
-														<!-- Slider START -->
-														<div
-															class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-															<div class="tiny-slider-inner" data-autoplay="true"
-																data-arrow="true" data-dots="false" data-items="1">
-																<!-- Image item -->
-																<div>
-																	<img src="/images/category/hotel/4by3/04.jpg"
-																		alt="Card image">
-																</div>
-
-																<!-- Image item -->
-																<div>
-																	<img src="/images/category/hotel/4by3/02.jpg"
-																		alt="Card image">
-																</div>
-
-																<!-- Image item -->
-																<div>
-																	<img src="/images/category/hotel/4by3/03.jpg"
-																		alt="Card image">
-																</div>
-
-																<!-- Image item -->
-																<div>
-																	<img src="/images/category/hotel/4by3/01.jpg"
-																		alt="Card image">
-																</div>
-															</div>
-														</div>
-														<!-- Slider END -->
-													</div>
 
 													<!-- Card body -->
 													<div class="col-md-7">

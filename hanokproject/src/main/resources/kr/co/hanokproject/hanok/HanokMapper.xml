@@ -5,18 +5,21 @@
 
 	<select id="getHanokListings"
 		resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="int">
-		SELECT h.*
+		SELECT h.*, i.hanok_imgName
 		FROM HANOKS h
 		JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
+		JOIN HANOK_IMAGES i ON h.hanok_id = i.hanok_id
 		WHERE
 		uo.owner_id = #{uo.owner_id};
 	</select>
 
 	<select id="getHanokById"
 		resultType="kr.co.hanokproject.hanok.HanokVO">
-		SELECT *
-		FROM HANOKS
-		WHERE hanok_id = #{hanok_id}
+		SELECT h.*,i.hanok_imgName
+		FROM HANOKS h
+		JOIN HANOK_IMAGES i ON h.hanok_id = i.hanok_id
+		WHERE
+		h.hanok_id = #{h.hanok_id};
 	</select>
 
 

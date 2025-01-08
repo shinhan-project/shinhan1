@@ -20,6 +20,7 @@ public class HanokVO {
 		private String hanok_serviceETC;
 		private int status;
 		private double hanok_score;
+		private String hanok_imgName;
 		
 	
 		
