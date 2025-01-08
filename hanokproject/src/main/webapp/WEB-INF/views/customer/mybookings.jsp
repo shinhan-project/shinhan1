@@ -193,7 +193,7 @@ Content START -->
 						<!-- Tabs -->
 						<ul class="nav nav-tabs nav-bottom-line nav-responsive nav-justified">
 							<li class="nav-item"> 
-								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Upcoming Booking</a> 
+								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Booking List</a> 
 							</li>
 						</ul>
 		
@@ -245,7 +245,7 @@ Content START -->
 								 <c:if test="${!status.last}">
 								 <div style="display: flex; gap: 10px; justify-content: flex-end;">
  					<a href="/${reservation.reservations_id}/bookingdetail.do" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">View Details</a>
-					<a href="" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
+					<a href="/review/review.do?reservation_id=${reservation.reservations_id}" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
 
 </div>
 	               					 <hr style="margin-top: 20px; margin-bottom: 20px;">
