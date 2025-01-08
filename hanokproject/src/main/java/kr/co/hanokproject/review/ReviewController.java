@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.hanokproject.customer.CustomerVO;
 import kr.co.hanokproject.reservation.ReservationService;
 import kr.co.hanokproject.reservation.ReservationVO;
 
@@ -60,18 +62,23 @@ public class ReviewController {
     }
     
     // 특정 고객 리뷰 조회
-    @GetMapping("/{customer_id}/reviews")
-    public String getCustomerReviews(@PathVariable int customer_id, Model model) {
-        List<ReviewVO> reviews = reviewService.getCustomerReviews(customer_id);
+    @GetMapping("/reviews")
+    public String getCustomerReviews(@SessionAttribute("loginInfo") CustomerVO vo, Model model) {
+    	
+        List<ReviewVO> reviews = reviewService.getCustomerReviews(vo.getCustomer_id());
         model.addAttribute("reviews", reviews);
         return "review/reviews"; 
     }
     
- // 특정 고객 리뷰 조회
+    // 사장님 리뷰 조회
     @GetMapping("/owner/{owner_id}")
     public String getOwnerReviews(@PathVariable int owner_id, Model model) {
         List<ReviewVO> reviews = reviewService.getOwnerReviews(owner_id);
         model.addAttribute("reviews", reviews);
+        for (ReviewVO review : reviews) {
+            System.out.println("Review Date: " + review.getReview_date());
+        }
+
         return "review/owner_review"; 
     }
 }

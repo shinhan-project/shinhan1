@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -189,13 +190,13 @@ Menu item START -->
 												class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 										<!-- Review 목록 페이지 -->
 										<li class="nav-item"><a class="nav-link"
-											href="agent-reviews.html"><i
+											href="/review/owner/${ownerloginInfo.owner_id}"><i
 												class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
 										<li class="nav-item"><a class="nav-link"
 											href="/owner/owner_listings.do"><i
 												class="bi bi-journals fa-fw me-1"></i>Listings</a></li>
-										<li><a class="nav-link" href="#"><i
+										<li><a class="nav-link" href="/owner/owner_profile.do"><i
 												class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
 									</ul>
