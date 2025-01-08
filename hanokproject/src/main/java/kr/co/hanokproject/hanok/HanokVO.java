@@ -1,5 +1,7 @@
 package kr.co.hanokproject.hanok;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -19,7 +21,7 @@ public class HanokVO {
 		private int status;
 		private double hanok_score;
 		
-		private String hanok_imgName;
+	
 		
 
 }

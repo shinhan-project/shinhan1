@@ -11,12 +11,16 @@
 		WHERE
 		uo.owner_id = #{uo.owner_id};
 	</select>
-	
-	   <select id="getHanokById" resultType="kr.co.hanokproject.hanok.HanokVO">
-        SELECT *
-        FROM HANOKS
-        WHERE hanok_id = #{hanok_id}
-    </select>
+
+	<select id="getHanokById"
+		resultType="kr.co.hanokproject.hanok.HanokVO">
+		SELECT *
+		FROM HANOKS
+		WHERE hanok_id = #{hanok_id}
+	</select>
+
+
+
 
 
 

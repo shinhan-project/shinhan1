@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.co.hanokproject.owner.OwnerVO;
+import kr.co.hanokproject.room.RoomVO;
 
 
 @Controller
@@ -30,5 +31,6 @@ public class HanokController {
     }
 	
 	
+
 
 }

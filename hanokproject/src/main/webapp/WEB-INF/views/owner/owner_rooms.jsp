@@ -270,13 +270,14 @@
 					<div class="col-md-6">
 						<!-- Card item START -->
 						<div class="row g-2">
+						
 							<!-- Image -->
 							<div class="col-12">
 								<a data-glightbox data-gallery="gallery"
 									href="/images/gallery/13.jpg">
 									<div
 										class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden"
-										style="background-image: url(/images/gallery/13.jpg); background-position: center left; background-size: cover;">
+										style="background-image: url(/images/hanoks/nabi1.jpg); background-position: center left; background-size: cover;">
 										<!-- Card hover element -->
 										<div class="hover-element position-absolute w-100 h-100">
 											<i
@@ -285,6 +286,7 @@
 									</div>
 								</a>
 							</div>
+							
 
 							<!-- Image -->
 							<div class="col-md-6">
@@ -405,28 +407,7 @@
 								<!-- Card body START -->
 								<div class="card-body pt-4 p-0">
 									<div class="row g-4">
-										<!-- Activities -->
-										<div class="col-sm-6">
-											<h6>
-												<i class="fa-solid fa-biking me-2"></i>Activities
-											</h6>
-											<!-- List -->
-											<ul class="list-group list-group-borderless mt-2 mb-0">
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Swimming
-													pool</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Spa
-												</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Kids'
-													play area</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Gym
-												</li>
-											</ul>
-										</div>
-
+										
 										<!-- Payment Method -->
 										<div class="col-sm-6">
 											<h6>
@@ -462,24 +443,7 @@
 												<li class="list-group-item pb-0"><i
 													class="fa-solid fa-check-circle text-success me-2"></i>Special
 													service</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Waiting
-													Area</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Secrete
-													smoking area</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Concierge
-												</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Laundry
-													facilities</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Ironing
-													Service</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Lift
-												</li>
+												
 											</ul>
 										</div>
 
@@ -497,21 +461,7 @@
 													on Call</li>
 											</ul>
 
-											<h6>
-												<i class="fa-solid fa-volume-up me-2"></i>Staff Language
-											</h6>
-											<!-- List -->
-											<ul class="list-group list-group-borderless mt-2 mb-0">
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>English
-												</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Spanish
-												</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Hindi
-												</li>
-											</ul>
+											
 										</div>
 
 									</div>
@@ -678,13 +628,10 @@
 								<div
 									class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 									<div>
-										<span>Price Start at</span>
-										<h4 class="card-title mb-0">$3,500</h4>
+										<span>HANOK NAME</span>
+										<h4 class="card-title mb-0">${vo.hanok_name }</h4>
 									</div>
-									<div>
-										<h6 class="fw-normal mb-0">1 room per night</h6>
-										<small>+ $285 taxes & fees</small>
-									</div>
+									
 								</div>
 
 								
