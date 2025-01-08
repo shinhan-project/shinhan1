@@ -49,7 +49,7 @@
 			<nav class="navbar navbar-expand-xl">
 				<div class="container">
 					<!-- Logo START -->
-					<a class="navbar-brand" href="/index.do"> <img
+					<a class="navbar-brand" href="/owner/owner_dash.do"> <img
 						class="light-mode-item navbar-brand-item"
 						src="/images/gojeuneoklogo.png" alt="logo">
 
@@ -88,7 +88,7 @@
 							id="profileDropdown" role="button" data-bs-auto-close="outside"
 							data-bs-display="static" data-bs-toggle="dropdown"
 							aria-expanded="false"> <img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="avatar">
+								src="/images/avatar/01-1.jpg" alt="avatar">
 						</a> <!-- Profile dropdown START -->
 							<ul
 								class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -99,7 +99,7 @@
 										<!-- Avatar -->
 										<div class="avatar me-3">
 											<img class="avatar-img rounded-circle shadow"
-												src="/images/avatar/01.jpg" alt="avatar">
+												src="/images/avatar/01-1.jpg" alt="avatar">
 										</div>
 										<div>
 
@@ -149,7 +149,7 @@
 					<div class="d-sm-flex align-items-center">
 						<div class="avatar avatar-xl mb-2 mb-sm-0">
 							<img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="">
+								src="/images/avatar/01-1.jpg" alt="">
 						</div>
 						<h4 class="mb-2 mb-sm-0 ms-sm-3">
 							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}

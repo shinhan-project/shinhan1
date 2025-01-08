@@ -89,7 +89,7 @@
 							id="profileDropdown" role="button" data-bs-auto-close="outside"
 							data-bs-display="static" data-bs-toggle="dropdown"
 							aria-expanded="false"> <img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="avatar">
+								src="/images/avatar/01-1.jpg" alt="avatar">
 						</a> <!-- Profile dropdown START -->
 							<ul
 								class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -100,7 +100,7 @@
 										<!-- Avatar -->
 										<div class="avatar me-3">
 											<img class="avatar-img rounded-circle shadow"
-												src="/images/avatar/01.jpg" alt="avatar">
+												src="/images/avatar/01-1.jpg" alt="avatar">
 										</div>
 										<div>
 
@@ -151,7 +151,7 @@ Menu item START -->
 						<div class="d-sm-flex align-items-center">
 							<div class="avatar avatar-xl mb-2 mb-sm-0">
 								<img class="avatar-img rounded-circle"
-									src="/images/avatar/01.jpg" alt="">
+									src="/images/avatar/01-1.jpg" alt="">
 							</div>
 							<h4 class="mb-2 mb-sm-0 ms-sm-3">
 								<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
@@ -184,7 +184,7 @@ Menu item START -->
 								<div class="navbar navbar-expand-xl">
 									<ul class="navbar-nav navbar-offcanvas-menu">
 
-										<li class="nav-item"><a class="nav-link active"
+										<li class="nav-item"><a class="nav-link"
 											href="/owner/owner_dash.do"><i
 												class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 										<!-- Review 목록 페이지 -->
@@ -196,7 +196,7 @@ Menu item START -->
 											href="/owner/owner_listings.do"><i
 												class="bi bi-journals fa-fw me-1"></i>Listings</a></li>
 										<li><a class="nav-link" href="#"><i
-												class="bi bi-gear fa-fw me-1"></i>profile</a></li>
+												class="bi bi-gear fa-fw me-1 active"></i>profile</a></li>
 
 									</ul>
 								</div>
@@ -278,7 +278,7 @@ Content START -->
 															<span class="avatar avatar-xl"> <img
 																id="uploadfile-1-preview"
 																class="avatar-img rounded-circle border border-white border-3 shadow"
-																src="/images/avatar/01.jpg" alt="">
+																src="/images/avatar/01-1.jpg" alt="">
 														</span>
 														</label>
 														<!-- Upload button -->

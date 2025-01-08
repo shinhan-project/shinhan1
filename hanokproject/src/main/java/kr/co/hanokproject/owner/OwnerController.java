@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import kr.co.hanokproject.reservation.ReservationVO;
+
 
 @Controller
 public class OwnerController {
@@ -80,6 +80,7 @@ public class OwnerController {
 //			public void owner_profile() {
 //				 return;
 //			}
+
 		   
 		   
 		   

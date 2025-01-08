@@ -196,7 +196,7 @@ Content START -->
 						<!-- Tabs -->
 						<ul class="nav nav-tabs nav-bottom-line nav-responsive nav-justified">
 							<li class="nav-item"> 
-								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Upcoming Booking</a> 
+								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Booking List</a> 
 							</li>
 						</ul>
 		
