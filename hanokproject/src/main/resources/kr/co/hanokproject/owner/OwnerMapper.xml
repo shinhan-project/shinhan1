@@ -17,17 +17,8 @@
 		VALUES (#{owner_id}, MD5(#{owner_pwd}), #{owner_name},
 		#{owner_address}, #{owner_email},#{owner_tel}, NOW())
 	</insert>
-	<!-- 사장님이 가지고 있는 방 리스트 검색 -->
-
-	<select id="getRoomList"
-		resultType="kr.co.hanokproject.room.RoomVO" parameterType="int">
-		SELECT r.*
-		FROM ROOMS r
-		JOIN HANOKS h ON r.hanok_id = h.hanok_id
-		JOIN USERS_OWNER
-		uo ON h.owner_id = uo.owner_id
-		WHERE uo.owner_id = #{uo.owner_pwd};
-	</select>
+	
+	
 
 	<!-- 사장정보수정 -->
 

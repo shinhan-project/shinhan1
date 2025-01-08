@@ -13,65 +13,7 @@
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
 
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
- 
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
 
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-
-		setTheme(getPreferredTheme())
-
-		window.addEventListener('DOMContentLoaded', () => {
-		    var el = document.querySelector('.theme-icon-active');
-			if(el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-				const activeThemeIcon = document.querySelector('.theme-icon-active use')
-				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-					element.classList.remove('active')
-				})
-
-				btnToActive.classList.add('active')
-				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-			}
-
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (storedTheme !== 'light' || storedTheme !== 'dark') {
-					setTheme(getPreferredTheme())
-				}
-			})
-
-			showActiveTheme(getPreferredTheme())
-
-			document.querySelectorAll('[data-bs-theme-value]')
-				.forEach(toggle => {
-					toggle.addEventListener('click', () => {
-						const theme = toggle.getAttribute('data-bs-theme-value')
-						localStorage.setItem('theme', theme)
-						setTheme(theme)
-						showActiveTheme(theme)
-					})
-				})
-
-			}
-		})
-		
-	</script>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
@@ -91,7 +33,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<style>
 	.adjust-right{
-	postion: relative;
+	position: relative;
 	left: 10px;}
 	</style>
 </head>
@@ -100,14 +42,74 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
+<section class="pt-3">
+	<div class="container">
+		<div class="row">
+
+			<!-- Sidebar START -->
+			<div class="col-lg-4 col-xl-3">
+				<!-- Responsive offcanvas body START -->
+				<div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasSidebar" >
+					<!-- Offcanvas header -->
+					<div class="offcanvas-header justify-content-end pb-2">
+						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Close"></button>
+					</div>
+
+					<!-- Offcanvas body -->
+					<div class="offcanvas-body p-3 p-lg-0">
+						<div class="card bg-light w-100">
+
+							<!-- Edit profile button -->
+							<div class="position-absolute top-0 end-0 p-3">
+								<a href="profile.do" class="text-primary-hover" data-bs-toggle="tooltip" data-bs-title="Edit profile">
+									<i class="bi bi-pencil-square"></i>
+								</a>
+							</div>
+
+							<!-- Card body START -->
+							<div class="card-body p-3">
+								<!-- Avatar and content -->
+								<div class="text-center mb-3">
+									<!-- Avatar -->
+									<div class="avatar avatar-xl mb-2">
+										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01.jpg" alt="">
+									</div>
+									<h6 class="mb-0"></h6>
+									<a href="#" class="text-reset text-primary-hover small"> </a>
+									<hr>
+								</div>
+
+								<!-- Sidebar menu item START -->
+								<ul class="nav nav-pills-primary-soft flex-column">
+									<li class="nav-item">
+										<a class="nav-link" href="/customer/profile.do"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/customer/mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active" href="/review/reviews"><i class="bi bi-pencil fa-fw me-2"></i>My Reviews</a>
+									</li>
+									
+									<li class="nav-item">
+										<a class="nav-link text-danger bg-danger-soft-hover" href="/customer/logout.do"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
+									</li>
+								</ul>
+								<!-- Sidebar menu item END -->
+							</div>
+							<!-- Card body END -->
+						</div>
+					</div>
+				</div>	
+				<!-- Responsive offcanvas body END -->	
+			</div>
+			<!-- Sidebar END -->
+
+			<!-- Main content START -->
+			<div class="col-lg-8 col-xl-9">
+
+				<!-- Page content START -->
 	
-	<!-- Page content START -->
-	<div class="page-content">
-	
-		
-	
-		<!-- Page main content START -->
-		<div class="page-content-wrapper p-xxl-4">
 			
 			<!-- Title -->
 			<div class="row">
@@ -193,15 +195,20 @@
 			</div>	
 			<!-- Reviews END -->
 
+		
+			</div>
+			<!-- Main content END -->
+
 		</div>
-		<!-- Page main content END -->
 	</div>
-	<!-- Page content END -->
+</section>	
 	
 	
 	</main>
 	
 <!-- **************** MAIN CONTENT END **************** -->
+<!-- Back to top -->
+<div class="back-top"></div>
 
 <!-- Bootstrap JS -->
 <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -80,7 +80,7 @@ Content START -->
 								<div class="text-center mb-3">
 									<!-- Avatar -->
 									<div class="avatar avatar-xl mb-2">
-										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01.jpg" alt="">
+										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01-1.jpg" alt="">
 									</div>
 									<h6 class="mb-0"></h6>
 									<a href="#" class="text-reset text-primary-hover small"> </a>
@@ -95,7 +95,10 @@ Content START -->
 									<li class="nav-item">
 										<a class="nav-link" href="mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
-				
+									<li class="nav-item">
+										<a class="nav-link" href="/review/reviews"><i class="bi bi-pencil fa-fw me-2"></i>My Reviews</a>
+									</li>
+									
 									<li class="nav-item">
 										<a class="nav-link text-danger bg-danger-soft-hover" href="/customer/logout.do"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</li>
@@ -141,7 +144,7 @@ Content START -->
 										<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
 											<!-- Avatar place holder -->
 											<span class="avatar avatar-xl">
-												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="/images/avatar/01.jpg" alt="">
+												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="/images/avatar/01-1.jpg" alt="">
 											</span>
 										</label>
 										<!-- Upload button -->

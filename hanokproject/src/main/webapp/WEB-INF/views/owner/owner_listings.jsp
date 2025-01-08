@@ -58,7 +58,7 @@ Menu item START -->
 			<nav class="navbar navbar-expand-xl">
 				<div class="container">
 					<!-- Logo START -->
-					<a class="navbar-brand" href="/index.do"> <img
+					<a class="navbar-brand" href="/owner/owner_dash.do"> <img
 						class="light-mode-item navbar-brand-item"
 						src="/images/gojeuneoklogo.png" alt="logo">
 
@@ -97,7 +97,7 @@ Menu item START -->
 							id="profileDropdown" role="button" data-bs-auto-close="outside"
 							data-bs-display="static" data-bs-toggle="dropdown"
 							aria-expanded="false"> <img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="avatar">
+								src="/images/avatar/01-1.jpg" alt="avatar">
 						</a> <!-- Profile dropdown START -->
 							<ul
 								class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -108,7 +108,7 @@ Menu item START -->
 										<!-- Avatar -->
 										<div class="avatar me-3">
 											<img class="avatar-img rounded-circle shadow"
-												src="/images/avatar/01.jpg" alt="avatar">
+												src="/images/avatar/01-1.jpg" alt="avatar">
 										</div>
 										<div>
 
@@ -159,7 +159,7 @@ Menu item START -->
 					<div class="d-sm-flex align-items-center">
 						<div class="avatar avatar-xl mb-2 mb-sm-0">
 							<img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="">
+								src="/images/avatar/01-1.jpg" alt="">
 						</div>
 						<h4 class="mb-2 mb-sm-0 ms-sm-3">
 							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
@@ -192,15 +192,17 @@ Menu item START -->
 							<div class="navbar navbar-expand-xl">
 								<ul class="navbar-nav navbar-offcanvas-menu">
 
-									<li class="nav-item"><a class="nav-link active"
+									<li class="nav-item"><a class="nav-link"
 										href="/owner/owner_dash.do"><i
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
 									<li class="nav-item"><a class="nav-link"
-										href="agent-reviews.html"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
-									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
-									<li><a class="nav-link" href="#"><i
+
+									<li class="nav-item"> <a class="nav-link active" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+
+									<li><a class="nav-link" href="/owner/owner_profile.do"><i
 											class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
 								</ul>
@@ -251,7 +253,7 @@ Content START -->
 									<div class="row g-4">
 										<!-- Card img -->
 										<div class="col-md-3 col-lg-2">
-											<img src="/images/category/hotel/4by3/10.jpg"
+											<img src="/images/hanoks/${listings.hanok_imgName }"
 												class="card-img rounded-2" alt="Card image">
 										</div>
 
@@ -260,29 +262,11 @@ Content START -->
 											<div
 												class="card-body position-relative d-flex flex-column p-0 h-100">
 
-												<!-- Buttons -->
-												<div
-													class="list-inline-item dropdown position-absolute top-0 end-0">
-													<!-- Share button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction2"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown button -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded"
-														aria-labelledby="dropdownAction2">
-														<!-- 방 정보 사이트로 이동 버튼 만들기-->
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-1"></i>room info</a></li>
-														
-													</ul>
-												</div>
+												
 
 												<!-- Title -->
 												<h5 class="card-title mb-0 me-5">
-													<a href="hotel-detail.html">${listings.hanok_name}</a>
+													<a href="/owner/owner_rooms.do?hanok_id=${listings.hanok_id}">${listings.hanok_name}</a>
 												</h5>
 												<small><i class="bi bi-geo-alt me-2"></i>${listings.hanok_address}</small>
 
