@@ -58,17 +58,7 @@
 
 						</ul></li>
 
-					<!-- Nav item Pages -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="pagesMenu"
-						data-bs-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Contact Us</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-							<li><a class="dropdown-item" href="#">FAQs</a></li>
-							<li><a class="dropdown-item" href="#">Notice</a></li>
-
-						</ul></li>
+					
 
 					<!-- Nav item Account -->
 					<li class="nav-item dropdown"><a
@@ -160,7 +150,7 @@
 							id="profileDropdown" role="button" data-bs-auto-close="outside"
 							data-bs-display="static" data-bs-toggle="dropdown"
 							aria-expanded="false"> <img class="avatar-img rounded-2"
-								src="/images/avatar/01.jpg" alt="avatar">
+								src="/images/avatar/01-1.jpg" alt="avatar">
 						</a>
 
 							<ul
@@ -248,17 +238,7 @@
 
 						</ul></li>
 
-					<!-- Nav item Pages -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="pagesMenu"
-						data-bs-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Contact Us</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-							<li><a class="dropdown-item" href="#">FAQs</a></li>
-							<li><a class="dropdown-item" href="#">Notice</a></li>
-
-						</ul></li>
+					
 
 					<!-- Nav item Account -->
 					<li class="nav-item dropdown"><a
@@ -277,66 +257,6 @@
 
 
 
-			<!-- Profile and Notification START -->
-			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-
-				<!-- Notification dropdown START -->
-				<li class="nav-item dropdown ms-0 ms-md-3">
-					<!-- Notification button --> <a
-					class="nav-notification btn btn-light p-0 mb-0" href="#"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false"
-					data-bs-auto-close="outside"> <i class="bi bi-bell fa-fw"></i>
-				</a> <!-- Notification dote --> <span
-					class="notif-badge animation-blink"></span> <!-- Notification dropdown menu START -->
-					<div
-						class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md shadow-lg p-0">
-						<div class="card bg-transparent">
-							<!-- Card header -->
-							<div
-								class="card-header bg-transparent d-flex justify-content-between align-items-center border-bottom">
-								<h6 class="m-0">
-									Notifications <span
-										class="badge bg-danger bg-opacity-10 text-danger ms-2">4
-										new</span>
-								</h6>
-								<a class="small" href="#">Clear all</a>
-							</div>
-
-							<!-- Card body START -->
-							<div class="card-body p-0">
-								<ul class="list-group list-group-flush list-unstyled p-2">
-									<!-- Notification item -->
-									<li><a href="#"
-										class="list-group-item list-group-item-action rounded notif-unread border-0 mb-1 p-3">
-											<h6 class="mb-2">New! Booking flights from New York ✈️</h6>
-											<p class="mb-0 small">Find the flexible ticket on
-												flights around the world. Start searching today</p> <span>Wednesday</span>
-									</a></li>
-									<!-- Notification item -->
-									<li><a href="#"
-										class="list-group-item list-group-item-action rounded border-0 mb-1 p-3">
-											<h6 class="mb-2">Sunshine saving are here 🌞 save 30%
-												or more on a stay</h6> <span>15 Nov 2022</span>
-									</a></li>
-								</ul>
-							</div>
-							<!-- Card body END -->
-
-							<!-- Card footer -->
-							<div class="card-footer bg-transparent text-center border-top">
-								<a href="#" class="btn btn-sm btn-link mb-0 p-0">See all
-									incoming activity</a>
-							</div>
-						</div>
-					</div> <!-- Notification dropdown menu END -->
-				</li>
-				<!-- Notification dropdown END -->
-
-
-
-			</ul>
-			<!-- Profile and Notification START -->
-
 			<div class="header">
 				<div class="size">
 					<div>
@@ -346,11 +266,13 @@
 
 						<!-- Profile dropdown START -->
 						<li class="nav-item ms-3 dropdown">
-							<!-- Avatar --> <a class="avatar avatar-sm p-0" href="#"
+							<!-- Avatar -->
+							<a class="avatar avatar-sm p-0" href="#"
 							id="profileDropdown" role="button" data-bs-auto-close="outside"
 							data-bs-display="static" data-bs-toggle="dropdown"
-							aria-expanded="false"> <img class="avatar-img rounded-2"
-								src="/images/avatar/01.jpg" alt="avatar">
+							aria-expanded="false">
+							<img class="avatar-img rounded-2"
+								src="/images/avatar/01-1.jpg" alt="avatar">
 						</a>
 
 							<ul
