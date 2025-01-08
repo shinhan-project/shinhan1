@@ -281,10 +281,7 @@ Content START -->
 																src="/images/avatar/01-1.jpg" alt="">
 														</span>
 														</label>
-														<!-- Upload button -->
-														<label class="btn btn-sm btn-primary-soft mb-0"
-															for="uploadfile-1">Change</label> <input
-															id="uploadfile-1" class="form-control d-none" type="file">
+														
 													</div>
 													<!-- Avatar upload END -->
 												</div>
@@ -347,7 +344,7 @@ Content END -->
 </main>
 	<!-- **************** MAIN CONTENT END **************** -->
 
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 	<!-- Back to top -->
 	<div class="back-top"></div>
 

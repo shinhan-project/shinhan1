@@ -97,7 +97,7 @@ Main Content START -->
 </section>
 <!-- =======================
 Main Content END -->
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 

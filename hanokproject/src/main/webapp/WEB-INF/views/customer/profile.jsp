@@ -147,9 +147,7 @@ Content START -->
 												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="/images/avatar/01-1.jpg" alt="">
 											</span>
 										</label>
-										<!-- Upload button -->
-										<label class="btn btn-sm btn-primary-soft mb-0" for="uploadfile-1">Change</label>
-										<input id="uploadfile-1" class="form-control d-none" type="file">
+										
 									</div>
 								</div>
 

@@ -186,7 +186,7 @@
 										href="/owner/owner_dash.do"><i
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
-									<li class="nav-item"><a class="nav-link active"
+									<li class="nav-item"><a class="nav-link "
 										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
@@ -292,7 +292,7 @@ Content START -->
 								<div
 									class="d-sm-flex justify-content-between align-items-center">
 									<h5 class="mb-2 mb-sm-0">Upcoming Bookings</h5>
-									<a href="#" class="btn btn-sm btn-primary mb-0">View All</a>
+								
 								</div>
 							</div>
 							<!-- Card header END -->
@@ -359,34 +359,7 @@ Content START -->
 							</div>
 							<!-- Card body END -->
 
-							<!-- Card footer START -->
-							<div class="card-footer pt-0">
-								<!-- Pagination and content -->
-								<div
-									class="d-sm-flex justify-content-sm-between align-items-sm-center">
-									<!-- Content -->
-									<p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8
-										of 20 entries</p>
-									<!-- Pagination -->
-									<nav class="mb-sm-0 d-flex justify-content-center"
-										aria-label="navigation">
-										<ul
-											class="pagination pagination-sm pagination-primary-soft mb-0">
-											<li class="page-item disabled"><a class="page-link"
-												href="#" tabindex="-1">Prev</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item active"><a class="page-link"
-												href="#">2</a></li>
-											<li class="page-item disabled"><a class="page-link"
-												href="#">..</a></li>
-											<li class="page-item"><a class="page-link" href="#">15</a></li>
-											<li class="page-item"><a class="page-link" href="#">Next</a>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-							<!-- Card footer END -->
+						
 						</div>
 					</div>
 				</div>
@@ -402,7 +375,7 @@ Content END -->
 
 	</main>
 	<!-- **************** MAIN CONTENT END **************** -->
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 	<!-- Back to top -->
 	<div class="back-top"></div>

@@ -67,7 +67,7 @@ public class OwnerController {
 		   }
 		   
 		   //로그아웃
-		   @GetMapping("/owner/logout.do")
+		   @GetMapping("/owner/owner_logout.do")
 			public String logout(HttpSession sess, Model model) {
 				sess.invalidate();
 				model.addAttribute("msg", "로그아웃되었습니다.");

@@ -205,7 +205,7 @@
 	
 	
 	</main>
-	
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>	
 <!-- **************** MAIN CONTENT END **************** -->
 <!-- Back to top -->
 <div class="back-top"></div>

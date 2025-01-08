@@ -302,7 +302,7 @@ Content END -->
 </main>
 	<!-- **************** MAIN CONTENT END **************** -->
 
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 	<!-- Back to top -->
 	<div class="back-top"></div>
