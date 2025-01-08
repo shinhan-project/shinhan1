@@ -66,7 +66,7 @@
 	<select id="getReservationById" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">
 	    SELECT r.reservations_id, r.customer_id, r.room_id,
 	           r.checkin, r.checkout,
-	           h.hanok_id, h.hanok_name, rm.room_name, g.hanok_imgName, r.reservation_price, c.customer_name
+	           h.hanok_id, h.hanok_name, rm.room_name, g.hanok_imgName, r.reservation_price, c.customer_name, r.pay_date, c.customer_tel, c.customer_email, r.reservation_name
 	    FROM RESERVATIONS r
 	    JOIN ROOMS rm ON r.room_id = rm.room_id
 	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id

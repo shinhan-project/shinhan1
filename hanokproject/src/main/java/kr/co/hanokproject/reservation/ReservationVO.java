@@ -1,5 +1,4 @@
 
-
 package kr.co.hanokproject.reservation;
 
 import java.sql.Timestamp;
@@ -26,6 +25,11 @@ public class ReservationVO {
     private String hanok_imgName;
     
     private String customer_name;
+    private String customer_tel;
+    private String customer_email;
+    
+    private String pay_date;
+    
     
 }
 

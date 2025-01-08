@@ -253,31 +253,22 @@ Page content START -->
 								<!-- Title -->
 								<div class="col-12">
 									<div class="bg-light rounded-2 px-4 py-3">
+									<h6 class="col-md-4">Customer Name</h6>
 										<h6 class="mb-0">${reservations.customer_name }</h6>
 									</div>
 								</div>
 								
-								<!-- Select -->
-								<div class="col-md-2">
-									<div class="form-size-lg">
-										<label class="form-label">Title</label>
-										<select class="form-select js-choice">
-											<option>Mr</option>
-											<option>Mrs</option>
-										</select>
-									</div>	
+								
+								<!-- Input -->
+								<div class="col-md-5">
+									<label class="form-label">Mobile number</label>
+									<option>${reservations.customer_tel }</option>
 								</div>
 
 								<!-- Input -->
 								<div class="col-md-5">
-									<label class="form-label">First Name</label>
-									<input type="text" class="form-control form-control-lg" placeholder="Enter your name">
-								</div>
-
-								<!-- Input -->
-								<div class="col-md-5">
-									<label class="form-label">Last Name</label>
-									<input type="text" class="form-control form-control-lg" placeholder="Enter your name">
+									<label class="form-label">Email</label>
+									<option>${reservations.customer_email }</option>								
 								</div>
 
 								<!-- Button -->
@@ -286,16 +277,15 @@ Page content START -->
 								</div>
 
 								<!-- Input -->
-								<div class="col-md-6">
-									<label class="form-label">Email id</label>
-									<input type="email" class="form-control form-control-lg" placeholder="Enter your email">
-									<div id="emailHelp" class="form-text">(Booking voucher will be sent to this email ID)</div>
+								<div class="col-md-5">
+									<label class="form-label">Reservation Number</label>
+									<option>${reservations.reservations_id }</option>								
 								</div>
 
 								<!-- Input -->
-								<div class="col-md-6">
-									<label class="form-label">Mobile number</label>
-									<input type="text" class="form-control form-control-lg" placeholder="Enter your mobile number">
+							<div class="col-md-5">
+									<label class="form-label">Reservation Name</label>
+									<option>${reservations.reservation_name }</option>								
 								</div>
 							</form>
 							<!-- Form END -->
@@ -307,54 +297,7 @@ Page content START -->
 							<!-- Alert END -->
 
 							<!-- Special request START -->
-							<div class="card border mt-4">
-								<!-- Card header -->
-								<div class="card-header border-bottom">
-									<h5 class="card-title mb-0">Special request</h5>
-								</div>
-
-								<!-- Card body START -->
-								<div class="card-body">
-									<form class="hstack flex-wrap gap-3">
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType1">
-											<label class="form-check-label" for="hotelType1">Smoking room</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType2">
-											<label class="form-check-label" for="hotelType2">Late check-in</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType3">
-											<label class="form-check-label" for="hotelType3">Early check-in</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType4">
-											<label class="form-check-label" for="hotelType4">Room on a high floor</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType5">
-											<label class="form-check-label" for="hotelType5">Large bed</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType6">
-											<label class="form-check-label" for="hotelType6">Airport transfer</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType8">
-											<label class="form-check-label" for="hotelType8">Twin beds</label>
-										</div>
-									</form>	
-								</div>
-								<!-- Card body END -->
-							</div>
+							
 							<!-- Special request END -->
 						</div>
 						<!-- Card body END -->
@@ -372,23 +315,7 @@ Page content START -->
 						<!-- Card body START -->
 						<div class="card-body p-4 pb-0">
 							<!-- Action box START -->
-							<div class="bg-primary bg-opacity-10 rounded-3 mb-4 p-3">
-								<div class="d-md-flex justify-content-md-between align-items-center">
-									<!-- Image and title -->
-									<div class="d-sm-flex align-items-center mb-2 mb-md-0">
-										<!-- Image -->
-										<img src="/images/element/16.svg" class="h-50px" alt="">
-										<!-- Title -->
-										<div class="ms-sm-3 mt-2 mt-sm-0">
-											<h5 class="card-title mb-0">Get Additional Discount</h5>
-											<p class="mb-0">Login to access saved payments and discounts!</p>
-										</div>
-									</div>
-
-									<!-- Button -->
-									<a href="sign-in.html" class="btn btn-primary mb-0">Login now</a>
-								</div>
-							</div>
+							
 							<!-- Action box END -->
 
 							<!-- Accordion START -->
@@ -593,20 +520,25 @@ Page content START -->
 							<div class="card-body">
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="h6 fw-light mb-0">You already Payed</span>
+										<span class="h5 fw-light mb-0">Total</span>
 										<span class="fs-5">${reservations.reservation_price }won</span>
 									</li>
 									
 								</ul>
+								
+							</div>
+							<hr>
+							<div>
+							<ul class="list-group list-group-borderless">
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+							<span class="h6 fw-light mb-0">Payed date</span>
+							<span class="fs-6">${reservations.pay_date }</span>
+							</li>
+							</ul>
 							</div>
 	
 							<!-- Card footer -->
-							<div class="card-footer border-top">
-								<div class="d-flex justify-content-between align-items-center">
-									<span class="h5 mb-0"></span>
-									
-								</div>
-							</div>
+							
 						</div>
 					</div>
 					<!-- Price summary END -->
