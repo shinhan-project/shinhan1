@@ -29,6 +29,7 @@ public class ReservationVO {
     private String customer_email;
     
     private String pay_date;
+    private String pay_type;
     
     
 }
