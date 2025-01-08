@@ -112,7 +112,7 @@ Page banner START -->
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb breadcrumb-dots mb-0">
 								<li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house me-1"></i> Home</a></li>
-								<li class="breadcrumb-item">Hotel detail</li>
+								<li class="breadcrumb-item">Hanok detail</li>
 								<li class="breadcrumb-item active">Booking</li>
 							</ol>
 						</nav>
@@ -204,6 +204,8 @@ Page content START -->
 										<fmt:formatDate value="${reservations.checkin}" pattern="hh:mm a"/>
 										</small>
 									</div>
+									
+									
 								</div>
 
 								<!-- Item -->
@@ -318,9 +320,9 @@ Page content START -->
 											<div class="d-sm-flex justify-content-sm-between my-3">
 												
 												<ul class="list-inline my-0">
-													<li class="list-inline-item"> <a href="#"><img src="/images/element/visa.svg" class="h-30px" alt=""></a></li>
-													<li class="list-inline-item"> <a href="#"><img src="/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
-													<li class="list-inline-item"> <a href="#"><img src="/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
+													<li class="list-inline-item"> <a href="#"><img src="/images/element/kakaopay.png" class="h-30px" alt=""></a></li>
+													<li class="list-inline-item"> <a href="#"><img src="/images/element/naverpay.png" class="h-30px" alt=""></a></li>
+													<li class="list-inline-item"> <a href="#"><img src="/images/element/creditcard1.png" class="h-30px" alt=""></a></li>
 												</ul>
 											</div>
 
@@ -338,11 +340,13 @@ Page content START -->
 													</div>	
 													<label class="form-label"><span class="h6 fw-normal">Payed date</span></label>
 													<div class="position-relative">
-														<label class="form-label"><span class="h6 fw-normal"></span>${reservations.pay_date }</label> <hr>
+														<label class="form-label">${reservations.pay_date}</label>
+														<hr>
 													</div>
 													<label class="form-label"><span class="h6 fw-normal">Payed price</span></label>
 													<div class="position-relative">
-														<label class="form-label"><span class="h6 fw-normal"></span>${reservations.reservation_price } won</label>
+														<label class="form-label"><span class="h6 fw-normal"></span>
+															<fmt:formatNumber value="${reservations.reservation_price }" type="number" groupingUsed="true"/> won</label>
 													</div>		
 												</div>
 												<!-- Expiration Date -->
@@ -409,7 +413,8 @@ Page content START -->
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item d-flex justify-content-between align-items-center">
 										<span class="h5 fw-light mb-0">Total</span>
-										<span class="fs-5">${reservations.reservation_price }won</span>
+										<span class="fs-5">
+											<fmt:formatNumber value="${reservations.reservation_price }" type="number" groupingUsed="true"/>won</span>
 									</li>
 									
 								</ul>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
@@ -73,7 +72,7 @@
 	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id
 	    JOIN HANOK_IMAGES g ON g.hanok_id = h.hanok_id
 	    JOIN USERS_CUSTOMER c ON c.customer_id = r.customer_id
-	    
+
 	    WHERE r.reservations_id = #{reservation_id}
 </select>
 
@@ -90,96 +89,4 @@
 </select>
 
 
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="kr.co.hanokproject.reservation.ReservationMapper">
-
-
-	<!-- 특정 사업장의 예약 목록 조회 -->
-	<select id="getReservationsByOwnerId"
-		resultType="kr.co.hanokproject.reservation.ReservationVO"
-		parameterType="int">
-		SELECT r.reservations_id, r.checkin, r.checkout,
-		r.created_at,
-		r.modified_at,
-		r.status, r.reservation_price,
-		r.reservation_name
-		FROM RESERVATIONS r
-		JOIN ROOMS ro ON r.room_id =
-		ro.room_id
-		JOIN HANOKS h ON ro.hanok_id = h.hanok_id
-		WHERE h.owner_id =
-		#{owner_id} AND r.checkout >= NOW()
-	</select>
-	
-	
-
-
-	<!-- total reservations -->
-	<select id="getReservationCount" resultType="int"
-		parameterType="int">
-		SELECT COUNT(r.reservations_id)
-		FROM RESERVATIONS r
-		JOIN
-		ROOMS ro ON r.room_id = ro.room_id
-		JOIN HANOKS h ON ro.hanok_id =
-		h.hanok_id
-		WHERE h.owner_id = #{owner_id}
-	</select>
-
-
-	<!-- total earning 수입 -->
-	<select id="getReservationEarning" resultType="int"
-		parameterType="int">
-		SELECT SUM(r.reservation_price)
-		FROM RESERVATIONS r
-		JOIN
-		ROOMS ro ON r.room_id = ro.room_id
-		JOIN HANOKS h ON ro.hanok_id =
-		h.hanok_id
-		WHERE h.owner_id = #{owner_id}
-	</select>
-
-	<!-- 사장이 가지고 있는 한옥들의 리뷰 수 count -->
-	<select id="getReservationReviewCount" resultType="int"
-		parameterType="int">
-		SELECT
-		COUNT(rv.review_id) AS review_count
-		FROM
-		HANOKS h
-		JOIN
-		ROOMS r ON h.hanok_id = r.hanok_id
-		LEFT JOIN
-		REVIEWS rv ON r.room_id = rv.room_id
-		WHERE h.owner_id = #{owner_id}
-	</select>
-	
-	<select id="getReservationById" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">
-	    SELECT r.reservations_id, r.customer_id, r.room_id,
-	           r.checkin, r.checkout,
-	           h.hanok_id, h.hanok_name, rm.room_name, g.hanok_imgName
-	    FROM RESERVATIONS r
-	    JOIN ROOMS rm ON r.room_id = rm.room_id
-	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id
-	    JOIN HANOK_IMAGES g ON g.hanok_id = h.hanok_id
-	    
-	    WHERE r.reservations_id = #{reservation_id}
-</select>
-
-	<select id="getCustomerReservations" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">
-	    SELECT r.reservations_id, r.customer_id, r.room_id,
-	           r.checkin, r.checkout,
-	           h.hanok_id, h.hanok_name, rm.room_name, g.hanok_imgName
-	    FROM RESERVATIONS r
-	    JOIN ROOMS rm ON r.room_id = rm.room_id
-	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id
-	    JOIN HANOK_IMAGES g ON g.hanok_id = h.hanok_id
-	    
-	    WHERE r.customer_id = #{customer_id}
-</select>
-
-
->>>>>>> refs/heads/main
 </mapper>
