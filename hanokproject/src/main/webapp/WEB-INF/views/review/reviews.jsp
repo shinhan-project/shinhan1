@@ -170,18 +170,14 @@
 						    <li class="list-inline-item me-0">
 						        <i class="fas fa-star ${review.rating >= 5 ? 'text-warning' : 'text-muted'}"></i>
 						    </li>
-						    <fmt:formatDate value="${review.review_date}" pattern="dd MMM yyyy" var="formattedDate"/>
+						    <fmt:formatDate value="${review.review_date}" pattern="yyyy년 M월 d일"  var="formattedDate"/>
 								<p class="mb-0">Reviewed ${formattedDate}</p>
 						</ul>
 
 						
 						<p>${review.review_content}</p>
 
-						<!-- Button -->
-						<div class="d-flex justify-content-between align-items-center">
-							
-							<a href="#" class="text-primary-hover"><i class="bi bi-trash3 me-1"></i>Delete</a>
-						</div>
+						
 					</div>
 				</div>
 				<hr class="m-0"> <!-- Divider -->
