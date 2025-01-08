@@ -197,9 +197,11 @@ Menu item START -->
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
 									<li class="nav-item"><a class="nav-link"
-										href="agent-reviews.html"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+
 
 									<li class="nav-item"> <a class="nav-link active" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+
 									<li><a class="nav-link" href="/owner/owner_profile.do"><i
 											class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 

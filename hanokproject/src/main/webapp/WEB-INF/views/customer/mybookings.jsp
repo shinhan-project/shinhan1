@@ -158,6 +158,9 @@ Content START -->
 										<a class="nav-link active" href="mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 									<li class="nav-item">
+										<a class="nav-link" href="/review/reviews"><i class="bi bi-pencil fa-fw me-2"></i>My Reviews</a>
+									</li>
+									<li class="nav-item">
 										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</li>
 								</ul>
