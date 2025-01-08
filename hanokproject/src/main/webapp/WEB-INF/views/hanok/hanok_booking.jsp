@@ -89,11 +89,6 @@
 	window.addEventListener('DOMContentLoaded', () => {
 		var IMP = window.IMP; 
 		IMP.init("imp02723803");
-		var name = $("#name").text();
-	    var phone = $("#phone").text();
-	    var email = $("#email").text();
-	    var address = $("#address").text();
-	    var price = $("#total-price").text();
 	    var pg = "";
 	    var payMethod = "";
 	
@@ -121,6 +116,11 @@
 	    $(document).on('click', '#money-btn', function(){
 	    	console.log("결제 버튼 클릭됨");
 	        console.log("PG: ", pg, "Pay Method: ", payMethod);
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const price = document.getElementById('total-price').value;
 	        
 			IMP.request_pay({
 				pg: pg,
@@ -140,14 +140,15 @@
 		    		console.log("결제성공 ");
 		    		$.ajax({
 						type: "POST",
-						url: "/verify/"+res.imp_uid,
-						success: function (response) {
-				            if (response.success) {
-				                alert(response.message);
+						url: "/hanok/verify/"+res.imp_uid,
+						success: function (res) {
+							
+				            if (res.success) {
+				                alert(res.message);
 				                // 검증 성공 후 페이지 이동
 				                window.location.href = "/hanok/hanok_booking_confirm.do";
 				            } else {
-				                alert(response.message);
+				                alert(res.message);
 				            }
 				        },
 				        error: function (err) {
@@ -159,7 +160,8 @@
 	                console.log("Payment success!");
 	                console.log("Payment ID : " + res.imp_uid);
 	                console.log("Order ID : " + res.merchant_uid);
-	                console.log("Payment Amount : " + res.amount);
+	                console.log("Payment Amount : " + ${roomMap.roomInfo.room_price});
+	                console.log("buyer_name : " + name);
 	            } else {
 	            	var msg = '결제에 실패하였습니다.';
 	            }
@@ -323,20 +325,20 @@
 									<!-- Input -->
 									<div class="col-md-5">
 										<label class="form-label">이름</label>
-										<input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." value="${param.name}" required>
+										<input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">이메일</label>
-										<input type="email" id="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요." value="${param.email}" required>
+										<input type="email" id="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요." required>
 										<div id="emailHelp" class="form-text">(Booking voucher will be sent to this email ID)</div>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">휴대폰 번호</label>
-										<input type="text" name="phone" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." value="${param.phone}" required>
+										<input type="text" name="phone" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
 									</div>
 								</form>
 								<!-- Form END -->

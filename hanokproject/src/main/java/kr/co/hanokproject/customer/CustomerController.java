@@ -117,7 +117,7 @@ public class CustomerController {
 	
 	// 한옥 검색 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
-    public String hanok_search(HttpServletRequest request, Model model) {
+    public String hanok_search(HttpServletRequest request, Model model, HttpSession sess) {
 		try {
 			int page = 1;
 	        if (request.getParameter("page") != null) {
@@ -148,7 +148,19 @@ public class CustomerController {
     
 	// 한옥 상세(예약)페이지 (민규)
     @GetMapping("/hanok/hanok_detail.do")
-    public String hanokDetail(@RequestParam("hanok_id") int hanok_id, @RequestParam(value = "location", required = false) String location, @RequestParam(value = "checkInDate", required = false) String checkInDate, @RequestParam(value = "checkOutDate", required = false) String checkOutDate, @RequestParam(value = "capacity", required = false) String capacity, Model model) {
+    public String hanokDetail(@RequestParam("hanok_id") int hanok_id, 
+    		@RequestParam(value = "location", required = false) String location,
+    		@RequestParam(value = "checkInDate", required = false) String checkInDate, 
+    		@RequestParam(value = "checkOutDate", required = false) String checkOutDate,
+    		@RequestParam(value = "capacity", required = false) String capacity, 
+    		Model model, 
+    		HttpSession sess) {
+        // 세션에서 로그인 정보 가져오기
+        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+        if (loginInfo == null) {
+            return "redirect:/customer/login.do";
+        }
+        
     	// 한옥 정보 및 객실 정보 가져오기
         Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
         String hanok_imgName = service.getHanokImg(hanok_id);
@@ -173,7 +185,20 @@ public class CustomerController {
     
     // 한옥 예약 확정 (민규)
     @GetMapping("/hanok/hanok_booking.do")
-    public String hanokBooking(HttpServletRequest request, @RequestParam("hanok_id") int hanok_id, @RequestParam("room_id") int room_id, @RequestParam(value = "checkInDate", required = false) String checkInDate, @RequestParam(value = "checkOutDate", required = false) String checkOutDate, @RequestParam(value = "capacity", required = false) String capacity, Model model) {
+    public String hanokBooking(HttpServletRequest request, 
+    		@RequestParam("hanok_id") int hanok_id, 
+    		@RequestParam("room_id") int room_id, 
+    		@RequestParam(value = "checkInDate", required = false) String checkInDate, 
+    		@RequestParam(value = "checkOutDate", required = false) String checkOutDate, 
+    		@RequestParam(value = "capacity", required = false) String capacity, 
+    		Model model,
+    		HttpSession sess) {
+//        // 세션에서 로그인 정보 가져오기
+//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+//        if (loginInfo == null) {
+//            return "redirect:/customer/login.do";
+//        }
+        
     	// 한옥 정보 및 객실 정보 가져오기
         Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
         String hanok_imgName = service.getHanokImg(hanok_id);
@@ -184,14 +209,15 @@ public class CustomerController {
         LocalDate endDate = LocalDate.parse(checkOutDate);        
         long totalDays = ChronoUnit.DAYS.between(startDate, endDate);
         long nights = totalDays; // n박
-        long days = totalDays + 1;       // m일
+        long days = totalDays + 1; // m일
         String n_bak_m_il = nights + "박" + days + "일";
     	System.out.println(n_bak_m_il);
-    	
+
         // 예약자 정보
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		
+//		model.addAttribute("customer", loginInfo);
     	model.addAttribute("hanok_imgName", hanok_imgName);
         model.addAttribute("hanokMap", hanokDetailMap);
         model.addAttribute("roomMap", roomDetailMap);
