@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,8 +227,9 @@ Content START -->
 							    <div class="col-lg-6">
 							        <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-in</h6>
-							            <h5 class="mb-2">${reservation.checkin}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+							            <h5 class="mb-2">
+							            <fmt:formatDate value="${reservation.checkin}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkin}" pattern="HH:mm a" /></small>
 							        </div>
 							    </div>
 
@@ -235,8 +237,8 @@ Content START -->
 								 <div class="col-lg-6">
 							       	 <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-out</h6>
-							            <h5 class="mb-2">${reservation.checkout}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+							            <h5 class="mb-2"><fmt:formatDate value="${reservation.checkout}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkout}" pattern="HH:mm a"/></small>
 							        </div>
 							    </div>
 
