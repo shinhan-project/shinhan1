@@ -227,6 +227,7 @@ public class CustomerController {
         model.addAttribute("night_day",n_bak_m_il);
         model.addAttribute("name",name);
         model.addAttribute("phone",phone);
+        model.addAttribute("capacity",capacity);
 
     	return "/hanok/hanok_booking";
     }

@@ -164,7 +164,7 @@
 									success: function (response) {
 				                        if (response.success) {
 				                            alert(response.message);
-				                            window.location.href = "/hanok/hanok_booking_confirm.do";
+				                            window.location.href = "/hanok/hanok_booking_confirm.do?hanok_id=${hanokMap.hanokInfo.hanok_id}&room_id=&{roomMap.roomInfo.room_id}&reservations_id={}&checkin=${checkInDate}&checkout=${checkOutDate}&reservation_name={}&pay_type={}&capacity=${capacity}";
 				                        } else {
 				                            alert(response.message);
 				                        }
