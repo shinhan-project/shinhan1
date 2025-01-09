@@ -79,13 +79,14 @@ public class PaymentController {
         }
     }
     
+    @ResponseBody
     @PostMapping("/hanok/reservation")
     public Map<String, Object> reservation(
     		@RequestBody Map<String, Object> data) {
     	Map<String, Object> response = new HashMap<>();
     	
     	CustomerVO vo = new CustomerVO();
-        vo.setReservations_id(Integer.parseInt(data.get("reservations_id").toString()));
+        vo.setReservations_id((Long)data.get("reservations_id"));
         vo.setCheckin(convertToTimestamp((String) data.get("checkin")));
         vo.setCheckout(convertToTimestamp((String) data.get("checkout")));
         vo.setReservation_price(Integer.parseInt(data.get("reservation_price").toString())); // 숫자 변환

@@ -48,7 +48,7 @@ public class CustomerVO {
 	private int rating;
 	
 	//예약
-	private int reservations_id;
+	private long reservations_id;
 	private Timestamp checkin;
 	private Timestamp checkout;
 	private Timestamp res_created_at;
