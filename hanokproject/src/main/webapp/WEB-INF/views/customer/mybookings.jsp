@@ -84,7 +84,7 @@ Content START -->
 								<div class="text-center mb-3">
 									<!-- Avatar -->
 									<div class="avatar avatar-xl mb-2">
-										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01.jpg" alt="">
+										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01-1.jpg" alt="">
 									</div>
 									<hr>
 								</div>

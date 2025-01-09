@@ -9,44 +9,32 @@
 
 <c:if test="${!empty loginInfo}">
 
-	<!-- Header START -->
-	<header class="navbar-light header-sticky">
-		<!-- Logo Nav START -->
-		<nav class="navbar navbar-expand-xl">
-			<div class="container">
-				<!-- Logo START -->
-				<a class="navbar-brand" href="/index.do"> <img
-					class="light-mode-item navbar-brand-item"
-					src="/images/gojeuneoklogo.png" alt="logo">
-				</a>
-				<!-- Logo END -->
+<!-- Header START -->
+<header class="navbar-light header-sticky">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="/index.do">
+				<img class="light-mode-item navbar-brand-item" src="/images/gojeuneoklogo.png" alt="logo">
+			</a>
+			<!-- Logo END -->
+			
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
 
-				<!-- Responsive navbar toggler -->
-				<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2"
-					type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-animation"> <span></span> <span></span>
-						<span></span>
-					</span> <span class="d-none d-sm-inline-block small">Menu</span>
-				</button>
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll">
 
-				<!-- Responsive category toggler -->
-				<button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2"
-					type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarCategoryCollapse"
-					aria-controls="navbarCategoryCollapse" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span
-						class="d-none d-sm-inline-block small">Category</span>
-				</button>
-
-				<!-- Main navbar START -->
-				<div class="navbar-collapse collapse" id="navbarCollapse">
-					<ul class="navbar-nav navbar-nav-scroll me-auto">
-
-						<!-- Nav item Listing -->
-						<li class="nav-item dropdown"><a
+					<!-- Nav item Listing -->
+					<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="listingMenu"
 							data-bs-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">Our Hanoks</a>
@@ -58,116 +46,97 @@
 
 							</ul></li>
 
+					<!-- Nav item Contact -->
+					<li class="nav-item"> <a class="nav-link" href="/about.do">About Us</a></li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Profile and Notification START -->
+			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
+
+				<!-- Notification dropdown START -->
+				<li class="nav-item ms-0 ms-md-3 dropdown">
 
 
-						<!-- Nav item Account -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="accounntMenu"
-							data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">About</a>
-							<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-								<!-- Dropdown submenu -->
-								<li class="dropdown-submenu dropend"><a href="/about.do">AboutUs
-								</a></li>
-							</ul></li>
+				<!-- Profile dropdown START -->
+				<li class="nav-item ms-3 dropdown">
+					<!-- Avatar -->
+					<a class="avatar avatar-xs p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+						<img class="avatar-img rounded-circle" src="/images/avatar/01-1.jpg" alt="avatar">
+					</a>
 
-						<!-- link-->
+					<!-- Profile dropdown START -->
+					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+						<!-- Profile info -->
+						<li class="px-3 mb-3">
+							<div class="d-flex align-items-center">
+								<!-- Avatar -->
+								<div class="avatar me-3">
+									<img class="avatar-img rounded-circle shadow" src="/images/avatar/01-1.jpg" alt="avatar">
+								</div>
+								<div>
+									<a class="h6 mt-2 mt-sm-0" href="#">${vo.customer_name}</a>
+									<p class="small m-0">${vo.customer_email}</p>
+								</div>
+							</div>
+						</li>
+
+						<!-- Links -->
+						<li> <hr class="dropdown-divider"></li>
+				
+						<li><a class="dropdown-item" href="/customer/profile.do"><i class="bi bi-gear fa-fw me-2"></i>My Page</a></li>
+					
+						<li><a class="dropdown-item bg-danger-soft-hover" href="/customer/logout.do"><i class="bi bi-power fa-fw me-2"></i>Log-Out</a></li>
+						<li> <hr class="dropdown-divider"></li>
+
+						
 					</ul>
-				</div>
-				<!-- Main navbar END -->
+					<!-- Profile dropdown END -->
+				</li>
+				<!-- Profile dropdown END -->
 
-				<div class="header">
-					<div class="size">
-						<div>
-							<a href="index.do"></a>
-						</div>
-						<div class="login">
+				
+			</ul>
+			<!-- Profile and Notification START -->
 
-							<!-- Profile dropdown START -->
-							<li class="nav-item ms-3 dropdown">
-								<!-- Avatar --> <a class="avatar avatar-sm p-0" href="#"
-								id="profileDropdown" role="button" data-bs-auto-close="outside"
-								data-bs-display="static" data-bs-toggle="dropdown"
-								aria-expanded="false"> <img class="avatar-img rounded-2"
-									src="/images/avatar/01-1.jpg" alt="avatar">
-							</a>
-
-								<ul
-									class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-									aria-labelledby="profileDropdown">
-
-
-									<!-- Links -->
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li><a class="dropdown-item" href="/customer/logout.do"><i
-											class="bi bi-bookmark-check fa-fw me-2"></i>Logout</a></li>
-									<li><a class="dropdown-item" href="/customer/profile.do"><i
-											class="bi bi-heart fa-fw me-2"></i>My page</a></li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-
-								</ul>
-							</li>
-							<!-- Profile dropdown END -->
-
-						</div>
-					</div>
-				</div>
-		</nav>
-		<!-- Logo Nav END -->
-	</header>
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
 </c:if>
 
 
-
-
-
-
-<!-- 로그인이 됐을 때 여기서 바꾸기-->
+<!-- 로그아웃 상태 -->
 
 <c:if test="${empty loginInfo}">
+<!-- Header START -->
+<header class="navbar-light header-sticky">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="/index.do">
+				<img class="light-mode-item navbar-brand-item" src="/images/gojeuneoklogo.png" alt="logo">
+			</a>
+			<!-- Logo END -->
+			
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
 
-	<!-- Header START -->
-	<header class="navbar-light header-sticky">
-		<!-- Logo Nav START -->
-		<nav class="navbar navbar-expand-xl">
-			<div class="container">
-				<!-- Logo START -->
-				<a class="navbar-brand" href="/index.do"> <img
-					class="light-mode-item navbar-brand-item"
-					src="/images/gojeuneoklogo.png" alt="logo">
-				</a>
-				<!-- Logo END -->
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll">
 
-				<!-- Responsive navbar toggler -->
-				<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2"
-					type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-animation"> <span></span> <span></span>
-						<span></span>
-					</span> <span class="d-none d-sm-inline-block small">Menu</span>
-				</button>
-
-				<!-- Responsive category toggler -->
-				<button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2"
-					type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarCategoryCollapse"
-					aria-controls="navbarCategoryCollapse" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span
-						class="d-none d-sm-inline-block small">Category</span>
-				</button>
-
-				<!-- Main navbar START -->
-				<div class="navbar-collapse collapse" id="navbarCollapse">
-					<ul class="navbar-nav navbar-nav-scroll me-auto">
-
-						<!-- Nav item Listing -->
-						<li class="nav-item dropdown"><a
+					<!-- Nav item Listing -->
+					<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="listingMenu"
 							data-bs-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">Our Hanoks</a>
@@ -179,66 +148,66 @@
 
 							</ul></li>
 
+					<!-- Nav item Contact -->
+					<li class="nav-item"> <a class="nav-link" href="/about.do"> About Us </a></li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Profile and Notification START -->
+			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
+
+				<!-- Notification dropdown START -->
+				<li class="nav-item ms-0 ms-md-3 dropdown">
 
 
-						<!-- Nav item Account -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="accounntMenu"
-							data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">About</a>
-							<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-								<!-- Dropdown submenu -->
-								<li class="dropdown-submenu dropend"><a href="/about.do">AboutUs
-								</a></li>
-							</ul></li>
+				<!-- Profile dropdown START -->
+				<li class="nav-item ms-3 dropdown">
+					<!-- Avatar -->
+					<a class="avatar avatar-xs p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+						<img class="avatar-img rounded-circle" src="/images/avatar/01-1.jpg" alt="avatar">
+					</a>
 
-						<!-- link-->
-				</div>
-				<!-- Main navbar END -->
+					<!-- Profile dropdown START -->
+					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+						<!-- Profile info -->
+						<li class="px-3 mb-3">
+							<div class="d-flex align-items-center">
+								<!-- Avatar -->
+								<div class="avatar me-3">
+									<img class="avatar-img rounded-circle shadow" src="/images/avatar/01-1.jpg" alt="avatar">
+								</div>
+								<div>
+									<a class="h6 mt-2 mt-sm-0" href="#">${vo.customer_name}</a>
+									<p class="small m-0">${vo.customer_email}</p>
+								</div>
+							</div>
+						</li>
 
+						<!-- Links -->
+						<li> <hr class="dropdown-divider"></li>
+				
+						<li><a class="dropdown-item" href="/customer/regist.do"><i class="bi bi-heart"></i> Join-Us </a></li>
+					
+						<li><a class="dropdown-item bg-danger-soft-hover" href="/customer/login.do"><i class="bi bi-power fa-fw me-2"></i>Log-in </a></li>
+						<li> <hr class="dropdown-divider"></li>
 
+						
+					</ul>
+					<!-- Profile dropdown END -->
+				</li>
+				<!-- Profile dropdown END -->
 
-				<div class="header">
-					<div class="size">
-						<div>
-							<a href="index.do"></a>
-						</div>
-						<div class="login">
+				
+			</ul>
+			<!-- Profile and Notification START -->
 
-							<!-- Profile dropdown START -->
-							<li class="nav-item ms-3 dropdown">
-								<!-- Avatar --> <a class="avatar avatar-sm p-0" href="#"
-								id="profileDropdown" role="button" data-bs-auto-close="outside"
-								data-bs-display="static" data-bs-toggle="dropdown"
-								aria-expanded="false"> <img class="avatar-img rounded-2"
-									src="/images/avatar/01-1.jpg" alt="avatar">
-							</a>
-
-								<ul
-									class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-									aria-labelledby="profileDropdown">
-
-
-									<!-- Links -->
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li><a class="dropdown-item" href="/customer/login.do"><i
-											class="bi bi-bookmark-check fa-fw me-2"></i>Log in</a></li>
-									<li><a class="dropdown-item" href="/customer/regist.do"><i
-											class="bi bi-heart fa-fw me-2"></i>Regist</a></li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-
-								</ul>
-							</li>
-							<!-- Profile dropdown END -->
-
-
-						</div>
-		</nav>
-		<!-- Logo Nav END -->
-	</header>
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
 </c:if>
+
+
 

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Owner_Profile</title>
+<title>Owner_Reviews</title>
 
 <!-- Meta Tags -->
 <meta charset="utf-8">

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Booking - Multipurpose Online Booking Theme</title>
+	<title>Customer-Booking details</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
