@@ -61,7 +61,7 @@ Main Banner START -->
 											<h6 class="text-white fw-normal mb-0">💖 Fall in love with the City</h6>
 											<!-- Title -->
 											<h1 class="text-white display-6">Journey on an Exclusive Hanok Experience</h1>
-											<a href="#" class="btn btn-primary mb-0">Reserve Today</a>
+											
 										</div>
 									</div>
 								</div>
@@ -80,7 +80,7 @@ Main Banner START -->
 										<div class="col-11 col-lg-8">	
 											<!-- Title -->
 											<h1 class="text-white">Taking luxury hospitality to new heights</h1>
-											<a href="#" class="btn btn-dark mb-0">Take Me There</a>
+											
 										</div>
 									</div>
 								</div>
@@ -99,122 +99,62 @@ Main Banner START -->
 <!-- =======================
 Main Banner END -->
 
-	<section class="pb-0 mb-1">
-	<!-- Search START -->
-		<div class="row justify-content-center align-items-center" style="height : 30vh;">
-			<div class="col-xl-10 position-relative mt-n3 mt-xl-n9 ">
-				<!-- Title -->
-				<h6 class="d-none d-xl-block mb-3">Check Availability</h6>
+	<section class="py-3 py-sm-0">
+  <div class="container">
+    <!-- Offcanvas button for search -->
+    <button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch">
+      <i class="bi bi-pencil-square me-2"></i>Edit Search
+    </button>
 
-				<!-- Booking from START -->
-				<form class="card shadow rounded-3 position-relative p-4 pe-md-5 pb-5 pb-md-4">
-					<div class="row g-4 align-items-center">
-						<!-- Location -->
-						<div class="col-lg-4">
-							<div class="form-control-border form-control-transparent form-fs-md d-flex">
-								<!-- Icon -->
-								<i class="bi bi-geo-alt fs-3 me-2 mt-2"></i>
-								<!-- Select input -->
-								<div class="flex-grow-1">
-									<label class="form-label">Location</label>
-									<select class="form-select js-choice" data-search-enabled="true">
-										<option value="">Select location</option>
-										<option>San Jacinto, USA</option>
-										<option>North Dakota, Canada</option>
-										<option>West Virginia, Paris</option>
-									</select>
-								</div>
-							</div>
-						</div>
+    <!-- Search with offcanvas START -->
+    <div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-2">
+        <div class="bg-light p-4 rounded w-100">
+          <form action="/hanok/hanok_list.do" method="GET">
+            <div class="row g-4" style="display: flex; flex-wrap: nowrap; gap: 20px; align-items: flex-start;">
+              <!-- Location -->
+              <div class="form-size-lg form-fs-md" style="flex: 1;">
+                <label class="form-label">Location</label>
+                <input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역" value="${param.location}" style="width: 100%;">
+              </div>
 
-						<!-- Check in -->
-						<div class="col-lg-4">
-							<div class="d-flex">
-								<!-- Icon -->
-								<i class="bi bi-calendar fs-3 me-2 mt-2"></i>
-								<!-- Date input -->
-								<div class="form-control-border form-control-transparent form-fs-md">
-									<label class="form-label">Check in - out</label>
-									<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date" value="19 Sep to 28 Sep">
-								</div>
-							</div>
-						</div>
+              <!-- Check in -->
+              <div class="form-fs-md" style="flex: 1;">
+                <label class="form-label">Check in</label>
+                <input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}" style="width: 100%;">
+              </div>
 
-						<!-- Guest -->
-						<div class="col-lg-4">
-							<div class="form-control-border form-control-transparent form-fs-md d-flex">
-								<!-- Icon -->
-								<i class="bi bi-person fs-3 me-2 mt-2"></i>
-								<!-- Dropdown input -->
-								<div class="w-100">
-									<label class="form-label">Guests & rooms</label>
-									<div class="dropdown guest-selector me-2">
-										<input type="text" class="form-guest-selector form-control selection-result" value="2 Guests 1 Room" data-bs-auto-close="outside" data-bs-toggle="dropdown">
-									
-										<!-- dropdown items -->
-										<ul class="dropdown-menu guest-selector-dropdown">
-											<!-- Adult -->
-											<li class="d-flex justify-content-between">
-												<div>
-													<h6 class="mb-0">Adults</h6>
-													<small>Ages 13 or above</small>
-												</div>
+              <!-- Check out -->
+              <div class="form-fs-md" style="flex: 1;">
+                <label class="form-label">Check out</label>
+                <input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}" style="width: 100%;">
+              </div>
 
-												<div class="hstack gap-1 align-items-center">
-													<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-													<h6 class="guest-selector-count mb-0 adults">2</h6>
-													<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
-												</div>
-											</li>
+              <!-- Guests -->
+              <div class="form-fs-md" style="flex: 1;">
+                <label class="form-label">Guests</label>
+                <input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}" style="width: 100%;">
+              </div>
 
-											<!-- Divider -->
-											<li class="dropdown-divider"></li>
-
-											<!-- Child -->
-											<li class="d-flex justify-content-between">
-												<div>
-													<h6 class="mb-0">Child</h6>
-													<small>Ages 13 below</small>
-												</div>
-
-												<div class="hstack gap-1 align-items-center">
-													<button type="button" class="btn btn-link child-remove p-0 mb-0" ><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-													<h6 class="guest-selector-count mb-0 child">0</h6>
-													<button type="button" class="btn btn-link child-add p-0 mb-0" ><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
-												</div>
-											</li>
-
-											<!-- Divider -->
-											<li class="dropdown-divider"></li>
-
-											<!-- Rooms -->
-											<li class="d-flex justify-content-between">
-												<div>
-													<h6 class="mb-0">Rooms</h6>
-													<small>Max room 8</small>
-												</div>
-
-												<div class="hstack gap-1 align-items-center">
-													<button type="button" class="btn btn-link room-remove p-0 mb-0" ><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-													<h6 class="guest-selector-count mb-0 rooms">1</h6>
-													<button type="button" class="btn btn-link room-add p-0 mb-0" ><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Button -->
-					<div class="btn-position-md-middle">
-						<a class="icon-lg btn btn-round btn-primary mb-0" href="#"><i class="bi bi-search fa-fw"></i></a>
-					</div>
-				</form>
-				<!-- Booking from END -->
-			</div>
-		</div>
-	</section>
+              <!-- Button -->
+             <div class="form-fs-md" style="flex: 0.5; align-self: flex-end;">
+  <button class="btn btn-lg btn-primary w-80 mb-0 d-flex align-items-center justify-content-center" type="submit">
+    <i class="bi bi-search fa-fw"></i>
+    <span style="margin-left: 8px;">Search</span>
+  </button>
+</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Search with offcanvas END -->
+  </div>
+</section>
 
 <!-- =======================
 Special offer START -->
