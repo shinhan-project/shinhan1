@@ -25,7 +25,16 @@ public class ReservationVO {
     private String room_name;
     private String hanok_imgName;
     
+    private String customer_name;
+    private String customer_tel;
+    private String customer_email;
+    
+    private String pay_date;
+    private String pay_type;
+    
+    private boolean hasReview; // 리뷰가 있는지 여부
 
+    
     
 }
 

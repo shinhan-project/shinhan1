@@ -53,7 +53,7 @@ public class ReservationController {
 	    
 	    //고객 예약상세내역 예악번호 별로 보기
 	    @GetMapping("/{reservations_id}/bookingdetail.do")
-	    public String viewReservationDetail(@PathVariable("reservations_id") int reservations_id,@SessionAttribute("loginInfo") CustomerVO vo, Model model) {
+	    public String viewReservationDetail(@PathVariable("reservations_id") int reservations_id, @SessionAttribute("loginInfo") CustomerVO vo, Model model) {
 	        ReservationVO reservations = service.getReservationById(reservations_id);
 	        if(reservations != null && reservations.getCustomer_id() == vo.getCustomer_id()) {
 	        model.addAttribute("reservations", reservations);

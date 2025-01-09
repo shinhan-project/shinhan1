@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,6 +159,9 @@ Content START -->
 										<a class="nav-link active" href="mybookings.do"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
 									</li>
 									<li class="nav-item">
+										<a class="nav-link" href="/review/reviews"><i class="bi bi-pencil fa-fw me-2"></i>My Reviews</a>
+									</li>
+									<li class="nav-item">
 										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</li>
 								</ul>
@@ -193,7 +197,7 @@ Content START -->
 						<!-- Tabs -->
 						<ul class="nav nav-tabs nav-bottom-line nav-responsive nav-justified">
 							<li class="nav-item"> 
-								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Upcoming Booking</a> 
+								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Booking List</a> 
 							</li>
 						</ul>
 		
@@ -223,8 +227,9 @@ Content START -->
 							    <div class="col-lg-6">
 							        <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-in</h6>
-							            <h5 class="mb-2">${reservation.checkin}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+							            <h5 class="mb-2">
+							            <fmt:formatDate value="${reservation.checkin}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkin}" pattern="HH:mm a" /></small>
 							        </div>
 							    </div>
 
@@ -232,8 +237,8 @@ Content START -->
 								 <div class="col-lg-6">
 							       	 <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-out</h6>
-							            <h5 class="mb-2">${reservation.checkout}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+							            <h5 class="mb-2"><fmt:formatDate value="${reservation.checkout}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkout}" pattern="HH:mm a"/></small>
 							        </div>
 							    </div>
 
@@ -245,8 +250,13 @@ Content START -->
 								 <c:if test="${!status.last}">
 								 <div style="display: flex; gap: 10px; justify-content: flex-end;">
  					<a href="/${reservation.reservations_id}/bookingdetail.do" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">View Details</a>
-					<a href="" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
-
+							<c:if test="${!reservation.hasReview}">
+            <a href="/review/review.do?reservation_id=${reservation.reservations_id}" 
+               class="btn btn-primary mb-0" 
+               style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">
+                Create Review
+            </a>
+        </c:if>
 </div>
 	               					 <hr style="margin-top: 20px; margin-bottom: 20px;">
 	           					 </c:if>

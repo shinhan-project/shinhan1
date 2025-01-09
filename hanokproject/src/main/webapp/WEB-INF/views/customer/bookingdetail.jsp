@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,66 +12,7 @@
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
 
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
- 
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
-
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-
-		setTheme(getPreferredTheme())
-
-		window.addEventListener('DOMContentLoaded', () => {
-		    var el = document.querySelector('.theme-icon-active');
-			if(el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-				const activeThemeIcon = document.querySelector('.theme-icon-active use')
-				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-					element.classList.remove('active')
-				})
-
-				btnToActive.classList.add('active')
-				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-			}
-
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (storedTheme !== 'light' || storedTheme !== 'dark') {
-					setTheme(getPreferredTheme())
-				}
-			})
-
-			showActiveTheme(getPreferredTheme())
-
-			document.querySelectorAll('[data-bs-theme-value]')
-				.forEach(toggle => {
-					toggle.addEventListener('click', () => {
-						const theme = toggle.getAttribute('data-bs-theme-value')
-						localStorage.setItem('theme', theme)
-						setTheme(theme)
-						showActiveTheme(theme)
-					})
-				})
-
-			}
-		})
-		
-	</script>
-
+	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
 
@@ -111,7 +53,7 @@ Page banner START -->
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb breadcrumb-dots mb-0">
 								<li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house me-1"></i> Home</a></li>
-								<li class="breadcrumb-item">Hotel detail</li>
+								<li class="breadcrumb-item">Hanok detail</li>
 								<li class="breadcrumb-item active">Booking</li>
 							</ol>
 						</nav>
@@ -163,18 +105,10 @@ Page content START -->
 									<div class="col-sm-6 col-md-9">
 										<div class="card-body pt-3 pt-sm-0 p-0">
 											<!-- Title -->
-											<h5 class="card-title"><a href="#">${reservations.hanok_name}</a></h5>
-											<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i>5855 W Century Blvd, Los Angeles - 90045</p>
+											<h5 class="card-title"><a href="#">${reservations.room_name}</a></h5>
+											<p class="small mb-2"><i class="bi bi-house-door me-2"></i>${reservations.hanok_name}</p>
 
-											<!-- Rating star -->
-											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-												<li class="list-inline-item ms-2 h6 small fw-bold mb-0">4.5/5.0</li>
-											</ul>
+											
 										</div>
 									</div>
 
@@ -188,8 +122,13 @@ Page content START -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">Check-in</h6>
-										<h5 class="mb-1">4 March 2022</h5>
-										<small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+										
+										<h5>
+								<fmt:formatDate value="${reservations.checkin}" pattern="yyyy-MM-dd"/>
+							</h5>
+							<fmt:setLocale value="en"/>
+										<small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservations.checkin}" pattern="HH:mm a"/>
+										</small>
 									</div>
 								</div>
 
@@ -197,42 +136,28 @@ Page content START -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">Check out</h6>
-										<h5 class="mb-1">8 March 2022</h5>
-										<small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+										
+										<h5 class="mb-1">
+											<fmt:formatDate value="${reservations.checkout}" pattern="yyyy-MM-dd"/>
+										</h5>
+										<fmt:setLocale value="en"/>
+										<small><i class="bi bi-alarm me-1"></i>
+										<fmt:formatDate value="${reservations.checkout}" pattern="HH:mm a"/>
+										</small>
 									</div>
+									
+									
 								</div>
 
 								<!-- Item -->
 								<div class="col-lg-4">
-									<div class="bg-light py-3 px-4 rounded-3">
-										<h6 class="fw-light small mb-1">Rooms & Guests</h6>
-										<h5 class="mb-1">2 G - 1 R</h5>
-										<small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small>
-									</div>
+									
 								</div>
 							</div>
 							<!-- Information END -->
 
 							<!-- Card START -->
-							<div class="card border mt-4">
-								<!-- Card header -->
-								<div class="card-header border-bottom d-md-flex justify-content-md-between">
-									<h5 class="card-title mb-0">Deluxe Pool View with Breakfast</h5>
-									<a href="#" class="btn btn-link p-0 mb-0">View Cancellation Policy</a>
-								</div>
-
-								<!-- Card body -->
-								<div class="card-body">
-									<h6>Price Included</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mb-0">
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Free Breakfast and Lunch/Dinner.</li>
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Great Small Breaks.</li>
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Free Stay for Kids Below the age of 12 years.</li>
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>On Cancellation, You will not get any refund</li>
-									</ul>
-								</div>
-							</div>
+							
 							<!-- Card END -->
 						</div>
 						<!-- Card body END -->
@@ -243,7 +168,7 @@ Page content START -->
 					<div class="card shadow">
 						<!-- Card header -->
 						<div class="card-header border-bottom p-4">
-							<h4 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>Guest Details</h4>
+							<h4 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>Customer Details</h4>
 						</div>
 							
 						<!-- Card body START -->
@@ -252,109 +177,52 @@ Page content START -->
 							<form class="row g-4">
 								<!-- Title -->
 								<div class="col-12">
-									<div class="bg-light rounded-2 px-4 py-3">
-										<h6 class="mb-0">${customer_name }</h6>
-									</div>
+									
+									<label class="form-label"><span class="h6 fw-normal">Customer Name</span></label>
+													<div class="position-relative">
+														<label class="form-label"><span class="h6 fw-normal"></span>${reservations.customer_name }</label> <hr>
+													</div>	
 								</div>
 								
-								<!-- Select -->
-								<div class="col-md-2">
-									<div class="form-size-lg">
-										<label class="form-label">Title</label>
-										<select class="form-select js-choice">
-											<option>Mr</option>
-											<option>Mrs</option>
-										</select>
-									</div>	
+								<!-- Input -->
+								<div class="col-md-5">
+									<label class="form-label"><span class="h6 fw-normal">Mobile Number</span></label>
+									<option>${reservations.customer_tel }</option>
 								</div>
 
 								<!-- Input -->
 								<div class="col-md-5">
-									<label class="form-label">First Name</label>
-									<input type="text" class="form-control form-control-lg" placeholder="Enter your name">
-								</div>
-
-								<!-- Input -->
-								<div class="col-md-5">
-									<label class="form-label">Last Name</label>
-									<input type="text" class="form-control form-control-lg" placeholder="Enter your name">
+									<label class="form-label"><span class="h6 fw-normal">Email</span></label>
+									<option>${reservations.customer_email }</option>								
 								</div>
 
 								<!-- Button -->
 								<div class="col-12">
-									<a href="#" class="btn btn-link mb-0 p-0"><i class="fa-solid fa-plus me-2"></i>Add New Guest</a>
+									
 								</div>
 
 								<!-- Input -->
-								<div class="col-md-6">
-									<label class="form-label">Email id</label>
-									<input type="email" class="form-control form-control-lg" placeholder="Enter your email">
-									<div id="emailHelp" class="form-text">(Booking voucher will be sent to this email ID)</div>
+								<div class="col-md-5">
+									<label class="form-label"><span class="h6 fw-normal">Reservation Number</span></label>
+									<option>${reservations.reservations_id }</option>								
 								</div>
 
 								<!-- Input -->
-								<div class="col-md-6">
-									<label class="form-label">Mobile number</label>
-									<input type="text" class="form-control form-control-lg" placeholder="Enter your mobile number">
+							<div class="col-md-5">
+									<label class="form-label"><span class="h6 fw-normal">Reservation Name</span></label>
+									<option>${reservations.reservation_name }</option>								
 								</div>
 							</form>
 							<!-- Form END -->
 
 							<!-- Alert START -->
-							<div class="alert alert-info my-4" role="alert">
-								<a href="sign-up.html" class="alert-heading h6">Login</a> to prefill all details and get access to secret deals
-							</div>
+							
+								<hr>
+							
 							<!-- Alert END -->
 
 							<!-- Special request START -->
-							<div class="card border mt-4">
-								<!-- Card header -->
-								<div class="card-header border-bottom">
-									<h5 class="card-title mb-0">Special request</h5>
-								</div>
-
-								<!-- Card body START -->
-								<div class="card-body">
-									<form class="hstack flex-wrap gap-3">
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType1">
-											<label class="form-check-label" for="hotelType1">Smoking room</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType2">
-											<label class="form-check-label" for="hotelType2">Late check-in</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType3">
-											<label class="form-check-label" for="hotelType3">Early check-in</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType4">
-											<label class="form-check-label" for="hotelType4">Room on a high floor</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType5">
-											<label class="form-check-label" for="hotelType5">Large bed</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType6">
-											<label class="form-check-label" for="hotelType6">Airport transfer</label>
-										</div>
-										<!-- Checkbox -->
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="hotelType8">
-											<label class="form-check-label" for="hotelType8">Twin beds</label>
-										</div>
-									</form>	
-								</div>
-								<!-- Card body END -->
-							</div>
+							
 							<!-- Special request END -->
 						</div>
 						<!-- Card body END -->
@@ -372,23 +240,7 @@ Page content START -->
 						<!-- Card body START -->
 						<div class="card-body p-4 pb-0">
 							<!-- Action box START -->
-							<div class="bg-primary bg-opacity-10 rounded-3 mb-4 p-3">
-								<div class="d-md-flex justify-content-md-between align-items-center">
-									<!-- Image and title -->
-									<div class="d-sm-flex align-items-center mb-2 mb-md-0">
-										<!-- Image -->
-										<img src="/images/element/16.svg" class="h-50px" alt="">
-										<!-- Title -->
-										<div class="ms-sm-3 mt-2 mt-sm-0">
-											<h5 class="card-title mb-0">Get Additional Discount</h5>
-											<p class="mb-0">Login to access saved payments and discounts!</p>
-										</div>
-									</div>
-
-									<!-- Button -->
-									<a href="sign-in.html" class="btn btn-primary mb-0">Login now</a>
-								</div>
-							</div>
+							
 							<!-- Action box END -->
 
 							<!-- Accordion START -->
@@ -397,7 +249,7 @@ Page content START -->
 								<div class="accordion-item mb-3">
 									<h6 class="accordion-header" id="heading-1">
 										<button class="accordion-button rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-											<i class="bi bi-credit-card text-primary me-2"></i>	<span class="me-5">Credit or Debit Card</span>
+											<i class="bi bi-credit-card text-primary me-2"></i>	<span class="me-5">Payment Information</span>
 										</button>
 									</h6>
 									<div id="collapse-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#accordioncircle">
@@ -406,11 +258,11 @@ Page content START -->
 
 											<!-- Card list -->     
 											<div class="d-sm-flex justify-content-sm-between my-3">
-												<h6 class="mb-2 mb-sm-0">We Accept:</h6>
+												
 												<ul class="list-inline my-0">
-													<li class="list-inline-item"> <a href="#"><img src="/images/element/visa.svg" class="h-30px" alt=""></a></li>
-													<li class="list-inline-item"> <a href="#"><img src="/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
-													<li class="list-inline-item"> <a href="#"><img src="/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
+													<li class="list-inline-item"> <a href="#"><img src="/images/element/kakaopay.png" class="h-30px" alt=""></a></li>
+													<li class="list-inline-item"> <a href="#"><img src="/images/element/naverpay.png" class="h-30px" alt=""></a></li>
+													<li class="list-inline-item"> <a href="#"><img src="/images/element/creditcard1.png" class="h-30px" alt=""></a></li>
 												</ul>
 											</div>
 
@@ -418,61 +270,41 @@ Page content START -->
 											<form class="row g-3">
 												<!-- Card number -->
 												<div class="col-12">
-													<label class="form-label"><span class="h6 fw-normal">Card Number *</span></label>
+												<label class="form-label"><span class="h6 fw-normal">Customer Name</span></label>
 													<div class="position-relative">
-														<input type="text" class="form-control" maxlength="14" placeholder="XXXX XXXX XXXX XXXX">
-														<img src="/images/element/visa.svg" class="w-30px position-absolute top-50 end-0 translate-middle-y me-2 d-none d-sm-block" alt="">
+														<label class="form-label"><span class="h6 fw-normal"></span>${reservations.customer_name }</label> <hr>
 													</div>	
+													<label class="form-label"><span class="h6 fw-normal">Pay Type</span></label>
+													<div class="position-relative">
+														<label class="form-label"><span class="h6 fw-normal"></span>${reservations.pay_type }</label> <hr>
+													</div>	
+													<label class="form-label"><span class="h6 fw-normal">Payed date</span></label>
+													<div class="position-relative">
+														<label class="form-label">${reservations.pay_date}</label>
+														<hr>
+													</div>
+													<label class="form-label"><span class="h6 fw-normal">Payed price</span></label>
+													<div class="position-relative">
+														<label class="form-label"><span class="h6 fw-normal"></span>
+															<fmt:formatNumber value="${reservations.reservation_price }" type="number" groupingUsed="true"/> won</label>
+													</div>		
 												</div>
 												<!-- Expiration Date -->
-												<div class="col-md-6">
-													<label class="form-label"><span class="h6 fw-normal">Expiration date *</span></label>
-													<div class="input-group">
-														<input type="text" class="form-control" maxlength="2" placeholder="Month">
-														<input type="text" class="form-control" maxlength="4" placeholder="Year">
-													</div>
-												</div>	
-												<!--Cvv code  -->
-												<div class="col-md-6">
-													<label class="form-label"><span class="h6 fw-normal">CVV / CVC *</span></label>
-													<input type="text" class="form-control" maxlength="3" placeholder="xxx">
-												</div>
+												
+												
 												<!-- Card name -->
 												<div class="col-12">
-													<label class="form-label"><span class="h6 fw-normal">Name on Card *</span></label>
-													<input type="text" class="form-control" aria-label="name of card holder" placeholder="Enter card holder name">
+													<label class="form-label"><span class="h6 fw-normal"></span></label>
 												</div>
 
 												<!-- Alert box START -->
-												<div class="col-12">
-													<div class="alert alert-success alert-dismissible fade show my-3" role="alert">
-
-														<!-- Title -->
-														<div class="d-sm-flex align-items-center mb-3">
-															<img src="/images/element/12.svg" class="w-40px me-3 mb-2 mb-sm-0" alt=""> 
-															<h5 class="alert-heading mb-0">$50,000 Covid Cover & More</h5>
-														</div>
-														
-														<!-- Content -->
-														<p class="mb-2">Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-
-														<!-- Button and price -->
-														<div class="d-sm-flex align-items-center">
-															<a href="#" class="btn btn-sm btn-success mb-2 mb-sm-0 me-3"><i class="fa-regular fa-plus me-2"></i>Add</a>
-															<h6 class="mb-0">$69 per person</h6>
-														</div>
-
-														<!-- Close button -->
-														<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-													</div>
-												</div>
+												
 												<!-- Alert box END -->
 
 												<!-- Buttons -->
 												<div class="col-12">
-													<div class="d-sm-flex justify-content-sm-between align-items-center">
-														<h4>$1800 <span class="small fs-6">Due now</span></h4>
-														<button class="btn btn-primary mb-0">Pay Now</button>
+													<div class="d-sm-flex justify-content-end align-items-center">
+														<button class="btn btn-primary mb-0" href="/customer/mybookings.do" style="width: 100px; text-align: center;">Back</button>
 													</div>
 												</div>
 
@@ -484,90 +316,10 @@ Page content START -->
 								<!-- Credit or debit card END -->
 
 								<!-- Net banking START -->
-								<div class="accordion-item mb-3">
-									<h6 class="accordion-header" id="heading-2">
-										<button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-											<i class="bi bi-globe2 text-primary me-2"></i> <span class="me-5">Pay with Net Banking</span>
-										</button>
-									</h6>
-									<div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#accordioncircle">
-										<!-- Accordion body -->
-										<div class="accordion-body">
-
-											<!-- Form START -->
-											<form class="row g-3 mt-1">
-
-												<!-- Popular bank -->
-												<ul class="list-inline mb-0">
-
-													<li class="list-inline-item"> <h6 class="mb-0">Popular Bank:</h6> </li>
-													<!-- Rent -->
-													<li class="list-inline-item">
-														<input type="radio" class="btn-check" name="options" id="option1">
-														<label class="btn btn-light btn-primary-soft-check" for="option1">
-															<img src="/images/element/13.svg" class="h-20px me-2" alt="">Bank of America
-														</label>
-													</li>
-													<!-- Sale -->
-													<li class="list-inline-item">
-														<input type="radio" class="btn-check" name="options" id="option2">
-														<label class="btn btn-light btn-primary-soft-check" for="option2">
-															<img src="/images/element/15.svg" class="h-20px me-2" alt="">Bank of Japan
-														</label>
-													</li>
-													<!-- Buy -->
-													<li class="list-inline-item">
-														<input type="radio" class="btn-check" name="options" id="option3">
-														<label class="btn btn-light btn-primary-soft-check" for="option3">
-															<img src="/images/element/14.svg" class="h-20px me-2" alt="">VIVIV Bank
-														</label>
-													</li>
-												</ul>
-
-												<p class="mb-1">In order to complete your transaction, we will transfer you over to Booking secure servers.</p>
-												<p class="my-0">Select your bank from the drop-down list and click proceed to continue with your payment.</p>
-												<!-- Select bank -->
-												<div class="col-md-6">
-													<select class="form-select form-select-sm js-choice border-0">
-														<option value="">Please choose one</option>
-														<option>Bank of America</option>
-														<option>Bank of India</option>
-														<option>Bank of London</option>
-													</select>
-												</div>
-
-												<!-- Button -->
-												<div class="d-grid">
-													<button class="btn btn-success mb-0">Pay $1800</button>
-												</div>
-
-											</form>
-											<!-- Form END -->
-										</div>
-									</div>
-								</div>
+								
 								<!-- Net banking END -->
 
-								<!-- Paypal START -->
-								<div class="accordion-item mb-3">
-									<h6 class="accordion-header" id="heading-3">
-										<button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-											<i class="bi bi-paypal text-primary me-2"></i><span class="me-5">Pay with Paypal</span>
-										</button>
-									</h6>
-									<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordioncircle">
-										<!-- Accordion body -->
-										<div class="accordion-body">
-											<div class="card card-body border align-items-center text-center mt-4">
-												<!-- Image -->
-												<img src="/images/element/paypal.svg" class="h-70px mb-3" alt="">
-												<p class="mb-3"><strong>Tips:</strong> Simply click on the payment button below to proceed to the PayPal payment page.</p>
-												<a href="#" class="btn btn-sm btn-outline-primary mb-0">Pay with paypal</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Paypal END -->
+							
 							</div>
 							<!-- Accordion END -->
 						</div>	
@@ -599,23 +351,27 @@ Page content START -->
 							<div class="card-body">
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="h6 fw-light mb-0">Room Charges</span>
-										<span class="fs-5">$28,660</span>
+										<span class="h5 fw-light mb-0">Total</span>
+										<span class="fs-5">
+											<fmt:formatNumber value="${reservations.reservation_price }" type="number" groupingUsed="true"/>won</span>
 									</li>
 									
 								</ul>
+								
+							</div>
+							<hr>
+							<div>
+							<ul class="list-group list-group-borderless">
+							
+							</ul>
 							</div>
 	
 							<!-- Card footer -->
-							<div class="card-footer border-top">
-								<div class="d-flex justify-content-between align-items-center">
-									<span class="h5 mb-0">Payable Now</span>
-									<span class="h5 mb-0">$22,500</span>
-								</div>
-							</div>
-						</div>
+							
+						</div> 
 					</div>
 					<!-- Price summary END -->
+					<a class="btn btn-primary mb-0" href="/customer/mybookings.do">Back</a>
 
 				
 

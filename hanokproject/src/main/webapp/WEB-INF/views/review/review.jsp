@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="en" />
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -133,6 +134,16 @@
   opacity: 0.7;
   cursor: default;
 }
+
+.fixed-height {
+    min-height: 120px; /* 원하는 높이로 조절 */
+}
+
+.fixed-image {
+    width: 300px;  /* 너비 고정 */
+    height: 200px; /* 높이 고정 */
+    object-fit: cover; /* 비율 유지하면서 크기 맞춤 */
+}
 </style>
 	
 	
@@ -170,10 +181,10 @@ Main content START -->
 		<div class="row">
 			<div class="col-lg-10 mx-auto">
 				<form class="vstack gap-4" id="reviewForm" action="/review/add" method="POST">
-					<input type="hidden" name="reservations_id" value="${reservation_id}">
-					<input type="hidden" name="customer_id" value="${customer_id}">
-					<input type="hidden" name="hanok_id" value="${hanok_id}">
-					<input type="hidden" name="room_id" value="${room_id}">
+					<input type="hidden" name="reservations_id" value="${reservation.reservations_id}">
+					<input type="hidden" name="customer_id" value="${reservation.customer_id}">
+					<input type="hidden" name="hanok_id" value="${reservation.hanok_id}">
+					<input type="hidden" name="room_id" value="${reservation.room_id}">
 					<!-- Owner Detail START -->
 					<div class="card shadow">
 						<!-- Card header -->
@@ -196,31 +207,64 @@ Main content START -->
 							<div class="tab-pane fade show active" id="tab-1">
 								
                 <!-- Card item START -->
-					<div class="card shadow p-2">
-						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5">
-								<img src="/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
+                	<h6 class="card-title"><a href="#">Reservation No. ${reservation.hanok_name}</a></h5>
+                	<div class="card mb-4">
+								<div class="row align-items-center">
+									<!-- Image -->
+									<div class="col-md-5">
+								<img src="/images/hanoks/${reservation.hanok_imgName}" class="card-img  img-fluid rounded-2" alt="Card image"   >
 							</div>
-							<!-- Card body -->
-							<div class="col-md-7">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
 									
-									<p><strong>Hanok Name:</strong> ${hanok_name}</p>
-							<p><strong>Room Name:</strong> ${room_name}</p>
-							<p><strong>Check-in:</strong> 
-								<fmt:formatDate value="${checkin}" pattern="yyyy-MM-dd HH:mm"/>
-							</p>
-							<p><strong>Check-out:</strong> 
-							    <fmt:formatDate value="${checkout}" pattern="yyyy-MM-dd HH:mm"/>
-							</p>
-							<p><strong>Reservation ID:</strong> ${reservation_id}</p>
-									
-									
+									<!-- Card Body -->
+									<div class="col-sm-6 col-md-7">
+										<div class="card-body pt-3 pt-sm-0 p-0">
+											<!-- Title -->
+											<h5 class="card-title"><i class="bi bi-geo-alt me-2"></i><a href="#"> ${reservation.hanok_name}</a></h5>
+											<p style="margin-left: 20px;">${reservation.room_name}</p>
+											
+										</div>
+									</div>
+
 								</div>
 							</div>
-						</div>
-					</div>
+							<!-- Card list END -->
+							
+							<!-- Information START -->
+							<div class="row g-4">
+								<!-- Item -->
+								
+								<!-- Item -->
+								<div class="col-lg-6">
+									<div class="bg-light py-3 px-4 rounded-3 fixed-height text-center">
+										<h6 class="fw-light small mb-1">Check-in</h6>
+										<h5 class="mb-1">
+			<fmt:formatDate value="${reservation.checkin}" pattern="yyyy MMMM dd"  />
+		</h5>
+		<small>
+			<i class="bi bi-alarm me-1"></i>
+			<fmt:formatDate value="${reservation.checkin}" pattern="hh:mm a" />
+		</small>
+									</div>
+								</div>
+
+								<!-- Item -->
+								<div class="col-lg-6">
+									<div class="bg-light py-3 px-4 rounded-3 fixed-height text-center">
+										<h6 class="fw-light small mb-1">Check-out</h6>
+										<h5 class="mb-1">
+			<fmt:formatDate value="${reservation.checkout}" pattern="yyyy MMMM dd"  />
+		</h5>
+		<small>
+			<i class="bi bi-alarm me-1"></i>
+			<fmt:formatDate value="${reservation.checkout}" pattern="hh:mm a" />
+		</small>
+									</div>
+								</div>
+							</div>
+							<!-- Information END -->
+
+							
+					
 									</div>
 									<!-- Card body -->
 								</div>

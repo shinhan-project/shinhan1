@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import kr.co.hanokproject.reservation.ReservationVO;
+
 
 @Controller
 public class OwnerController {
@@ -57,7 +57,7 @@ public class OwnerController {
 		         
 		         model.addAttribute("msg", "정상적으로 가입되었습니다.");
 		         //사장님 회원가입 완료 되면 이동할 위치 수정하기!
-		         model.addAttribute("url", "/index.do");
+		         model.addAttribute("url", "/owner/owner_login.do");
 		         
 		      } else {
 		         model.addAttribute("msg", "가입 오류");
@@ -71,7 +71,7 @@ public class OwnerController {
 			public String logout(HttpSession sess, Model model) {
 				sess.invalidate();
 				model.addAttribute("msg", "로그아웃되었습니다.");
-				model.addAttribute("url", "/index.do");
+				model.addAttribute("url", "/owner/owner_login.do");
 				return "common/alert";
 			}
 		   
@@ -80,6 +80,7 @@ public class OwnerController {
 //			public void owner_profile() {
 //				 return;
 //			}
+
 		   
 		   
 		   
