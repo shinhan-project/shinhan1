@@ -136,9 +136,9 @@ Search START -->
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}">
+									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}" required>
 									<label class="form-label">Check out</label>
-									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}">
+									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}" required>
 								</div>
 							</div>
 	

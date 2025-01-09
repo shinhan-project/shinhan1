@@ -115,10 +115,21 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.getHanokImg(hanok_id);
 	}
 
+
 	@Override
-	public List<CustomerVO> getRoomList(int hanok_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, Object> getRoomDetail(int room_id) {
+        // 객실 상세 정보
+		CustomerVO roomVO = mapper.getRoomInfo(room_id);
+		
+		// 결과 맵 구성
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("roomInfo", roomVO);
+		return resultMap;
+	}
+
+	@Override
+	public boolean reservation(CustomerVO vo) {
+		return mapper.reservation(vo) == 0 ? false : true;
 	}
 
 }
