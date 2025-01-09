@@ -148,7 +148,8 @@
 								$.ajax({
 									type: "POST",
 									url: "/hanok/reservation",
-									dataType: "application/json",
+									dataType: "json",
+									contentType: 'application/json; charset=utf-8',
 									data: JSON.stringify({
 										reservations_id: new Date().getTime(),
 										checkin: checkin,
