@@ -123,7 +123,8 @@
             const price = document.getElementById('total-price').value;
             const checkin = "${checkInDate}";
             const checkout = "${checkOutDate}";
-	        
+	        const customer_id = ${customer.customer_id};
+            
 			IMP.request_pay({
 				pg: pg,
 		        pay_method: payMethod,
@@ -157,7 +158,7 @@
 										reservation_price: ${roomMap.roomInfo.room_price},
 										reservation_name: name,
 										pay_type: payMethod,
-										customer_id: "123",
+										customer_id: customer_id,
 										room_id: ${roomMap.roomInfo.room_id}
 									}),
 									success: function (response) {
@@ -176,7 +177,7 @@
 											reservation_price: ${roomMap.roomInfo.room_price},
 											reservation_name: name,
 											pay_type: payMethod,
-											customer_id: "123",
+											customer_id: customer_id,
 											room_id: ${roomMap.roomInfo.room_id}
 			                        	}));
 			                        	console.error("예약 실패:", err);
