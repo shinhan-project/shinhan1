@@ -127,4 +127,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return resultMap;
 	}
 
+	@Override
+	public boolean reservation(CustomerVO vo) {
+		return mapper.reservation(vo) == 0 ? false : true;
+	}
+
 }

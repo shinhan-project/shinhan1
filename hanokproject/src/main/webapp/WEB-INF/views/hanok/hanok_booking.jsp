@@ -121,6 +121,8 @@
             const email = document.getElementById('email').value;
             const address = document.getElementById('address').value;
             const price = document.getElementById('total-price').value;
+            const checkin = "${checkInDate}";
+            const checkout = "${checkOutDate}";
 	        
 			IMP.request_pay({
 				pg: pg,
@@ -142,13 +144,46 @@
 						type: "POST",
 						url: "/hanok/verify/"+res.imp_uid,
 						success: function (res) {
-							
-				            if (res.success) {
-				                alert(res.message);
-				                // 검증 성공 후 페이지 이동
-				                window.location.href = "/hanok/hanok_booking_confirm.do";
+							if (res.success) {
+								$.ajax({
+									type: "POST",
+									url: "/hanok/reservation",
+									dataType: "application/json",
+									data: JSON.stringify({
+										reservations_id: new Date().getTime(),
+										checkin: checkin,
+										checkout: checkout,
+										reservation_price: ${roomMap.roomInfo.room_price},
+										reservation_name: name,
+										pay_type: payMethod,
+										customer_id: "123",
+										room_id: ${roomMap.roomInfo.room_id}
+									}),
+									success: function (response) {
+				                        if (response.success) {
+				                            alert(response.message);
+				                            window.location.href = "/hanok/hanok_booking_confirm.do";
+				                        } else {
+				                            alert(response.message);
+				                        }
+									},
+			                        error: function (err) {
+			                        	console.log("보내는 데이터:", JSON.stringify({
+											reservations_id: new Date().getTime(),
+											checkin: checkin,
+											checkout: checkout,
+											reservation_price: ${roomMap.roomInfo.room_price},
+											reservation_name: name,
+											pay_type: payMethod,
+											customer_id: "123",
+											room_id: ${roomMap.roomInfo.room_id}
+			                        	}));
+			                        	console.error("예약 실패:", err);
+			                            alert("예약 중 오류가 발생했습니다.");
+			                        }
+								});
 				            } else {
-				                alert(res.message);
+				                alert("결제에 실패하였습니다. 다시 시도해주세요.");
 				            }
 				        },
 				        error: function (err) {
@@ -162,6 +197,8 @@
 	                console.log("Order ID : " + res.merchant_uid);
 	                console.log("Payment Amount : " + ${roomMap.roomInfo.room_price});
 	                console.log("buyer_name : " + name);
+	                console.log("checkin : "+ "${checkInDate}");
+	                console.log("checkout : "+ "${checkOutDate}");
 	            } else {
 	            	var msg = '결제에 실패하였습니다.';
 	            }

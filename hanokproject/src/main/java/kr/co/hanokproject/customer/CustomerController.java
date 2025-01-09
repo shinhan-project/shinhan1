@@ -155,11 +155,11 @@ public class CustomerController {
     		@RequestParam(value = "capacity", required = false) String capacity, 
     		Model model, 
     		HttpSession sess) {
-        // 세션에서 로그인 정보 가져오기
-        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
-        if (loginInfo == null) {
-            return "redirect:/customer/login.do";
-        }
+//        // 세션에서 로그인 정보 가져오기
+//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+//        if (loginInfo == null) {
+//            return "redirect:/customer/login.do";
+//        }
         
     	// 한옥 정보 및 객실 정보 가져오기
         Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
@@ -171,6 +171,7 @@ public class CustomerController {
         System.out.println("checkInDate: " + checkInDate);
         System.out.println("checkOutDate: " + checkOutDate);
         System.out.println("capacity: " + capacity);
+       
         
         // 모델에 데이터 추가
         model.addAttribute("map", hanokDetailMap);
@@ -185,7 +186,7 @@ public class CustomerController {
     
     // 한옥 예약 확정 (민규)
     @GetMapping("/hanok/hanok_booking.do")
-    public String hanokBooking(HttpServletRequest request, 
+    public String hanokBooking(CustomerVO vo, HttpServletRequest request, 
     		@RequestParam("hanok_id") int hanok_id, 
     		@RequestParam("room_id") int room_id, 
     		@RequestParam(value = "checkInDate", required = false) String checkInDate, 
@@ -226,7 +227,12 @@ public class CustomerController {
         model.addAttribute("night_day",n_bak_m_il);
         model.addAttribute("name",name);
         model.addAttribute("phone",phone);
+        
+//        if (service.reservation(vo)) {
+//        	return "/hanok/hanok_booking_confirm";
+//	    }
     	return "/hanok/hanok_booking";
     }
+    
     
 }

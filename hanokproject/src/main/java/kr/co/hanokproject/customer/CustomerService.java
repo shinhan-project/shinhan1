@@ -34,5 +34,6 @@ public interface CustomerService {
 	// 객실 상세 정보 조회
 	Map<String, Object> getRoomDetail(int room_id);
 
-
+	// 예약
+	boolean reservation(CustomerVO vo);
 }
