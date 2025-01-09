@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>상세페이지 - ${hanokDetail.hanokName}</title>
+    <title>상세페이지 - ${map.hanokInfo.hanok_name}</title>
     <!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -332,9 +332,9 @@ Search START -->
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkInDate}">
+									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkInDate}" required>
 									<label class="form-label">Check out</label>
-									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkOutDate}">
+									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkOutDate}" required>
 								</div>
 							</div>
 	
@@ -476,7 +476,7 @@ Search END -->
 	                            <div class="card-body d-flex flex-column h-100 p-0">
 	    
 	                                <!-- Title -->
-	                                <h5 class="card-title"><a href="#">${roomVO.room_name}</a></h5>
+	                                <h5 class="card-title"><a href="/hanok/hanok_booking.do?room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}">${roomVO.room_name}</a></h5>
 	
 	                                <!-- 세부사항항 -->
 	                                <ul class="nav nav-divider mb-2">
@@ -493,7 +493,7 @@ Search END -->
 	                                    </div>
 	                                    <!-- Price -->
 	                                    <div class="mt-3 mt-sm-0">
-	                                        <a href="#" class="btn btn-sm btn-primary mb-0">예약하기</a>    
+	                                        <a href="/hanok/hanok_booking.do?hanok_id=${roomVO.hanok_id}&room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}" class="btn btn-sm btn-primary mb-0">예약하기</a>    
 	                                    </div>                  
 	                                </div>
 	                            </div>
