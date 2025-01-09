@@ -1,7 +1,8 @@
 package kr.co.hanokproject.customer;
 
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -116,7 +117,7 @@ public class CustomerController {
 	
 	// 한옥 검색 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
-    public String hanok_search(HttpServletRequest request, Model model) {
+    public String hanok_search(HttpServletRequest request, Model model, HttpSession sess) {
 		try {
 			int page = 1;
 	        if (request.getParameter("page") != null) {
@@ -147,7 +148,19 @@ public class CustomerController {
     
 	// 한옥 상세(예약)페이지 (민규)
     @GetMapping("/hanok/hanok_detail.do")
-    public String hanokDetail(@RequestParam("hanok_id") int hanok_id, @RequestParam(value = "location", required = false) String location, @RequestParam(value = "checkInDate", required = false) String checkInDate, @RequestParam(value = "checkOutDate", required = false) String checkOutDate, @RequestParam(value = "capacity", required = false) String capacity, Model model) {
+    public String hanokDetail(@RequestParam("hanok_id") int hanok_id, 
+    		@RequestParam(value = "location", required = false) String location,
+    		@RequestParam(value = "checkInDate", required = false) String checkInDate, 
+    		@RequestParam(value = "checkOutDate", required = false) String checkOutDate,
+    		@RequestParam(value = "capacity", required = false) String capacity, 
+    		Model model, 
+    		HttpSession sess) {
+//        // 세션에서 로그인 정보 가져오기
+//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+//        if (loginInfo == null) {
+//            return "redirect:/customer/login.do";
+//        }
+        
     	// 한옥 정보 및 객실 정보 가져오기
         Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
         String hanok_imgName = service.getHanokImg(hanok_id);
@@ -158,6 +171,7 @@ public class CustomerController {
         System.out.println("checkInDate: " + checkInDate);
         System.out.println("checkOutDate: " + checkOutDate);
         System.out.println("capacity: " + capacity);
+       
         
         // 모델에 데이터 추가
         model.addAttribute("map", hanokDetailMap);
@@ -170,16 +184,55 @@ public class CustomerController {
         return "/hanok/hanok_detail";
     }
     
-    // 한옥 예약 확인 - 미완(민규)
-    @GetMapping("/hanok/hanok_booking_confirm.do")
-    public String hanokBookingConfirm() {
-        return "/hanok/hanok_booking_confirm";
+    // 한옥 예약 확정 (민규)
+    @GetMapping("/hanok/hanok_booking.do")
+    public String hanokBooking(CustomerVO vo, HttpServletRequest request, 
+    		@RequestParam("hanok_id") int hanok_id, 
+    		@RequestParam("room_id") int room_id, 
+    		@RequestParam(value = "checkInDate", required = false) String checkInDate, 
+    		@RequestParam(value = "checkOutDate", required = false) String checkOutDate, 
+    		@RequestParam(value = "capacity", required = false) String capacity, 
+    		Model model,
+    		HttpSession sess) {
+//        // 세션에서 로그인 정보 가져오기
+//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+//        if (loginInfo == null) {
+//            return "redirect:/customer/login.do";
+//        }
+        
+    	// 한옥 정보 및 객실 정보 가져오기
+        Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
+        String hanok_imgName = service.getHanokImg(hanok_id);
+    	Map<String, Object> roomDetailMap = service.getRoomDetail(room_id);
+    	
+    	// 몇박며칠 구현
+        LocalDate startDate = LocalDate.parse(checkInDate);
+        LocalDate endDate = LocalDate.parse(checkOutDate);        
+        long totalDays = ChronoUnit.DAYS.between(startDate, endDate);
+        long nights = totalDays; // n박
+        long days = totalDays + 1; // m일
+        String n_bak_m_il = nights + "박" + days + "일";
+    	System.out.println(n_bak_m_il);
+
+        // 예약자 정보
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		
+//		model.addAttribute("customer", loginInfo);
+    	model.addAttribute("hanok_imgName", hanok_imgName);
+        model.addAttribute("hanokMap", hanokDetailMap);
+        model.addAttribute("roomMap", roomDetailMap);
+        model.addAttribute("checkInDate", checkInDate);
+        model.addAttribute("checkOutDate", checkOutDate);
+        model.addAttribute("night_day",n_bak_m_il);
+        model.addAttribute("name",name);
+        model.addAttribute("phone",phone);
+        
+//        if (service.reservation(vo)) {
+//        	return "/hanok/hanok_booking_confirm";
+//	    }
+    	return "/hanok/hanok_booking";
     }
     
-    // 한옥 예약 확정 - 미완(민규)
-    @GetMapping("/hanok/hanok_booking.do")
-    public String hanokBooking() {
-        return "/hanok/hanok_booking";
-    }
     
 }

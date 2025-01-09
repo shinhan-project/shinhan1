@@ -13,7 +13,10 @@
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
 
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/main
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
 
@@ -107,7 +110,7 @@ Page content START -->
 										<div class="card-body pt-3 pt-sm-0 p-0">
 											<!-- Title -->
 											<h5 class="card-title"><a href="#">${reservations.room_name}</a></h5>
-											<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i>${reservations.hanok_name}</p>
+											<p class="small mb-2"><i class="bi bi-house-door me-2"></i>${reservations.hanok_name}</p>
 
 											
 										</div>
@@ -128,7 +131,7 @@ Page content START -->
 								<fmt:formatDate value="${reservations.checkin}" pattern="yyyy-MM-dd"/>
 							</h5>
 							<fmt:setLocale value="en"/>
-										<small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservations.checkin}" pattern="hh:mm a"/>
+										<small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservations.checkin}" pattern="HH:mm a"/>
 										</small>
 									</div>
 								</div>
@@ -139,11 +142,11 @@ Page content START -->
 										<h6 class="fw-light small mb-1">Check out</h6>
 										
 										<h5 class="mb-1">
-											<fmt:formatDate value="${reservations.checkin}" pattern="yyyy-MM-dd"/>
+											<fmt:formatDate value="${reservations.checkout}" pattern="yyyy-MM-dd"/>
 										</h5>
 										<fmt:setLocale value="en"/>
 										<small><i class="bi bi-alarm me-1"></i>
-										<fmt:formatDate value="${reservations.checkin}" pattern="hh:mm a"/>
+										<fmt:formatDate value="${reservations.checkout}" pattern="HH:mm a"/>
 										</small>
 									</div>
 									
@@ -185,16 +188,15 @@ Page content START -->
 													</div>	
 								</div>
 								
-								
 								<!-- Input -->
 								<div class="col-md-5">
-									<label class="form-label">Mobile number</label>
+									<label class="form-label"><span class="h6 fw-normal">Mobile Number</span></label>
 									<option>${reservations.customer_tel }</option>
 								</div>
 
 								<!-- Input -->
 								<div class="col-md-5">
-									<label class="form-label">Email</label>
+									<label class="form-label"><span class="h6 fw-normal">Email</span></label>
 									<option>${reservations.customer_email }</option>								
 								</div>
 
@@ -205,13 +207,13 @@ Page content START -->
 
 								<!-- Input -->
 								<div class="col-md-5">
-									<label class="form-label">Reservation Number</label>
+									<label class="form-label"><span class="h6 fw-normal">Reservation Number</span></label>
 									<option>${reservations.reservations_id }</option>								
 								</div>
 
 								<!-- Input -->
 							<div class="col-md-5">
-									<label class="form-label">Reservation Name</label>
+									<label class="form-label"><span class="h6 fw-normal">Reservation Name</span></label>
 									<option>${reservations.reservation_name }</option>								
 								</div>
 							</form>
@@ -305,9 +307,8 @@ Page content START -->
 
 												<!-- Buttons -->
 												<div class="col-12">
-													<div class="d-sm-flex justify-content-sm-between align-items-center">
-														<h4><%-- ${reservations.pay_price }  --%><span class="small fs-6"></span></h4>
-														<button class="btn btn-primary mb-0" href="/"style="text-align">Back</button>
+													<div class="d-sm-flex justify-content-end align-items-center">
+														<button class="btn btn-primary mb-0" href="/customer/mybookings.do" style="width: 100px; text-align: center;">Back</button>
 													</div>
 												</div>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
+
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
@@ -166,8 +168,9 @@ Content START -->
 							    <div class="col-lg-6">
 							        <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-in</h6>
-							            <h5 class="mb-2">${reservation.checkin}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+							            <h5 class="mb-2">
+							            <fmt:formatDate value="${reservation.checkin}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkin}" pattern="HH:mm a" /></small>
 							        </div>
 							    </div>
 
@@ -175,8 +178,8 @@ Content START -->
 								 <div class="col-lg-6">
 							       	 <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-out</h6>
-							            <h5 class="mb-2">${reservation.checkout}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+							            <h5 class="mb-2"><fmt:formatDate value="${reservation.checkout}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkout}" pattern="HH:mm a"/></small>
 							        </div>
 							    </div>
 
@@ -188,8 +191,13 @@ Content START -->
 								 <c:if test="${!status.last}">
 								 <div style="display: flex; gap: 10px; justify-content: flex-end;">
  					<a href="/${reservation.reservations_id}/bookingdetail.do" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">View Details</a>
-					<a href="/review/review.do?reservation_id=${reservation.reservations_id}" class="btn btn-primary mb-0" style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">Create Review</a>
-
+							<c:if test="${!reservation.hasReview}">
+            <a href="/review/review.do?reservation_id=${reservation.reservations_id}" 
+               class="btn btn-primary mb-0" 
+               style="font-size: 13px; padding: 10px 20px; color: black; background-color: white; border: 1px solid black;">
+                Create Review
+            </a>
+        </c:if>
 </div>
 	               					 <hr style="margin-top: 20px; margin-bottom: 20px;">
 	           					 </c:if>

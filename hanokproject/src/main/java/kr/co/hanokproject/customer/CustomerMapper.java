@@ -48,4 +48,9 @@ public interface CustomerMapper {
     // 객실 이미지 가져오기
     List<CustomerVO> getRoomImages(@Param("room_id") int roomId);
 
+    // 객실 상세 정보 가져오기
+	CustomerVO getRoomInfo(@Param("room_id") int room_id);
+	
+	// 예약
+	int reservation(CustomerVO vo);
 }
