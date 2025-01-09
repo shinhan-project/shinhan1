@@ -78,7 +78,12 @@
 	<select id="getCustomerReservations" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">
 	    SELECT r.reservations_id, r.customer_id, r.room_id,
 	           r.checkin, r.checkout,
-	           h.hanok_id, h.hanok_name, rm.room_name, g.hanok_imgName
+	           h.hanok_id, h.hanok_name, rm.room_name, g.hanok_imgName, 
+	            EXISTS (
+            SELECT 1
+            FROM REVIEWS rv
+            WHERE rv.reservations_id = r.reservations_id
+        ) AS hasReview
 	    FROM RESERVATIONS r
 	    JOIN ROOMS rm ON r.room_id = rm.room_id
 	    JOIN HANOKS h ON rm.hanok_id = h.hanok_id

@@ -32,6 +32,9 @@ public class ReservationVO {
     private String pay_date;
     private String pay_type;
     
+    private boolean hasReview; // 리뷰가 있는지 여부
+
+    
     
 }
 
