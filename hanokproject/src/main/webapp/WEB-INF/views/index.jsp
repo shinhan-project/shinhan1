@@ -107,15 +107,15 @@ Main Banner END -->
     </button>
 
     <!-- Search with offcanvas START -->
-    <div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
+    <div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel" >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body p-2">
+      <div class="offcanvas-body p-2" style="width: 120%; margin-left: -10%; max-width: 190%;">
         <div class="bg-light p-4 rounded w-100">
           <form action="/hanok/hanok_list.do" method="GET">
-            <div class="row g-4" style="display: flex; flex-wrap: nowrap; gap: 20px; align-items: flex-start;">
+            <div class="row g-4" style="display: flex; flex-wrap: nowrap; gap: 20px; align-items: flex-start;" >
               <!-- Location -->
               <div class="form-size-lg form-fs-md" style="flex: 1;">
                 <label class="form-label">Location</label>
