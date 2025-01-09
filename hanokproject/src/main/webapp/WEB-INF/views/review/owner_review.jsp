@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Owner_Profile</title>
+<title>Owner_Reviews</title>
 
 <!-- Meta Tags -->
 <meta charset="utf-8">
@@ -90,7 +90,7 @@
 							id="profileDropdown" role="button" data-bs-auto-close="outside"
 							data-bs-display="static" data-bs-toggle="dropdown"
 							aria-expanded="false"> <img class="avatar-img rounded-circle"
-								src="/images/avatar/01.jpg" alt="avatar">
+								src="/images/avatar/01-1.jpg" alt="avatar">
 						</a> <!-- Profile dropdown START -->
 							<ul
 								class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -101,7 +101,7 @@
 										<!-- Avatar -->
 										<div class="avatar me-3">
 											<img class="avatar-img rounded-circle shadow"
-												src="/images/avatar/01.jpg" alt="avatar">
+												src="/images/avatar/01-1.jpg" alt="avatar">
 										</div>
 										<div>
 
@@ -152,7 +152,7 @@ Menu item START -->
 						<div class="d-sm-flex align-items-center">
 							<div class="avatar avatar-xl mb-2 mb-sm-0">
 								<img class="avatar-img rounded-circle"
-									src="/images/avatar/01.jpg" alt="">
+									src="/images/avatar/01-1.jpg" alt="">
 							</div>
 							<h4 class="mb-2 mb-sm-0 ms-sm-3">
 								<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
@@ -185,11 +185,11 @@ Menu item START -->
 								<div class="navbar navbar-expand-xl">
 									<ul class="navbar-nav navbar-offcanvas-menu">
 
-										<li class="nav-item"><a class="nav-link active"
+										<li class="nav-item"><a class="nav-link "
 											href="/owner/owner_dash.do"><i
 												class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 										<!-- Review 목록 페이지 -->
-										<li class="nav-item"><a class="nav-link"
+										<li class="nav-item"><a class="nav-link active"
 											href="/review/owner/${ownerloginInfo.owner_id}"><i
 												class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
@@ -341,7 +341,7 @@ Content END -->
 </main>
 	<!-- **************** MAIN CONTENT END **************** -->
 
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 	<!-- Back to top -->
 	<div class="back-top"></div>
 

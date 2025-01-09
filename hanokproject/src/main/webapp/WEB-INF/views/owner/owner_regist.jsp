@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Booking - Multipurpose Online Booking Theme</title>
+	<title>Owner Regist Page</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -151,7 +151,7 @@ Main Content END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <!-- Back to top -->
 <div class="back-top"></div>
 
