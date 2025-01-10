@@ -154,7 +154,7 @@
     	SELECT * FROM ROOMS WHERE room_id = #{room_id}
     </select>
     
-        <!-- 예약 정보 추가 -->
+    <!-- 예약 정보 추가 -->
    	<insert id="reservation" parameterType="kr.co.hanokproject.customer.CustomerVO">
       INSERT INTO RESERVATIONS (checkin, checkout, created_at, reservation_price, reservation_name, pay_price, pay_date, pay_type, customer_id, room_id) 
       VALUES (
@@ -169,4 +169,22 @@
         #{customer_id}, 
         #{room_id})
 	</insert>
+	
+	<!-- 리뷰 정보 -->
+    <select id="getReviewList" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+        SELECT 
+        	r.review_id AS review_id,
+        	r.review_title AS review_title,
+        	r.review_content AS review_content,
+        	DATE_FORMAT(r.review_date, '%Y-%m-%d') AS review_date,
+        	r.rating AS rating,
+        	r.hanok_id AS hanok_id,
+        	r.room_id AS room_id,
+        	rm.room_name AS room_name,
+        	ri.room_imgName AS room_imgName
+        FROM REVIEWS r 
+        JOIN ROOM_IMAGES ri ON r.room_id = ri.room_id
+        JOIN ROOMS rm ON r.room_id = rm.room_id
+        WHERE r.hanok_id = #{hanok_id} LIMIT 3
+    </select>
 </mapper>

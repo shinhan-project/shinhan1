@@ -514,39 +514,20 @@ Search END -->
     <div class="container review">
         <h2>Reviews</h2>
             <div class="review-list">
-                <div class="review-item">
-                    <img src="/images/rooms/100.jpg" alt="Review Image">
-                    <div class="review-content">
-                        <h5>Dam(담)</h5>
-                        <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
-                        <p>
-                            ⭐ 4.0
-                        </p>
-                        <p>Date: 24.04.22</p>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="/images/rooms/101.jpg" alt="Review Image">
-                    <div class="review-content">
-                        <h5>Dam(담)</h5>
-                        <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
-                        <p>
-                            ⭐ 4.0
-                        </p>
-                        <p>Date: 24.04.22</p>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="/images/rooms/102.jpg" alt="Review Image">
-                    <div class="review-content">
-                        <h5>Dam(담)</h5>
-                        <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
-                        <p>
-                            ⭐ 4.0
-                        </p>
-                        <p>Date: 24.04.22</p>
-                    </div>
-                </div>
+	            <c:forEach var="reviewVO" items="${map.reviewList}">
+	                <div class="review-item">
+	                    <img src="/images/rooms/100.jpg" alt="Review Image">
+	                    <div class="review-content">
+	                        <h5>${reviewVO.room_name}</h5>
+	                        <p>${reviewVO.review_title}</p>
+	                        <p>${reviewVO.review_content}</p>
+	                        <p>
+	                            ⭐ ${reviewVO.rating}
+	                        </p>
+	                        <p>Date: ${reviewVO.review_date}</p>
+	                    </div>
+	                </div>
+	            </c:forEach>
             </div>
 			<a href="#" class="btn btn-sm btn-primary mb-0" style="margin-top: 20px;">Load more</a>    
     </div>				
@@ -554,9 +535,6 @@ Search END -->
 
 
     <!--footer-->
-    <div id="sep">
-		<%@ include file="/WEB-INF/views/include/footer.jsp" %>
-    </div>
 
 
 

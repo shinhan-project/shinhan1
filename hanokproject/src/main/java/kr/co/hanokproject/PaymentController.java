@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.siot.IamportRestClient.IamportClient;
@@ -108,15 +109,30 @@ public class PaymentController {
     
     // 한옥 예약 확인 - 미완(민규)
     @GetMapping("/hanok/hanok_booking_confirm.do")
-    public String hanokBookingConfirm(Model model, HttpSession sess) {
-//        // 세션에서 로그인 정보 가져오기
-//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
-//        if (loginInfo == null) {
-//            return "redirect:/customer/login.do";
-//        }
+    public String hanokBookingConfirm(Model model, HttpSession sess,
+    		@RequestParam("hanok_id") int hanok_id,
+    		@RequestParam("room_id") int room_id,
+    		@RequestParam("reservations_id") long reservations_id,
+    		@RequestParam("checkin") String checkin,
+    		@RequestParam("checkout") String checkout,
+    		@RequestParam("reservation_name") String reservation_name,
+    		@RequestParam("pay_type") String pay_type,
+    		@RequestParam("capacity") String capacity) {
+        // 세션에서 로그인 정보 가져오기
+        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+        if (loginInfo == null) {
+            return "redirect:/customer/login.do";
+        }
 
-
-//        model.addAttribute("customer", loginInfo);
+		model.addAttribute("hanok_id", hanok_id);
+    	model.addAttribute("room_id", room_id);
+        model.addAttribute("reservations_id", reservations_id);
+        model.addAttribute("checkin", checkin);
+        model.addAttribute("checkout", checkout);
+        model.addAttribute("reservation_name", reservation_name);
+        model.addAttribute("pay_type",pay_type);
+        model.addAttribute("capacity",capacity);
+        model.addAttribute("customer", loginInfo);
     	return "/hanok/hanok_booking_confirm";
     }
 }
