@@ -75,13 +75,7 @@ public class OwnerController {
 				return "common/alert";
 			}
 		   
-		   
-//			@GetMapping("/owner/owner_profile.do")
-//			public void owner_profile() {
-//				 return;
-//			}
-
-		   
+		 
 		   
 		   
 		 //사장 정보 수정
