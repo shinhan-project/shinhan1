@@ -29,6 +29,13 @@
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<style>
+	.tiny-slider-inner .card-img {
+    width: 100%;
+    height: 250px; /* 모든 이미지를 같은 높이로 설정 */
+    object-fit: cover; /* 비율 유지하면서 크기 맞추기 */
+}
+	</style>
 
 </head>
 
@@ -165,13 +172,13 @@ Search START -->
 Search END -->
 
 <!-- =======================
-Special offer START -->
+Recommand ffer START -->
 <section class="pt-0">
 	<div class="container">
 		<!-- Title -->
 		<div class="row mb-4">
 			<div class="col-12 text-center">
-				<h3 class="mb-0">Special Offers</h3>
+				<h3 class="mb-0">Recommand hanoks</h3>
 			</div>
 		</div>
 
@@ -180,26 +187,32 @@ Special offer START -->
 			<div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
 				
 				<!-- Offer card START -->
+				
+				<c:forEach var="hanoks" items="${hanoks }">
 				<div>
 					<div class="card">
-						<img src="/images/offer/06.jpg" class="card-img" alt="">
+						<img src="/images/hanoks/${hanoks.hanok_imgName}" class="card-img" alt="">
 						<!-- Card body -->
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-								<h6 class="card-title mb-1"><a href="#">Spa Package Offer</a></h6>
-								<small>Valid through Dec 2022</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
+								<h6 class="card-title mb-1"><a href="#">${hanoks.hanok_name}</a></h6>
+								
+								<div class="mt-2"><a href="/hanok/hanok_detail.do?hanok_id=${hanoks.hanok_id}" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
+				</c:forEach>
+				
+				
 				<!-- Offer card END -->
-
-				<!-- Offer card START -->
+<!-- 
+				Offer card START
 				<div>
 					<div class="card">
 						<img src="/images/offer/07.jpg" class="card-img" alt="">
-						<!-- Card body -->
+						Card body
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 								<h6 class="card-title mb-1"><a href="#">Elevate Your Stay</a></h6>
@@ -209,13 +222,13 @@ Special offer START -->
 						</div>
 					</div>
 				</div>
-				<!-- Offer card END -->
+				Offer card END
 
-				<!-- Offer card START -->
+				Offer card START
 				<div>
 					<div class="card">
 						<img src="/images/offer/08.jpg" class="card-img" alt="">
-						<!-- Card body -->
+						Card body
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 								<h6 class="card-title mb-1"><a href="#">Pass Holder Package</a></h6>
@@ -225,13 +238,13 @@ Special offer START -->
 						</div>
 					</div>
 				</div>
-				<!-- Offer card END -->
+				Offer card END
 
-				<!-- Offer card START -->
+				Offer card START
 				<div>
 					<div class="card">
 						<img src="/images/offer/05.jpg" class="card-img" alt="">
-						<!-- Card body -->
+						Card body
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 								<h6 class="card-title mb-1"><a href="#">2023 Golf Tournament Package</a></h6>
@@ -241,7 +254,7 @@ Special offer START -->
 						</div>
 					</div>
 				</div>
-				<!-- Offer card END -->
+				Offer card END -->
 			</div>	
 		</div>
 		<!-- Slider END -->

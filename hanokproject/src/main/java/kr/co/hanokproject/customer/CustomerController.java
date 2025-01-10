@@ -3,6 +3,7 @@ package kr.co.hanokproject.customer;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.co.hanokproject.hanok.HanokVO;
 
 @Controller
 @PropertySource("classpath:db.properties")
@@ -48,10 +51,15 @@ public class CustomerController {
 	
 	
 	@GetMapping("/index.do")
-	public String index() {
+	public String index(Model model) {
+		
+
+		List<HanokVO> hanoks = service.getAllHanoks();
+		model.addAttribute("hanoks", hanoks);
 		return "index";
 
 	}
+	
 	
 	@GetMapping("/about.do")
 	public String about() {

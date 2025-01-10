@@ -3,6 +3,8 @@ package kr.co.hanokproject.customer;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.hanokproject.hanok.HanokVO;
+
 public interface CustomerService {
 
 	Map<String, Object> list(CustomerVO vo);
@@ -36,4 +38,6 @@ public interface CustomerService {
 
 	// 예약
 	boolean reservation(CustomerVO vo);
+	
+	List<HanokVO> getAllHanoks();
 }

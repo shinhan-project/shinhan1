@@ -31,6 +31,8 @@ public class HanokServiceImple implements HanokService {
 		return mapper.getAuthorization(owner_id);
 	}
 
+
+
 	
 
 

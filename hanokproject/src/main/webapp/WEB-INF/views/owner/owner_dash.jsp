@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+
 <head>
 <title>Owner DashBoard Page</title>
 
@@ -58,7 +58,7 @@
 						<h4 class="mb-2 mb-sm-0 ms-sm-3">
 							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
 						</h4>
-						<a href="add-listing.html"
+						<a href="/owner/enrollConfirm.do"
 							class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
 							class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
 					</div>
@@ -214,13 +214,13 @@ Content START -->
 										<thead class="table-light">
 
 											<tr>
-												<th scope="col" class="border-0 rounded-start">#</th>
+												
 												<th scope="col" class="border-0">reservation_id</th>
 												<th scope="col" class="border-0">reservation_name</th>
 												<th scope="col" class="border-0">check in-out</th>
-												<th scope="col" class="border-0">status</th>
+												<th scope="col" class="border-0">pay type</th>
 												<th scope="col" class="border-0">price</th>
-												<th scope="col" class="border-0">view</th>
+												
 											</tr>
 										</thead>
 
@@ -232,9 +232,7 @@ Content START -->
 											<!-- Table item -->
 											<c:forEach var="reservation" items="${reservations}">
 												<tr>
-													<td>
-														<h6 class="mb-0"></h6>
-													</td>
+													
 													<td>
 														<h6 class="mb-0">
 															<a href="#">${reservation.reservations_id}</a>
@@ -243,15 +241,13 @@ Content START -->
 													<td>${reservation.reservation_name}</td>
 													<td>${reservation.checkin}-${reservation.checkout}</td>
 													<td>
-														<div class="badge text-bg-success">${reservation.status}</div>
+														<div class="badge text-bg-success">${reservation.pay_type}</div>
 													</td>
 													<td>
 														<div class="badge text-bg-success">${reservation.reservation_price}
 															won</div>
 													</td>
-													<!-- 아래에 View링크는 숙소 소개 페이지 -->
-													<td><a href="#" class="btn btn-sm btn-light mb-0">View</a>
-													</td>
+													
 												</tr>
 											</c:forEach>
 										</tbody>
