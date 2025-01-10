@@ -171,7 +171,7 @@
 	</insert>
 	
 	
-	
+	<!-- 다시 넣음 -->
 	 <select id="getAllHanoks" resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="map">
 	 
         SELECT *,i.hanok_imgName
