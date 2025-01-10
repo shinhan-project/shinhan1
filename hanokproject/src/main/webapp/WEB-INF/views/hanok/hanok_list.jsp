@@ -228,7 +228,7 @@ Search END -->
                     </div>
                 </div>
             </div>
-        </selection>
+        </section>
     </div>
 
     <!--footer-->

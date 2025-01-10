@@ -21,6 +21,7 @@ public class HanokVO {
 		private int status;
 		private double hanok_score;
 		private String hanok_imgName;
+		private int owner_id;
 		
 	
 		

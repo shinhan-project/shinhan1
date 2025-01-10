@@ -117,7 +117,7 @@
 								</li>
 
 								<li><a class="dropdown-item bg-danger-soft-hover"
-									href="/owner/owner_logout.do"><i
+									href="/owner/owner_login.do"><i
 										class="bi bi-power fa-fw me-2"></i>Logout</a></li>
 								<li>
 									<hr class="dropdown-divider">

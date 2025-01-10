@@ -112,7 +112,7 @@ public class CustomerController {
 			model.addAttribute("url",url);
 			return "common/alert";
 		}
-	
+	 
 	
 	// 한옥 검색 (민규)
 	@RequestMapping("/hanok/hanok_list.do")
