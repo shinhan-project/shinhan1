@@ -41,10 +41,10 @@
 
 <body>
 <%@ include file="/WEB-INF/views/include/owner_header.jsp" %>	
-<c:if test="${!empty ownerloginInfo}">
+
 	 <!--  **************** MAIN CONTENT START **************** -->
 	<main>
-
+<c:if test="${!empty ownerloginInfo}">
 		<!-- ======================= Menu item START -->
 		<section class="pt-4">
 			<div class="container">
@@ -92,10 +92,10 @@
 									<!-- Review 목록 페이지 -->
 									<li class="nav-item"><a class="nav-link "
 										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
-
+									
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
-									<li><a class="nav-link" href="/owner/owner_profile.do"><i
-											class="bi bi-gear fa-fw me-1"></i>profile</a></li>
+									<li class="nav-item"> <a class="nav-link" href="/owner/owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
+									<li><a class="nav-link" href="/owner/owner_profile.do"><i class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
 								</ul>
 							</div>

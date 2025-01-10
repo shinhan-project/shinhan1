@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import kr.co.hanokproject.room.RoomVO;
 
 
 
@@ -15,6 +14,8 @@ public interface HanokMapper {
     List<HanokVO> getHanokListings(int owner_id);
 
 	HanokVO getHanokById(int hanok_id);
+
+	List<HanokVO> getAuthorization(int owner_id);
 
 	
 

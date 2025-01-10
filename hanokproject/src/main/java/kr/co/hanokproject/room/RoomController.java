@@ -30,6 +30,7 @@ public class RoomController {
         
         HanokVO vo =hanokservice.getHanokById(hanok_id);
         model.addAttribute("vo", vo);
+        
 
         // 방 리스트를 보여줄 JSP 페이지로 포워딩
         return "owner/owner_rooms";

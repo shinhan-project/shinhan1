@@ -48,75 +48,75 @@
 <body>
 
 <%@ include file="/WEB-INF/views/include/owner_header.jsp" %>	
-<c:if test="${!empty ownerloginInfo}">
+
 		<!-- **************** MAIN CONTENT START **************** -->
 		<main>
-
-			<!-- ======================= Menu item START -->
-			<section class="pt-4">
-				<div class="container">
-					<div class="card rounded-3 border p-3 pb-2">
-						<!-- Avatar and info START -->
-						<div class="d-sm-flex align-items-center">
-							<div class="avatar avatar-xl mb-2 mb-sm-0">
-								<img class="avatar-img rounded-circle"
-									src="/images/avatar/01-1.jpg" alt="">
-							</div>
-							<h4 class="mb-2 mb-sm-0 ms-sm-3">
-								<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
-							</h4>
-							<a href="add-listing.html"
-								class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
-								class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
+	<c:if test="${!empty ownerloginInfo}">
+		<section class="pt-4">
+			<div class="container">
+				<div class="card rounded-3 border p-3 pb-2">
+					<!-- Avatar and info START -->
+					<div class="d-sm-flex align-items-center">
+						<div class="avatar avatar-xl mb-2 mb-sm-0">
+							<img class="avatar-img rounded-circle"
+								src="/images/avatar/01-1.jpg" alt="">
 						</div>
-						<!-- Avatar and info START -->
-
-						<!-- Responsive navbar toggler -->
-						<button class="btn btn-primary w-100 d-block d-xl-none mt-2"
-							type="button" data-bs-toggle="offcanvas"
-							data-bs-target="#dashboardMenu" aria-controls="dashboardMenu">
-							<i class="bi bi-list"></i> Dashboard Menu
-						</button>
-
-						<!-- Nav links START -->
-						<div class="offcanvas-xl offcanvas-end mt-xl-3" tabindex="-1"
-							id="dashboardMenu">
-							<div class="offcanvas-header border-bottom p-3">
-								<h5 class="offcanvas-title">Menu</h5>
-								<button type="button" class="btn-close"
-									data-bs-dismiss="offcanvas" data-bs-target="#dashboardMenu"
-									aria-label="Close"></button>
-							</div>
-							<!-- Offcanvas body -->
-							<div class="offcanvas-body p-3 p-xl-0">
-								<!-- Nav item -->
-								<div class="navbar navbar-expand-xl">
-									<ul class="navbar-nav navbar-offcanvas-menu">
-
-										<li class="nav-item"><a class="nav-link "
-											href="/owner/owner_dash.do"><i
-												class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
-										<!-- Review 목록 페이지 -->
-										<li class="nav-item"><a class="nav-link"
-											href="agent-reviews.html"><i
-												class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
-
-										<li class="nav-item"><a class="nav-link active"
-											href="/owner/owner_listings.do"><i
-												class="bi bi-journals fa-fw me-1"></i>Listings</a></li>
-										<li><a class="nav-link" href="/owner/owner_profile.do"><i
-												class="bi bi-gear fa-fw me-1"></i>profile</a></li>
-
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- Nav links END -->
+						<h4 class="mb-2 mb-sm-0 ms-sm-3">
+							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
+						</h4>
+						<a href="add-listing.html"
+							class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
+							class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
 					</div>
-				</div>
+					<!-- Avatar and info START -->
 
-			</section>
-	</c:if>
+					<!-- Responsive navbar toggler -->
+					<button class="btn btn-primary w-100 d-block d-xl-none mt-2"
+						type="button" data-bs-toggle="offcanvas"
+						data-bs-target="#dashboardMenu" aria-controls="dashboardMenu">
+						<i class="bi bi-list"></i> Dashboard Menu
+					</button>
+
+					<!-- Nav links START -->
+					<div class="offcanvas-xl offcanvas-end mt-xl-3" tabindex="-1"
+						id="dashboardMenu">
+						<div class="offcanvas-header border-bottom p-3">
+							<h5 class="offcanvas-title">Menu</h5>
+							<button type="button" class="btn-close"
+								data-bs-dismiss="offcanvas" data-bs-target="#dashboardMenu"
+								aria-label="Close"></button>
+						</div>
+						<!-- Offcanvas body -->
+						<div class="offcanvas-body p-3 p-xl-0">
+							<!-- Nav item -->
+							<div class="navbar navbar-expand-xl">
+								<ul class="navbar-nav navbar-offcanvas-menu">
+
+									<li class="nav-item"><a class="nav-link active"
+										href="/owner/owner_dash.do"><i
+											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
+									<!-- Review 목록 페이지 -->
+									<li class="nav-item"><a class="nav-link "
+										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+									
+									<li class="nav-item"> <a class="nav-link active" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+									<li class="nav-item"> <a class="nav-link" href="owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
+									<li><a class="nav-link" href="/owner/owner_profile.do"><i class="bi bi-gear fa-fw me-1"></i>profile</a></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Nav links END -->
+				</div>
+			</div>
+			
+		</section>
+
+
+
+</c:if>
+
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>

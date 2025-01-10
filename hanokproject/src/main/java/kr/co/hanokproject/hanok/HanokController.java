@@ -27,8 +27,24 @@ public class HanokController {
         
     
         model.addAttribute("listings", listings);
+        
+        
  
         return "/owner/owner_listings"; 
+    }
+	
+	//한옥  승인 리스트 확인하기
+	@RequestMapping("/owner/owner_authorization.do")
+    public String authorization(@SessionAttribute("ownerloginInfo") OwnerVO vo, Model model) {
+    	
+        List<HanokVO> author= service.getAuthorization(vo.getOwner_id());
+        
+    
+        model.addAttribute("author", author);
+        
+        
+ 
+        return "/owner/owner_authorization"; 
     }
 	
 	

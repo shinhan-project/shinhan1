@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.hanokproject.room.RoomVO;
 
 
 @Service
@@ -16,7 +15,7 @@ public interface HanokService {
 
 	HanokVO getHanokById(int hanok_id);
 
-
+	List<HanokVO> getAuthorization(int owner_id);
 
 
 }
