@@ -1,12 +1,11 @@
 package kr.co.hanokproject;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.siot.IamportRestClient.IamportClient;
@@ -106,17 +106,41 @@ public class PaymentController {
     	return response;
     }
     
-    // 한옥 예약 확인 - 미완(민규)
+    // 한옥 예약 확인 - (민규)
     @GetMapping("/hanok/hanok_booking_confirm.do")
-    public String hanokBookingConfirm(Model model, HttpSession sess) {
-//        // 세션에서 로그인 정보 가져오기
-//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
-//        if (loginInfo == null) {
-//            return "redirect:/customer/login.do";
-//        }
+    public String hanokBookingConfirm(Model model, HttpSession sess,
+    		@RequestParam("hanok_id") int hanok_id,
+    		@RequestParam("room_id") int room_id,
+    		@RequestParam("reservations_id") long reservations_id,
+    		@RequestParam("checkin") String checkin,
+    		@RequestParam("checkout") String checkout,
+    		@RequestParam("reservation_name") String reservation_name,
+    		@RequestParam("pay_type") String pay_type,
+    		@RequestParam("capacity") String capacity,
+    		@RequestParam("phone") String phone) {
+        // 세션에서 로그인 정보 가져오기
+        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+        if (loginInfo == null) {
+            return "redirect:/customer/login.do";
+        }
 
-
-//        model.addAttribute("customer", loginInfo);
+        Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
+        Map<String, Object> roomDetailMap = service.getRoomDetail(room_id);
+        String hanok_imgName = service.getHanokImg(hanok_id);
+        
+        model.addAttribute("hanokMap", hanokDetailMap);
+        model.addAttribute("roomMap", roomDetailMap);
+        model.addAttribute("hanok_imgName", hanok_imgName);
+		model.addAttribute("hanok_id", hanok_id);
+    	model.addAttribute("room_id", room_id);
+        model.addAttribute("reservations_id", reservations_id);
+        model.addAttribute("checkin", checkin);
+        model.addAttribute("checkout", checkout);
+        model.addAttribute("reservation_name", reservation_name);
+        model.addAttribute("pay_type",pay_type);
+        model.addAttribute("capacity",capacity);
+        model.addAttribute("phone",phone);
+        model.addAttribute("customer", loginInfo);
     	return "/hanok/hanok_booking_confirm";
     }
 }

@@ -56,6 +56,3 @@ public interface CustomerMapper {
 	// 예약
 	int reservation(CustomerVO vo);
 	
-	List<HanokVO> getAllHanoks();
-}
-

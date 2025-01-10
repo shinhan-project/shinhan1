@@ -95,12 +95,16 @@ public class CustomerServiceImpl implements CustomerService {
             roomImgMap.put(room.getRoom_id(), roomImgList);
         }
 
+        // 리뷰 정보
+        List<CustomerVO> reviewList = mapper.getReviewList(hanok_id);
+        
         // 결과 맵 구성
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("hanokInfo", hanokVO);
         resultMap.put("hanokImg", hanokImg);
         resultMap.put("roomList", roomList);
         resultMap.put("roomImgMap", roomImgMap);
+        resultMap.put("reviewList", reviewList);
 
         return resultMap;
     }

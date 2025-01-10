@@ -202,11 +202,11 @@ public class CustomerController {
     		@RequestParam(value = "capacity", required = false) String capacity, 
     		Model model,
     		HttpSession sess) {
-//        // 세션에서 로그인 정보 가져오기
-//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
-//        if (loginInfo == null) {
-//            return "redirect:/customer/login.do";
-//        }
+        // 세션에서 로그인 정보 가져오기
+        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+        if (loginInfo == null) {
+            return "redirect:/customer/login.do";
+        }
         
     	// 한옥 정보 및 객실 정보 가져오기
         Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
@@ -226,7 +226,7 @@ public class CustomerController {
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		
-//		model.addAttribute("customer", loginInfo);
+		model.addAttribute("customer", loginInfo);
     	model.addAttribute("hanok_imgName", hanok_imgName);
         model.addAttribute("hanokMap", hanokDetailMap);
         model.addAttribute("roomMap", roomDetailMap);
@@ -235,10 +235,8 @@ public class CustomerController {
         model.addAttribute("night_day",n_bak_m_il);
         model.addAttribute("name",name);
         model.addAttribute("phone",phone);
-        
-//        if (service.reservation(vo)) {
-//        	return "/hanok/hanok_booking_confirm";
-//	    }
+        model.addAttribute("capacity",capacity);
+
     	return "/hanok/hanok_booking";
     }
     

@@ -44,7 +44,7 @@
     
                     <div class="card shadow">
                         <!-- Image -->
-                        <img src="/images/hanoks/1000.jpg" class="rounded-top" alt="한옥사진">
+                        <img src="/images/hanoks/${hanok_imgName}" class="rounded-top" alt="한옥사진">
     
                         <!-- Card body -->
                         <div class="card-body text-center p-4">
@@ -61,31 +61,31 @@
                                     <ul class="list-group list-group-borderless">
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>예약 번호:</span>
-                                            <span class="h6 fw-normal mb-0">BS-58678</span>
+                                            <span class="h6 fw-normal mb-0">${reservations_id}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-person fa-fw me-2"></i>예약자 성함:</span>
-                                            <span class="h6 fw-normal mb-0">김신한</span>
+                                            <span class="h6 fw-normal mb-0">${reservation_name}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-person fa-fw me-2"></i>예약자 전화번호:</span>
-                                            <span class="h6 fw-normal mb-0">010-1234-5678</span>
+                                            <span class="h6 fw-normal mb-0">${phone}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>숙소명:</span>
-                                            <span class="h6 fw-normal mb-0">OO 한옥</span>
+                                            <span class="h6 fw-normal mb-0">${hanokMap.hanokInfo.hanok_name}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>숙소 연락처:</span>
-                                            <span class="h6 fw-normal mb-0">0000-1234</span>
+                                            <span class="h6 fw-normal mb-0">${hanokMap.hanokInfo.hanok_tel}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>숙소 위치:</span>
-                                            <span class="h6 fw-normal mb-0">서울 마포구 월드컵북로4길 77 3강의장</span>
+                                            <span class="h6 fw-normal mb-0">${hanokMap.hanokInfo.hanok_address}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>객실명:</span>
-                                            <span class="h6 fw-normal mb-0">일반실 - 침대</span>
+                                            <span class="h6 fw-normal mb-0">${roomMap.roomInfo.room_name}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -94,23 +94,23 @@
                                     <ul class="list-group list-group-borderless">
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-wallet2 fa-fw me-2"></i>결제 수단:</span>
-                                            <span class="h6 fw-normal mb-0">카카오 페이</span>
+                                            <span class="h6 fw-normal mb-0">${pay_type}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-currency-dollar fa-fw me-2"></i>결제 금액:</span>
-                                            <span class="h6 fw-normal mb-0">50,000원</span>
+                                            <span class="h6 fw-normal mb-0">${roomMap.roomInfo.room_price}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-calendar fa-fw me-2"></i>체크인:</span>
-                                            <span class="h6 fw-normal mb-0">2025-01-02</span>
+                                            <span class="h6 fw-normal mb-0">${checkin}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-calendar fa-fw me-2"></i>체크아웃:</span>
-                                            <span class="h6 fw-normal mb-0">2025-01-07</span>
+                                            <span class="h6 fw-normal mb-0">${checkout}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                             <span class="mb-0"><i class="bi bi-people fa-fw me-2"></i>인원:</span>
-                                            <span class="h6 fw-normal mb-0">3</span>
+                                            <span class="h6 fw-normal mb-0">${capacity}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -132,7 +132,7 @@
                                     </ul>
                                 </div>
                                 <!-- Download button -->
-                                <a href="#" class="btn btn-primary mb-0"><i class="bi bi-file-pdf me-2"></i>Download PDF</a>
+                                <a href="/index.do" class="btn btn-primary mb-0"><i class="bi bi-file-pdf me-2"></i>메인 홈페이지</a>
                             </div>
                         </div>
                     </div>

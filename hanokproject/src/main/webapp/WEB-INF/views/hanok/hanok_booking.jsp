@@ -123,7 +123,33 @@
             const price = document.getElementById('total-price').value;
             const checkin = "${checkInDate}";
             const checkout = "${checkOutDate}";
+	        const customer_id = ${customer.customer_id};
+            const reservations_id = new Date().getTime();
 	        
+            const data = {
+            		hanok_id: ${hanokMap.hanokInfo.hanok_id},
+            		room_id: ${roomMap.roomInfo.room_id},
+            		reservations_id: reservations_id,
+            		checkin: "${checkInDate}",
+            		checkout: "${checkOutDate}",
+            		reservation_name: name,
+            		pay_type: payMethod,
+            		capacity: "${capacity}",
+            		phone: phone
+            };
+            
+            const params = new URLSearchParams();
+            
+            Object.entries(data).forEach(([key, value]) => {
+            	if (Array.isArray(value)) {
+            		value.forEach((v) => params.append(key, v))
+            	} else {
+            		params.set(key, value)
+            	}
+            });
+            
+            const queryString = params.toString();
+            
 			IMP.request_pay({
 				pg: pg,
 		        pay_method: payMethod,
@@ -151,19 +177,19 @@
 									dataType: "json",
 									contentType: 'application/json; charset=utf-8',
 									data: JSON.stringify({
-										reservations_id: new Date().getTime(),
+										reservations_id: reservations_id,
 										checkin: checkin,
 										checkout: checkout,
 										reservation_price: ${roomMap.roomInfo.room_price},
 										reservation_name: name,
 										pay_type: payMethod,
-										customer_id: "123",
+										customer_id: customer_id,
 										room_id: ${roomMap.roomInfo.room_id}
 									}),
 									success: function (response) {
 				                        if (response.success) {
 				                            alert(response.message);
-				                            window.location.href = "/hanok/hanok_booking_confirm.do";
+				                            window.location.href = "/hanok/hanok_booking_confirm.do?"+queryString;
 				                        } else {
 				                            alert(response.message);
 				                        }
@@ -176,7 +202,7 @@
 											reservation_price: ${roomMap.roomInfo.room_price},
 											reservation_name: name,
 											pay_type: payMethod,
-											customer_id: "123",
+											customer_id: customer_id,
 											room_id: ${roomMap.roomInfo.room_id}
 			                        	}));
 			                        	console.error("예약 실패:", err);
