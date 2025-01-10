@@ -126,6 +126,74 @@ Content START -->
 				<h1 class="fs-4 mb-0"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Outstanding Authorization</h1>
 			</div>
 		</div>
+		<!-- =======================
+Content START -->
+<section class="pt-0">
+   <div class="container vstack gap-4">
+      <!-- Title START -->
+      <div class="row">
+         <div class="col-12">
+            <h1 class="fs-4 mb-0"><i class="bi bi-journals fa-fw me-1"></i>Listings</h1>
+         </div>
+      </div>
+      <!-- Title END -->
+
+      <!-- Counter START -->
+      <div class="row g-4">
+         
+         <!-- Request Status Counter -->
+         <c:set var="status0Count" value="0" />
+         <c:set var="status1Count" value="0" />
+         <c:set var="status2Count" value="0" />
+
+         <!-- Counting status occurrences -->
+         <c:forEach var="request" items="${request}">
+            <c:choose>
+               <c:when test="${request.status == 0}">
+                  <c:set var="status0Count" value="${status0Count + 1}" />
+               </c:when>
+               <c:when test="${request.status == 1}">
+                  <c:set var="status1Count" value="${status1Count + 1}" />
+               </c:when>
+               <c:when test="${request.status == 2}">
+                  <c:set var="status2Count" value="${status2Count + 1}" />
+               </c:when>
+            </c:choose>
+         </c:forEach>
+
+         <!-- Status Display Cards -->
+         <div class="col-md-6 col-xl-4">
+            <div class="card card-body border p-4 h-100">
+               <h6>승인 요청 </h6>
+               <h2 class="text-primary">${status0Count}</h2>
+               <p class="mb-2">총 승인 요청 수</p>
+            </div>
+         </div>
+
+         <div class="col-md-6 col-xl-4">
+            <div class="card card-body border p-4 h-100">
+               <h6>승인된 것 </h6>
+               <h2 class="text-success">${status2Count}</h2>
+               <p class="mb-2">총 승인된 것 수</p>
+            </div>
+         </div>
+
+         <div class="col-md-6 col-xl-4">
+            <div class="card card-body border p-4 h-100">
+               <h6>거절된 것 </h6>
+               <h2 class="text-danger">${status1Count}</h2>
+               <p class="mb-2">총 거절된 것 수</p>
+            </div>
+         </div>
+      </div>
+      <!-- Counter END -->
+   </div>
+</section>
+<!-- =======================
+Content END -->
+		
+		
+		
 		<!-- Title END -->
 
 		<!-- Booking table START -->
@@ -140,25 +208,8 @@ Content START -->
 
 					<!-- Card body START -->
 					<div class="card-body">
-						<!-- Search and select START -->
-						<div class="row g-3 align-items-center justify-content-between mb-3">
-							
-							
 
-							<!-- Select option 마지막에 시간 되면 하기-->
-							<div class="col-md-3">
-								<!-- Short by filter -->
-								<form>
-									<select class="form-select js-choice" aria-label=".form-select-sm">
-										<option value="">Sort by</option>
-										<option>Free</option>
-										<option>Newest</option>
-										<option>Oldest</option>
-									</select>
-								</form>
-							</div>
-						</div>
-						<!-- Search and select END -->
+						
 
 						<!-- Hotel room list START -->
 						<div class="table-responsive border-0">
@@ -184,16 +235,16 @@ Content START -->
 										<td> <h6 class="mb-0">${author.hanok_id}</h6> </td>
 										<td> <h6 class="mb-0">${author.hanok_name}</a></h6> </td>
 										<td> ${author.hanok_address} </td>
-										<%-- <td> <h6 class="mb-0 fw-light">${author.status}</h6> </td> --%>
-										<td> <div class="badge ${author.status == 0 ? 'text-bg-warning' : (author.status == 1 ? 'text-bg-danger' : 'text-bg-success')}">
-										 <c:if test="${author.status == 0}">
-										 	승인 요청
+										<%-- <td> <h6 class="mb-0 fw-light">${author.hanok_status}</h6> </td> --%>
+										<td> <div class="badge ${author.hanok_status == 0 ? 'text-bg-warning' : (author.hanok_status == 1 ? 'text-bg-danger' : 'text-bg-success')}">
+										 <c:if test="${author.hanok_status == 0}">
+										 	대기
 										 </c:if>
-										 <c:if test="${author.status == 1}">
-										 	승인 거절
+										 <c:if test="${author.hanok_status == 1}">
+										 	거절
 										 </c:if>
-										  <c:if test="${author.status == 2}">
-										 	승인 완료
+										  <c:if test="${author.hanok_status == 2}">
+										 	승인
 										 </c:if>
 										</div> </td>
 										

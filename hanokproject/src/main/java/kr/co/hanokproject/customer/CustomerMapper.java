@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import kr.co.hanokproject.hanok.HanokVO;
+
 @Mapper
 public interface CustomerMapper {
 
@@ -53,4 +55,7 @@ public interface CustomerMapper {
 	
 	// 예약
 	int reservation(CustomerVO vo);
+	
+	List<HanokVO> getAllHanoks();
 }
+

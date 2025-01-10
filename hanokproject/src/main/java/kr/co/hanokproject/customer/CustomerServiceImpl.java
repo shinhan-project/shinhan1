@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.hanokproject.hanok.HanokVO;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
@@ -132,4 +134,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.reservation(vo) == 0 ? false : true;
 	}
 
+	
+	@Override
+	public List<HanokVO> getAllHanoks() {
+		// TODO Auto-generated method stub
+		return mapper.getAllHanoks();
+	}
 }

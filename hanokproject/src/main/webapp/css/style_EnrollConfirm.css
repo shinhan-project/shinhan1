@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+/*!!! 1. 한옥 등록 예약 페이지 레이아웃 설정 !!!*/
+
+#wrap {
+    /* display: grid; */
+    width: 1200px;
+    margin: 0 auto;
+    /* 가운데 정렬, 마진 양 옆 균등하게*/
+}
+
+/* 한옥 정보 헤더 */
+#container_hanokInfoName{
+text-align: left;
+height: 50px;
+}
+
+/* 한옥 정보 상단 (ex : 한옥 이름, 한옥 대표전화번호...)  */
+#container_hanokInfoTop{
+    display: grid;
+    height: 200px;
+    grid-template-columns: 40% 20% 40%;
+}
+
+#hanokInfo_topLeft{
+    display: grid;
+    /* background-color: #e3e3e3;
+    border: 1px solid #000;             */
+grid-template-columns: 60% 40%;
+grid-template-rows: 16.6% 16.6% 16.6% 16.16% 16.6% 16.6%;
+}
+
+#hanokInfo_topRight{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 15% 15% 70%;
+}
+
+/* 한옥 설명 */
+#container_hanokInfoMiddle1{
+    display: grid;
+    height: 150px;
+    grid-template-rows: 20% 80%;
+}
+
+/* 한옥 대표 이미지 */
+#container_hanokInfoMiddle2{
+    display: grid;
+    height: 100px;
+    grid-template-columns: 12% 88%;
+}
+
+/* 편의시설, 그 외 부가시설 */
+#container_hanokInfoBottom{
+    display: grid;
+    height: 75px;
+    grid-template-columns: 10% 50% 10% 30%;
+}
+
+/*!!! 2. 한옥 등록 객실 설정 !!!*/
+
+/* 객실 리스트 헤더 */
+#container_roomListName{
+text-align: left;
+height: 50px;
+}
+
+/* 객실 리스트묶음 */
+#container_roomList{
+    display: grid;
+    grid-template-columns: 20% 2% 78%;
+}
+
+/* 왼쪽 객실 추가 리스트 */
+#roomList_left{
+    display: grid;
+    height: 600px;
+    grid-template-rows: 6.7% 93.3%;
+}
+
+/* 오른쪽 객실 설정란 */
+.roomList_right{
+    display: grid;
+    border: 1px solid #000;       
+    height: 600px;     
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    grid-template-rows: 15% 20% 65%;
+}
+
+/* 오른쪽 객실 정보 상단 */
+.roomList_rightTop{
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+}
+
+/* 오른쪽 객실 정보 상단 왼쪽 (객실 이름, 기본 가격) */
+.roomList_rightTopLeft{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 33% 33% 33%;
+}
+
+/* 오른쪽 객실 정보 상단 오른쪽 (최대 수용 인원, 객실 크기, 객실 부가 기능) */
+.roomList_rightTopRight{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 33% 33% 33%;
+}
+
+/* 객실 사진들 */
+.roomList_rightMiddle{
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+
+/* 객실 사진 및 복사 삭제 */
+.roomList_rightBottom{
+    display: grid;
+    grid-template-rows: 90% 10%;
+}
+
+/* 객실 리스트 맨 밑, 요청게시글 비밀번호, 임시 저장, 승인 요청, 승인 반려 등 */
+.container_roomListBottom{
+    display: grid;
+/*     height: 100px; */
+/*     grid-template-rows: 33% 33% 33%; */
+height: 40px;
+grid-template-rows: 50% 50%;
+}
+
+
+/*!!! 3. 한옥 등록페이지 이미지 설정정 !!!*/
+
+#hanok_imageButtonList{
+    display: flex;
+    width : 100%;
+}
+
+.hanok_imageButtonSet{
+    display: grid;
+    grid-template-rows: 60px 20px;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+}
+
+#hanok_imageButtonAdd{
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+
+    /* 임시 삽입 내용 */
+    border: 1px solid #000;   
+    text-align: center;
+}
+
+#hanok_imageButton{
+    /* background-image: url(/assets/images/test/02.jpg); */
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60px;
+}
+
+#hanok_imageButtonCancel{
+    width: 60px;
+}
+
+/* 객실 사진 추가 */
+
+#room_imageButtonAdd{
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+
+    /* 임시 삽입 내용 */
+    border: 1px solid #000;   
+    text-align: center;
+}
+
+.room_imageButtonSet{
+    display: grid;
+    grid-template-rows: 60px 20px;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+}
+
+.room_imageButtonList{
+    display: flex;
+    width : 100%;
+    /* border: 1px solid #000;   */
+}
+
+.room_imageButton{
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60px;
+}
+
+#room_imageButtonCancel{
+    width: 60px;
+}

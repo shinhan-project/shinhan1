@@ -41,13 +41,14 @@ public class HanokController {
         
     
         model.addAttribute("author", author);
-        
+
+      
         
  
         return "/owner/owner_authorization"; 
     }
 	
-	
+
 	
 
 

@@ -17,6 +17,8 @@ public interface HanokService {
 
 	List<HanokVO> getAuthorization(int owner_id);
 
+	
+
 
 }
 
