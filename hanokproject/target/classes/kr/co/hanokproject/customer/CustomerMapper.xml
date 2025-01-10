@@ -171,6 +171,7 @@
 	</insert>
 
 	
+
 	<!--여기가 수정한 부분! getallhanoks다시 넣음 -->
 	 <select id="getAllHanoks" resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="map">
 	 
@@ -180,4 +181,5 @@
         
       
     </select>
+
 </mapper>

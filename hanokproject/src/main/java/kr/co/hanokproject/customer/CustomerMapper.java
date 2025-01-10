@@ -57,10 +57,10 @@ public interface CustomerMapper {
 	int reservation(CustomerVO vo);
 
 
-	List<HanokVO> getAllHanoks();
 
 	List<CustomerVO> getReviewList(int hanok_id);
-}
-	
 
-	
+	List<HanokVO> getAllHanoks();
+
+
+}
