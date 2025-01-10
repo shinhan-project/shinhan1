@@ -106,7 +106,7 @@ public class PaymentController {
     	return response;
     }
     
-    // 한옥 예약 확인 - 미완(민규)
+    // 한옥 예약 확인 - (민규)
     @GetMapping("/hanok/hanok_booking_confirm.do")
     public String hanokBookingConfirm(Model model, HttpSession sess,
     		@RequestParam("hanok_id") int hanok_id,
