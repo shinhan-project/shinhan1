@@ -1,12 +1,11 @@
 package kr.co.hanokproject;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,13 +116,21 @@ public class PaymentController {
     		@RequestParam("checkout") String checkout,
     		@RequestParam("reservation_name") String reservation_name,
     		@RequestParam("pay_type") String pay_type,
-    		@RequestParam("capacity") String capacity) {
+    		@RequestParam("capacity") String capacity,
+    		@RequestParam("phone") String phone) {
         // 세션에서 로그인 정보 가져오기
         CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
         if (loginInfo == null) {
             return "redirect:/customer/login.do";
         }
 
+        Map<String, Object> hanokDetailMap = service.getHanokDetail(hanok_id);
+        Map<String, Object> roomDetailMap = service.getRoomDetail(room_id);
+        String hanok_imgName = service.getHanokImg(hanok_id);
+        
+        model.addAttribute("hanokMap", hanokDetailMap);
+        model.addAttribute("roomMap", roomDetailMap);
+        model.addAttribute("hanok_imgName", hanok_imgName);
 		model.addAttribute("hanok_id", hanok_id);
     	model.addAttribute("room_id", room_id);
         model.addAttribute("reservations_id", reservations_id);
@@ -132,6 +139,7 @@ public class PaymentController {
         model.addAttribute("reservation_name", reservation_name);
         model.addAttribute("pay_type",pay_type);
         model.addAttribute("capacity",capacity);
+        model.addAttribute("phone",phone);
         model.addAttribute("customer", loginInfo);
     	return "/hanok/hanok_booking_confirm";
     }

@@ -134,7 +134,8 @@
             		checkout: "${checkOutDate}",
             		reservation_name: name,
             		pay_type: payMethod,
-            		capacity: "${capacity}"
+            		capacity: "${capacity}",
+            		phone: phone
             };
             
             const params = new URLSearchParams();
