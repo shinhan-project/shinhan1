@@ -139,7 +139,7 @@ Content START -->
 							
 								<!-- Profile photo -->
 								<div class="col-12">
-									<label class="form-label">Upload your profile photo<span class="text-danger">*</span></label>
+									
 									<div class="d-flex align-items-center">
 										<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
 											<!-- Avatar place holder -->
@@ -147,9 +147,7 @@ Content START -->
 												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="/images/avatar/01-1.jpg" alt="">
 											</span>
 										</label>
-										<!-- Upload button -->
-										<label class="btn btn-sm btn-primary-soft mb-0" for="uploadfile-1">Change</label>
-										<input id="uploadfile-1" class="form-control d-none" type="file">
+										
 									</div>
 								</div>
 

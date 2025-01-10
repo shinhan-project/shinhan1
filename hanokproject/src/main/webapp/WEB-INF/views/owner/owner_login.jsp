@@ -78,28 +78,11 @@ Main Content START -->
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
 									</div>
-									<!-- Remember me -->
-									<div class="mb-3 d-sm-flex justify-content-between">
-										<div>
-											<input type="checkbox" class="form-check-input" id="rememberCheck">
-											<label class="form-check-label" for="rememberCheck">Remember me?</label>
-										</div>
-										<a href="forgot-password.html">Forgot password?</a>
-									</div>
+									
 									<!-- Button -->
 									<div><button type="submit" value="로그인" class="btn btn-primary w-100 mb-0">Login</button></div>
 		
-									<!-- Divider -->
-									<div class="position-relative my-4">
-										<hr>
-										<p class="small bg-mode position-absolute top-50 start-50 translate-middle px-2">Or sign in with</p>
-									</div>
-		
-									<!-- Google and facebook button -->
-									<div class="vstack gap-3">
-										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-google text-google-icon me-2"></i>Sign in with Google</a>
-										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-facebook-f text-facebook me-2"></i>Sign in with Facebook</a>
-									</div>
+									
 		
 									<!-- Copyright -->
 									<div class="text-primary-hover text-body mt-3 text-center"> Copyrights ©2024 Booking. Build by <a href="https://www.webestica.com/" class="text-body">Webestica</a>. </div>
@@ -118,7 +101,7 @@ Main Content END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <!-- Back to top -->
 <div class="back-top"></div>
 

@@ -127,7 +127,7 @@ Search START -->
 								<div class="form-size-lg form-fs-md">
 									<!-- input -->
 									<label class="form-label">Location</label>
-									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${param.location}">
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${param.location}" required>
 								</div>
 							</div>
 	
@@ -136,9 +136,9 @@ Search START -->
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}">
+									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}" required>
 									<label class="form-label">Check out</label>
-									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}">
+									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}" required>
 								</div>
 							</div>
 	
@@ -149,7 +149,7 @@ Search START -->
 									<div class="w-100">
 										<label class="form-label">Guests</label>
 										<div class="dropdown guest-selector me-2">
-											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}" required>
 										</div>
 									</div>
 								</div>

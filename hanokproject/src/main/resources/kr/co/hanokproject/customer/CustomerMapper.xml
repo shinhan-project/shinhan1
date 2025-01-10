@@ -148,4 +148,28 @@
     <select id="getRoomImages" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
         SELECT * FROM ROOM_IMAGES WHERE room_id = #{room_id}
     </select>
+    
+    <!-- 객실 정보 -->
+    <select id="getRoomInfo" parameterType="int" resultType="kr.co.hanokproject.customer.CustomerVO">
+    	SELECT * FROM ROOMS WHERE room_id = #{room_id}
+    </select>
+    
+    <!-- 예약 정보 추가 -->
+   	<insert id="reservation" parameterType="kr.co.hanokproject.customer.CustomerVO">
+      INSERT INTO RESERVATIONS (checkin, checkout, created_at, reservation_price, reservation_name, pay_price, pay_date, pay_type, customer_id, room_id) 
+      VALUES (
+        #{checkin}, 
+        #{checkout}, 
+        NOW(),
+        #{reservation_price}, 
+        #{reservation_name}, 
+        #{reservation_price}, 
+        NOW(), 
+        #{pay_type}, 
+        #{customer_id}, 
+        #{room_id})
+	</insert>
+	
+
+    </select>
 </mapper>

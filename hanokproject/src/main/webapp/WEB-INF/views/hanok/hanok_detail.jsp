@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>상세페이지 - ${hanokDetail.hanokName}</title>
+    <title>상세페이지 - ${map.hanokInfo.hanok_name}</title>
     <!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -332,9 +332,9 @@ Search START -->
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkInDate}">
+									<input type="date" name="checkIn" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkInDate}" required>
 									<label class="form-label">Check out</label>
-									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkOutDate}">
+									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${checkOutDate}" required>
 								</div>
 							</div>
 	
@@ -476,7 +476,7 @@ Search END -->
 	                            <div class="card-body d-flex flex-column h-100 p-0">
 	    
 	                                <!-- Title -->
-	                                <h5 class="card-title"><a href="#">${roomVO.room_name}</a></h5>
+	                                <h5 class="card-title"><a href="/hanok/hanok_booking.do?room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}">${roomVO.room_name}</a></h5>
 	
 	                                <!-- 세부사항항 -->
 	                                <ul class="nav nav-divider mb-2">
@@ -493,7 +493,7 @@ Search END -->
 	                                    </div>
 	                                    <!-- Price -->
 	                                    <div class="mt-3 mt-sm-0">
-	                                        <a href="#" class="btn btn-sm btn-primary mb-0">예약하기</a>    
+	                                        <a href="/hanok/hanok_booking.do?hanok_id=${roomVO.hanok_id}&room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}" class="btn btn-sm btn-primary mb-0">예약하기</a>    
 	                                    </div>                  
 	                                </div>
 	                            </div>
@@ -514,39 +514,20 @@ Search END -->
     <div class="container review">
         <h2>Reviews</h2>
             <div class="review-list">
-                <div class="review-item">
-                    <img src="/images/rooms/100.jpg" alt="Review Image">
-                    <div class="review-content">
-                        <h5>Dam(담)</h5>
-                        <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
-                        <p>
-                            ⭐ 4.0
-                        </p>
-                        <p>Date: 24.04.22</p>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="/images/rooms/101.jpg" alt="Review Image">
-                    <div class="review-content">
-                        <h5>Dam(담)</h5>
-                        <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
-                        <p>
-                            ⭐ 4.0
-                        </p>
-                        <p>Date: 24.04.22</p>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="/images/rooms/102.jpg" alt="Review Image">
-                    <div class="review-content">
-                        <h5>Dam(담)</h5>
-                        <p>바베큐장이 굉장히 만족스러웠습니다. 시설도 깔끔해서 외국인 친구에게 추천해주고 싶습니다.</p>
-                        <p>
-                            ⭐ 4.0
-                        </p>
-                        <p>Date: 24.04.22</p>
-                    </div>
-                </div>
+	            <c:forEach var="reviewVO" items="${map.reviewList}">
+	                <div class="review-item">
+	                    <img src="/images/rooms/100.jpg" alt="Review Image">
+	                    <div class="review-content">
+	                        <h5>${reviewVO.room_name}</h5>
+	                        <p>${reviewVO.review_title}</p>
+	                        <p>${reviewVO.review_content}</p>
+	                        <p>
+	                            ⭐ ${reviewVO.rating}
+	                        </p>
+	                        <p>Date: ${reviewVO.review_date}</p>
+	                    </div>
+	                </div>
+	            </c:forEach>
             </div>
 			<a href="#" class="btn btn-sm btn-primary mb-0" style="margin-top: 20px;">Load more</a>    
     </div>				
@@ -554,9 +535,6 @@ Search END -->
 
 
     <!--footer-->
-    <div id="sep">
-		<%@ include file="/WEB-INF/views/include/footer.jsp" %>
-    </div>
 
 
 

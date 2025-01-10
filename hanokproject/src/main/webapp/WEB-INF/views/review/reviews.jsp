@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Booking - Multipurpose Online Booking Theme</title>
+	<title>Customer_Review Page</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -72,7 +72,7 @@
 								<div class="text-center mb-3">
 									<!-- Avatar -->
 									<div class="avatar avatar-xl mb-2">
-										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01.jpg" alt="">
+										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01-1.jpg" alt="">
 									</div>
 									<h6 class="mb-0"></h6>
 									<a href="#" class="text-reset text-primary-hover small"> </a>
@@ -201,7 +201,7 @@
 	
 	
 	</main>
-	
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>	
 <!-- **************** MAIN CONTENT END **************** -->
 <!-- Back to top -->
 <div class="back-top"></div>

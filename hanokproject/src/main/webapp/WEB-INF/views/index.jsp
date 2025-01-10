@@ -29,6 +29,13 @@
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<style>
+	.tiny-slider-inner .card-img {
+    width: 100%;
+    height: 250px; /* 모든 이미지를 같은 높이로 설정 */
+    object-fit: cover; /* 비율 유지하면서 크기 맞추기 */
+}
+	</style>
 
 </head>
 
@@ -99,13 +106,14 @@ Main Banner START -->
 <!-- =======================
 Main Banner END -->
 
-	<section class="py-3 py-sm-0">
-  <div class="container">
-    <!-- Offcanvas button for search -->
-    <button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch">
-      <i class="bi bi-pencil-square me-2"></i>Edit Search
-    </button>
+ <!-- =======================
+Search START -->
+<section class="py-3 py-sm-0">
+	<div class="container">
+		<!-- Offcanvas button for search -->
+		<button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch"><i class="bi bi-pencil-square me-2"></i>Edit Search</button>
 
+<<<<<<< HEAD
    <!-- Search with offcanvas START -->
 		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
 			<div class="offcanvas-header">
@@ -160,16 +168,74 @@ Main Banner END -->
 		</div>
 		<!-- Search with offcanvas END -->
   </div>
+=======
+		<!-- Search with offcanvas START -->
+		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body p-2">
+				<div class="bg-light p-4 rounded w-100">
+					<form action="/hanok/hanok_list.do" method="GET">
+						<div class="row g-4">
+							<!-- Location -->
+							<div class="col-md-6 col-lg-4">
+								<div class="form-size-lg form-fs-md">
+									<!-- input -->
+									<label class="form-label">Location</label>
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${param.location}" required>
+								</div>
+							</div>
+	
+							<!-- Check in -->
+							<div class="col-md-6 col-lg-3">
+								<!-- Date input -->
+								<div class="form-fs-md">
+									<label class="form-label">Check in</label>
+									<input type="date" name="checkIn" id="checkIn" class="form-guest-selector form-control form-control-lg selection-result" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}" required>
+									<label class="form-label">Check out</label>
+									<input type="date" name="checkOut" id="checkOut" class="form-guest-selector form-control form-control-lg selection-result" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}" required>
+								</div>
+							</div>
+	
+							<!-- Guest -->
+							<div class="col-md-6 col-lg-3">
+								<div class="form-fs-md">
+									<!-- Dropdown input -->
+									<div class="w-100">
+										<label class="form-label">Guests</label>
+										<div class="dropdown guest-selector me-2">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}" required>
+										</div>
+									</div>
+								</div>
+							</div>
+	
+							<!-- Button -->
+							<div class="col-md-6 col-lg-2 mt-md-auto">
+								<button class="btn btn-lg btn-primary w-100 mb-0" type="submit"><i class="bi bi-search fa-fw"></i>Search</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Search with offcanvas END -->
+	</div>
+>>>>>>> branch 'main' of https://github.com/shinhan-project/shinhan1.git
 </section>
+<!-- =======================
+Search END -->
 
 <!-- =======================
-Special offer START -->
+Recommand ffer START -->
 <section class="pt-0">
 	<div class="container">
 		<!-- Title -->
 		<div class="row mb-4">
 			<div class="col-12 text-center">
-				<h3 class="mb-0">Special Offers</h3>
+				<h3 class="mb-0">Recommand hanoks</h3>
 			</div>
 		</div>
 
@@ -178,26 +244,32 @@ Special offer START -->
 			<div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
 				
 				<!-- Offer card START -->
+				
+				<c:forEach var="hanoks" items="${hanoks }">
 				<div>
 					<div class="card">
-						<img src="/images/offer/06.jpg" class="card-img" alt="">
+						<img src="/images/hanoks/${hanoks.hanok_imgName}" class="card-img" alt="">
 						<!-- Card body -->
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-								<h6 class="card-title mb-1"><a href="#">Spa Package Offer</a></h6>
-								<small>Valid through Dec 2022</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
+								<h6 class="card-title mb-1"><a href="#">${hanoks.hanok_name}</a></h6>
+								
+								<div class="mt-2"><a href="/hanok/hanok_detail.do?hanok_id=${hanoks.hanok_id}" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
+				</c:forEach>
+				
+				
 				<!-- Offer card END -->
-
-				<!-- Offer card START -->
+<!-- 
+				Offer card START
 				<div>
 					<div class="card">
 						<img src="/images/offer/07.jpg" class="card-img" alt="">
-						<!-- Card body -->
+						Card body
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 								<h6 class="card-title mb-1"><a href="#">Elevate Your Stay</a></h6>
@@ -207,13 +279,13 @@ Special offer START -->
 						</div>
 					</div>
 				</div>
-				<!-- Offer card END -->
+				Offer card END
 
-				<!-- Offer card START -->
+				Offer card START
 				<div>
 					<div class="card">
 						<img src="/images/offer/08.jpg" class="card-img" alt="">
-						<!-- Card body -->
+						Card body
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 								<h6 class="card-title mb-1"><a href="#">Pass Holder Package</a></h6>
@@ -223,13 +295,13 @@ Special offer START -->
 						</div>
 					</div>
 				</div>
-				<!-- Offer card END -->
+				Offer card END
 
-				<!-- Offer card START -->
+				Offer card START
 				<div>
 					<div class="card">
 						<img src="/images/offer/05.jpg" class="card-img" alt="">
-						<!-- Card body -->
+						Card body
 						<div class="position-absolute top-100 start-50 translate-middle w-100">
 							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 								<h6 class="card-title mb-1"><a href="#">2023 Golf Tournament Package</a></h6>
@@ -239,7 +311,7 @@ Special offer START -->
 						</div>
 					</div>
 				</div>
-				<!-- Offer card END -->
+				Offer card END -->
 			</div>	
 		</div>
 		<!-- Slider END -->

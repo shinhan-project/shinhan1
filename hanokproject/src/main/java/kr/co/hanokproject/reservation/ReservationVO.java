@@ -15,6 +15,7 @@ public class ReservationVO {
 	private Timestamp created_at;
 	private Timestamp modified_at;
 	private String status;
+	
 	private int reservation_price;
 	private String reservation_name;
 	private int customer_id;
