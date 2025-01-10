@@ -53,4 +53,7 @@ public interface CustomerMapper {
 	
 	// 예약
 	int reservation(CustomerVO vo);
+	
+	// 리뷰 리스트
+	List<CustomerVO> getReviewList(@Param("hanok_id") int hanok_id);
 }
