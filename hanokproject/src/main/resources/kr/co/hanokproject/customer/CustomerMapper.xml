@@ -184,6 +184,7 @@
 			JOIN REVIEWS re ON r.room_id = re.room_id
 			JOIN ROOM_IMAGES ri ON r.room_id = ri.room_id
 		WHERE r.hanok_id=#{hanok_id}
+		LIMIT 3
 	</select>
 	
 		<!--여기가 수정한 부분! getallhanoks다시 넣음 -->
