@@ -170,5 +170,26 @@
         #{room_id})
 	</insert>
 	
-
+	<!-- 특정 한옥 아이디로 리뷰 검색 -->
+	<select id="getReviewList" resultType="kr.co.hanokproject.customer.CustomerVO" parameterType="int">
+		SELECT 
+			r.room_name AS room_name,
+			re.review_title AS review_title,
+			re.review_content AS review_content,
+			re.rating AS rating,
+			re.review_date AS review_date,
+			ri.room_imgName AS room_imgName
+		FROM 
+			ROOMS r
+			JOIN REVIEWS re ON r.room_id = re.room_id
+			JOIN ROOM_IMAGES ri ON r.room_id = ri.room_id
+		WHERE r.hanok_id=#{hanok_id}
+	</select>
+	
+		<!--여기가 수정한 부분! getallhanoks다시 넣음 -->
+	 <select id="getAllHanoks" resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="map">
+        SELECT *,i.hanok_imgName
+        FROM HANOKS h
+        JOIN HANOK_IMAGES i ON i.hanok_id = h.hanok_id;
+    </select>
 </mapper>
