@@ -53,7 +53,8 @@ function hanok_ImgAdd(){
                 let hImageButtonCancel = document.createElement('button');
                 hImageButtonCancel.setAttribute("id", "hanok_imageButtonCancel");
                 hImageButtonCancel.onclick = function(){ hanok_ImageButtonCancel(hImageButtonSet)};
-    
+    			hImageButtonCancel.textContent = "x";
+    			hImageButtonCancel.setAttribute("style", "line-height: 10px; font-weight : bold;");
                 hImageButtonSet.appendChild(hImageButton);
                 hImageButtonSet.appendChild(hImageButtonCancel);
             };
@@ -152,8 +153,9 @@ function hanok_ImgAdd(){
                     
                     let rImageButtonCancel = document.createElement('button');
                     rImageButtonCancel.setAttribute("id", "room_imageButtonCancel");
-                    rImageButtonCancel.onclick = function(){ func_roomImageButtonCancel(rImageButtonSet)};
-        
+                    rImageButtonCancel.onclick = function(){ func_roomImageButtonCancel(rImageButtonSet, rimages[rSelect.selectedIndex + 1])};
+	       			rImageButtonCancel.textContent = "x";
+	    			rImageButtonCancel.setAttribute("style", "line-height: 10px; font-weight : bold;");
                     rImageButtonSet.appendChild(rImageButton);
                     rImageButtonSet.appendChild(rImageButtonCancel);
                 }
@@ -263,6 +265,8 @@ function hanok_ImgAdd(){
                     let rImageButtonCancel = document.createElement('button');
                     rImageButtonCancel.setAttribute("id", "room_imageButtonCancel");
                     rImageButtonCancel.onclick = function(){ func_roomImageButtonCancel(rImageButtonSet, room_images[rSelect.selectedIndex + 1])};
+        			rImageButtonCancel.textContent = "x";
+    				rImageButtonCancel.setAttribute("style", "line-height: 10px; font-weight : bold;");
         
                     rImageButtonSet.appendChild(rImageButton);
                     rImageButtonSet.appendChild(rImageButtonCancel);
