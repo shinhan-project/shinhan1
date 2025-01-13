@@ -11,7 +11,7 @@
 		r.created_at,
 		r.modified_at,
 		r.status, r.reservation_price,
-		r.reservation_name, r.pay_type
+		r.reservation_name, r.pay_type,h.hanok_name,ro.room_name
 		FROM RESERVATIONS r
 		JOIN ROOMS ro ON r.room_id =
 		ro.room_id
