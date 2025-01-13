@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.co.hanokproject.hanok.HanokVO;
 import kr.co.hanokproject.owner.OwnerVO;
-
+import kr.co.hanokproject.room.RoomService;
+import kr.co.hanokproject.room.RoomVO;
 import kr.co.hanokproject.hanok.HanokService;
 import kr.co.hanokproject.hanok.HanokVO;
 
@@ -28,6 +29,9 @@ public class AdminController {
 	
 	@Autowired
 	private HanokService hanokService;
+	
+	@Autowired
+	private RoomService roomService;
 	
 	
 	//login
@@ -79,10 +83,17 @@ public class AdminController {
 	
 	   // 한옥 상세보기
 	    @GetMapping("/admin/hanokDetail.do")
-	    public String hanokDetail(@RequestParam("hanok_id") int hanokId, Model model) {
-	        HanokVO hanok = hanokService.getHanokById(hanokId);
-	        model.addAttribute("hanok", hanok);
-	        return "admin/hanokDetail"; // 한옥 상세 페이지 뷰
+	    public String hanokDetail(@RequestParam("hanok_id") int hanokId, @SessionAttribute("adminloginInfo") AdminVO vvo, Model model) {
+	    	List<RoomVO> roomList =roomService.getRoomList(hanokId);
+	    	
+	        model.addAttribute("roomList", roomList);
+	        
+	        
+	        HanokVO vo =hanokService.getHanokById(hanokId);
+	        model.addAttribute("vo", vo);
+	        
+
+	        return "admin/request_detail"; // 한옥 상세 페이지 뷰
 	    }
 
 	    // 한옥 승인/거절 처리
