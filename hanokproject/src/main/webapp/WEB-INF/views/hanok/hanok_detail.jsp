@@ -24,9 +24,7 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
     <style>
-   	    #sep {
-        	margin: 20px;
-	    }
+   	    
         body {
 	        font-family: 'Arial', sans-serif;
 	        line-height: 1.6;
@@ -303,11 +301,15 @@
             }
         })
 	</script>
+	
 </head>
-<body>
-	<!--헤더-->
 
-        <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<body>
+
+
+<!--헤더-->
+
+ <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 	
 	

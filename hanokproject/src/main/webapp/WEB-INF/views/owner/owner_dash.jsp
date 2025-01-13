@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 
 <head>
@@ -220,6 +221,8 @@ Content START -->
 												
 												<th scope="col" class="border-0">reservation_id</th>
 												<th scope="col" class="border-0">reservation_name</th>
+												<th scope="col" class="border-0">hanok_name</th>
+												<th scope="col" class="border-0">room_name</th>
 												<th scope="col" class="border-0">check in-out</th>
 												<th scope="col" class="border-0">pay type</th>
 												<th scope="col" class="border-0">price</th>
@@ -238,11 +241,13 @@ Content START -->
 													
 													<td>
 														<h6 class="mb-0">
-															<a href="#">${reservation.reservations_id}</a>
+														${reservation.reservations_id}</a>
 														</h6>
 													</td>
 													<td>${reservation.reservation_name}</td>
-													<td>${reservation.checkin}-${reservation.checkout}</td>
+													<td>${reservation.hanok_name}</td>
+													<td>${reservation.room_name}</td>
+													<td> <fmt:formatDate value="${reservation.checkin}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${reservation.checkout}" pattern="yyyy-MM-dd" /></td>
 													<td>
 														<div class="badge text-bg-success">${reservation.pay_type}</div>
 													</td>
