@@ -413,11 +413,9 @@ Search END -->
 	            <div class="amenities-item">
 	                <h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
 	                <ul>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>OTT</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무료 인터넷</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>반려 동물 동반</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>취사 가능</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>무료 주차</li>
+	                	<c:forEach var="amenities" items="${map.activeServices}">
+	                        <li><i class="fa-solid fa-check-circle text-success me-2"></i>${amenities}</li>
+						</c:forEach>
 	                </ul>
 	            </div>
 	            <!-- Safety & Security -->

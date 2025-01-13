@@ -1,5 +1,6 @@
 package kr.co.hanokproject.customer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,6 +99,26 @@ public class CustomerServiceImpl implements CustomerService {
         // 리뷰 정보
         List<CustomerVO> reviewList = mapper.getReviewList(hanok_id);
         
+        // 서비스 항목 가공
+        int[] hanokServices = {hanokVO.getHanok_service0(), hanokVO.getHanok_service1(),
+        		hanokVO.getHanok_service2(), hanokVO.getHanok_service3(),
+        		hanokVO.getHanok_service4(), hanokVO.getHanok_service5(),
+        		hanokVO.getHanok_service6(), hanokVO.getHanok_service7()};
+        
+        List<String> activeServices = new ArrayList<>();
+        
+        String[] serviceNames = {
+            "목욕 가능", "애완동물 동반 가능", "OTT", "와이파이",
+            "바베큐", "주방/식당", "수영장", "주차"
+        };
+
+        for (int i = 0; i < hanokServices.length; i++) {
+            if (hanokServices[i] == 1) {
+                activeServices.add(serviceNames[i]);
+            }
+        }
+
+        
         // 결과 맵 구성
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("hanokInfo", hanokVO);
@@ -105,6 +126,7 @@ public class CustomerServiceImpl implements CustomerService {
         resultMap.put("roomList", roomList);
         resultMap.put("roomImgMap", roomImgMap);
         resultMap.put("reviewList", reviewList);
+        resultMap.put("activeServices", activeServices);
 
         return resultMap;
     }
