@@ -9,6 +9,7 @@ public class AdminVO {
 	private String admin_pwd;
 	private String admin_email;
 	
+	
 //	private int page; // 사용자가 요청한 페이지 번호
 //	private int startIdx;  // limit 앞에 들어갈 시작인덱스값
 //	

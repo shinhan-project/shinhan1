@@ -16,7 +16,15 @@ public class HanokVO {
 		private String hanok_address;
 		private String hanok_url;
 		private String hanok_description;
-		private boolean[] hanok_service;
+		private boolean hanok_service0;
+		private boolean hanok_service1;
+		private boolean hanok_service2;
+		private boolean hanok_service3;
+		private boolean hanok_service4;
+		private boolean hanok_service5;
+		private boolean hanok_service6;
+		private boolean hanok_service7;
+		
 		private String hanok_serviceETC;
 		private int hanok_status;
 		private double hanok_score;
@@ -24,6 +32,7 @@ public class HanokVO {
 		private int owner_id;
 		private String hanok_requestdate;
 	
+		
 		
 
 }

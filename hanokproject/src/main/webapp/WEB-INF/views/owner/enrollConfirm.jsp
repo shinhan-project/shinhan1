@@ -49,6 +49,11 @@
 <%@ include file="/WEB-INF/views/include/owner_header.jsp" %>
 <!--  body Start -->	
     <body>
+	    <div class="loader">
+	  	<div class="loader-bar"></div>
+		</div>
+
+    
         <div id="roomList_rightDisplayCopy" style="display: none;">
             <div class="roomList_right">
                 <div class="roomList_rightTop">
@@ -88,7 +93,7 @@
                 </div>
                 <div class="roomList_rightBottom">
                     <div style="place-self: center;"> <img class="room_image" style="height: 300px; width: 500px;"
-                            src="/images/notFoundRoomImg.png" alt="등록된 "></div>
+                            src="/images/notFoundRoomImg.png" alt="등록된 되지 않은 이미지입니다."></div>
                     <div style="margin-left: auto;">
                         <button class="room_copy btn btn-primary" onclick="roomCopy()">복사</button>
                         <button class="room_delete btn btn-primary" onclick="roomDelete()"> 삭제 </button>
@@ -132,7 +137,7 @@
                             style="width: 99%; resize: none;" placeholder="기본 주소" autofocus>
                     </div>
                     <div style="grid-column: 1/-1;">
-                        <input type="text" id="hanok_detailAddress" class="form-control" style="width: 99%; resize: none;" placeholder="상세주소"
+                        <input type="text" id="hanok_detailAddress" class="form-control" style="width: 99%; resize: none;" placeholder="상세 주소"
                             autofocus>
                     </div>
                 </div>
@@ -210,7 +215,7 @@
 <div style="margin-left: auto;"> <button id="hanok_tempSave" class="btn btn-primary" onclick="enroll_TempSave()">승인 요청</button></div>
             </div>
         </div>
-        <script> room_ImgAdd();</script>
+        <script> room_ImgAdd(); hideLoader();</script>
     </body>
 
 

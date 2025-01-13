@@ -91,7 +91,7 @@
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
 									<li class="nav-item"><a class="nav-link "
-										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+										href="/review/owner"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 									
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
 									<li class="nav-item"> <a class="nav-link active" href="owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
@@ -140,15 +140,15 @@ Content START -->
          <c:set var="status2Count" value="0" />
 
          <!-- Counting status occurrences -->
-         <c:forEach var="request" items="${request}">
+         <c:forEach var="requestowner" items="${requestowner}">
             <c:choose>
-               <c:when test="${request.status == 0}">
+               <c:when test="${requestowner.hanok_status == 0}">
                   <c:set var="status0Count" value="${status0Count + 1}" />
                </c:when>
-               <c:when test="${request.status == 1}">
+               <c:when test="${requestowner.hanok_status == 1}">
                   <c:set var="status1Count" value="${status1Count + 1}" />
                </c:when>
-               <c:when test="${request.status == 2}">
+               <c:when test="${requestowner.hanok_status == 2}">
                   <c:set var="status2Count" value="${status2Count + 1}" />
                </c:when>
             </c:choose>

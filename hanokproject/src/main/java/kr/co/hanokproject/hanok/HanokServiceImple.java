@@ -1,6 +1,8 @@
 package kr.co.hanokproject.hanok;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,10 +34,24 @@ public class HanokServiceImple implements HanokService {
 	}
 
 
+	@Override
+	public List<HanokVO> getRequestAuthorization(int owner_id) {
+		// TODO Auto-generated method stub
+		return mapper.getRequestAuthorization(owner_id);
+	}
+
 
 	
 
-
+	@Override
+	public boolean updateHanokStatus(int hanok_id, int hanok_status) {
+	    Map<String, Object> paramMap = new HashMap<>();
+	    paramMap.put("hanok_id", hanok_id);
+	    paramMap.put("hanok_status", hanok_status);  // 'hanok_status' 파라미터 전달
+	    
+	    int result = mapper.updateHanokStatus(paramMap);  // 수정된 행의 수 반환
+	    return result > 0;  // 수정된 행이 있으면 true 반환, 없으면 false 반환
+	}
 
 
 

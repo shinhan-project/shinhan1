@@ -1,6 +1,7 @@
 package kr.co.hanokproject.hanok;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,13 +17,15 @@ public interface HanokMapper {
 	HanokVO getHanokById(int hanok_id);
 
 	List<HanokVO> getAuthorization(int owner_id);
+
+	List<HanokVO> getRequestAuthorization(int owner_id);
 	
 
 	
 
 	
 
-	
+	int updateHanokStatus(Map<String, Object> paramMap);
 	
 	
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.hanokproject.hanok.HanokVO;
 import kr.co.hanokproject.owner.OwnerVO;
 
 @Service
@@ -42,7 +43,6 @@ public class OwnerServiceImpl implements OwnerService {
 			// TODO Auto-generated method stub
 			return mapper.update(vo);
 		}
+
 	
-
-
 }
