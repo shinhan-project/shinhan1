@@ -18,7 +18,7 @@ public interface HanokMapper {
 
 	
 
-	
+    int updateHanokStatus(int hanok_id, int status);
 	
 	
 

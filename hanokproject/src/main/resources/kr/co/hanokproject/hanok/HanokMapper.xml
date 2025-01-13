@@ -23,7 +23,12 @@
 	</select>
 
 
-
+	
+	<update id="updateHanokStatus" parameterType="map">
+	    UPDATE HANOKS
+	    SET status = #{status}
+	    WHERE hanok_id = #{hanok_id}
+	</update>
 
 
 

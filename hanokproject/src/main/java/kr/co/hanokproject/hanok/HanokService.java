@@ -16,8 +16,7 @@ public interface HanokService {
 
 	HanokVO getHanokById(int hanok_id);
 
-
-
+    boolean updateHanokStatus(int hanok_id, int status);
 
 }
 
