@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import kr.co.hanokproject.owner.OwnerVO;
 
 @Controller
 public class EnrollController {
@@ -35,11 +38,11 @@ public class EnrollController {
 
 	@ResponseBody
 	@PostMapping("/enrollTempSave")
-	public EnrollVO tempSave(@ModelAttribute EnrollVO enrollVO) {
+	public EnrollVO tempSave(@SessionAttribute("ownerloginInfo") OwnerVO vo, @ModelAttribute EnrollVO enrollVO) {
 
 		System.out.println(enrollVO.getHanok_name());
 		enrollVO.setHanok_status(0);	// 임시 저장 상태
-		enrollVO.setOwner_id(22);		// 사장님 번호 임시 저장
+		enrollVO.setOwner_id(vo.getOwner_id());		// 사장님 번호 임시 저장
 		enrollVO.setHanok_score(0);
 		if (service.tempSave(enrollVO)) {
 			System.out.println("한옥정보 상단 저장 완료");
