@@ -12,22 +12,28 @@
 /* 한옥 정보 헤더 */
 #container_hanokInfoName{
 text-align: left;
-height: 50px;
+height: 100px;
 }
 
 /* 한옥 정보 상단 (ex : 한옥 이름, 한옥 대표전화번호...)  */
 #container_hanokInfoTop{
     display: grid;
-    height: 200px;
-    grid-template-columns: 40% 20% 40%;
+    height: 300px;
+    grid-template-columns: 50% 20% 30%;
 }
 
 #hanokInfo_topLeft{
     display: grid;
+    align-items: center;
     /* background-color: #e3e3e3;
     border: 1px solid #000;             */
-grid-template-columns: 60% 40%;
+grid-template-columns: 30% 70%;
 grid-template-rows: 16.6% 16.6% 16.6% 16.16% 16.6% 16.6%;
+}
+
+#hanokInfo_topLeft_zipNaddress{
+display: grid;
+grid-template-columns: 45% 10% 45%;
 }
 
 #hanokInfo_topRight{
@@ -46,7 +52,7 @@ grid-template-rows: 16.6% 16.6% 16.6% 16.16% 16.6% 16.6%;
 /* 한옥 대표 이미지 */
 #container_hanokInfoMiddle2{
     display: grid;
-    height: 100px;
+    height: 80px;
     grid-template-columns: 12% 88%;
 }
 
@@ -55,6 +61,7 @@ grid-template-rows: 16.6% 16.6% 16.6% 16.16% 16.6% 16.6%;
     display: grid;
     height: 75px;
     grid-template-columns: 10% 50% 10% 30%;
+    align-items: center;
 }
 
 /*!!! 2. 한옥 등록 객실 설정 !!!*/
@@ -62,7 +69,7 @@ grid-template-rows: 16.6% 16.6% 16.6% 16.16% 16.6% 16.6%;
 /* 객실 리스트 헤더 */
 #container_roomListName{
 text-align: left;
-height: 50px;
+height: 100px;
 }
 
 /* 객실 리스트묶음 */
@@ -74,7 +81,7 @@ height: 50px;
 /* 왼쪽 객실 추가 리스트 */
 #roomList_left{
     display: grid;
-    height: 600px;
+    height: 740px;
     grid-template-rows: 6.7% 93.3%;
 }
 
@@ -82,12 +89,12 @@ height: 50px;
 .roomList_right{
     display: grid;
     border: 1px solid #000;       
-    height: 600px;     
+    height: 740px;     
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
-    grid-template-rows: 15% 20% 65%;
+    grid-template-rows: 20% 20% 60%;
 }
 
 /* 오른쪽 객실 정보 상단 */
@@ -101,6 +108,7 @@ height: 50px;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 33% 33% 33%;
+    align-items: center;
 }
 
 /* 오른쪽 객실 정보 상단 오른쪽 (최대 수용 인원, 객실 크기, 객실 부가 기능) */
@@ -108,6 +116,7 @@ height: 50px;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 33% 33% 33%;
+    align-items: center;
 }
 
 /* 객실 사진들 */
@@ -127,8 +136,8 @@ height: 50px;
     display: grid;
 /*     height: 100px; */
 /*     grid-template-rows: 33% 33% 33%; */
-height: 40px;
-grid-template-rows: 50% 50%;
+height: 80px;
+grid-template-rows: 10% 90%;
 }
 
 
@@ -153,21 +162,28 @@ grid-template-rows: 50% 50%;
     width: 60px;
     height: 60px;
 
-    /* 임시 삽입 내용 */
-    border: 1px solid #000;   
+	font-size:2em;
+	font-weight : bold;
+
+    border: 2px solid #000;   
+    border-radius: 0.5rem;
     text-align: center;
+    line-height: 55px;
 }
 
 #hanok_imageButton{
-    /* background-image: url(/assets/images/test/02.jpg); */
     background-size :contain;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
     width: 60px;
+    background-color: #ffffff;
 }
 
 #hanok_imageButtonCancel{
     width: 60px;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    background-color: #ffffff;
 }
 
 /* 객실 사진 추가 */
@@ -179,9 +195,13 @@ grid-template-rows: 50% 50%;
     width: 60px;
     height: 60px;
 
-    /* 임시 삽입 내용 */
-    border: 1px solid #000;   
+	font-size:2em;
+	font-weight : bold;
+
+    border: 2px solid #000;   
+    border-radius: 0.5rem;
     text-align: center;
+    line-height: 55px;
 }
 
 .room_imageButtonSet{
@@ -201,9 +221,13 @@ grid-template-rows: 50% 50%;
     background-size :contain;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
     width: 60px;
+    background-color: #ffffff;
 }
 
 #room_imageButtonCancel{
     width: 60px;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    background-color: #ffffff;
 }
