@@ -105,7 +105,15 @@
 	    	hanok_serviceETC,
 	        hanok_name,
 	        hanok_description,
-	        hanok_score
+	        hanok_score,
+	        hanok_service0,
+        	hanok_service1,
+	        hanok_service2,
+	        hanok_service3,
+	        hanok_service4,
+	        hanok_service5,
+	        hanok_service6,
+	        hanok_service7
 	    FROM HANOKS
 	    WHERE hanok_id = #{hanok_id}
 	</select>
