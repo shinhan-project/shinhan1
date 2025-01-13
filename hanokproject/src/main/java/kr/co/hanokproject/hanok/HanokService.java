@@ -15,11 +15,15 @@ public interface HanokService {
 
 	HanokVO getHanokById(int hanok_id);
 
+
+    boolean updateHanokStatus(int hanok_id, int status);
+
 	List<HanokVO> getAuthorization(int owner_id);
 
 	List<HanokVO> getRequestAuthorization(int owner_id);
 
 	
+
 
 
 }

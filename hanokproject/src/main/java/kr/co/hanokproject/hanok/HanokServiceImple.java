@@ -41,6 +41,11 @@ public class HanokServiceImple implements HanokService {
 
 	
 
+    @Override
+    public boolean updateHanokStatus(int hanok_id, int status) {
+        int result = mapper.updateHanokStatus(hanok_id, status);
+        return result > 0;
+    }
 
 
 
