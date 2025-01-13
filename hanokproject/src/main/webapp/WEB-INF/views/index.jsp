@@ -235,8 +235,7 @@ Search START -->
 		</div>
 		<!-- Search with offcanvas END -->
 
-<!-- =======================
-Recommand ffer START -->
+<!-- ======================= Recommand Offer START -->
 <section class="pt-0">
 	<div class="container">
 		<!-- Title -->
@@ -271,8 +270,10 @@ Recommand ffer START -->
 				
 
 
-
-
+</div>
+</div>
+</div>
+</section>
 <!-- =======================
 Gallery START -->
 <section>

@@ -104,13 +104,13 @@ Content START -->
 			<!-- Counting status occurrences -->
 			<c:forEach var="request" items="${request}">
 				<c:choose>
-					<c:when test="${request.status == 0}">
+					<c:when test="${request.hanok_status == 0}">
 						<c:set var="status0Count" value="${status0Count + 1}" />
 					</c:when>
-					<c:when test="${request.status == 1}">
+					<c:when test="${request.hanok_status == 1}">
 						<c:set var="status1Count" value="${status1Count + 1}" />
 					</c:when>
-					<c:when test="${request.status == 2}">
+					<c:when test="${request.hanok_status == 2}">
 						<c:set var="status2Count" value="${status2Count + 1}" />
 					</c:when>
 				</c:choose>
@@ -120,7 +120,7 @@ Content START -->
 			<div class="col-md-6 col-xl-4">
 				<div class="card card-body border p-4 h-100">
 					<h6>Pending Approval </h6>
-					<h2 class="text-primary">${status0Count}</h2>
+					<h2 class="text-warning">${status0Count}</h2>
 					<p class="mb-2">Total</p>
 				</div>
 			</div>
@@ -203,15 +203,15 @@ Content END -->
         <td> <h6 class="mb-0 fw-light">작성날짜 Nov 22 - 25</h6> </td>
         <td>
             <c:choose>
-                <c:when test="${request.status == 0}">
-                    <div class="badge text-bg-primary">승인 요청</div>
+                <c:when test="${request.hanok_status == 0}">
+                    <div class="badge text-bg-warning">대기</div>
                 </c:when>
 
-                <c:when test="${request.status == 1}">
+                <c:when test="${request.hanok_status == 1}">
                     <div class="badge text-bg-danger">거절</div>
                 </c:when>
 
-                <c:when test="${request.status == 2}">
+                <c:when test="${request.hanok_status == 2}">
                     <div class="badge text-bg-success">승인</div>
                 </c:when>
 
