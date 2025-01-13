@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <script>hanok_ImgAdd();</script>
+            <script>hanok_ImgAdd(); </script>
 
             <div id="container_hanokInfoBottom">
                 <div>편의시설</div>

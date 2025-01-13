@@ -15,6 +15,7 @@ function hanok_ImgAdd(){
 		      	if (!isValidExtension) {
 			        alert('이 파일 형식은 허용되지 않습니다.');
 			        return;
+        	
         			}
         		}
                 
