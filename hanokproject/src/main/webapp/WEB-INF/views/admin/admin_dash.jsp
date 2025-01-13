@@ -104,13 +104,13 @@ Content START -->
 			<!-- Counting status occurrences -->
 			<c:forEach var="request" items="${request}">
 				<c:choose>
-					<c:when test="${request.status == 0}">
+					<c:when test="${request.hanok_status == 0}">
 						<c:set var="status0Count" value="${status0Count + 1}" />
 					</c:when>
-					<c:when test="${request.status == 1}">
+					<c:when test="${request.hanok_status == 1}">
 						<c:set var="status1Count" value="${status1Count + 1}" />
 					</c:when>
-					<c:when test="${request.status == 2}">
+					<c:when test="${request.hanok_status == 2}">
 						<c:set var="status2Count" value="${status2Count + 1}" />
 					</c:when>
 				</c:choose>
@@ -200,18 +200,18 @@ Content END -->
         <td> <h6 class="mb-0">${request.owner_id}</h6> </td>
         <td> <h6 class="mb-0">${request.hanok_id}</h6> </td>
         <td> ${request.hanok_name}</td>
-        <td> <h6 class="mb-0 fw-light">작성날짜 Nov 22 - 25</h6> </td>
+        <td> <h6 class="mb-0 fw-light">${request.hanok_requestdate}</h6> </td>
         <td>
             <c:choose>
-                <c:when test="${request.status == 0}">
+                <c:when test="${request.hanok_status == 0}">
                     <div class="badge text-bg-primary">승인 요청</div>
                 </c:when>
 
-                <c:when test="${request.status == 1}">
+                <c:when test="${request.hanok_status == 1}">
                     <div class="badge text-bg-danger">거절</div>
                 </c:when>
 
-                <c:when test="${request.status == 2}">
+                <c:when test="${request.hanok_status == 2}">
                     <div class="badge text-bg-success">승인</div>
                 </c:when>
 
