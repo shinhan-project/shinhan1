@@ -36,6 +36,73 @@
     object-fit: cover; /* 비율 유지하면서 크기 맞추기 */
 }
 	</style>
+	<script>
+	const storedTheme = localStorage.getItem('theme')
+	 
+    const getPreferredTheme = () => {
+        if (storedTheme) {
+            return storedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = function (theme) {
+        if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+    }
+
+
+    window.addEventListener('DOMContentLoaded', () => {
+	    // 현재 날짜를 "YYYY-MM-DD" 형식으로 가져오는 함수
+	    const today = new Date().toISOString().split("T")[0];
+	
+	    // 입력 필드 요소 가져오기
+	    const checkInInput = document.getElementById("checkIn");
+	    const checkOutInput = document.getElementById("checkOut");
+	
+	    checkInInput.setAttribute("min", today);
+	    checkOutInput.setAttribute("min", today);
+	
+    	
+        var el = document.querySelector('.theme-icon-active');
+        if(el != 'undefined' && el != null) {
+            const showActiveTheme = theme => {
+            const activeThemeIcon = document.querySelector('.theme-icon-active use')
+            const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+            const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+            document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                element.classList.remove('active')
+            })
+
+            btnToActive.classList.add('active')
+            activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (storedTheme !== 'light' || storedTheme !== 'dark') {
+                setTheme(getPreferredTheme())
+            }
+        })
+
+        showActiveTheme(getPreferredTheme())
+
+        document.querySelectorAll('[data-bs-theme-value]')
+            .forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const theme = toggle.getAttribute('data-bs-theme-value')
+                    localStorage.setItem('theme', theme)
+                    setTheme(theme)
+                    showActiveTheme(theme)
+                })
+            })
+
+        }
+    })
+	</script>
 
 </head>
 
@@ -113,7 +180,7 @@ Search START -->
 		<!-- Offcanvas button for search -->
 		<button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch"><i class="bi bi-pencil-square me-2"></i>Edit Search</button>
 
-<<<<<<< HEAD
+
    <!-- Search with offcanvas START -->
 		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
 			<div class="offcanvas-header">
@@ -138,9 +205,9 @@ Search START -->
 								<!-- Date input -->
 								<div class="form-fs-md">
 									<label class="form-label">Check in</label>
-									<input type="date" name="checkInDate" id="checkIn" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkInDate}" data-date-format="Y M d">
+									<input type="date" name="checkIn" id="checkIn" class="form-guest-selector form-control form-control-lg selection-result" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkInDate}" data-date-format="Y M d">
 									<label class="form-label">Check out</label>
-									<input type="date" name="checkOut" id="checkOut" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOutDate}" data-date-format="d M Y">
+									<input type="date" name="checkOut" id="checkOut" class="form-guest-selector form-control form-control-lg selection-result" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOutDate}" data-date-format="d M Y">
 								</div>
 							</div>
 	
@@ -167,66 +234,6 @@ Search START -->
 			</div>
 		</div>
 		<!-- Search with offcanvas END -->
-  </div>
-=======
-		<!-- Search with offcanvas START -->
-		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
-			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
-			</div>
-			<div class="offcanvas-body p-2">
-				<div class="bg-light p-4 rounded w-100">
-					<form action="/hanok/hanok_list.do" method="GET">
-						<div class="row g-4">
-							<!-- Location -->
-							<div class="col-md-6 col-lg-4">
-								<div class="form-size-lg form-fs-md">
-									<!-- input -->
-									<label class="form-label">Location</label>
-									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${param.location}" required>
-								</div>
-							</div>
-	
-							<!-- Check in -->
-							<div class="col-md-6 col-lg-3">
-								<!-- Date input -->
-								<div class="form-fs-md">
-									<label class="form-label">Check in</label>
-									<input type="date" name="checkIn" id="checkIn" class="form-guest-selector form-control form-control-lg selection-result" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkIn}" required>
-									<label class="form-label">Check out</label>
-									<input type="date" name="checkOut" id="checkOut" class="form-guest-selector form-control form-control-lg selection-result" data-mode="range" placeholder="날짜를 고르시오." value="${param.checkOut}" required>
-								</div>
-							</div>
-	
-							<!-- Guest -->
-							<div class="col-md-6 col-lg-3">
-								<div class="form-fs-md">
-									<!-- Dropdown input -->
-									<div class="w-100">
-										<label class="form-label">Guests</label>
-										<div class="dropdown guest-selector me-2">
-											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}" required>
-										</div>
-									</div>
-								</div>
-							</div>
-	
-							<!-- Button -->
-							<div class="col-md-6 col-lg-2 mt-md-auto">
-								<button class="btn btn-lg btn-primary w-100 mb-0" type="submit"><i class="bi bi-search fa-fw"></i>Search</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- Search with offcanvas END -->
-	</div>
->>>>>>> branch 'main' of https://github.com/shinhan-project/shinhan1.git
-</section>
-<!-- =======================
-Search END -->
 
 <!-- =======================
 Recommand ffer START -->
@@ -262,63 +269,6 @@ Recommand ffer START -->
 				</div>
 				</c:forEach>
 				
-				
-				<!-- Offer card END -->
-<!-- 
-				Offer card START
-				<div>
-					<div class="card">
-						<img src="/images/offer/07.jpg" class="card-img" alt="">
-						Card body
-						<div class="position-absolute top-100 start-50 translate-middle w-100">
-							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-								<h6 class="card-title mb-1"><a href="#">Elevate Your Stay</a></h6>
-								<small>Valid through Feb 2023</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				Offer card END
-
-				Offer card START
-				<div>
-					<div class="card">
-						<img src="/images/offer/08.jpg" class="card-img" alt="">
-						Card body
-						<div class="position-absolute top-100 start-50 translate-middle w-100">
-							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-								<h6 class="card-title mb-1"><a href="#">Pass Holder Package</a></h6>
-								<small>Valid through Feb 2023</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				Offer card END
-
-				Offer card START
-				<div>
-					<div class="card">
-						<img src="/images/offer/05.jpg" class="card-img" alt="">
-						Card body
-						<div class="position-absolute top-100 start-50 translate-middle w-100">
-							<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-								<h6 class="card-title mb-1"><a href="#">2023 Golf Tournament Package</a></h6>
-								<small>Valid through Jan 2021</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">View Offer</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				Offer card END -->
-			</div>	
-		</div>
-		<!-- Slider END -->
-	</div>
-</section>
-<!-- =======================
-Special offer END -->
 
 
 
