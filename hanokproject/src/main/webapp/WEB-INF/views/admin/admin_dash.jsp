@@ -200,11 +200,14 @@ Content END -->
         <td> <h6 class="mb-0">${request.owner_id}</h6> </td>
         <td> <h6 class="mb-0">${request.hanok_id}</h6> </td>
         <td> ${request.hanok_name}</td>
-        <td> <h6 class="mb-0 fw-light">작성날짜 Nov 22 - 25</h6> </td>
+        <td> <h6 class="mb-0 fw-light">${request.hanok_requestdate}</h6> </td>
         <td>
             <c:choose>
                 <c:when test="${request.hanok_status == 0}">
+
                     <div class="badge text-bg-warning">대기</div>
+
+
                 </c:when>
 
                 <c:when test="${request.hanok_status == 1}">

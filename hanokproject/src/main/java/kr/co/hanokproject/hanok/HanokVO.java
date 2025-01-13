@@ -22,7 +22,7 @@ public class HanokVO {
 		private double hanok_score;
 		private String hanok_imgName;
 		private int owner_id;
-		
+		private String hanok_requestdate;
 	
 		
 
