@@ -93,7 +93,7 @@
                 </div>
                 <div class="roomList_rightBottom">
                     <div style="place-self: center;"> <img class="room_image" style="height: 300px; width: 500px;"
-                            src="/images/notFoundRoomImg.png" alt="등록된 되지 않은 이미지입니다."></div>
+                            src="/images/notFoundRoomImg.png" alt="등록된 이미지가 없습니다."></div>
                     <div style="margin-left: auto;">
                         <button class="room_copy btn btn-primary" onclick="roomCopy()">복사</button>
                         <button class="room_delete btn btn-primary" onclick="roomDelete()"> 삭제 </button>
