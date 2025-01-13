@@ -59,5 +59,7 @@ public interface CustomerMapper {
 	List<CustomerVO> getReviewList(int hanok_id);
 
 	List<HanokVO> getAllHanoks();
+
+
 }
 

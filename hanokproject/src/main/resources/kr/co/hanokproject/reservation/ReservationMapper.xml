@@ -73,6 +73,7 @@
 	    JOIN USERS_CUSTOMER c ON c.customer_id = r.customer_id
 
 	    WHERE r.reservations_id = #{reservation_id}
+	    ORDER BY r.reservations_id desc
 </select>
 
 	<select id="getCustomerReservations" parameterType="int" resultType="kr.co.hanokproject.reservation.ReservationVO">

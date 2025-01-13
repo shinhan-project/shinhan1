@@ -45,20 +45,19 @@
 
 <!-- Theme CSS -->
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-
     </head>
-<%@ include file="/WEB-INF/views/include/owner_header.jsp" %>	
+<%@ include file="/WEB-INF/views/include/owner_header.jsp" %>
+<!--  body Start -->	
     <body>
         <div id="roomList_rightDisplayCopy" style="display: none;">
             <div class="roomList_right">
                 <div class="roomList_rightTop">
                     <div class="roomList_rightTopLeft">
                         <div>객실 이름</div>
-                        <div class="room_nameWrap" style="margin-left: auto;"><input type="text" class="room_name"
+                        <div class="room_nameWrap" style="margin-left: auto;"><input type="text" class="room_name form-control"
                                 onblur="roomName_onBlur()"></div>
                         <div>기본 가격</div>
-                        <div class="room_priceWrap" style="margin-left: auto;"><input type="number" class="room_price">
+                        <div class="room_priceWrap" style="margin-left: auto;"><input type="number" class="room_price form-control">
                         </div>
                     </div>
 
@@ -67,13 +66,13 @@
                     <div class="roomList_rightTopRight">
                         <div>최대 수용 인원</div>
                         <div class="max_capacityWrap" style="margin-left: auto;"><input type="number"
-                                class="max_capacity"></div>
+                                class="max_capacity form-control"></div>
                         <div>객실 크기</div>
-                        <div class="room_sizeWrap" style="margin-left: auto;"><input type="number" class="room_size">
+                        <div class="room_sizeWrap" style="margin-left: auto;"><input type="number" class="room_size form-control">
                         </div>
                         <div>객실 부가 기능</div>
                         <div class="room_serviceWrap" style="margin-left: auto;"><input type="text"
-                                class="room_service"></div>
+                                class="room_service form-control"></div>
                     </div>
                 </div>
 
@@ -91,8 +90,8 @@
                     <div style="place-self: center;"> <img class="room_image" style="height: 300px; width: 500px;"
                             src="/images/notFoundRoomImg.png" alt="등록된 "></div>
                     <div style="margin-left: auto;">
-                        <button class="room_copy" onclick="roomCopy()">복사</button>
-                        <button class="room_delete" onclick="roomDelete()"> 삭제 </button>
+                        <button class="room_copy btn btn-primary" onclick="roomCopy()">복사</button>
+                        <button class="room_delete btn btn-primary" onclick="roomDelete()"> 삭제 </button>
                     </div>
                 </div>
             </div>
@@ -110,26 +109,30 @@
             <div id="container_hanokInfoTop">
                 <div id="hanokInfo_topLeft">
                     <div> 한옥 이름</div>
-                    <div style="margin-left: auto;"> <input type="text" id="hanok_name"> </div>
+                    <div style = "margin-left: auto;"> <input type="text" id="hanok_name" class="form-control"> </div>
 
                     <div> 한옥 대표 전화번호 </div>
-                    <div style="margin-left: auto;"><input type="number" id="hanok_tel"> </div>
+                    <div style="margin-left: auto;"><input type="number" id="hanok_tel" class="form-control"> </div>
 
                     <div>한옥 홈페이지</div>
-                    <div style="margin-left: auto;"><input type="text" id="hanok_url"> </div>
+                    <div style="margin-left: auto;"><input type="text" id="hanok_url" class="form-control"> </div>
 
                     <div>한옥 주소 </div>
-                    <div style="margin-left: auto;"> <input type="text" id="hanok_postcode" readonly
-                            style="width: 45%; text-align: center;" placeholder="우편 번호"> <button
-                            id="hanok_addresssearch" style="width: 45%" ;
+                    <div style="margin-left: auto; display: grid; grid-template-columns: 45% 10% 45%;"> <input type="text" id="hanok_postcode" readonly
+                            class="form-control" style="width: 100%; height: 90%; text-align: center;" placeholder="우편 번호">
+                            <div></div>
+                            <button
+                            id="hanok_addresssearch"
+                            class="btn btn-primary"
+                            style="width: 100%; height: 90%;"
                             onclick="hanok_execDaumPostcode()">주소검색</button> </div>
 
                     <div style="grid-column: 1/-1;">
-                        <input type="text" id="hanok_address" name="hanok_address" readonly
+                        <input type="text" id="hanok_address" class="form-control" name="hanok_address" readonly
                             style="width: 99%; resize: none;" placeholder="기본 주소" autofocus>
                     </div>
                     <div style="grid-column: 1/-1;">
-                        <input type="text" id="hanok_detailAddress" style="width: 99%; resize: none;" placeholder="상세주소"
+                        <input type="text" id="hanok_detailAddress" class="form-control" style="width: 99%; resize: none;" placeholder="상세주소"
                             autofocus>
                     </div>
                 </div>
@@ -145,7 +148,7 @@
             </div>
             <div id="container_hanokInfoMiddle1">
                 <div>한옥설명</div>
-                <div><textarea id="hanok_description" style="height: 100px; width: 100%; resize: none;"
+                <div><textarea id="hanok_description" class="form-control" style="height: 100px; width: 100%; resize: none;"
                         placeholder="여기에 한옥에 대한 설명들을 적습니다."></textarea></div>
             </div>
 
@@ -174,7 +177,7 @@
                     <input type="checkbox" class="hanok_services" name="services" /> 주차
                 </div>
                 <div>그 외 부가시설</div>
-                <div style="margin-left: auto;"><input type="text" id="hanok_serviceETC"></div>
+                <div style="margin-left: auto;"><input type="text" id="hanok_serviceETC" class="form-control"></div>
             </div>
 
             <!-- 객실 리스트 -->
@@ -184,7 +187,7 @@
 
             <div id="container_roomList">
                 <div id="roomList_left">
-                    <div><button style="width: 100%;" id="room_add" onclick="roomAdd()">객실 추가</button></div>
+                    <div><button style="width: 100%;" id="room_add" class = "btn btn-primary" onclick="roomAdd()">객실 추가</button></div>
                     <div>
                         <select id="roomlist" size="30" style="width: 100%;" onchange="changeRoomSelect()">
                             <!-- <option value="토끼방">토끼방</option> -->
@@ -202,8 +205,9 @@
 <!--                         id="hanok_approvalRequest"> 승인요청 </button> </div> -->
 <!--                 <div style="margin-left: auto;"><button id="hanok_approval">승인</button> <button id="rejection"> 반려 -->
 <!--                     </button> </div> -->
+
 <div></div> <!-- 비워두는 칸 -->
-<div style="margin-left: auto;"> <button id="hanok_tempSave" onclick="enroll_TempSave()">승인 요청</button></div>
+<div style="margin-left: auto;"> <button id="hanok_tempSave" class="btn btn-primary" onclick="enroll_TempSave()">승인 요청</button></div>
             </div>
         </div>
         <script> room_ImgAdd();</script>
