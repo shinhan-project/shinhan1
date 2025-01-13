@@ -125,64 +125,74 @@
 			<div class="vstack gap-4 mt-5">
 				
 				<hr class="m-0"> <!-- Divider -->
-				<c:forEach items="${reviews}" var="review">
-				
-				<!-- Review item -->
-				<div class="row g-3 g-lg-4">
-					<div class="col-md-4 col-xxl-3">
-						<!-- Avatar and info -->
-						<div class="d-flex align-items-center">
-							<!-- Avatar -->
-							<div class=" me-2 flex-shrink-0 adjust-right">
-							    <img src="/images/hanoks/${review.hanok_imgName}" class="card-img img-fluid rounded-2 fixed-image" style="width: 150px; " alt="Card image">
+			<c:forEach items="${reviews}" var="review">
+							<!-- Card body START -->
+							<div class="card-body vstack gap-3">
+								<!-- Listing item START -->
+								<div class="card border p-2">
+									<div class="row g-4">
+										<!-- Card img -->
+										<div class="col-md-3 col-lg-2">
+											<img src="/images/hanoks/${review.hanok_imgName}"
+												class="card-img rounded-2" alt="Card image">
+										</div>
+
+										<!-- Card body -->
+										<div class="col-md-9 col-lg-10">
+											<div
+												class="card-body position-relative d-flex flex-column p-0 h-100">
+
+												
+
+												 <!-- Flex container -->
+        <div class="col-md-9 col-lg-10">
+    <div class="card-body position-relative d-flex flex-column p-0 h-100">
+        <!-- Flex container -->
+        <div class="row">
+            <!-- 왼쪽 섹션 -->
+            <div class="col-4 d-flex flex-column">
+                <h5 class="mb-1">${review.hanok_name}</h5>
+                <p class="mb-0"><span class="text-body fw-light">예약번호</span> ${review.reservations_id}</p>
+            </div>
+
+            <!-- 오른쪽 섹션 -->
+            <div class="col-8 d-flex flex-column">
+                <!-- 별점 -->
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 1 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 2 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 3 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 4 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 5 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                </ul>
+                <!-- 리뷰 날짜 -->
+                <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd" var="formattedDate"/>
+                <p class="mb-2">Reviewed on ${formattedDate}</p>
+                <!-- 리뷰 내용 -->
+                <p>${review.review_content}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Listing item END -->
 
 							</div>
-							<!-- Info -->
-							<div class="ms-2">
-								<h5 class="mb-1">${review.hanok_name}</h5>
-								<p><span class="text-body fw-light">예약번호 </span> ${review.reservations_id}</p>
-								
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-8 col-xxl-9">
-						<!-- Rating -->
-						
-						<ul class="list-inline mb-2">
-						    <!-- 1st star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 1 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 2nd star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 2 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 3rd star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 3 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 4th star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 4 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 5th star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 5 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <fmt:formatDate value="${review.review_date}" pattern="yyyy년 M월 d일"  var="formattedDate"/>
-								<p class="mb-0">Reviewed ${formattedDate}</p>
-						</ul>
-
-						
-						<p>${review.review_content}</p>
-
-						
-					</div>
-				</div>
-				<hr class="m-0"> <!-- Divider -->
-				</c:forEach>
-
+							</c:forEach>
 				
 
 				
