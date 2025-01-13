@@ -59,7 +59,7 @@ Main Content START -->
 						<div class="col-lg-6 order-1">
 							<div class="p-4 p-sm-6">
 								<!-- Logo -->
-								<a href="index.html">
+								<a href="index.do">
 									<img class="h-50px mb-4" src="/images/gojeuneoklogo.png" alt="logo">
 								</a>
 								<!-- Title -->

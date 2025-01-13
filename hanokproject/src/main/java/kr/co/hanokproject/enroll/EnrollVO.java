@@ -24,5 +24,5 @@ public class EnrollVO {
 		private String hanok_serviceETC;
 		private int hanok_status;
 		private double hanok_score;
-
+		private String hanok_requestdate;
 }

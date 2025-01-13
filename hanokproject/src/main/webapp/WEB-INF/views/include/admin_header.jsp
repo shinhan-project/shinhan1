@@ -56,7 +56,7 @@
 									<img class="avatar-img rounded-circle shadow" src="/images/avatar/01-1.jpg" alt="avatar">
 								</div>
 								<div>
-								
+									<a class="h6 mt-2 mt-sm-0" href="#">${adminloginInfo.admin_id}</a>
 									<p class="small m-0">${adminloginInfo.admin_email}</p>
 								</div>
 							</div>

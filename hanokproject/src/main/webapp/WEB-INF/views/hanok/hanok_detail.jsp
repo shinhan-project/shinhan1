@@ -221,7 +221,18 @@
 	        margin-bottom: 5px;
 	        font-size: 0.95em;
 	        color: #555;
+	        
 	    }
+	    .room-details {
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.room-item {
+    display: inline-block; /* 항목들을 inline-block으로 나열 */
+    margin-right: 10px; /* 항목 간 간격 */
+}
+	    
+	
 	    
     </style>
 
@@ -295,9 +306,9 @@
 </head>
 <body>
 	<!--헤더-->
-    <div id="sep">
+
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
-    </div>
+
 	
 	
 	
@@ -469,30 +480,29 @@ Search END -->
 	                            <!-- Slider END -->
 	                        </div>
 
-	                        <!-- Card body -->
-	                        <div class="col-md-7">
-	                            <div class="card-body d-flex flex-column h-100 p-0">
-	    
-	                                <!-- Title -->
-	                                <h5 class="card-title"><a href="/hanok/hanok_booking.do?room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}">${roomVO.room_name}</a></h5>
-	
-	                                <!-- 세부사항항 -->
-	                                <ul class="nav nav-divider mb-2">
-	                                    <li class="nav-item">${roomVO.room_size}평</li>
-	                                    <li class="nav-item">${roomVO.max_capacity}명 수용 가능</li>
-	                                    <li class="nav-item">${roomVO.room_service}</li>
-	                                </ul>                                
-	                                <!-- Price and Button -->
-	                                <div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-	                                    <!-- Button -->
-	                                    <div class="d-flex align-items-center">
-	                                        <h5 class="fw-bold mb-0 me-1">${roomVO.room_price}</h5>
-	                                        <span class="mb-0 me-2">/day</span>
-	                                    </div>
-	                                    <!-- Price -->
-	                                    <div class="mt-3 mt-sm-0">
-	                                        <a href="/hanok/hanok_booking.do?hanok_id=${roomVO.hanok_id}&room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}" class="btn btn-sm btn-primary mb-0">예약하기</a>    
-	                                    </div>                  
+	                     <!-- Card body -->
+<div class="col-md-7">
+    <div class="card-body d-flex flex-column h-100 p-0">
+        <!-- Title -->
+        <h5 class="card-title text-start"><a href="/hanok/hanok_booking.do?room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}">${roomVO.room_name}</a></h5>
+    
+	                                  <!-- 세부사항항 -->
+        <div class="room-details">
+    <span class="room-item">${roomVO.room_size}평 /</span>
+    <span class="room-item">${roomVO.max_capacity}명 수용 가능 /</span>
+    <span class="room-item">${roomVO.room_service}</span>
+</div>
+        <!-- Price and Button -->
+        <div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
+            <!-- Button -->
+            <div class="d-flex align-items-center">
+                <h5 class="fw-bold mb-0 me-1">${roomVO.room_price}</h5>
+                <span class="mb-0 me-2">/day</span>
+            </div>
+            <!-- Price -->
+            <div class="mt-3 mt-sm-0">
+                <a href="/hanok/hanok_booking.do?hanok_id=${roomVO.hanok_id}&room_id=${roomVO.room_id}&checkInDate=${param.checkInDate}&checkOutDate=${param.checkOutDate}&capacity=${param.capacity}" class="btn btn-sm btn-primary mb-0">예약하기</a>
+            </div>       
 	                                </div>
 	                            </div>
 	                        </div>

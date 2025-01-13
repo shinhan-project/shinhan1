@@ -27,9 +27,11 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 	<style>
-	    #sep {
-	        margin-bottom: 20px;
-	    }
+	    .card-img-top {
+    width: 100%; /* 이미지가 부모 요소의 가로 크기에 맞춰짐 */
+    height: 200px; /* 고정된 높이 */
+    object-fit: cover; /* 비율을 유지하면서 이미지가 잘리거나 확장되어 채워짐 */
+}
 	</style>
 	<script>
 		const storedTheme = localStorage.getItem('theme')
@@ -101,9 +103,8 @@
 </head>
 <body>
 	<!--헤더-->
-    <div id="sep">
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
-    </div>
+   
 
 	    <!-- =======================
 Search START -->
