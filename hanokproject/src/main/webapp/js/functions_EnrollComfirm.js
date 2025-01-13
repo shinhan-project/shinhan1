@@ -255,7 +255,7 @@ function hanok_ImgAdd(){
                     rImageButtonSet.setAttribute("class", "room_imageButtonSet");
                     
                     // +1을 하는 이유는 jsp내에 숨어있는 원본이 먼저 인덱스 0을 가짐.
-                    // console.log("2차" + rSelect.selectedIndex);
+                     //console.log("2차" + rSelect.selectedIndex);
                     rImageButtonLists[rSelect.selectedIndex + 1].appendChild(rImageButtonSet);               
                     let rImageButton = document.createElement('button');
                     
