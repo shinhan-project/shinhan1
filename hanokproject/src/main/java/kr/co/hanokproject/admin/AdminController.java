@@ -60,8 +60,8 @@ public class AdminController {
     public String request(@SessionAttribute("adminloginInfo") AdminVO vvo, OwnerVO vo, Model model) {
        
         List<HanokVO> request= service.getRequest(vo.getOwner_id());
+        	
         
-    
         model.addAttribute("request", request);
         
         

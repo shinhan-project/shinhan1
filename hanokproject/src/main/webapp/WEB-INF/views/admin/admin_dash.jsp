@@ -43,6 +43,7 @@
 	
 	
 	
+<%@ include file="/WEB-INF/views/include/admin_header.jsp" %>
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
@@ -206,6 +207,7 @@ Content END -->
                 <c:when test="${request.hanok_status == 0}">
 
                     <div class="badge text-bg-warning">대기</div>
+
 
                 </c:when>
 
