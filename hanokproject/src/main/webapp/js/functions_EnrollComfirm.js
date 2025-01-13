@@ -3,7 +3,6 @@ function hanok_ImgAdd(){
     document.getElementById("hanok_input_file").addEventListener('change', function(event) {
         let files = event.target.files;
         let hImageButtonList = document.getElementById("hanok_imageButtonList");
-
         if(files && files[0]) {
     
     const checkfile = files[0];
@@ -21,7 +20,7 @@ function hanok_ImgAdd(){
                 
                 let maxFileCnt = 4;   // 첨부파일 최대 개수
                 let attFileCnt = hImageButtonList.querySelectorAll('.hanok_imageButtonSet').length;    // 기존 추가된 첨부파일 개수
-                console.log(attFileCnt);
+                //console.log(attFileCnt);
                 var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
                 if (files.length > remainFileCnt){
                     alert ("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
@@ -57,7 +56,9 @@ function hanok_ImgAdd(){
             reader.readAsDataURL(files[i]);
         }
         }
-    });
+        event.target.value = '';
+    }
+);
     }
     
     // 한옥 이미지 정보 출력
@@ -275,7 +276,9 @@ function hanok_ImgAdd(){
                 reader.readAsDataURL(files[i]);
             }
             }
-        })
+            event.target.value = '';
+        }
+    )
     }
     
     // 객실 이미지 정보 출력
@@ -341,10 +344,10 @@ function hanok_ImgAdd(){
                     url: "/enrollTempSave",
                     data: hanokParams,
                     success: function () {
-                        console.log('한옥 상단 요청 성공');
+                        //console.log('한옥 상단 요청 성공');
                     },
                     error: function (error) {
-                        console.log('$한옥 상단 요청 오류:', error);
+                        //console.log('$한옥 상단 요청 오류:', error);
                     }
                 });
     
@@ -353,12 +356,12 @@ function hanok_ImgAdd(){
                 let img_base64data = hanok_imageButtonSets[i].querySelector("#hanok_imageButton").getAttribute("img_base64data");
                 
 	                if (img_base64data.indexOf("data:image/png") != -1){
-	                     console.log(img_base64data.replace("data:image/png;base64,", ""));
+	                     //console.log(img_base64data.replace("data:image/png;base64,", ""));
 	                    hImagesBase64Data.push(img_base64data.replace("data:image/png;base64,", ""));
 	                    hImagesExtension.push(".png");
 	                }
 	                else if (img_base64data.indexOf("data:image/jpeg") != -1){
-	                	console.log(img_base64data.replace("data:image/jpeg;base64,", ""));
+	                	//console.log(img_base64data.replace("data:image/jpeg;base64,", ""));
 	                    hImagesBase64Data.push(img_base64data.replace("data:image/jpeg;base64,", ""));
 	                    hImagesExtension.push(".jpg");
 	                }
@@ -385,10 +388,10 @@ function hanok_ImgAdd(){
                                 "is_main": is_main
                             },
                             success: function () {
-                              console.log(i + '번째 한옥 이미지 요청 성공');
+                              //console.log(i + '번째 한옥 이미지 요청 성공');
                             },
                             error: function (error) {
-                                console.log(i + '번째 한옥 이미지 요청 오류:', error);
+                              //console.log(i + '번째 한옥 이미지 요청 오류:', error);
                             }
                         }
                     ); 	      
@@ -424,12 +427,12 @@ function hanok_ImgAdd(){
                         room_ImageBase64Data = roomList_rightDisplays[i].querySelector(".room_imageButton").getAttribute("img_base64data");
                         
                         if (room_ImageBase64Data.indexOf("data:image/png") != -1){
-	                    console.log(room_ImageBase64Data);
+	                    //console.log(room_ImageBase64Data);
 	                    room_ImageBase64Data = room_ImageBase64Data.replace("data:image/png;base64,", "")
 	                    room_imageExtension = ".png";
 		                }
 		                else if (room_ImageBase64Data.indexOf("data:image/jpeg") != -1){
-	                	console.log(room_ImageBase64Data);
+	                	//console.log(room_ImageBase64Data);
 		                room_ImageBase64Data = room_ImageBase64Data.replace("data:image/jpeg;base64,", "")
 		                room_imageExtension = ".jpg";
 		                }
@@ -454,10 +457,10 @@ function hanok_ImgAdd(){
                         type: "post",
                         data: roomParams,
                         success: function () {
-                            console.log(i + '번째 객실 요청 성공');
+                            //console.log(i + '번째 객실 요청 성공');
                         },
                         error: function (error) {
-                             console.log(i + '번째 객실 요청 오류:', error);
+                            //console.log(i + '번째 객실 요청 오류:', error);
                         }
                     });
                 }
@@ -466,18 +469,18 @@ function hanok_ImgAdd(){
                 try {
                     for (let i = 0; i < ajaxRequests.length; i++) {
                         await $.ajax(ajaxRequests[i]);
-                        console.log("한옥 정보 요청 완료");
+                        //console.log("한옥 정보 요청 완료");
                     }
                     
                     for (let i = 0; i < roomRequests.length; i++){
                         await $.ajax(roomRequests[i]);
-                        console.log("객실 모든 요청 완료");
+                        //console.log("객실 모든 요청 완료");
                     }
                     alert("승인 요청이 완료되었습니다.");
-                    location.href = "/owner/owner_dash.do";
+                    location.href = "/owner/owner_authorization.do";
                     
                  } catch (error) {
-                        console.log("어떤 요청에서 오류 발생" + error);
+                        //console.log("어떤 요청에서 오류 발생" + error);
                         hideLoader();
                         alert("승인 요청을 실패하였습니다.");
                  }
