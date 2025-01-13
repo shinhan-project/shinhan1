@@ -16,12 +16,24 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.co.hanokproject.hanok.HanokVO;
 import kr.co.hanokproject.owner.OwnerVO;
+import kr.co.hanokproject.room.RoomService;
+import kr.co.hanokproject.room.RoomVO;
+import kr.co.hanokproject.hanok.HanokService;
+import kr.co.hanokproject.hanok.HanokVO;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	private AdminService service;
+	
+	@Autowired
+	private HanokService hanokService;
+	
+	@Autowired
+	private RoomService roomService;
+	
+	
 	//login
 	@GetMapping("/admin/admin_login.do")
 	public void adminlogin() {
@@ -66,9 +78,40 @@ public class AdminController {
 			model.addAttribute("url", "/admin_login.do");
 			return "common/alert";
 		}
+	   
+	   
 	
-	
-	
+	   // 한옥 상세보기
+	    @GetMapping("/admin/hanokDetail.do")
+	    public String hanokDetail(@RequestParam("hanok_id") int hanokId, @SessionAttribute("adminloginInfo") AdminVO vvo, Model model) {
+	    	List<RoomVO> roomList =roomService.getRoomList(hanokId);
+	    	
+	        model.addAttribute("roomList", roomList);
+	        
+	        
+	        HanokVO vo =hanokService.getHanokById(hanokId);
+	        model.addAttribute("vo", vo);
+	        
+
+	        return "admin/request_detail"; // 한옥 상세 페이지 뷰
+	    }
+
+	    // 한옥 승인/거절 처리
+	    @PostMapping("/admin/approve.do")
+	    public String updateHanokStatus(
+	            @RequestParam("hanok_id") int hanokId,
+	            @RequestParam("status") int status,
+	            Model model) {
+
+	        boolean result = hanokService.updateHanokStatus(hanokId, status);
+	        if (result) {
+	            model.addAttribute("msg", status == 2 ? "승인되었습니다." : "거절되었습니다.");
+	        } else {
+	            model.addAttribute("msg", "처리 중 오류가 발생했습니다.");
+	        }
+	        model.addAttribute("url", "/admin/hanokList.do"); // 임시 리스트 페이지 경로
+	        return "common/alert";
+	    }
 	
 	
 }

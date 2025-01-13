@@ -222,7 +222,7 @@ Content END -->
                 </c:otherwise>
             </c:choose>
         </td>
-        <td> <a href="#" class="btn btn-sm btn-light mb-0">View</a> </td>
+        <td> <a href="/admin/hanokDetail.do?hanok_id=${request.hanok_id}" class="btn btn-sm btn-light mb-0">View</a> </td>
     </tr>
 </c:forEach>
 
