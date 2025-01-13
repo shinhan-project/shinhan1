@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kr.co.hanokproject.admin.AdminVO;
 import kr.co.hanokproject.owner.OwnerVO;
 
 @Controller
@@ -30,10 +33,32 @@ public class EnrollController {
 	}
 
 	@GetMapping("/owner/enrollConfirm.do")
-	public String enrollConfirmTest() {
-		System.out.println("Confirm.do 실행");
-		return "/owner/enrollConfirm";
-
+	public String enrollConfirmTest(HttpSession sess) {
+		
+		// 로그인 새로 추가 내용 --
+        // 세션에서 로그인 정보 가져오기
+//        CustomerVO loginInfo = (CustomerVO) sess.getAttribute("loginInfo");
+        OwnerVO loginInfoOwner = (OwnerVO) sess.getAttribute("ownerloginInfo");
+        AdminVO loginInfoAdmin = (AdminVO) sess.getAttribute("adminloginInfo");
+        
+        
+        if (loginInfoOwner != null || loginInfoAdmin != null) {
+        	System.out.println("Confirm.do 실행");
+    		return "/owner/enrollConfirm";
+        }
+        
+        if (loginInfoOwner == null) {
+            return "redirect:/Owner/owner_login.do";
+        }
+        if (loginInfoAdmin == null) {
+            return "redirect:/Admin/admin_login.do";
+        }
+        
+        return "";
+        //로그인 새로 추가 내용 끝 --
+        
+//		System.out.println("Confirm.do 실행");
+//		return "/owner/enrollConfirm";
 	}
 
 	@ResponseBody

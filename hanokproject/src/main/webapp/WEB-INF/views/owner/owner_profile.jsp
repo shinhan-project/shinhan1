@@ -90,7 +90,7 @@
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
 									<li class="nav-item"><a class="nav-link "
-										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+										href="/review/owner"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 									
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
 									<li class="nav-item"> <a class="nav-link" href="owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>

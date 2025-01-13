@@ -5,9 +5,11 @@
 
 	<select id="getHanokListings"
 		resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="int">
-		SELECT h.*, i.hanok_imgName
+		SELECT
+		h.*, i.hanok_imgName
 		FROM HANOKS h
-		JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
+		JOIN USERS_OWNER uo ON h.owner_id =
+		uo.owner_id
 		JOIN HANOK_IMAGES i ON h.hanok_id = i.hanok_id
 		WHERE
 		uo.owner_id = #{uo.owner_id}
@@ -17,28 +19,41 @@
 		resultType="kr.co.hanokproject.hanok.HanokVO">
 		SELECT h.*,i.hanok_imgName
 		FROM HANOKS h
-		JOIN HANOK_IMAGES i ON h.hanok_id = i.hanok_id
+		JOIN HANOK_IMAGES i
+		ON h.hanok_id = i.hanok_id
 		WHERE
 		h.hanok_id = #{h.hanok_id}
 	</select>
-	
-	
+
+
 	<select id="getAuthorization"
 		resultType="kr.co.hanokproject.hanok.HanokVO">
 		SELECT h.*
 		FROM HANOKS h
-		JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
+		JOIN USERS_OWNER uo ON h.owner_id =
+		uo.owner_id
 		WHERE
 		h.owner_id = #{h.owner_id}
-		
+
 
 	</select>
-	
-	
-	
+
+	<select id="getRequestAuthorization"
+		resultType="kr.co.hanokproject.hanok.HanokVO">
 
 
+		SELECT h.*, uo.owner_id
+		FROM HANOKS h
+		JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
+		WHERE h.owner_id = #{h.owner_id}
 
+	</select>
+
+	<update id="updateHanokStatus" parameterType="map">
+    UPDATE HANOKS
+    SET hanok_status = #{hanok_status}
+    WHERE hanok_id = #{hanok_id}
+</update>
 
 
 

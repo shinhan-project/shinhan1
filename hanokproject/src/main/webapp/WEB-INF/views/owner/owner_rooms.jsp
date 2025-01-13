@@ -92,7 +92,7 @@
 							<div class="navbar navbar-expand-xl">
 								<ul class="navbar-nav navbar-offcanvas-menu">
 
-									<li class="nav-item"><a class="nav-link active"
+									<li class="nav-item"><a class="nav-link "
 										href="/owner/owner_dash.do"><i
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
@@ -200,26 +200,76 @@
 									<h5 class="fw-light mb-4">Main Highlights</h5>
 
 									<!-- Highlights Icons -->
+									<div class="d-flex flex-wrap gap-3">
+										
+										
+						
+										<!-- 샤워 0 -->
+										<c:if test="${vo.hanok_service0 == true }">
+										<div class="icon-lg bg-light h5 rounded-2"
+											data-bs-toggle="tooltip" data-bs-placement="top"
+											title="bath">
+											<i class="fa-solid fa-bath"></i>
+										</div>
+										</c:if>
+										<!-- 애완동물1 -->
+										<c:if test="${vo.hanok_service1 == true }">
+										<div class="icon-lg bg-light h5 rounded-2"
+											data-bs-toggle="tooltip" data-bs-placement="top"
+											title="Pet Friendly">
+											<i class="fa-solid fa-dog"></i>
+										</div>
+										</c:if>
+											<!-- TV 2-->
+										<c:if test="${vo.hanok_service2 == true }">
+										<div class="icon-lg bg-light h5 rounded-2"
+											data-bs-toggle="tooltip" data-bs-placement="top"
+											title="OTT">
+											<i class="fa-solid fa-tv"></i>
+										</div>
+										</c:if>
+										<!-- 와이파이 3 -->
+										<c:if test= "${vo.hanok_service3 == true }">
 									<div class="hstack gap-3 mb-3">
 										<div class="icon-lg bg-light h5 rounded-2"
 											data-bs-toggle="tooltip" data-bs-placement="top"
 											title="Free wifi">
 											<i class="fa-solid fa-wifi"></i>
+										</div></c:if>
+										
+										<!-- 고기4 -->
+										<c:if test="${vo.hanok_service4 == true }">
+										<div class="icon-lg bg-light h5 rounded-2"
+											data-bs-toggle="tooltip" data-bs-placement="top"
+											title="BBQ">
+											<i class="fa-solid fa-fire"></i>
 										</div>
+										</c:if>
+								
+										<!-- 주방 5-->
+										<c:if test="${vo.hanok_service5 == true }">
+										<div class="icon-lg bg-light h5 rounded-2"
+											data-bs-toggle="tooltip" data-bs-placement="top"
+											title="Kitchen">
+											<i class="fa-solid fa-utensils"></i>
+										</div>
+										</c:if>
+										<!-- 수영장 6 -->
+										<c:if test= "${vo.hanok_service6 == true }">
 										<div class="icon-lg bg-light h5 rounded-2"
 											data-bs-toggle="tooltip" data-bs-placement="top"
 											title="Swimming Pool">
 											<i class="fa-solid fa-swimming-pool"></i>
-										</div>
+										</div></c:if>
+											
+											<!-- 주차7 -->
+											<c:if test="${vo.hanok_service7 == true }">
 										<div class="icon-lg bg-light h5 rounded-2"
 											data-bs-toggle="tooltip" data-bs-placement="top"
-											title="Central AC">
-											<i class="fa-solid fa-snowflake"></i>
+											title="parking">
+											<i class="fa-solid fa-parking"></i>
 										</div>
-										<div class="icon-lg bg-light h5 rounded-2"
-											data-bs-toggle="tooltip" data-bs-placement="top"
-											title="Free Service">
-											<i class="fa-solid fa-concierge-bell"></i>
+										</c:if>
 										</div>
 									</div>
 									<!-- hanok_description 넣기 -->
@@ -232,7 +282,7 @@
 									<h5 class="fw-light mb-2">Advantages</h5>
 									<ul class="list-group list-group-borderless mb-0">
 										<li class="list-group-item h6 fw-light d-flex mb-0"><i
-											class="bi bi-patch-check-fill text-success me-2"></i>${vo.hanok_serviceETC}</li>
+											class="bi bi-patch-check-fill text-success me-2">${vo.hanok_serviceETC}</i></li>
 										
 										
 									</ul>
@@ -271,25 +321,7 @@
 											</ul>
 										</div>
 
-										<!-- Services -->
-										<div class="col-sm-6">
-											<h6>
-												<i class="fa-solid fa-concierge-bell me-2"></i>Services
-											</h6>
-											<!-- List -->
-											<ul class="list-group list-group-borderless mt-2 mb-0">
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Dry
-													cleaning</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Room
-													Service</li>
-												<li class="list-group-item pb-0"><i
-													class="fa-solid fa-check-circle text-success me-2"></i>Special
-													service</li>
-												
-											</ul>
-										</div>
+								
 
 										<!-- Safety & Security -->
 										<div class="col-sm-6">
@@ -335,7 +367,7 @@
 											<!-- Room item START -->
 											<div class="card shadow p-3">
 												<div class="row g-4">
-
+														<div><img src="/images/rooms/${roomList.room_imgName}" alt="Card image"></div>
 
 													<!-- Card body -->
 													<div class="col-md-7">
@@ -472,152 +504,6 @@ About hotel END -->
 
 
 
-	<!-- Map modal START -->
-	<div class="modal fade" id="mapmodal" tabindex="-1"
-		aria-labelledby="mapmodalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
-			<div class="modal-content">
-				<!-- Title -->
-				<div class="modal-header">
-					<h5 class="modal-title" id="mapmodalLabel">View Our Hotel
-						Location</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<!-- Map -->
-				<div class="modal-body p-0">
-					<iframe class="w-100" height="400"
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
-						style="border: 0;" aria-hidden="false" tabindex="0"></iframe>
-				</div>
-				<!-- Button -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-sm btn-primary mb-0">
-						<i class="bi fa-fw bi-pin-map-fill me-2"></i>View In Google Map
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Map modal END -->
-
-	<!-- Room modal START -->
-	<div class="modal fade" id="roomDetail" tabindex="-1"
-		aria-labelledby="roomDetailLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content p-0">
-
-				<!-- Title -->
-				<div class="modal-header p-3">
-					<h5 class="modal-title mb-0" id="roomDetailLabel">Room detail</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body p-0">
-
-					<!-- Card START -->
-					<div class="card bg-transparent p-3">
-						<!-- Slider START -->
-						<div
-							class="tiny-slider arrow-round arrow-dark overflow-hidden rounded-2">
-							<div class="tiny-slider-inner rounded-2 overflow-hidden"
-								data-autoplay="true" data-arrow="true" data-dots="false"
-								data-items="1">
-								<!-- Image item -->
-								<div>
-									<img src="/images/gallery/16.jpg" class="rounded-2"
-										alt="Card image">
-								</div>
-
-								<!-- Image item -->
-								<div>
-									<img src="/images/gallery/15.jpg" class="rounded-2"
-										alt="Card image">
-								</div>
-
-								<!-- Image item -->
-								<div>
-									<img src="/images/gallery/13.jpg" class="rounded-2"
-										alt="Card image">
-								</div>
-
-								<!-- Image item -->
-								<div>
-									<img src="/images/gallery/12.jpg" class="rounded-2"
-										alt="Card image">
-								</div>
-							</div>
-						</div>
-						<!-- Slider END -->
-
-						<!-- Card header -->
-						<div class="card-header bg-transparent pb-0">
-							<h3 class="card-title mb-0">Deluxe Pool View</h3>
-						</div>
-
-						<!-- Card body START -->
-						<div class="card-body">
-							<!-- Content -->
-							<p>Club rooms are well furnished with air conditioner, 32
-								inch LCD television and a mini bar. They have attached bathroom
-								with showerhead and hair dryer and 24 hours supply of hot and
-								cold running water. Complimentary wireless internet access is
-								available. Additional amenities include bottled water, a safe
-								and a desk.</p>
-
-							<div class="row">
-								<h5 class="mb-0">Amenities</h5>
-
-								<!-- List -->
-								<div class="col-md-6">
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-0">
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">Swimming pool</span></li>
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">Spa</span></li>
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">Kids play area.</span></li>
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">Gym</span></li>
-									</ul>
-								</div>
-
-								<!-- List -->
-								<div class="col-md-6">
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-0">
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">TV</span></li>
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">Mirror</span></li>
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">AC</span></li>
-										<li class="list-group-item d-flex mb-0"><i
-											class="fa-solid fa-check-circle text-success me-2"></i><span
-											class="h6 fw-light mb-0">Slippers</span></li>
-									</ul>
-								</div>
-							</div>
-							<!-- Row END -->
-						</div>
-						<!-- Card body END -->
-					</div>
-					<!-- Card END -->
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Room modal END -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 	<!-- Back to top -->
 	<div class="back-top"></div>

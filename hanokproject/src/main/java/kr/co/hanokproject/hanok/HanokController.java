@@ -38,10 +38,10 @@ public class HanokController {
     public String authorization(@SessionAttribute("ownerloginInfo") OwnerVO vo, Model model) {
     	
         List<HanokVO> author= service.getAuthorization(vo.getOwner_id());
-        
+        List<HanokVO> requestowner= service.getRequestAuthorization(vo.getOwner_id());
     
         model.addAttribute("author", author);
-
+        model.addAttribute("requestowner", requestowner);
       
         
  

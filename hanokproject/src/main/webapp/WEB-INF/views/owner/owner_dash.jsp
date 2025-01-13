@@ -94,7 +94,7 @@
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
 									<li class="nav-item"><a class="nav-link "
-										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+										href="/review/owner"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 									
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
 									<li class="nav-item"> <a class="nav-link" href="/owner/owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
@@ -128,9 +128,9 @@ Content START -->
 				<!-- Title END -->
 
 				<!-- Counter START -->
-				<div class="row g-4">
+				<div class="row g-6">
 					<!-- Counter item -->
-					<div class="col-sm-6 col-xl-3">
+					<div class="col-sm-6 col-xl-4">
 						<div class="card card-body border">
 							<div class="d-flex align-items-center">
 								<!-- Icon -->
@@ -143,14 +143,14 @@ Content START -->
 									<!-- 여기에 count(사장님이 가지고 있는 방의 예약 수) -->
 									<h4>${reservationsCount}</h4>
 
-									<span>Total reservations</span>
+									<span>총 예약 수</span>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Counter item -->
-					<div class="col-sm-6 col-xl-3">
+					<div class="col-sm-6 col-xl-4">
 						<div class="card card-body border">
 							<div class="d-flex align-items-center">
 								<!-- Icon -->
@@ -159,9 +159,9 @@ Content START -->
 								</div>
 								<!-- Content -->
 								<div class="ms-3">
-									<!-- 사장님 수입 -->
+									<!-- 사장님 수익 -->
 									<h4>₩ ${reservationsEarning}</h4>
-									<span>Earning</span>
+									<span>총 수익</span>
 								</div>
 							</div>
 						</div>
@@ -170,7 +170,7 @@ Content START -->
 
 
 					<!-- Counter item -->
-					<div class="col-sm-6 col-xl-3">
+					<div class="col-sm-6 col-xl-4">
 						<div class="card card-body border">
 							<div class="d-flex align-items-center">
 								<!-- Icon -->
@@ -181,7 +181,7 @@ Content START -->
 								<div class="ms-3">
 									<h4>${reservationsReviewCount}</h4>
 									<!-- 리뷰 갯수 -->
-									<span>Total Reviews</span>
+									<span>총 리뷰수</span>
 								</div>
 							</div>
 						</div>

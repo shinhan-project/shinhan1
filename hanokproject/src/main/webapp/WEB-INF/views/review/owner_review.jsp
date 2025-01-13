@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Owner_Reviews</title>
+<title>My Hanoks Listings</title>
 
 <!-- Meta Tags -->
 <meta charset="utf-8">
@@ -14,7 +14,6 @@
 <meta name="author" content="Webestica.com">
 <meta name="description"
 	content="Booking - Multipurpose Online Booking Theme">
-
 
 
 <!-- Favicon -->
@@ -32,7 +31,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/vendor/bootstrap-icons/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css"
-	href="/vendor/flatpickr/css/flatpickr.min.css">
+	href="/vendor/apexcharts/css/apexcharts.css">
 <link rel="stylesheet" type="text/css"
 	href="/vendor/choices/css/choices.min.css">
 
@@ -43,13 +42,14 @@
 
 <body>
 <%@ include file="/WEB-INF/views/include/owner_header.jsp" %>
+	<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	<!-- **************** MAIN CONTENT START **************** -->
 
-	<c:if test="${!empty ownerloginInfo}">
-	
-		<!-- **************** MAIN CONTENT START **************** -->
-	<main>
-
-			<section class="pt-4">
+<c:if test="${!empty ownerloginInfo}">
+		<!-- =======================
+Menu item START -->
+		<section class="pt-4">
 			<div class="container">
 				<div class="card rounded-3 border p-3 pb-2">
 					<!-- Avatar and info START -->
@@ -61,7 +61,7 @@
 						<h4 class="mb-2 mb-sm-0 ms-sm-3">
 							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
 						</h4>
-						<a href="add-listing.html"
+						<a href="/owner/enrollConfirm.do"
 							class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
 							class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
 					</div>
@@ -93,10 +93,10 @@
 										href="/owner/owner_dash.do"><i
 											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
 									<!-- Review 목록 페이지 -->
-									<li class="nav-item"><a class="nav-link active"
-										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+									<li class="nav-item"><a class="nav-link "
+										href="/review/owner"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 									
-									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+									<li class="nav-item"> <a class="nav-link active" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
 									<li class="nav-item"> <a class="nav-link" href="owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
 									<li><a class="nav-link" href="/owner/owner_profile.do"><i class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
@@ -109,12 +109,9 @@
 			</div>
 			
 		</section>
-	</c:if>
-
-
-	<!-- **************** MAIN CONTENT START **************** -->
-	<main>
-
+		</c:if>
+		<!-- =======================
+Menu item END -->
 
 		<!-- =======================
 Content START -->
@@ -124,116 +121,99 @@ Content START -->
 				<div class="row">
 					<div class="col-12">
 						<h1 class="fs-4 mb-0">
-							<i
-												class="bi bi-star fa-fw me-1"></i>Reviews
+							<i class="bi bi-journals fa-fw me-1"></i>Reviews
 						</h1>
 					</div>
 				</div>
 				<!-- Title END -->
 
-				
-				<!--  Content START -->
-				<div class="row g-4">
+
+				<!-- Listing table START -->
+				<div class="row">
 					<div class="col-12">
-						<div class="tab-content">
-							<!-- Tab content 1 START -->
-							<div class="tab-pane show active" id="tab-1">
-								<div class="row g-4">
-									<!-- Edit profile START -->
-									
-									<div class="col-12">
-										<div class="card border">
-											
-											
-											
-											<div class="card-body">
-											
-												<!-- Reviews START -->
-			<div class="vstack gap-4 mt-5">
-				
-				
-				<c:forEach items="${reviews}" var="review">
-				
-				<!-- Review item -->
-				<div class="row g-3 g-lg-4">
-					<div class="col-md-4 col-xxl-3">
-						<!-- Avatar and info -->
-						<div class="d-flex align-items-center">
-							<!-- Avatar -->
-							<div class=" me-2 flex-shrink-0 adjust-right">
-							    <img src="/images/hanoks/${review.hanok_imgName}" class="card-img img-fluid rounded-2 fixed-image" style="width: 150px; " alt="Card image">
 
+						<div class="card border">
+							<!-- Card header -->
+							<div class="card-header border-bottom">
+								<h5 class="card-header-title">
+									My Reviews
+								</h5>
 							</div>
-							<!-- Info -->
-							<div class="ms-2">
-								<h5 class="mb-1">${review.hanok_name}</h5>
-								<p><span class="text-body fw-light">예약번호 </span> ${review.reservations_id}</p>
-								
-							</div>
-						</div>
-					</div>
+<!-- 여기부터 나의 한옥 리스트 보이게 하는거! 여기부터 반복문이 되어야 함! -->
 
-					<div class="col-md-8 col-xxl-9">
-						<!-- Rating -->
-						
-						<ul class="list-inline mb-2">
-						    <!-- 1st star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 1 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 2nd star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 2 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 3rd star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 3 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 4th star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 4 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <!-- 5th star -->
-						    <li class="list-inline-item me-0">
-						        <i class="fas fa-star ${review.rating >= 5 ? 'text-warning' : 'text-muted'}"></i>
-						    </li>
-						    <fmt:formatDate value="${review.review_date}" pattern="yyyy년 M월 d일" var="formattedDate"/>
-								<p class="mb-0">Reviewed ${formattedDate}</p>
-						</ul>
+<c:forEach items="${reviews}" var="review">
+							<!-- Card body START -->
+							<div class="card-body vstack gap-3">
+								<!-- Listing item START -->
+								<div class="card border p-2">
+									<div class="row g-4">
+										<!-- Card img -->
+										<div class="col-md-3 col-lg-2">
+											<img src="/images/hanoks/${review.hanok_imgName}"
+												class="card-img rounded-2" alt="Card image">
+										</div>
 
-						
-						<p>${review.review_content}</p>
+										<!-- Card body -->
+										<div class="col-md-9 col-lg-10">
+											<div
+												class="card-body position-relative d-flex flex-column p-0 h-100">
 
-						
-					</div>
-				</div>
-				<hr class="m-0"> <!-- Divider -->
-				</c:forEach>
+												
 
-				
+												 <!-- Flex container -->
+        <div class="col-md-9 col-lg-10">
+    <div class="card-body position-relative d-flex flex-column p-0 h-100">
+        <!-- Flex container -->
+        <div class="row">
+            <!-- 왼쪽 섹션 -->
+            <div class="col-4 d-flex flex-column">
+                <h5 class="mb-1">${review.hanok_name}</h5>
+                <p class="mb-0"><span class="text-body fw-light">예약번호</span> ${review.reservations_id}</p>
+            </div>
 
-				
-
-				
-			</div>	
-			<!-- Reviews END -->
+            <!-- 오른쪽 섹션 -->
+            <div class="col-8 d-flex flex-column">
+                <!-- 별점 -->
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 1 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 2 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 3 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 4 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                    <li class="list-inline-item me-0">
+                        <i class="fas fa-star ${review.rating >= 5 ? 'text-warning' : 'text-muted'}"></i>
+                    </li>
+                </ul>
+                <!-- 리뷰 날짜 -->
+                <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd" var="formattedDate"/>
+                <p class="mb-2">Reviewed on ${formattedDate}</p>
+                <!-- 리뷰 내용 -->
+                <p>${review.review_content}</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 											</div>
 										</div>
 									</div>
-									<!-- Edit profile END -->
-
-
-
 								</div>
+								<!-- Listing item END -->
+
 							</div>
-							<!-- Tab content 1 END -->
-
-
+							</c:forEach>
+							<!-- Card body END -->
 						</div>
 					</div>
 				</div>
-				<!-- Tabs Content END -->
+				<!-- Listing table END -->
 			</div>
 		</section>
 		<!-- =======================
@@ -243,6 +223,7 @@ Content END -->
 	<!-- **************** MAIN CONTENT END **************** -->
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 	<!-- Back to top -->
 	<div class="back-top"></div>
 
@@ -250,7 +231,7 @@ Content END -->
 	<script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Vendors -->
-	<script src="/vendor/flatpickr/js/flatpickr.min.js"></script>
+	<script src="/vendor/apexcharts/js/apexcharts.min.js"></script>
 	<script src="/vendor/choices/js/choices.min.js"></script>
 
 	<!-- ThemeFunctions -->

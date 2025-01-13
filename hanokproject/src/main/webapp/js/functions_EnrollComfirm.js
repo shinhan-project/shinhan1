@@ -1,20 +1,9 @@
-// function creaeteFileName(number){
-//     let today = new Date();
-//     let year = today.getFullYear(); // 년도
-//     let month = today.getMonth() + 1;  // 월
-//     let date = today.getDate();  // 날짜
-//     let day = today.getDay();  // 요일
-//     let hours = today.getHours(); // 시
-//     let minutes = today.getMinutes();  // 분
-//     let seconds = today.getSeconds();  // 초
-
-//     return  "hanok_Img_"+year+month+date+day+hours+minutes+seconds+"_"+number;
-// }
-
 // 한옥 이미지 추가
 function hanok_ImgAdd(){
     document.getElementById("hanok_input_file").addEventListener('change', function(event) {
         let files = event.target.files;
+        let hImageButtonList = document.getElementById("hanok_imageButtonList");
+
         if(files && files[0]) {
     
     const checkfile = files[0];
@@ -29,7 +18,16 @@ function hanok_ImgAdd(){
 			        return;
         			}
         		}
-    
+                
+                let maxFileCnt = 4;   // 첨부파일 최대 개수
+                let attFileCnt = hImageButtonList.querySelectorAll('.hanok_imageButtonSet').length;    // 기존 추가된 첨부파일 개수
+                console.log(attFileCnt);
+                var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
+                if (files.length > remainFileCnt){
+                    alert ("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+                    return;
+                }
+
             for(let i =0; i < files.length; i++){
             let reader = new FileReader();
     
@@ -39,9 +37,7 @@ function hanok_ImgAdd(){
                 let hImageButtonSet = document.createElement('div');
                 hImageButtonSet.setAttribute("class", "hanok_imageButtonSet");
                 
-                let hImageButtonList;
-                
-                hImageButtonList = document.getElementById("hanok_imageButtonList");
+
                 hImageButtonList.appendChild(hImageButtonSet);
     
                 let hImageButton = document.createElement('button');
@@ -84,7 +80,7 @@ function hanok_ImgAdd(){
     function roomAdd(){
         let rList = document.getElementById("roomlist");
         let newOption = document.createElement("option");
-        newOption.textContent = "새로운객실";
+        newOption.textContent = "새로운 객실";
         rList.appendChild(newOption);
     
         let container_rList = document.getElementById("container_roomList");
@@ -151,6 +147,16 @@ function hanok_ImgAdd(){
                     rImageButton.onclick = function(){ func_roomImageButton(rimages[rSelect.selectedIndex + 1], imgElement_src)  };
                     rImageButton.setAttribute("style", "background-image: url(" + imgElement_src + ")");
                     
+
+                    if (imgElement_src.indexOf("data:image/png") != -1){
+                        imgElement_src = imgElement_src.replace("data:image/png;base64,", "");
+                   }
+                   else if (imgElement_src.indexOf("data:image/jpeg") != -1){
+                         imgElement_src = imgElement_src.replace("data:image/jpeg;base64,", "");
+                   }
+
+                    newrList_RightDisplay.querySelector(".room_image").setAttribute("src", imgElement_src);
+
                     let rImageButtonCancel = document.createElement('button');
                     rImageButtonCancel.setAttribute("id", "room_imageButtonCancel");
                     rImageButtonCancel.onclick = function(){ func_roomImageButtonCancel(rImageButtonSet, rimages[rSelect.selectedIndex + 1])};
@@ -160,6 +166,8 @@ function hanok_ImgAdd(){
                     rImageButtonSet.appendChild(rImageButtonCancel);
                 }
     
+                // rOrigin_imgBtns[0].getAttribute("img_base64data")
+
         // 이미지 복사 부분 생성
         container_rList.appendChild(newrList_RightDisplay);
     
@@ -300,6 +308,7 @@ function hanok_ImgAdd(){
         // 한옥 정보 승인 요청 보내기
         async function enroll_TempSave() {
             if (confirm('승인 요청 하시겠습니까?')) {
+            	showLoader();
                 let hanok_services = $(".hanok_services");
                 let hImageButtonList = $("#hanok_imageButtonList");
                 let hanok_imageButtonSets = [];
@@ -472,10 +481,26 @@ function hanok_ImgAdd(){
                         await $.ajax(roomRequests[i]);
                         console.log("객실 모든 요청 완료");
                     }
+                    alert("승인 요청이 완료되었습니다.");
+                    location.href = "/owner/owner_dash.do";
                     
                  } catch (error) {
                         console.log("어떤 요청에서 오류 발생" + error);
+                        hideLoader();
+                        alert("승인 요청을 실패하였습니다.");
                  }
                 
             }
         }
+        
+
+
+function showLoader() {
+const loader = document.querySelector(".loader");
+  loader.style.display = "block";
+}
+
+function hideLoader() {
+const loader = document.querySelector(".loader");
+  loader.style.display = "none";
+}

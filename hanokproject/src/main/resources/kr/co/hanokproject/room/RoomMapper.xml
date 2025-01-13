@@ -9,13 +9,14 @@
 	<select id="getRoomList"
 		resultType="kr.co.hanokproject.room.RoomVO" parameterType="int">
 		
-		SELECT r.*,i.hanok_imgName
+		SELECT r.*,i.hanok_imgName, ri.room_imgName
 		FROM ROOMS r
 		JOIN HANOKS h ON r.hanok_id = h.hanok_id
 		JOIN USERS_OWNER
 		uo ON h.owner_id = uo.owner_id
 		JOIN HANOK_IMAGES i ON h.hanok_id = i.hanok_id
-		WHERE h.hanok_id = #{uo.hanok_id};
+		JOIN ROOM_IMAGES ri ON r.room_id = ri.room_id
+		WHERE h.hanok_id =#{uo.hanok_id};
 		
 	</select>
 	
