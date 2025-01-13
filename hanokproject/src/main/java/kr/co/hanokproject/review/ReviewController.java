@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.hanokproject.customer.CustomerVO;
+import kr.co.hanokproject.owner.OwnerVO;
 import kr.co.hanokproject.reservation.ReservationService;
 import kr.co.hanokproject.reservation.ReservationVO;
 
@@ -71,9 +72,9 @@ public class ReviewController {
     }
     
     // 사장님 리뷰 조회
-    @GetMapping("/owner/{owner_id}")
-    public String getOwnerReviews(@PathVariable int owner_id, Model model) {
-        List<ReviewVO> reviews = reviewService.getOwnerReviews(owner_id);
+    @GetMapping("/owner")
+    public String getOwnerReviews(@SessionAttribute("ownerloginInfo") OwnerVO vo, Model model) {
+        List<ReviewVO> reviews = reviewService.getOwnerReviews(vo.getOwner_id());
         model.addAttribute("reviews", reviews);
         for (ReviewVO review : reviews) {
             System.out.println("Review Date: " + review.getReview_date());
