@@ -16,6 +16,8 @@ public interface HanokMapper {
 	HanokVO getHanokById(int hanok_id);
 
 	List<HanokVO> getAuthorization(int owner_id);
+
+	List<HanokVO> getRequestAuthorization(int owner_id);
 	
 
 	

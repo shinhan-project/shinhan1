@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.hanokproject.hanok.HanokVO;
+
 
 
 @Mapper
@@ -22,4 +24,6 @@ public interface OwnerMapper {
 
 	// 사장장정보 수정
 	int update(OwnerVO vo);
+
+	
 }

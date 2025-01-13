@@ -140,15 +140,15 @@ Content START -->
          <c:set var="status2Count" value="0" />
 
          <!-- Counting status occurrences -->
-         <c:forEach var="request" items="${request}">
+         <c:forEach var="requestowner" items="${requestowner}">
             <c:choose>
-               <c:when test="${request.status == 0}">
+               <c:when test="${requestowner.hanok_status == 0}">
                   <c:set var="status0Count" value="${status0Count + 1}" />
                </c:when>
-               <c:when test="${request.status == 1}">
+               <c:when test="${requestowner.hanok_status == 1}">
                   <c:set var="status1Count" value="${status1Count + 1}" />
                </c:when>
-               <c:when test="${request.status == 2}">
+               <c:when test="${requestowner.hanok_status == 2}">
                   <c:set var="status2Count" value="${status2Count + 1}" />
                </c:when>
             </c:choose>

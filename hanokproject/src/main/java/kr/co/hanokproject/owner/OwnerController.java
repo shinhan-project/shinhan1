@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kr.co.hanokproject.admin.AdminVO;
+import kr.co.hanokproject.hanok.HanokVO;
+
 
 
 @Controller
@@ -101,6 +104,8 @@ public class OwnerController {
 		        model.addAttribute("url",url);
 		        return "common/alert";
 		    }
+
+		    
 
 		   
 		   

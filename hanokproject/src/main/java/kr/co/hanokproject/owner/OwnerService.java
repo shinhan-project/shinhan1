@@ -3,6 +3,8 @@ package kr.co.hanokproject.owner;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.hanokproject.hanok.HanokVO;
+
 
 
 public interface OwnerService {
@@ -18,6 +20,7 @@ public interface OwnerService {
 	
 	// 회원정보 수정
 	int update(OwnerVO vo);
+
 
 
 
