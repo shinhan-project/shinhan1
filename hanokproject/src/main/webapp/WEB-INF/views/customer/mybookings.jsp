@@ -147,13 +147,12 @@ Content START -->
 
 							<!-- Tab content item START -->
 							<div class="tab-pane fade show active" id="tab-1">
-								<c:forEach items="${reservations}" var="reservation">
-								<h6 class="fs-7" style="margin-left: 10px;">Reservation No. ${reservation.reservations_id}</h6>
                 <!-- Card item START -->
                
 					<div class="card shadow p-2">
 						<div class="row g-0">
-						
+						<c:forEach items="${reservations}" var="reservation">
+								<h6 class="fs-7" style="margin-left: 10px;">Reservation No. ${reservation.reservations_id}</h6>
 						<div class="d-flex align-items-center">
 						<div class="col-md-7 adjust-right">
 								<img src="/images/hanoks/${reservation.hanok_imgName}" class="card-img rounded-2 fixed-image" alt="Card image" style="width: 70%;">
