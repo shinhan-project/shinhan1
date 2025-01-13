@@ -400,6 +400,10 @@
 								        </c:when>
 								    </c:choose>
 								</div>
+								<div class="d-grid">
+									<a href="/admin/admin_dash.do"
+										class="btn btn-lg btn-primary-soft mb-0">Go to Dashboard</a>
+								</div>
 							</div>
 							<!-- Book now END -->
 
