@@ -43,6 +43,7 @@
 	
 	
 	
+<%@ include file="/WEB-INF/views/include/admin_header.jsp" %>
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
