@@ -13,11 +13,13 @@
 	<select id="getRequest"
       resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="int">
       
-      SELECT h.*, uo.owner_id 
+      SELECT h.*, uo.owner_id
       FROM HANOKS h
       JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
       
       
    </select>
+   	
+ 
 	
 </mapper>

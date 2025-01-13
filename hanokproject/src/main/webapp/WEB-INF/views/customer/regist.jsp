@@ -40,7 +40,7 @@
 <!-- =======================
 Main Content START -->
 <section class="vh-xxl-100">
-	<div class="container h-100 d-flex px-0 px-sm-4">
+	<div class="container h-100 d-flex px-0 px-sm-4" style="margin: 0 70; padding: 20px;">
 		<div class="row justify-content-center align-items-center m-auto">
 			<div class="col-12">
 				<div class="bg-mode shadow rounded-3 overflow-hidden">
@@ -135,7 +135,7 @@ Main Content END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 <!-- Back to top -->
 <div class="back-top"></div>
 

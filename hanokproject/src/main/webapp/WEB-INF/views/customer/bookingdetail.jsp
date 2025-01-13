@@ -13,10 +13,6 @@
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
 
 	
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/main
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
 

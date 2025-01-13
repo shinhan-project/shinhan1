@@ -9,13 +9,13 @@
 		hanok_url, hanok_description,
 		hanok_service0, hanok_service1, hanok_service2, hanok_service3,
 		hanok_service4, hanok_service5, hanok_service6, hanok_service7,
-		hanok_serviceETC, hanok_status, hanok_score
+		hanok_serviceETC, hanok_status, hanok_score, hanok_requestdate
 		) VALUES (
 		#{owner_id}, #{hanok_name}, #{hanok_tel}, #{hanok_address},
 		#{hanok_url}, #{hanok_description},
 		#{hanok_service0}, #{hanok_service1}, #{hanok_service2}, #{hanok_service3},
 		#{hanok_service4}, #{hanok_service5}, #{hanok_service6}, #{hanok_service7},
-		#{hanok_serviceETC}, #{hanok_status}, #{hanok_score}
+		#{hanok_serviceETC}, #{hanok_status}, #{hanok_score}, NOW()
 		)
 		<selectKey order="AFTER" keyProperty="hanok_id" resultType="int">
 			SELECT LAST_INSERT_ID()

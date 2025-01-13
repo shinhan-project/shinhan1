@@ -146,14 +146,6 @@ function hanok_ImgAdd(){
                     rImageButton.setAttribute("img_base64data", imgElement_src);
                     rImageButton.onclick = function(){ func_roomImageButton(rimages[rSelect.selectedIndex + 1], imgElement_src)  };
                     rImageButton.setAttribute("style", "background-image: url(" + imgElement_src + ")");
-                    
-
-                    if (imgElement_src.indexOf("data:image/png") != -1){
-                        imgElement_src = imgElement_src.replace("data:image/png;base64,", "");
-                   }
-                   else if (imgElement_src.indexOf("data:image/jpeg") != -1){
-                         imgElement_src = imgElement_src.replace("data:image/jpeg;base64,", "");
-                   }
 
                     newrList_RightDisplay.querySelector(".room_image").setAttribute("src", imgElement_src);
 
