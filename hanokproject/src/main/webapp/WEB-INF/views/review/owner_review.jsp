@@ -97,7 +97,7 @@ Menu item START -->
 										href="/review/owner"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 									
 									<li class="nav-item"> <a class="nav-link active" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
-									<li class="nav-item"> <a class="nav-link" href="owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
+									<li class="nav-item"> <a class="nav-link" href="/owner/owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
 									<li><a class="nav-link" href="/owner/owner_profile.do"><i class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
 								</ul>
