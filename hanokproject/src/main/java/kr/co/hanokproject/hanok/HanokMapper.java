@@ -1,6 +1,7 @@
 package kr.co.hanokproject.hanok;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -22,7 +23,7 @@ public interface HanokMapper {
 
 	
 
-    int updateHanokStatus(int hanok_id, int status);
+	int updateHanokStatus(Map<String, Object> paramMap);
 	
 	
 

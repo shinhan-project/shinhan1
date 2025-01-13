@@ -378,14 +378,27 @@
 
 								
 
-								<p class="h6 fw-light mb-4">
-									<i class="bi bi-arrow-right me-2"></i>return hanok List page
-								</p>
-
-								<!-- Button -->
-								<div class="d-grid">
-									<a href="/owner/owner_listings.do"
-										class="btn btn-lg btn-primary-soft mb-0">hanok List</a>
+								<!-- 상태에 따라 버튼 또는 메시지 표시 -->
+								<div>
+								    <c:choose>
+								        <c:when test="${vo.hanok_status == 0}">
+								            <form action="/admin/approve.do" method="post">
+								                <input type="hidden" name="hanok_id" value="${vo.hanok_id}" />
+								                <button type="submit" name="hanok_status" value="2" class="btn btn-success">
+								                    승인
+								                </button>
+								                <button type="submit" name="hanok_status" value="1" class="btn btn-danger">
+								                    거절
+								                </button>
+								            </form>
+								        </c:when>
+								        <c:when test="${vo.hanok_status == 1}">
+								            <p class="text-danger">거절된 한옥입니다.</p>
+								        </c:when>
+								        <c:when test="${vo.hanok_status == 2}">
+								            <p class="text-success">승인된 한옥입니다.</p>
+								        </c:when>
+								    </c:choose>
 								</div>
 							</div>
 							<!-- Book now END -->

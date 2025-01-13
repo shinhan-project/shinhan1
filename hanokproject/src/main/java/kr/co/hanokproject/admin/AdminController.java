@@ -100,16 +100,16 @@ public class AdminController {
 	    @PostMapping("/admin/approve.do")
 	    public String updateHanokStatus(
 	            @RequestParam("hanok_id") int hanokId,
-	            @RequestParam("status") int status,
+	            @RequestParam("hanok_status") int hanokStatus,  // 수정: 파라미터 이름을 일관되게 사용
 	            Model model) {
 
-	        boolean result = hanokService.updateHanokStatus(hanokId, status);
+	        boolean result = hanokService.updateHanokStatus(hanokId, hanokStatus);
 	        if (result) {
-	            model.addAttribute("msg", status == 2 ? "승인되었습니다." : "거절되었습니다.");
+	            model.addAttribute("msg", hanokStatus == 2 ? "승인되었습니다." : "거절되었습니다.");
 	        } else {
 	            model.addAttribute("msg", "처리 중 오류가 발생했습니다.");
 	        }
-	        model.addAttribute("url", "/admin/hanokList.do"); // 임시 리스트 페이지 경로
+	        model.addAttribute("url", "/admin/admin_dash.do");
 	        return "common/alert";
 	    }
 	
