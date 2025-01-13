@@ -69,11 +69,11 @@ public class EnrollController {
 		enrollVO.setHanok_status(0);	// 임시 저장 상태
 		enrollVO.setOwner_id(vo.getOwner_id());		// 사장님 번호 임시 저장
 		enrollVO.setHanok_score(0);
-		if (service.tempSave(enrollVO)) {
-			System.out.println("한옥정보 상단 저장 완료");
-		}else {
-			System.out.println("한옥정보 상단 저장 실패");
-		}
+//		if (service.tempSave(enrollVO)) {
+//			System.out.println("한옥정보 상단 저장 완료");
+//		}else {
+//			System.out.println("한옥정보 상단 저장 실패");
+//		}
 		
 		hanok_id = enrollVO.getHanok_id();
 		return enrollVO;
@@ -108,19 +108,19 @@ public class EnrollController {
 		if(base64Image != "") {
 			try {
 				saveBase64Image(base64Image, filePath);
-				System.out.println("이미지 로컬 저장 완료");
+//				System.out.println("이미지 로컬 저장 완료");
 				
 				enrollHanokImageVO.setHanok_id(hanok_id);
 				enrollHanokImageVO.setHanok_imgName(fileName);
 				
-				if (service.hanokImageSave(enrollHanokImageVO)) {
-					System.out.println("한옥 이미지 데이터 저장이 완료");
-				}else {
-					System.out.println("한옥 이미지 데이터 저장 실패");
-				}
+//				if (service.hanokImageSave(enrollHanokImageVO)) {
+//					System.out.println("한옥 이미지 데이터 저장이 완료");
+//				}else {
+//					System.out.println("한옥 이미지 데이터 저장 실패");
+//				}
 				
 			} catch (IOException e) {
-				System.out.println("이미지 로컬 저장 중 오류가 발생");
+//				System.out.println("이미지 로컬 저장 중 오류가 발생");
 				e.printStackTrace();
 			}
 		}
