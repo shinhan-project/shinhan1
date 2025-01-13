@@ -45,10 +45,9 @@
 
 <!-- Theme CSS -->
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-
     </head>
-<%@ include file="/WEB-INF/views/include/owner_header.jsp" %>	
+<%@ include file="/WEB-INF/views/include/owner_header.jsp" %>
+<!--  body Start -->	
     <body>
         <div id="roomList_rightDisplayCopy" style="display: none;">
             <div class="roomList_right">
