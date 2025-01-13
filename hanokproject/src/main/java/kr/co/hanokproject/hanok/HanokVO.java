@@ -18,9 +18,10 @@ public class HanokVO {
 		private String hanok_description;
 		private boolean[] hanok_service;
 		private String hanok_serviceETC;
-		private int status;
+		private int hanok_status;
 		private double hanok_score;
 		private String hanok_imgName;
+		private int owner_id;
 		
 	
 		

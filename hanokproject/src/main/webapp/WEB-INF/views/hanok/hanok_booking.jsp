@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>예약페이지 - ${hanokDetail.hanokName}</title>
+<title>예약페이지 - ${roomMap.room_name}</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -86,51 +86,80 @@
 	<script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
+	window.addEventListener('DOMContentLoaded', () => {
 		var IMP = window.IMP; 
 		IMP.init("imp02723803");
-		var name = $("#name").val();
-	    var phone = $("#phone").val();
-	    var email = $("#email").val();
-	    var address = $("#address").text();
-	    var price = $("#total-price").val();
-	    let pg = "";
-	    let payMethod = "";
+	    var pg = "";
+	    var payMethod = "";
 	
-	    $(document).on('click', '#cartPay', function(){
+	    $(document).on('click', '#cardPay', function(){
 	        pg = "html5_inicis";
 	        payMethod = "card"
 	    });
 	 
 	    $(document).on('click', '#phonePay', function(){
-	        pg = "danal";
+	        pg = "danal_tpay";
 	        payMethod = "MOBILE";
 	    });
 	 
 	    $(document).on('click', '#kakaoPay', function(){
 	        pg = "kakaopay";
-	        payMethod = "card"
+	        payMethod = "kakaopay"
 	    });
 	    
 	    $(document).on('click', '#naverPay', function(){
-	        pg = "naverpay";
-	        payMethod = "card"
+	        pg = "html5_inicis";
+	        payMethod = "naverpay"
 	    });   
 			
 		    
 	    $(document).on('click', '#money-btn', function(){
 	    	console.log("결제 버튼 클릭됨");
 	        console.log("PG: ", pg, "Pay Method: ", payMethod);
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const price = document.getElementById('total-price').value;
+            const checkin = "${checkInDate}";
+            const checkout = "${checkOutDate}";
+	        const customer_id = ${customer.customer_id};
+            const reservations_id = new Date().getTime();
 	        
+            const data = {
+            		hanok_id: ${hanokMap.hanokInfo.hanok_id},
+            		room_id: ${roomMap.roomInfo.room_id},
+            		reservations_id: reservations_id,
+            		checkin: "${checkInDate}",
+            		checkout: "${checkOutDate}",
+            		reservation_name: name,
+            		pay_type: payMethod,
+            		capacity: "${capacity}",
+            		phone: phone
+            };
+            
+            const params = new URLSearchParams();
+            
+            Object.entries(data).forEach(([key, value]) => {
+            	if (Array.isArray(value)) {
+            		value.forEach((v) => params.append(key, v))
+            	} else {
+            		params.set(key, value)
+            	}
+            });
+            
+            const queryString = params.toString();
+            
 			IMP.request_pay({
-				pg: 'html5_inicis',
-		        pay_method: 'card',
+				pg: pg,
+		        pay_method: payMethod,
 		        merchant_uid: 'merchant_' + new Date().getTime(),   // 주문번호
-		        name: "",
-		        amount: price,   // 숫자 타입
+		        name: "${roomMap.roomInfo.room_name}",
+		        amount: ${roomMap.roomInfo.room_price},   // 숫자 타입
 		        buyer_email: email,
 		        buyer_name: name,
 		        buyer_tel: phone,
-		        buyer_addr: "",
+		        buyer_addr: address,
 		        buyer_postcode: ""
 		    }, function (res) { // callback
 		    	console.log(res);
@@ -138,25 +167,72 @@
 		    		var msg = '결제가 완료되었습니다.';
 		    		console.log("결제성공 ");
 		    		$.ajax({
-						type: "GET",
-						url: '/hanok/hanok_booking_confirm',
-						data: {
-							amount: price,
-							imp_uid: res.imp_uid,
-							merchant_uid: res.merchant_uid
-						}
+						type: "POST",
+						url: "/hanok/verify/"+res.imp_uid,
+						success: function (res) {
+							if (res.success) {
+								$.ajax({
+									type: "POST",
+									url: "/hanok/reservation",
+									dataType: "json",
+									contentType: 'application/json; charset=utf-8',
+									data: JSON.stringify({
+										reservations_id: reservations_id,
+										checkin: checkin,
+										checkout: checkout,
+										reservation_price: ${roomMap.roomInfo.room_price},
+										reservation_name: name,
+										pay_type: payMethod,
+										customer_id: customer_id,
+										room_id: ${roomMap.roomInfo.room_id}
+									}),
+									success: function (response) {
+				                        if (response.success) {
+				                            alert(response.message);
+				                            window.location.href = "/hanok/hanok_booking_confirm.do?"+queryString;
+				                        } else {
+				                            alert(response.message);
+				                        }
+									},
+			                        error: function (err) {
+			                        	console.log("보내는 데이터:", JSON.stringify({
+											reservations_id: new Date().getTime(),
+											checkin: checkin,
+											checkout: checkout,
+											reservation_price: ${roomMap.roomInfo.room_price},
+											reservation_name: name,
+											pay_type: payMethod,
+											customer_id: customer_id,
+											room_id: ${roomMap.roomInfo.room_id}
+			                        	}));
+			                        	console.error("예약 실패:", err);
+			                            alert("예약 중 오류가 발생했습니다.");
+			                        }
+								});
+				            } else {
+				                alert("결제에 실패하였습니다. 다시 시도해주세요.");
+				            }
+				        },
+				        error: function (err) {
+				            console.error("검증 요청 실패:", err);
+				            alert("결제 검증 중 오류가 발생했습니다.");
+				        }
 					});
 	            	// 응답 데이터의 정보들
 	                console.log("Payment success!");
 	                console.log("Payment ID : " + res.imp_uid);
 	                console.log("Order ID : " + res.merchant_uid);
-	                console.log("Payment Amount : " + res.paid_amount);
+	                console.log("Payment Amount : " + ${roomMap.roomInfo.room_price});
+	                console.log("buyer_name : " + name);
+	                console.log("checkin : "+ "${checkInDate}");
+	                console.log("checkout : "+ "${checkOutDate}");
 	            } else {
 	            	var msg = '결제에 실패하였습니다.';
 	            }
 		    	alert(msg);
 		    });
 		});
+	});
 	</script>
 </head>
 <body>
@@ -192,15 +268,15 @@
 									<div class="row align-items-center">
 										<!-- Image -->
 										<div class="col-sm-6 col-md-3">
-											<img src="/images/category/hotel/4by3/02.jpg" class="card-img" alt="">
+											<img src="/images/hanoks/${hanokMap.hanokImg}" class="card-img" alt="${hanokMap.hanokInfo.hanok_name}">
 										</div>
 	
 										<!-- Card Body -->
 										<div class="col-sm-6 col-md-9">
 											<div class="card-body pt-3 pt-sm-0 p-0">
 												<!-- Title -->
-												<h5 class="card-title"><a href="#">담소정</a></h5>
-												<p class="small mb-2" id="address"><i class="bi bi-geo-alt me-2"></i>서울 종로구 북촌로9길 16-2</p>
+												<h5 class="card-title"><a href="${hanokMap.hanokInfo.hanok_url}">${hanokMap.hanokInfo.hanok_name}</a></h5>
+												<p class="small mb-2" id="address"><i class="bi bi-geo-alt me-2"></i>${hanokMap.hanokInfo.hanok_address}</p>
 	
 												<!-- Rating star -->
 												<ul class="list-inline mb-0">
@@ -220,7 +296,7 @@
 									<div class="col-lg-4">
 										<div class="bg-light py-3 px-4 rounded-3">
 											<h6 class="fw-light small mb-1">체크인</h6>
-											<h5 class="mb-1">2025-01-02</h5>
+											<h5 class="mb-1">${checkInDate}</h5>
 											<small><i class="bi bi-alarm me-1"></i>15:00 pm</small>
 										</div>
 									</div>
@@ -229,7 +305,7 @@
 									<div class="col-lg-4">
 										<div class="bg-light py-3 px-4 rounded-3">
 											<h6 class="fw-light small mb-1">체크아웃</h6>
-											<h5 class="mb-1">2025-01-07</h5>
+											<h5 class="mb-1">${checkOutDate}</h5>
 											<small><i class="bi bi-alarm me-1"></i>13:00 pm</small>
 										</div>
 									</div>
@@ -238,8 +314,8 @@
 									<div class="col-lg-4">
 										<div class="bg-light py-3 px-4 rounded-3">
 											<h6 class="fw-light small mb-1">객실</h6>
-											<h5 class="mb-1">일반실 - 침대</h5>
-											<small><i class="bi bi-brightness-high me-1"></i>5박 6일</small>
+											<h5 class="mb-1">${roomMap.roomInfo.room_name}</h5>
+											<small><i class="bi bi-brightness-high me-1"></i>${night_day}</small>
 										</div>
 									</div>
 								</div>
@@ -310,11 +386,10 @@
 											<h6 class="mb-0">Main Guest</h6>
 										</div>
 									</div>
-	
 									<!-- Input -->
 									<div class="col-md-5">
 										<label class="form-label">이름</label>
-										<input type="text" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
+										<input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
 									</div>
 	
 									<!-- Input -->
@@ -327,7 +402,7 @@
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">휴대폰 번호</label>
-										<input type="text" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
+										<input type="text" name="phone" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
 									</div>
 								</form>
 								<!-- Form END -->
@@ -445,12 +520,10 @@
 													<!-- Buttons -->
 													<div class="col-12">
 														<div class="d-sm-flex justify-content-sm-between align-items-center">
-															<h4>30000원 <span class="small fs-6">Due now</span></h4>
+															<h4>${roomMap.roomInfo.room_price}원 <span class="small fs-6">Due now</span></h4>
 															<button id="money-btn" class="btn btn-primary mb-0">결제하기</button>
 														</div>
 													</div>
-	
-												</form>
 												<!-- Form END -->
 											</div>
 										</div>
@@ -489,7 +562,7 @@
 									<ul class="list-group list-group-borderless">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											<span class="h6 fw-light mb-0">Room Charges</span>
-											<span class="fs-5">30000원</span>
+											<span class="fs-5">${roomMap.roomInfo.room_price}원</span>
 										</li>
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											<span class="h6 fw-light mb-0">Total Discount<span class="badge text-bg-danger smaller mb-0 ms-2">0% off</span></span>
@@ -510,7 +583,7 @@
 								<div class="card-footer border-top">
 									<div class="d-flex justify-content-between align-items-center">
 										<span class="h5 mb-0">Payable Now</span>
-										<span class="h5 mb-0" id="total-price">30000<span id="won">원</span></span>
+										<span class="h5 mb-0" id="total-price">${roomMap.roomInfo.room_price}<span id="won">원</span></span>
 									</div>
 								</div>
 							</div>

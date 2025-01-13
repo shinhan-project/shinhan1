@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.hanokproject.enroll.EnrollMapper">
+
+	<!-- 로그인 -->
+	<insert id="tempSave" parameterType="kr.co.hanokproject.enroll.EnrollVO">
+		INSERT INTO HANOKS (
+		owner_id, hanok_name, hanok_tel, hanok_address,
+		hanok_url, hanok_description,
+		hanok_service0, hanok_service1, hanok_service2, hanok_service3,
+		hanok_service4, hanok_service5, hanok_service6, hanok_service7,
+		hanok_serviceETC, hanok_status, hanok_score
+		) VALUES (
+		#{owner_id}, #{hanok_name}, #{hanok_tel}, #{hanok_address},
+		#{hanok_url}, #{hanok_description},
+		#{hanok_service0}, #{hanok_service1}, #{hanok_service2}, #{hanok_service3},
+		#{hanok_service4}, #{hanok_service5}, #{hanok_service6}, #{hanok_service7},
+		#{hanok_serviceETC}, #{hanok_status}, #{hanok_score}
+		)
+		<selectKey order="AFTER" keyProperty="hanok_id" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="hanokImageSave" parameterType="kr.co.hanokproject.enroll.EnrollHanokImageVO">
+		INSERT INTO HANOK_IMAGES (
+		hanok_imgName,
+		hanok_id,
+		is_main
+		) VALUES (
+		#{hanok_imgName},
+		#{hanok_id},
+		#{is_main}
+		)
+		<selectKey order="AFTER" keyProperty="hanok_imgIndex_id" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="roomSave" parameterType="kr.co.hanokproject.enroll.EnrollRoomVO">
+	INSERT INTO ROOMS (
+		room_name,
+		room_price,
+		room_size,
+		max_capacity,
+		room_service,
+		hanok_id
+		) VALUES (
+		#{room_name},
+		#{room_price},
+		#{room_size},
+		#{max_capacity},
+		#{room_service},
+		#{hanok_id} 
+		)
+		<selectKey order="AFTER" keyProperty="room_id" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="roomImageSave" parameterType="kr.co.hanokproject.enroll.EnrollRoomImageVO">
+	INSERT INTO ROOM_IMAGES (
+	room_imgName,
+	room_id
+	) VALUES (
+	#{room_imgName},
+	#{room_id}
+	)
+	<selectKey order="AFTER" keyProperty="room_imgIndex" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>

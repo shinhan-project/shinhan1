@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,65 +12,6 @@
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
 
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
- 
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
-
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-
-		setTheme(getPreferredTheme())
-
-		window.addEventListener('DOMContentLoaded', () => {
-		    var el = document.querySelector('.theme-icon-active');
-			if(el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-				const activeThemeIcon = document.querySelector('.theme-icon-active use')
-				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-					element.classList.remove('active')
-				})
-
-				btnToActive.classList.add('active')
-				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-			}
-
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (storedTheme !== 'light' || storedTheme !== 'dark') {
-					setTheme(getPreferredTheme())
-				}
-			})
-
-			showActiveTheme(getPreferredTheme())
-
-			document.querySelectorAll('[data-bs-theme-value]')
-				.forEach(toggle => {
-					toggle.addEventListener('click', () => {
-						const theme = toggle.getAttribute('data-bs-theme-value')
-						localStorage.setItem('theme', theme)
-						setTheme(theme)
-						showActiveTheme(theme)
-					})
-				})
-
-			}
-		})
-		
-	</script>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
@@ -144,7 +86,7 @@ Content START -->
 								<div class="text-center mb-3">
 									<!-- Avatar -->
 									<div class="avatar avatar-xl mb-2">
-										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01.jpg" alt="">
+										<img class="avatar-img rounded-circle border border-2 border-white" src="/images/avatar/01-1.jpg" alt="">
 									</div>
 									<hr>
 								</div>
@@ -226,8 +168,9 @@ Content START -->
 							    <div class="col-lg-6">
 							        <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-in</h6>
-							            <h5 class="mb-2">${reservation.checkin}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+							            <h5 class="mb-2">
+							            <fmt:formatDate value="${reservation.checkin}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkin}" pattern="HH:mm a" /></small>
 							        </div>
 							    </div>
 
@@ -235,8 +178,8 @@ Content START -->
 								 <div class="col-lg-6">
 							       	 <div class="bg-light py-3 px-4 rounded-3 text-center">
 							            <h6 class="fw-light small mb-2">Check-out</h6>
-							            <h5 class="mb-2">${reservation.checkout}</h5>
-							            <small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+							            <h5 class="mb-2"><fmt:formatDate value="${reservation.checkout}" pattern="yyyy-MM-dd"/></h5>
+							            <small><i class="bi bi-alarm me-1"></i><fmt:formatDate value="${reservation.checkout}" pattern="HH:mm a"/></small>
 							        </div>
 							    </div>
 

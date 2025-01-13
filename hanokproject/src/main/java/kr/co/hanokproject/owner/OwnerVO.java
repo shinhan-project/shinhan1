@@ -15,4 +15,5 @@ public class OwnerVO {
 	private String owner_tel;
 	private int businessNum;
 	private Timestamp ownercreated;
+	
 }

@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.hanokproject.hanok.HanokVO;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
@@ -93,12 +95,16 @@ public class CustomerServiceImpl implements CustomerService {
             roomImgMap.put(room.getRoom_id(), roomImgList);
         }
 
+        // 리뷰 정보
+        List<CustomerVO> reviewList = mapper.getReviewList(hanok_id);
+        
         // 결과 맵 구성
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("hanokInfo", hanokVO);
         resultMap.put("hanokImg", hanokImg);
         resultMap.put("roomList", roomList);
         resultMap.put("roomImgMap", roomImgMap);
+        resultMap.put("reviewList", reviewList);
 
         return resultMap;
     }
@@ -115,10 +121,27 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.getHanokImg(hanok_id);
 	}
 
+
 	@Override
-	public List<CustomerVO> getRoomList(int hanok_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, Object> getRoomDetail(int room_id) {
+        // 객실 상세 정보
+		CustomerVO roomVO = mapper.getRoomInfo(room_id);
+		
+		// 결과 맵 구성
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("roomInfo", roomVO);
+		return resultMap;
 	}
 
+	@Override
+	public boolean reservation(CustomerVO vo) {
+		return mapper.reservation(vo) == 0 ? false : true;
+	}
+
+	
+	@Override
+	public List<HanokVO> getAllHanoks() {
+		// TODO Auto-generated method stub
+		return mapper.getAllHanoks();
+	}
 }

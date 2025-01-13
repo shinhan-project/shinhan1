@@ -9,4 +9,15 @@
 		SELECT * FROM USERS_ADMIN WHERE admin_id = #{admin_id} AND
 		admin_pwd = MD5(#{admin_pwd})
 	</select>
+	
+	<select id="getRequest"
+      resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="int">
+      
+      SELECT h.*, uo.owner_id 
+      FROM HANOKS h
+      JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
+      
+      
+   </select>
+	
 </mapper>

@@ -67,7 +67,7 @@ public class OwnerController {
 		   }
 		   
 		   //로그아웃
-		   @GetMapping("/owner/logout.do")
+		   @GetMapping("/owner/owner_logout.do")
 			public String logout(HttpSession sess, Model model) {
 				sess.invalidate();
 				model.addAttribute("msg", "로그아웃되었습니다.");
@@ -75,13 +75,7 @@ public class OwnerController {
 				return "common/alert";
 			}
 		   
-		   
-//			@GetMapping("/owner/owner_profile.do")
-//			public void owner_profile() {
-//				 return;
-//			}
-
-		   
+		 
 		   
 		   
 		 //사장 정보 수정

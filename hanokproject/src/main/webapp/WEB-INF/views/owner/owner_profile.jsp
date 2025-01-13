@@ -42,172 +42,74 @@
 
 <body>
 
-	<!-- 사장님헤더 -->
-	<c:if test="${!empty ownerloginInfo}">
-		<!-- Header START -->
-		<header class="navbar-light header-sticky">
-			<!-- Logo Nav START -->
-			<nav class="navbar navbar-expand-xl">
-				<div class="container">
-					<!-- Logo START -->
-					<a class="navbar-brand" href="/index.do"> <img
-						class="light-mode-item navbar-brand-item"
-						src="/images/gojeuneoklogo.png" alt="logo">
+<%@ include file="/WEB-INF/views/include/owner_header.jsp" %>
 
-					</a>
-					<!-- Logo END -->
+<c:if test="${!empty ownerloginInfo}">
+<section class="pt-4">
+			<div class="container">
+				<div class="card rounded-3 border p-3 pb-2">
+					<!-- Avatar and info START -->
+					<div class="d-sm-flex align-items-center">
+						<div class="avatar avatar-xl mb-2 mb-sm-0">
+							<img class="avatar-img rounded-circle"
+								src="/images/avatar/01-1.jpg" alt="">
+						</div>
+						<h4 class="mb-2 mb-sm-0 ms-sm-3">
+							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
+						</h4>
+						<a href="add-listing.html"
+							class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
+							class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
+					</div>
+					<!-- Avatar and info START -->
 
 					<!-- Responsive navbar toggler -->
-					<button class="navbar-toggler ms-auto mx-3 me-md-0 p-0 p-sm-2"
-						type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-animation"> <span></span> <span></span>
-							<span></span>
-						</span>
+					<button class="btn btn-primary w-100 d-block d-xl-none mt-2"
+						type="button" data-bs-toggle="offcanvas"
+						data-bs-target="#dashboardMenu" aria-controls="dashboardMenu">
+						<i class="bi bi-list"></i> Dashboard Menu
 					</button>
-					<!-- Main navbar START -->
-					<div class="navbar-collapse collapse" id="navbarCollapse">
-						<ul class="navbar-nav navbar-nav-scroll">
 
-							<!-- Nav item Contact -->
-							<li class="nav-item"><a class="nav-link"
-								href="/owner/owner_dash.do">Myhanoks</a></li>
-						</ul>
-					</div>
-					<!-- Main navbar END -->
-
-					<!-- Profile and Notification START -->
-					<ul
-						class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-
-
-
-						<!-- Profile dropdown START -->
-						<li class="nav-item ms-3 dropdown">
-							<!-- Avatar --> <a class="avatar avatar-xs p-0" href="#"
-							id="profileDropdown" role="button" data-bs-auto-close="outside"
-							data-bs-display="static" data-bs-toggle="dropdown"
-							aria-expanded="false"> <img class="avatar-img rounded-circle"
-								src="/images/avatar/01-1.jpg" alt="avatar">
-						</a> <!-- Profile dropdown START -->
-							<ul
-								class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-								aria-labelledby="profileDropdown">
-								<!-- Profile info -->
-								<li class="px-3 mb-3">
-									<div class="d-flex align-items-center">
-										<!-- Avatar -->
-										<div class="avatar me-3">
-											<img class="avatar-img rounded-circle shadow"
-												src="/images/avatar/01-1.jpg" alt="avatar">
-										</div>
-										<div>
-
-											<a class="h6 mt-2 mt-sm-0" href="#">${ownerloginInfo.owner_name}</a>
-											<p class="small m-0">${ownerloginInfo.owner_email}</p>
-
-
-										</div>
-									</div>
-								</li>
-
-								<!-- Links -->
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-
-								<li><a class="dropdown-item bg-danger-soft-hover"
-									href="/owner/owner_logout.do"><i
-										class="bi bi-power fa-fw me-2"></i>Logout</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-
-							</ul> <!-- Profile dropdown END -->
-						</li>
-						<!-- Profile dropdown END -->
-
-
-					</ul>
-					<!-- Profile and Notification START -->
-
-				</div>
-			</nav>
-			<!-- Logo Nav END -->
-		</header>
-		<!-- Header END -->
-
-
-		<!-- **************** MAIN CONTENT START **************** -->
-	<main>
-
-			<!-- =======================
-Menu item START -->
-			<section class="pt-4">
-				<div class="container">
-					<div class="card rounded-3 border p-3 pb-2">
-						<!-- Avatar and info START -->
-						<div class="d-sm-flex align-items-center">
-							<div class="avatar avatar-xl mb-2 mb-sm-0">
-								<img class="avatar-img rounded-circle"
-									src="/images/avatar/01-1.jpg" alt="">
-							</div>
-							<h4 class="mb-2 mb-sm-0 ms-sm-3">
-								<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
-							</h4>
-							<a href="add-listing.html"
-								class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
-								class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
+					<!-- Nav links START -->
+					<div class="offcanvas-xl offcanvas-end mt-xl-3" tabindex="-1"
+						id="dashboardMenu">
+						<div class="offcanvas-header border-bottom p-3">
+							<h5 class="offcanvas-title">Menu</h5>
+							<button type="button" class="btn-close"
+								data-bs-dismiss="offcanvas" data-bs-target="#dashboardMenu"
+								aria-label="Close"></button>
 						</div>
-						<!-- Avatar and info START -->
+						<!-- Offcanvas body -->
+						<div class="offcanvas-body p-3 p-xl-0">
+							<!-- Nav item -->
+							<div class="navbar navbar-expand-xl">
+								<ul class="navbar-nav navbar-offcanvas-menu">
 
-						<!-- Responsive navbar toggler -->
-						<button class="btn btn-primary w-100 d-block d-xl-none mt-2"
-							type="button" data-bs-toggle="offcanvas"
-							data-bs-target="#dashboardMenu" aria-controls="dashboardMenu">
-							<i class="bi bi-list"></i> Dashboard Menu
-						</button>
+									<li class="nav-item"><a class="nav-link"
+										href="/owner/owner_dash.do"><i
+											class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
+									<!-- Review 목록 페이지 -->
+									<li class="nav-item"><a class="nav-link "
+										href="/review/owner/${ownerloginInfo.owner_id}"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+									
+									<li class="nav-item"> <a class="nav-link" href="/owner/owner_listings.do"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+									<li class="nav-item"> <a class="nav-link" href="owner_authorization.do"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Authorization lists</a> </li>
+									<li><a class="nav-link active" href="/owner/owner_profile.do"><i class="bi bi-gear fa-fw me-1"></i>profile</a></li>
 
-						<!-- Nav links START -->
-						<div class="offcanvas-xl offcanvas-end mt-xl-3" tabindex="-1"
-							id="dashboardMenu">
-							<div class="offcanvas-header border-bottom p-3">
-								<h5 class="offcanvas-title">Menu</h5>
-								<button type="button" class="btn-close"
-									data-bs-dismiss="offcanvas" data-bs-target="#dashboardMenu"
-									aria-label="Close"></button>
-							</div>
-							<!-- Offcanvas body -->
-							<div class="offcanvas-body p-3 p-xl-0">
-								<!-- Nav item -->
-								<div class="navbar navbar-expand-xl">
-									<ul class="navbar-nav navbar-offcanvas-menu">
-
-										<li class="nav-item"><a class="nav-link"
-											href="/owner/owner_dash.do"><i
-												class="bi bi-house-door fa-fw me-1"></i>Dashboard</a></li>
-										<!-- Review 목록 페이지 -->
-										<li class="nav-item"><a class="nav-link"
-											href="/review/owner/${ownerloginInfo.owner_id}"><i
-												class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
-
-										<li class="nav-item"><a class="nav-link"
-											href="/owner/owner_listings.do"><i
-												class="bi bi-journals fa-fw me-1"></i>Listings</a></li>
-										<li><a class="nav-link" href="#"><i
-												class="bi bi-gear fa-fw me-1 active"></i>profile</a></li>
-
-									</ul>
-								</div>
+								</ul>
 							</div>
 						</div>
-						<!-- Nav links END -->
 					</div>
+					<!-- Nav links END -->
 				</div>
+			</div>
+			
+		</section>
 
-			</section>
-	</c:if>
+
+
+</c:if>
+
 
 
 	<!-- **************** MAIN CONTENT START **************** -->
@@ -281,10 +183,7 @@ Content START -->
 																src="/images/avatar/01-1.jpg" alt="">
 														</span>
 														</label>
-														<!-- Upload button -->
-														<label class="btn btn-sm btn-primary-soft mb-0"
-															for="uploadfile-1">Change</label> <input
-															id="uploadfile-1" class="form-control d-none" type="file">
+														
 													</div>
 													<!-- Avatar upload END -->
 												</div>
@@ -347,7 +246,7 @@ Content END -->
 </main>
 	<!-- **************** MAIN CONTENT END **************** -->
 
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 	<!-- Back to top -->
 	<div class="back-top"></div>
 
