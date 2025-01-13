@@ -10,4 +10,5 @@ public class EnrollHanokImageVO {
 	int is_main;
 	String hanok_ImageBase64Data;
 	String hanok_imageExtension;
+	
 }

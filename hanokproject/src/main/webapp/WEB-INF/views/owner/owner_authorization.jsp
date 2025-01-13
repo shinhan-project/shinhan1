@@ -130,14 +130,7 @@ Content START -->
 Content START -->
 <section class="pt-0">
    <div class="container vstack gap-4">
-      <!-- Title START -->
-      <div class="row">
-         <div class="col-12">
-            <h1 class="fs-4 mb-0"><i class="bi bi-journals fa-fw me-1"></i>Listings</h1>
-         </div>
-      </div>
-      <!-- Title END -->
-
+      
       <!-- Counter START -->
       <div class="row g-4">
          
@@ -164,9 +157,9 @@ Content START -->
          <!-- Status Display Cards -->
          <div class="col-md-6 col-xl-4">
             <div class="card card-body border p-4 h-100">
-               <h6>승인 요청 </h6>
-               <h2 class="text-primary">${status0Count}</h2>
-               <p class="mb-2">총 승인 요청 수</p>
+               <h6>승인 대기 </h6>
+               <h2 class="text-warning">${status0Count}</h2>
+               <p class="mb-2">총 승인 대기</p>
             </div>
          </div>
 
