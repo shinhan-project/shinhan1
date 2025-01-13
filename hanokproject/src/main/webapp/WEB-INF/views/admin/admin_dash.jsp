@@ -120,7 +120,7 @@ Content START -->
 			<div class="col-md-6 col-xl-4">
 				<div class="card card-body border p-4 h-100">
 					<h6>Pending Approval </h6>
-					<h2 class="text-primary">${status0Count}</h2>
+					<h2 class="text-warning">${status0Count}</h2>
 					<p class="mb-2">Total</p>
 				</div>
 			</div>
@@ -204,7 +204,9 @@ Content END -->
         <td>
             <c:choose>
                 <c:when test="${request.hanok_status == 0}">
-                    <div class="badge text-bg-primary">승인 요청</div>
+
+                    <div class="badge text-bg-warning">대기</div>
+
                 </c:when>
 
                 <c:when test="${request.hanok_status == 1}">
