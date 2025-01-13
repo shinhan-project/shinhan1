@@ -45,15 +45,8 @@
 		JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
 		WHERE h.owner_id = #{h.owner_id}
 
-
-
 	</select>
 
-
-
-
-
-	
 	<update id="updateHanokStatus" parameterType="map">
 	    UPDATE HANOKS
 	    SET status = #{status}
