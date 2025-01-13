@@ -33,6 +33,14 @@ public class HanokServiceImple implements HanokService {
 		return mapper.getAuthorization(owner_id);
 	}
 
+
+	@Override
+	public List<HanokVO> getRequestAuthorization(int owner_id) {
+		// TODO Auto-generated method stub
+		return mapper.getRequestAuthorization(owner_id);
+	}
+
+
 	
 
 	@Override
