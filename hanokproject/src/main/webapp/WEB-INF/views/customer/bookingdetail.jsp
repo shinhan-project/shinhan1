@@ -304,7 +304,7 @@ Page content START -->
 												<!-- Buttons -->
 												<div class="col-12">
 													<div class="d-sm-flex justify-content-end align-items-center">
-														<button class="btn btn-primary mb-0" href="/customer/mybookings.do" style="width: 100px; text-align: center;">Back</button>
+														<button class="btn btn-primary mb-0" href="/customer/mybookings.do" style="width: 100px; text-align: center;">Go to MyPage</button>
 													</div>
 												</div>
 

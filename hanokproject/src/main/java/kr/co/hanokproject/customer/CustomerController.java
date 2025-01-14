@@ -95,7 +95,7 @@ public class CustomerController {
 	      if (service.regist(vo)) {
 	         
 	         model.addAttribute("msg", "정상적으로 가입되었습니다.");
-	         model.addAttribute("url", "/index.do");
+	         model.addAttribute("url", "/customer/login.do");
 	         
 	      } else {
 	         model.addAttribute("msg", "가입 오류");
