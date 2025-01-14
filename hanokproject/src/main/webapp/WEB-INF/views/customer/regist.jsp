@@ -11,7 +11,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
@@ -27,7 +30,40 @@
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script src="/js/script.js"></script>
+<script>
+$(document).ready(function() {
+    // idCheck 버튼 클릭 시
+    $("#idCheck").click(function() {
+        const customerId = $("#customer_id").val().trim();
+        
+        if (customerId === "") {
+            alert("아이디를 입력하세요");
+            $("#customer_id").focus();  // 아이디 입력란에 포커스 설정
+            return;
+        }
 
+        // Ajax 요청: idCheck.do URL로 customer_id 전송
+        $.ajax({
+            url: "/customer/idCheck.do",
+            data: { customer_id: customerId },
+            success: function(res) {
+                // 중복된 아이디일 경우
+                if (res > 0) {
+                    alert("중복된 아이디입니다.");
+                    $("#customer_id").focus();  // 중복일 경우 아이디 입력란에 포커스 설정
+                } else {
+                    alert("사용 가능한 아이디입니다.");
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("오류가 발생했습니다. 다시 시도해주세요.");
+            }
+        });
+    });
+});
+
+</script>
 </head>
 
 <body>
@@ -69,8 +105,16 @@ Main Content START -->
 								<form class="mt-4 text-start" action="insert.do" method="post">
 									<!--id -->
 									<div class="mb-3">
-										<label class="form-label">Enter id</label>
-										<input type="text" class="form-control" name="customer_id">
+										<div class="mb-3">
+    <label class="form-label">Enter id</label>
+    <div class="input-group">
+    <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="아이디를 입력하세요">
+    <span class="input-group-text">
+        <a href="javascript:;" class="btn bgGray" id="idCheck">중복확인</a>
+    </span>
+</div>
+
+</div>
 									</div>
 									
 									<!-- Password -->

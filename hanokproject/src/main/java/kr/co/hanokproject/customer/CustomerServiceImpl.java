@@ -166,4 +166,13 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return mapper.getAllHanoks();
 	}
+
+	@Override
+	public int idCheck(int customer_id) {
+	    if (customer_id <= 0) {
+	        // 잘못된 ID 처리
+	        return -1;
+	    }
+	    return mapper.idCheck(customer_id); // DB 확인
+	}
 }
