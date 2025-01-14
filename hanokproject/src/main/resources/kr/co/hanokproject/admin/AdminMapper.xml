@@ -9,14 +9,14 @@
 		SELECT * FROM USERS_ADMIN WHERE admin_id = #{admin_id} AND
 		admin_pwd = MD5(#{admin_pwd})
 	</select>
-	
+	<!-- admin 승인요청 리스트  -->
 	<select id="getRequest"
       resultType="kr.co.hanokproject.hanok.HanokVO" parameterType="int">
       
       SELECT h.*, uo.owner_id
       FROM HANOKS h
       JOIN USERS_OWNER uo ON h.owner_id = uo.owner_id
-      
+      ORDER BY h.hanok_requestdate desc
       
    </select>
    	

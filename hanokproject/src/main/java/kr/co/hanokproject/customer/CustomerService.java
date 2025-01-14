@@ -41,8 +41,11 @@ public interface CustomerService {
 	
 	List<HanokVO> getAllHanoks();
 
+	
+
 	int idCheck(int customer_id);
 
 	
+
 	
 }

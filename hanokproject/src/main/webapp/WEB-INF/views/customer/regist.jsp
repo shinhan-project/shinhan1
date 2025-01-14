@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Gojeuneok Customer Regist</title>
 
@@ -94,7 +94,7 @@ Main Content START -->
 						<div class="col-lg-6 order-1">
 							<div class="p-4 p-sm-6">
 								<!-- Logo -->
-								<a href="index.html">
+								<a href="index.do">
 									<img class="h-50px mb-4" src="/images/gojeuneoklogo.png" alt="logo">
 								</a>
 								<!-- Title -->
@@ -103,14 +103,14 @@ Main Content START -->
 		
 								<!-- Form START -->
 								<form class="mt-4 text-start" action="insert.do" method="post">
-									<!-- Email -->
+									<!--id -->
 									<div class="mb-3">
 										<div class="mb-3">
     <label class="form-label">Enter id</label>
     <div class="input-group">
     <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="아이디를 입력하세요">
     <span class="input-group-text">
-        <a href="javascript:;" class="btn bgGray" id="idCheck">중복확인</a>
+        <a href="javascript:;" class="btn bgGray" id="idCheck">Id-check</a>
     </span>
 </div>
 

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>Owner DashBoard Page</title>
 
@@ -157,25 +157,25 @@ Content START -->
          <!-- Status Display Cards -->
          <div class="col-md-6 col-xl-4">
             <div class="card card-body border p-4 h-100">
-               <h6>승인 대기 </h6>
+               <h6>Pending</h6>
                <h2 class="text-warning">${status0Count}</h2>
-               <p class="mb-2">총 승인 대기</p>
+               <p class="mb-2">Total Pending</p>
             </div>
          </div>
 
          <div class="col-md-6 col-xl-4">
             <div class="card card-body border p-4 h-100">
-               <h6>승인된 것 </h6>
+               <h6>Approved </h6>
                <h2 class="text-success">${status2Count}</h2>
-               <p class="mb-2">총 승인된 것 수</p>
+               <p class="mb-2">Total Approved</p>
             </div>
          </div>
 
          <div class="col-md-6 col-xl-4">
             <div class="card card-body border p-4 h-100">
-               <h6>거절된 것 </h6>
+               <h6>Rejected</h6>
                <h2 class="text-danger">${status1Count}</h2>
-               <p class="mb-2">총 거절된 것 수</p>
+               <p class="mb-2">Total Rejected</p>
             </div>
          </div>
       </div>

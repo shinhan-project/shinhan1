@@ -1,4 +1,4 @@
-<!-- hotel-detail.html 참고 (민규) -->
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -490,8 +490,18 @@ Search END -->
     
 	                                  <!-- 세부사항항 -->
         <div class="room-details">
+<<<<<<< HEAD
+    <span class="room-item">${roomVO.room_size}m² / </span>
+    <span class="room-item">${roomVO.max_capacity} persons / </span>
+=======
+<<<<<<< HEAD
+    <span class="room-item">${roomVO.room_size}m² / </span>
+    <span class="room-item">${roomVO.max_capacity} persons /</span>
+=======
     <span class="room-item">${roomVO.room_size}평 /</span>
     <span class="room-item">Accommodates ${roomVO.max_capacity} people /</span>
+>>>>>>> branch 'main' of https://github.com/shinhan-project/shinhan1.git
+>>>>>>> refs/heads/main
     <span class="room-item">${roomVO.room_service}</span>
 </div>
         <!-- Price and Button -->
@@ -526,7 +536,7 @@ Search END -->
             <div class="review-list">
 	            <c:forEach var="reviewVO" items="${map.reviewList}">
 	                <div class="review-item">
-	                    <img src="/images/rooms/100.jpg" alt="Review Image">
+	                   
 	                    <div class="review-content">
 	                        <h5>${reviewVO.room_name}</h5>
 	                        <p>${reviewVO.review_title}</p>

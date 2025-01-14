@@ -152,7 +152,7 @@
             <!-- 왼쪽 섹션 -->
             <div class="col-4 d-flex flex-column">
                 <h5 class="mb-1">${review.hanok_name}</h5>
-                <p class="mb-0"><span class="text-body fw-light">예약번호</span> ${review.reservations_id}</p>
+                <p class="mb-0"><span class="text-body fw-light">Reservation No. </span> ${review.reservations_id}</p>
             </div>
 
             <!-- 오른쪽 섹션 -->
