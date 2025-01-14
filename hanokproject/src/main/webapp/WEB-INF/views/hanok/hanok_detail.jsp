@@ -1,4 +1,4 @@
-<!-- hotel-detail.html 참고 (민규) -->
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -336,7 +336,7 @@ Search START -->
 								<div class="form-size-lg form-fs-md">
 									<!-- input -->
 									<label class="form-label">Location</label>
-									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${location}">
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="Please enter your region." value="${location}">
 								</div>
 							</div>
 	
@@ -358,7 +358,7 @@ Search START -->
 									<div class="w-100">
 										<label class="form-label">Guests</label>
 										<div class="dropdown guest-selector me-2">
-											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${capacity}">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="Please enter the number of people." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${capacity}">
 										</div>
 									</div>
 								</div>
@@ -394,7 +394,7 @@ Search END -->
 					<i class="bi bi-geo-alt me-2"></i>
 					<a href="https://map.naver.com/p/search/${map.hanokInfo.hanok_address}">${map.hanokInfo.hanok_address}</a><br>
 					<i class="bi bi-geo-alt me-2"></i>
-					<a href="${map.hanokInfo.hanok_url}">홈페이지 이동</a>
+					<a href="${map.hanokInfo.hanok_url}">Go to homepage</a>
 					<div>연락처 : ${map.hanokInfo.hanok_tel}
 				</p>
             </div>
@@ -417,9 +417,9 @@ Search END -->
 	            <div class="amenities-item">
 	                <h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
 	                <ul>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>카카오 페이, 네이버 페이</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>신용/체크카드</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>휴대폰 결제</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>kakopay, naverpay</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>card</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>phonepay</li>
 	                </ul>
 	            </div>
 	            <!-- Services -->
@@ -490,8 +490,13 @@ Search END -->
     
 	                                  <!-- 세부사항항 -->
         <div class="room-details">
+<<<<<<< HEAD
     <span class="room-item">${roomVO.room_size}m² / </span>
     <span class="room-item">${roomVO.max_capacity} persons /</span>
+=======
+    <span class="room-item">${roomVO.room_size}평 /</span>
+    <span class="room-item">Accommodates ${roomVO.max_capacity} people /</span>
+>>>>>>> branch 'main' of https://github.com/shinhan-project/shinhan1.git
     <span class="room-item">${roomVO.room_service}</span>
 </div>
         <!-- Price and Button -->

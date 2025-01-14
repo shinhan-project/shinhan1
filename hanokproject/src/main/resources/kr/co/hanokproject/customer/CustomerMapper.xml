@@ -197,6 +197,7 @@
 			JOIN REVIEWS re ON r.room_id = re.room_id
 			JOIN ROOM_IMAGES ri ON r.room_id = ri.room_id
 		WHERE r.hanok_id=#{hanok_id}
+		ORDER BY review_date DESC
 		LIMIT 3
 	</select>
 	
