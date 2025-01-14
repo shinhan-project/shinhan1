@@ -40,4 +40,7 @@ public interface CustomerService {
 	boolean reservation(CustomerVO vo);
 	
 	List<HanokVO> getAllHanoks();
+	
+	//중복
+	
 }

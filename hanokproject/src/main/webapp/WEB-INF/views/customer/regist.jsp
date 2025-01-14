@@ -67,7 +67,7 @@ Main Content START -->
 		
 								<!-- Form START -->
 								<form class="mt-4 text-start" action="insert.do" method="post">
-									<!-- Email -->
+									<!--id -->
 									<div class="mb-3">
 										<label class="form-label">Enter id</label>
 										<input type="text" class="form-control" name="customer_id">
