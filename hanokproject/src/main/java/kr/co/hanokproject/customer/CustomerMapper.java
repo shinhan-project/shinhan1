@@ -60,6 +60,8 @@ public interface CustomerMapper {
 
 	List<HanokVO> getAllHanoks();
 
+	int idCheck(int customer_id);
+
 
 }
 

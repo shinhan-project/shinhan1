@@ -40,4 +40,9 @@ public interface CustomerService {
 	boolean reservation(CustomerVO vo);
 	
 	List<HanokVO> getAllHanoks();
+
+	int idCheck(int customer_id);
+
+	
+	
 }

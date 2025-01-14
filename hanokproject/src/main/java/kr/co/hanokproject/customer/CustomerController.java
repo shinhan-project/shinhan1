@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.hanokproject.hanok.HanokVO;
 
@@ -74,7 +75,21 @@ public class CustomerController {
 	   public void regist() {
 	      return;
 	   }
-	   
+	
+	@ResponseBody
+	@GetMapping("/customer/idCheck.do")
+	public int idCheck(@RequestParam(value = "customer_id", defaultValue = "-1") int customer_id) {
+	    // customer_id가 -1일 경우 (잘못된 요청 처리)
+	    if (customer_id == -1) {
+	        return -1; // 잘못된 요청 처리
+	    }
+
+	    // idCheck 서비스 호출하여 중복 여부를 체크
+	    return service.idCheck(customer_id);
+	}
+
+	
+	
 	   @PostMapping("/customer/insert.do")
 	   public String insert(CustomerVO vo, Model model) {
 	      if (service.regist(vo)) {

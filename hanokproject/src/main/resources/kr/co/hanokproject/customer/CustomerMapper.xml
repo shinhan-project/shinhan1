@@ -11,6 +11,11 @@
       INSERT INTO USERS_CUSTOMER (customer_id, customer_pwd,customer_name,customer_address,customer_email,customer_tel,customer_created) VALUES (#{customer_id}, MD5(#{customer_pwd}), #{customer_name}, #{customer_address}, #{customer_email},#{customer_tel}, NOW())
 	</insert>
 	
+	<!-- id 중복체크 -->
+	<select id="idCheck" parameterType="kr.co.hanokproject.customer.CustomerVO" resultType="int">
+		SELECT COUNT(*) FROM USERS_CUSTOMER WHERE customer_id=#{customer_id}
+	</select>
+	
 	<!-- 수정 -->
 
 	<select id="detail" resultType="kr.co.hanokproject.customer.CustomerVO" parameterType="int">
