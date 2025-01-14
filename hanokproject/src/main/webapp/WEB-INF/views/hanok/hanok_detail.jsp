@@ -395,7 +395,7 @@ Search END -->
 					<a href="https://map.naver.com/p/search/${map.hanokInfo.hanok_address}">${map.hanokInfo.hanok_address}</a><br>
 					<i class="bi bi-geo-alt me-2"></i>
 					<a href="${map.hanokInfo.hanok_url}">Go to homepage</a>
-					<div>연락처 : ${map.hanokInfo.hanok_tel}
+					<div> Tel : ${map.hanokInfo.hanok_tel}
 				</p>
             </div>
             <div class="description-section">
@@ -417,18 +417,20 @@ Search END -->
 	            <div class="amenities-item">
 	                <h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
 	                <ul>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>kakopay, naverpay</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>card</li>
-	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>phonepay</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Kakaopay, Naverpay</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Card</li>
+	                    <li><i class="fa-solid fa-check-circle text-success me-2"></i>Phonepay</li>
 	                </ul>
 	            </div>
 	            <!-- Services -->
+	            
 	            <div class="amenities-item">
 	                <h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
 	                <ul>
 	                	<c:forEach var="amenities" items="${map.activeServices}">
 	                        <li><i class="fa-solid fa-check-circle text-success me-2"></i>${amenities}</li>
 						</c:forEach>
+					
 	                </ul>
 	            </div>
 	            <!-- Safety & Security -->
@@ -490,13 +492,9 @@ Search END -->
     
 	                                  <!-- 세부사항항 -->
         <div class="room-details">
-<<<<<<< HEAD
-    <span class="room-item">${roomVO.room_size}m² / </span>
+
+    <span class="room-item">${roomVO.room_size} m² / </span>
     <span class="room-item">${roomVO.max_capacity} persons /</span>
-=======
-    <span class="room-item">${roomVO.room_size}평 /</span>
-    <span class="room-item">Accommodates ${roomVO.max_capacity} people /</span>
->>>>>>> branch 'main' of https://github.com/shinhan-project/shinhan1.git
     <span class="room-item">${roomVO.room_service}</span>
 </div>
         <!-- Price and Button -->

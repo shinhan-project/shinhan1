@@ -38,7 +38,7 @@ $(document).ready(function() {
         const customerId = $("#customer_id").val().trim();
         
         if (customerId === "") {
-            alert("아이디를 입력하세요");
+            alert("Please Enter your ID");
             $("#customer_id").focus();  // 아이디 입력란에 포커스 설정
             return;
         }
@@ -50,14 +50,14 @@ $(document).ready(function() {
             success: function(res) {
                 // 중복된 아이디일 경우
                 if (res > 0) {
-                    alert("중복된 아이디입니다.");
+                    alert("The ID is already in use.");
                     $("#customer_id").focus();  // 중복일 경우 아이디 입력란에 포커스 설정
                 } else {
-                    alert("사용 가능한 아이디입니다.");
+                    alert("The ID is available.");
                 }
             },
             error: function(xhr, status, error) {
-                alert("오류가 발생했습니다. 다시 시도해주세요.");
+                alert("An error has occurred. Please try again.");
             }
         });
     });
@@ -108,9 +108,9 @@ Main Content START -->
 										<div class="mb-3">
     <label class="form-label">Enter id</label>
     <div class="input-group">
-    <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="아이디를 입력하세요">
+    <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="Please Enter your ID.">
     <span class="input-group-text">
-        <a href="javascript:;" class="btn bgGray" id="idCheck">중복확인</a>
+        <a href="javascript:;" class="btn bgGray" id="idCheck">Check for Duplication</a>
     </span>
 </div>
 

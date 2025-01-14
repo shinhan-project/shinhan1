@@ -57,11 +57,11 @@ public class PaymentController {
 	            // 결제 성공
 	            // 예약 정보 저장 로직 추가
 	            response.put("success", true);
-	            response.put("message", "결제가 성공적으로 완료되었습니다.");
+	            response.put("message", "Your payment has been completed successfully.");
         } else {
             // 결제 실패
             response.put("success", false);
-            response.put("message", "결제가 실패하였습니다.");
+            response.put("message", "Payment failed.");
         }
         return response;
     }
@@ -97,7 +97,7 @@ public class PaymentController {
     	
     	if(service.reservation(vo)) {
             response.put("success", true);
-            response.put("message", "예약을 성공적으로 완료하였습니다.");
+            response.put("message", "Complete Reservation");
     	} else {
             // 결제 실패
             response.put("success", false);

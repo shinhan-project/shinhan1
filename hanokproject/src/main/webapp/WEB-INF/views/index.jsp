@@ -196,7 +196,7 @@ Search START -->
 								<div class="form-size-lg form-fs-md">
 									<!-- input -->
 									<label class="form-label">Location</label>
-									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="지역을 입력하시오." value="${param.location}">
+									<input type="text" name="location" class="form-guest-selector form-control form-control-lg selection-result" placeholder="Where do you wanna go?" value="${param.location}">
 								</div>
 							</div>
 	
@@ -218,7 +218,7 @@ Search START -->
 									<div class="w-100">
 										<label class="form-label">Guests</label>
 										<div class="dropdown guest-selector me-2">
-											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="인원 수를 입력하시오." id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}">
+											<input type="text" name="capacity" class="form-guest-selector form-control form-control-lg selection-result" placeholder="How many people?" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown" value="${param.capacity}">
 										</div>
 									</div>
 								</div>

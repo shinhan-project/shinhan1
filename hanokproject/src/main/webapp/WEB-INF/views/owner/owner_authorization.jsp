@@ -58,7 +58,7 @@
 						<h4 class="mb-2 mb-sm-0 ms-sm-3">
 							<span class="fw-light">Hi!</span> ${ownerloginInfo.owner_name}
 						</h4>
-						<a href="add-listing.html"
+						<a href="/owner/enrollConfirm.do"
 							class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i
 							class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
 					</div>

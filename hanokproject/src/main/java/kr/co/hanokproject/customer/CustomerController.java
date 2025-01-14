@@ -40,7 +40,7 @@ public class CustomerController {
 	public String loginProcess(@RequestParam Map map, Model model, HttpSession sess) {
 		CustomerVO vo = service.login(map);
 		if(vo == null) {
-			model.addAttribute("msg", "아이디 비밀번호가 올바르지 않습니다.");
+			model.addAttribute("msg", "The ID or PASSWORD is  incorrect.");
 			model.addAttribute("url" , "login.do");
 			return "common/alert";	
 		}else {
@@ -94,11 +94,11 @@ public class CustomerController {
 	   public String insert(CustomerVO vo, Model model) {
 	      if (service.regist(vo)) {
 	         
-	         model.addAttribute("msg", "정상적으로 가입되었습니다.");
+	         model.addAttribute("msg", "Registration completed successful.");
 	         model.addAttribute("url", "/index.do");
 	         
 	      } else {
-	         model.addAttribute("msg", "가입 오류");
+	         model.addAttribute("msg", "Sign-up error");
 	         model.addAttribute("url", "/regist.do");
 	      }
 	      return "common/alert";
@@ -109,7 +109,7 @@ public class CustomerController {
 	   @GetMapping("/customer/logout.do")
 		public String logout(HttpSession sess, Model model) {
 			sess.invalidate();
-			model.addAttribute("msg", "로그아웃되었습니다.");
+			model.addAttribute("msg", "You have been logged out!");
 			model.addAttribute("url", "/index.do");
 			return "common/alert";
 		}
@@ -128,7 +128,7 @@ public class CustomerController {
 			String msg = "";
 			String url = "profile.do";
 			if (r > 0) {
-				msg = "정상적으로 수정되었습니다.";
+				msg = "Successfully updated.";
 			} else {
 				msg = "수정 오류";
 			}
@@ -234,7 +234,7 @@ public class CustomerController {
         long totalDays = ChronoUnit.DAYS.between(startDate, endDate);
         long nights = totalDays; // n박
         long days = totalDays + 1; // m일
-        String n_bak_m_il = nights + "박" + days + "일";
+        String n_bak_m_il = nights + "nights" + days + "days";
     	System.out.println(n_bak_m_il);
 
         // 예약자 정보

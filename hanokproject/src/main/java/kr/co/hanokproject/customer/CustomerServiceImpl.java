@@ -108,8 +108,8 @@ public class CustomerServiceImpl implements CustomerService {
         List<String> activeServices = new ArrayList<>();
         
         String[] serviceNames = {
-            "목욕 가능", "애완동물 동반 가능", "OTT", "와이파이",
-            "바베큐", "주방/식당", "수영장", "주차"
+            "Bath", "Pet friendly", "OTT", "WIFI",
+            "BBQ", "Kitchen", "Pool", "Parking"
         };
 
         for (int i = 0; i < hanokServices.length; i++) {

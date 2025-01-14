@@ -164,8 +164,8 @@
 		    }, function (res) { // callback
 		    	console.log(res);
 		    	if (res.success) {
-		    		var msg = '결제가 완료되었습니다.';
-		    		console.log("결제성공 ");
+		    		var msg = 'The Payment has been completed.';
+		    		console.log("Payment Successful.");
 		    		$.ajax({
 						type: "POST",
 						url: "/hanok/verify/"+res.imp_uid,
@@ -206,16 +206,16 @@
 											room_id: ${roomMap.roomInfo.room_id}
 			                        	}));
 			                        	console.error("예약 실패:", err);
-			                            alert("예약 중 오류가 발생했습니다.");
+			                            alert("An error occurred during the reservation.");
 			                        }
 								});
 				            } else {
-				                alert("결제에 실패하였습니다. 다시 시도해주세요.");
+				                alert("Payment failed. Please try again.");
 				            }
 				        },
 				        error: function (err) {
 				            console.error("검증 요청 실패:", err);
-				            alert("결제 검증 중 오류가 발생했습니다.");
+				            alert("An error occurred during the payment verification");
 				        }
 					});
 	            	// 응답 데이터의 정보들
@@ -227,7 +227,7 @@
 	                console.log("checkin : "+ "${checkInDate}");
 	                console.log("checkout : "+ "${checkOutDate}");
 	            } else {
-	            	var msg = '결제에 실패하였습니다.';
+	            	var msg = 'Payment failed.';
 	            }
 		    	alert(msg);
 		    });
@@ -237,9 +237,9 @@
 </head>
 <body>
 	<!--헤더-->
-    <div id="sep">
+    
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
-    </div>
+
     
     <!-- **************** MAIN CONTENT START **************** -->
 	<main>
@@ -258,7 +258,7 @@
 							<!-- Card header -->
 							<div class="card-header p-4 border-bottom">
 								<!-- Title -->
-								<h3 class="mb-0"><i class="fa-solid fa-hotel me-2"></i>숙소 정보</h3>
+								<h3 class="mb-0"><i class="fa-solid fa-hotel me-2"></i>Accommodation information</h3>
 							</div>
 	
 							<!-- Card body START -->
@@ -295,7 +295,7 @@
 									<!-- Item -->
 									<div class="col-lg-4">
 										<div class="bg-light py-3 px-4 rounded-3">
-											<h6 class="fw-light small mb-1">체크인</h6>
+											<h6 class="fw-light small mb-1">Check-in</h6>
 											<h5 class="mb-1">${checkInDate}</h5>
 											<small><i class="bi bi-alarm me-1"></i>15:00 pm</small>
 										</div>
@@ -304,7 +304,7 @@
 									<!-- Item -->
 									<div class="col-lg-4">
 										<div class="bg-light py-3 px-4 rounded-3">
-											<h6 class="fw-light small mb-1">체크아웃</h6>
+											<h6 class="fw-light small mb-1">Check-out</h6>
 											<h5 class="mb-1">${checkOutDate}</h5>
 											<small><i class="bi bi-alarm me-1"></i>13:00 pm</small>
 										</div>
@@ -325,7 +325,7 @@
 								<div class="card border mt-4">
 									<!-- Card header -->
 									<div class="card-header border-bottom d-md-flex justify-content-md-between">
-										<h5 class="card-title mb-0">약관 동의</h5>
+										<h5 class="card-title mb-0">Agreement to Terms and Conditions</h5>
 									</div>
 	
 									<!-- Card body -->
@@ -373,7 +373,7 @@
 						<div class="card shadow">
 							<!-- Card header -->
 							<div class="card-header border-bottom p-4">
-								<h4 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>대표 예약자 정보</h4>
+								<h4 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>Primary Reservation Holder Information</h4>
 							</div>
 								
 							<!-- Card body START -->
@@ -389,20 +389,20 @@
 									<!-- Input -->
 									<div class="col-md-5">
 										<label class="form-label">name</label>
-										<input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
+										<input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="Please enter your name" required>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">email</label>
-										<input type="email" id="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요." required>
+										<input type="email" id="email" class="form-control form-control-lg" placeholder="Please enter your E-mail" required>
 										<div id="emailHelp" class="form-text">(Booking voucher will be sent to this email ID)</div>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
 										<label class="form-label">phone</label>
-										<input type="text" name="phone" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
+										<input type="text" name="phone" id="phone" class="form-control form-control-lg" placeholder="Please enter your Phone number" required>
 									</div>
 								</form>
 								<!-- Form END -->
@@ -537,7 +537,7 @@
 	
 							<div class="card-footer p-4 pt-0">
 								<!-- Condition link -->
-								<p class="mb-0">해당 예약은 <a href="#">이용 약관</a> 및 <a href="#">정책</a>에 동의하는 것으로 간주됩니다.</p>
+								<p class="mb-0">This reservation <a href="#">is considered as </a> an agreement <a href="#">to the terms</a>and conditions and policies.</p>
 							</div>
 						</div>
 						<!-- Payment Options END -->
@@ -583,7 +583,7 @@
 								<div class="card-footer border-top">
 									<div class="d-flex justify-content-between align-items-center">
 										<span class="h5 mb-0">Payable Now</span>
-										<span class="h5 mb-0" id="total-price">${roomMap.roomInfo.room_price}<span id="won">원</span></span>
+										<span class="h5 mb-0" id="total-price">${roomMap.roomInfo.room_price}<span id="won"> won </span></span>
 									</div>
 								</div>
 							</div>
