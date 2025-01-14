@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
 <title>Owner DashBoard Page</title>
 
@@ -161,7 +161,7 @@ Content START -->
 								<!-- Content -->
 								<div class="ms-3">
 									<!-- 사장님 수익 -->
-									<h4>₩ ${reservationsEarning}</h4>
+									<h4>₩ <fmt:formatNumber value="${reservationsEarning}" pattern="#,###" /> </h4>
 									<span>총 수익</span>
 								</div>
 							</div>
@@ -252,7 +252,7 @@ Content START -->
 														<div class="badge text-bg-success">${reservation.pay_type}</div>
 													</td>
 													<td>
-														<div class="badge text-bg-success">${reservation.reservation_price}
+														<div><fmt:formatNumber value="${reservation.reservation_price}" pattern="#,###" />
 															won</div>
 													</td>
 													

@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>상세페이지 - ${map.hanokInfo.hanok_name}</title>
@@ -493,8 +493,11 @@ Search END -->
 	                                  <!-- 세부사항항 -->
         <div class="room-details">
 
-    <span class="room-item">${roomVO.room_size} m² / </span>
-    <span class="room-item">${roomVO.max_capacity} persons /</span>
+    <span class="room-item">${roomVO.room_size}m² / </span>
+
+  
+    <span class="room-item">Accommodates ${roomVO.max_capacity} people /</span>
+
     <span class="room-item">${roomVO.room_service}</span>
 </div>
         <!-- Price and Button -->

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Gojeuneok Customer Regist</title>
 
@@ -94,7 +94,7 @@ Main Content START -->
 						<div class="col-lg-6 order-1">
 							<div class="p-4 p-sm-6">
 								<!-- Logo -->
-								<a href="index.html">
+								<a href="index.do">
 									<img class="h-50px mb-4" src="/images/gojeuneoklogo.png" alt="logo">
 								</a>
 								<!-- Title -->
@@ -110,7 +110,9 @@ Main Content START -->
     <div class="input-group">
     <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="Please Enter your ID.">
     <span class="input-group-text">
+
         <a href="javascript:;" class="btn bgGray" id="idCheck">Check for Duplication</a>
+
     </span>
 </div>
 

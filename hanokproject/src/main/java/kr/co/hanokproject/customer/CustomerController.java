@@ -94,8 +94,10 @@ public class CustomerController {
 	   public String insert(CustomerVO vo, Model model) {
 	      if (service.regist(vo)) {
 	         
+
 	         model.addAttribute("msg", "Registration completed successful.");
 	         model.addAttribute("url", "/index.do");
+
 	         
 	      } else {
 	         model.addAttribute("msg", "Sign-up error");
