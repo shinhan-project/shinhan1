@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Webestica.com">
 <meta name="description" content="Booking - Multipurpose Online Booking Theme">
-<title>예약 완료</title>
+<title>Reservation completed</title>
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,7 @@
                         <!-- Card body -->
                         <div class="card-body text-center p-4">
                             <!-- Title -->
-                            <h1 class="card-title fs-3">🎊 예약이 완료되었습니다. 🎊</h1>
+                            <h1 class="card-title fs-3">🎊 Your reservation has been completed. 🎊</h1>
                             <p class="lead mb-3"> </p>
     
                             <!-- Second title -->
@@ -60,31 +60,31 @@
                                 <div class="col-lg-5">
                                     <ul class="list-group list-group-borderless">
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>예약 번호:</span>
+                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>Reservation number:</span>
                                             <span class="h6 fw-normal mb-0">${reservations_id}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-person fa-fw me-2"></i>예약자 성함:</span>
+                                            <span class="mb-0"><i class="bi bi-person fa-fw me-2"></i>Name of person making reservation:</span>
                                             <span class="h6 fw-normal mb-0">${reservation_name}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-person fa-fw me-2"></i>예약자 전화번호:</span>
+                                            <span class="mb-0"><i class="bi bi-person fa-fw me-2"></i>Reservation phone number:</span>
                                             <span class="h6 fw-normal mb-0">${phone}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>숙소명:</span>
+                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>hanok name:</span>
                                             <span class="h6 fw-normal mb-0">${hanokMap.hanokInfo.hanok_name}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>숙소 연락처:</span>
+                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>hanok tel:</span>
                                             <span class="h6 fw-normal mb-0">${hanokMap.hanokInfo.hanok_tel}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>숙소 위치:</span>
+                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>hanok location:</span>
                                             <span class="h6 fw-normal mb-0">${hanokMap.hanokInfo.hanok_address}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>객실명:</span>
+                                            <span class="mb-0"><i class="bi bi-vr fa-fw me-2"></i>room name:</span>
                                             <span class="h6 fw-normal mb-0">${roomMap.roomInfo.room_name}</span>
                                         </li>
                                     </ul>
@@ -93,23 +93,23 @@
                                 <div class="col-lg-5">
                                     <ul class="list-group list-group-borderless">
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-wallet2 fa-fw me-2"></i>결제 수단:</span>
+                                            <span class="mb-0"><i class="bi bi-wallet2 fa-fw me-2"></i>payment method:</span>
                                             <span class="h6 fw-normal mb-0">${pay_type}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-currency-dollar fa-fw me-2"></i>결제 금액:</span>
+                                            <span class="mb-0"><i class="bi bi-currency-dollar fa-fw me-2"></i>amount:</span>
                                             <span class="h6 fw-normal mb-0">${roomMap.roomInfo.room_price}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-calendar fa-fw me-2"></i>체크인:</span>
+                                            <span class="mb-0"><i class="bi bi-calendar fa-fw me-2"></i>check in:</span>
                                             <span class="h6 fw-normal mb-0">${checkin}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-calendar fa-fw me-2"></i>체크아웃:</span>
+                                            <span class="mb-0"><i class="bi bi-calendar fa-fw me-2"></i>check out:</span>
                                             <span class="h6 fw-normal mb-0">${checkout}</span>
                                         </li>
                                         <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                            <span class="mb-0"><i class="bi bi-people fa-fw me-2"></i>인원:</span>
+                                            <span class="mb-0"><i class="bi bi-people fa-fw me-2"></i>num of people:</span>
                                             <span class="h6 fw-normal mb-0">${capacity}</span>
                                         </li>
                                     </ul>
@@ -132,7 +132,7 @@
                                     </ul>
                                 </div>
                                 <!-- Download button -->
-                                <a href="/index.do" class="btn btn-primary mb-0"><i class="bi bi-file-pdf me-2"></i>메인 홈페이지</a>
+                                <a href="/index.do" class="btn btn-primary mb-0"><i class="bi bi-file-pdf me-2"></i>main page</a>
                             </div>
                         </div>
                     </div>

@@ -337,27 +337,27 @@
 	                                            <!-- Checkbox -->
 	                                            <div class="form-check">
 	                                                <input class="form-check-input" type="checkbox" value="" id="accept1">
-	                                                <label class="form-check-label" for="accept1">약관 전체 동의</label>
+	                                                <label class="form-check-label" for="accept1">Agree to all terms and conditions</label>
 	                                            </div>
 	                                            <!-- Checkbox -->
 	                                            <div class="form-check">
 	                                                <input class="form-check-input" type="checkbox" value="" id="accept2" required>
-	                                                <label class="form-check-label" for="accept2">숙소 이용 규칙 및 취소/환불 규정 동의 (필수)</label>
+	                                                <label class="form-check-label" for="accept2">Agree to the accommodation rules and cancellation/refund policy (required)</label>
 	                                            </div>
 	                                            <!-- Checkbox -->
 	                                            <div class="form-check">
 	                                                <input class="form-check-input" type="checkbox" value="" id="accepte3" required>
-	                                                <label class="form-check-label" for="accepte3">개인 정보 수집 및 이용 동의 (필수)</label>
+	                                                <label class="form-check-label" for="accepte3">Consent to collection and use of personal information (required)</label>
 	                                            </div>
 	                                            <!-- Checkbox -->
 	                                            <div class="form-check">
 	                                                <input class="form-check-input" type="checkbox" value="" id="accept4" required>
-	                                                <label class="form-check-label" for="accept4">개인 정보 제 3자 제공 동의 (필수)</label>
+	                                                <label class="form-check-label" for="accept4">Consent to provide personal information to third parties (required)</label>
 	                                            </div>
 	                                            <!-- Checkbox -->
 	                                            <div class="form-check">
 	                                                <input class="form-check-input" type="checkbox" value="" id="accept5" required>
-	                                                <label class="form-check-label" for="accept5">만 14세 이상 확인 (필수)</label>
+	                                                <label class="form-check-label" for="accept5">Verify that you are 14 years of age or older (required)</label>
 	                                            </div>
 	                                        </form>	
 	                                    </div>
@@ -388,20 +388,20 @@
 									</div>
 									<!-- Input -->
 									<div class="col-md-5">
-										<label class="form-label">이름</label>
+										<label class="form-label">name</label>
 										<input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="이름을 입력하세요." required>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
-										<label class="form-label">이메일</label>
+										<label class="form-label">email</label>
 										<input type="email" id="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요." required>
 										<div id="emailHelp" class="form-text">(Booking voucher will be sent to this email ID)</div>
 									</div>
 	
 									<!-- Input -->
 									<div class="col-md-6">
-										<label class="form-label">휴대폰 번호</label>
+										<label class="form-label">phone</label>
 										<input type="text" name="phone" id="phone" class="form-control form-control-lg" placeholder="휴대폰 번호를 입력하세요." required>
 									</div>
 								</form>
@@ -424,42 +424,42 @@
 											<!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType1">
-												<label class="form-check-label" for="hotelType1">늦은 체크인</label>
+												<label class="form-check-label" for="hotelType1">late check in</label>
 											</div>
 											<!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType2">
-												<label class="form-check-label" for="hotelType2">조기 체크인</label>
+												<label class="form-check-label" for="hotelType2">early check in</label>
 											</div>
 											<!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType3">
-												<label class="form-check-label" for="hotelType3">주방 기구 사용</label>
+												<label class="form-check-label" for="hotelType3">kitchen utensils</label>
 											</div>
 											<!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType4">
-												<label class="form-check-label" for="hotelType4">픽업 서비스 이용</label>
+												<label class="form-check-label" for="hotelType4">Pickup service</label>
 											</div>
 											<!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType5">
-												<label class="form-check-label" for="hotelType5">가이드 신청</label>
+												<label class="form-check-label" for="hotelType5">Guide application</label>
 											</div>
 											<!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType6">
-												<label class="form-check-label" for="hotelType6">석식 신청</label>
+												<label class="form-check-label" for="hotelType6">Dinner application</label>
 											</div>
 	                                        <!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType7">
-												<label class="form-check-label" for="hotelType7">조식 신청</label>
+												<label class="form-check-label" for="hotelType7">Breakfast application</label>
 											</div>
 	                                        <!-- Checkbox -->
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="" id="hotelType8">
-												<label class="form-check-label" for="hotelType8">기타 문의</label>
+												<label class="form-check-label" for="hotelType8">Other inquiries</label>
 											</div>
 										</form>	
 									</div>
@@ -476,7 +476,7 @@
 							<!-- Card header -->
 							<div class="card-header border-bottom p-4">
 								<!-- Title -->
-								<h4 class="card-title mb-0"><i class="bi bi-wallet-fill me-2"></i>결제하기</h4>
+								<h4 class="card-title mb-0"><i class="bi bi-wallet-fill me-2"></i>make a payment</h4>
 							</div>
 							
 							<!-- Card body START -->
@@ -501,16 +501,16 @@
 													<div class="col-12" style="margin-bottom:25px">
 														<div class="payment-options">
 															<div class="payment-option" id="cardPay">
-																신용카드
+																card
 															</div>
 															<div class="payment-option" id="naverPay">
-																네이버페이
+																naverpay
 															</div>
 															<div class="payment-option" id="kakaoPay">
-																카카오페이
+																kakaopay
 															</div>
 															<div class="payment-option" id="phonePay">
-																휴대폰 결제
+																phonepay
 															</div>
 														</div>
 														
@@ -520,8 +520,8 @@
 													<!-- Buttons -->
 													<div class="col-12">
 														<div class="d-sm-flex justify-content-sm-between align-items-center">
-															<h4>${roomMap.roomInfo.room_price}원 <span class="small fs-6">Due now</span></h4>
-															<button id="money-btn" class="btn btn-primary mb-0">결제하기</button>
+															<h4>${roomMap.roomInfo.room_price}won <span class="small fs-6">Due now</span></h4>
+															<button id="money-btn" class="btn btn-primary mb-0">make a payment</button>
 														</div>
 													</div>
 												<!-- Form END -->
@@ -554,7 +554,7 @@
 							<div class="card shadow rounded-2">
 								<!-- card header -->
 								<div class="card-header border-bottom">
-									<h5 class="card-title mb-0">요금 상세 정보</h5>
+									<h5 class="card-title mb-0">Rate Details</h5>
 								</div>
 		
 								<!-- Card body -->
@@ -562,19 +562,19 @@
 									<ul class="list-group list-group-borderless">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											<span class="h6 fw-light mb-0">Room Charges</span>
-											<span class="fs-5">${roomMap.roomInfo.room_price}원</span>
+											<span class="fs-5">${roomMap.roomInfo.room_price}won</span>
 										</li>
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											<span class="h6 fw-light mb-0">Total Discount<span class="badge text-bg-danger smaller mb-0 ms-2">0% off</span></span>
-											<span class="fs-5 text-success">-0원</span>	
+											<span class="fs-5 text-success">-0won</span>	
 										</li>
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											<span class="h6 fw-light mb-0">Price after discount</span>
-											<span class="fs-5">0원</span>
+											<span class="fs-5">0won</span>
 										</li>
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											<span class="h6 fw-light mb-0">Taxes % Fees</span>
-											<span class="fs-5">0원</span>
+											<span class="fs-5">0won</span>
 										</li>
 									</ul>
 								</div>
