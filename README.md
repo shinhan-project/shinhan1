@@ -49,18 +49,22 @@
 
 | 고객 메인화면 | 예약 상세 | 결제화면 |
 |---|---|---|
-| ![image1](./images/main_customer.png) | ![image2](./images/room_detail.png) | ![image3](./images/payment.png) |
+| ![Image](https://github.com/user-attachments/assets/14591542-f3fb-49e2-8e1d-4bb056b560b7) | ![Image](https://github.com/user-attachments/assets/8f1267bf-5426-4575-ab96-9baa522b5a2e) | ![image3](./images/payment.png) |
 
-| 사장 페이지 | 관리자 승인 페이지 |
+| 사장 페이지 | 한옥 등록 | 객실 등록 |
+|---|---|---|
+|<img width="1387" height="969" alt="Image" src="https://github.com/user-attachments/assets/50d960f4-ab53-402e-8245-311711ece59f" /> | ![Image](https://github.com/user-attachments/assets/2e5a5fb1-d7cd-4b8e-9b58-4f2d5a41375b)![Image](https://github.com/user-attachments/assets/2e5a5fb1-d7cd-4b8e-9b58-4f2d5a41375b) | ![Image](https://github.com/user-attachments/assets/bbf8bcc1-2d3b-4200-b1e9-901840946af6) |
+
+| 관리자 페이지 | 한옥 승인 |
 |---|---|
-| ![image4](./images/owner_house.png) | ![image5](./images/admin_approve.png) |
+| <img width="1322" height="945" alt="Image" src="https://github.com/user-attachments/assets/d2a97048-be20-419c-8197-dd4c4bb91da3" /> | ![Image](https://github.com/user-attachments/assets/d85d3a04-13c2-47dd-a338-c2e5c57d73bc) |
 
 
 ---
 
 ## 🗂 ERD 설계
 
-![ERD](./images/erd.png)
+<img width="1627" height="987" alt="Image" src="https://github.com/user-attachments/assets/2d4778fa-5fda-4944-895f-db135e9a6da2" />
 
 
 ---
