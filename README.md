@@ -29,35 +29,38 @@
 
 ## 📌 주요 기능 소개
 
+| 고객 메인화면 | 예약 상세 |
+|---|---|
+| ![Image](https://github.com/user-attachments/assets/14591542-f3fb-49e2-8e1d-4bb056b560b7) | ![Image](https://github.com/user-attachments/assets/8f1267bf-5426-4575-ab96-9baa522b5a2e) | 
+
+
 ### ✅ 고객 (사용자)
+
 - 날짜 및 인원 수에 따른 객실 예약 기능
 - 외부 결제 API 연동을 통한 실시간 결제
 - 숙박 완료 후 리뷰 작성 가능
+  
+
+| 사장 페이지 | 한옥 등록 | 객실 등록 |
+|---|---|---|
+|<img width="1387" height="969" alt="Image" src="https://github.com/user-attachments/assets/50d960f4-ab53-402e-8245-311711ece59f" /> | ![Image](https://github.com/user-attachments/assets/2e5a5fb1-d7cd-4b8e-9b58-4f2d5a41375b)| ![Image](https://github.com/user-attachments/assets/bbf8bcc1-2d3b-4200-b1e9-901840946af6) | 
+
 
 ### ✅ 사장 (호스트)
 - 본인이 소유한 한옥 및 객실 등록
 - 고객 리뷰 확인
 - 한옥 등록 요청 시 관리자 승인을 받는 절차 포함
 
-### ✅ 관리자
-- 사장님의 한옥 등록 요청에 대한 승인/거절 기능
-- 전체 한옥 및 객실 관리
 
----
-
-## 📷 주요 화면
-
-| 고객 메인화면 | 예약 상세 | 결제화면 |
-|---|---|---|
-| ![Image](https://github.com/user-attachments/assets/14591542-f3fb-49e2-8e1d-4bb056b560b7) | ![Image](https://github.com/user-attachments/assets/8f1267bf-5426-4575-ab96-9baa522b5a2e) | ![image3](./images/payment.png) |
-
-| 사장 페이지 | 한옥 등록 | 객실 등록 |
-|---|---|---|
-|<img width="1387" height="969" alt="Image" src="https://github.com/user-attachments/assets/50d960f4-ab53-402e-8245-311711ece59f" /> | ![Image](https://github.com/user-attachments/assets/2e5a5fb1-d7cd-4b8e-9b58-4f2d5a41375b)![Image](https://github.com/user-attachments/assets/2e5a5fb1-d7cd-4b8e-9b58-4f2d5a41375b) | ![Image](https://github.com/user-attachments/assets/bbf8bcc1-2d3b-4200-b1e9-901840946af6) |
 
 | 관리자 페이지 | 한옥 승인 |
 |---|---|
 | <img width="1322" height="945" alt="Image" src="https://github.com/user-attachments/assets/d2a97048-be20-419c-8197-dd4c4bb91da3" /> | ![Image](https://github.com/user-attachments/assets/d85d3a04-13c2-47dd-a338-c2e5c57d73bc) |
+
+
+### ✅ 관리자
+- 사장님의 한옥 등록 요청에 대한 승인/거절 기능
+- 전체 한옥 및 객실 관리
 
 
 ---
